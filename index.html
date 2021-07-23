@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tout commence avec une idée</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/particle.css" />
+    <link rel="stylesheet" href="./css/effect.css" />
+    <link href="http://fonts.cdnfonts.com/css/libre-barcode-39-text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="page-bg"></div>
+
+    <div class="animation-wrapper">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+      <div class="particle particle-4"></div>
+    </div>
+    
+    <div class="page-wrapper"> 
+      <div id="reveal">
+        <div id="barcode"> creative full-stack developper</div>
+        <h1>Naco Dev</h1>
+      </div>
+      <div class="quote">Tout commence avec une idée</div>
+      <div id="one" class="button click">
+        <div id="BtnContact">Contact</div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <!-- End Modal -->
+    <!-- Modal style test -->
+    <div id="modal-container">
+      <div class="modal-background">
+        <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+          <h2>Contact</h2>
+        </div>
+        <form id="form" class="topBefore">
+          <input id="name" type="text" placeholder="NOM">
+          <input id="email" type="email" placeholder="E-MAIL">
+          <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
+          <div id="RadioBtn">
+            <div>
+              <input type="radio" id="control_01" name="select" value="1" checked>
+              <label for="control_01" class="click">
+                <h4>Particulier</h4>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="control_02" name="select" value="2">
+              <label for="control_02" class="click">
+                <h4>Professionnel</h4>
+              </label>
+            </div>
+          </div>
+          <input id="submit" type="submit" value="ENVOYER" class="click">
+        </form>
+      </div>    
+      <!--End Modal content --> 
+      </div>
+    </div>
+    <!-- End Modal style test -->
+    <div class="parallaxe">
+      <h2>Services Web</h2>
+      <div id="service-content">
+        <div class="circle" id="service-creation">Conception</div>
+        <div class="circle" id="service-refonte">Refonte</div>
+        <div class="circle" id="service-entrepreneur">Développement</div>
+        <div class="circle" id="service-freelance">Gestion</div>
+      </div>
+      <div class="logo">Naco Dev</div>
+    </div>
+    <div class="parallaxe2">
+      <h2>Réalisations</h2>
+      <div class="service-container">
+        <div class="service-card" id="SuperGreenLab">
+          <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL">
+        </div>
+        <div class="service-card" id="NacoDev">
+          <img src="./assets/NacoDevlogoW.png" alt="" id="picND">
+        </div>
+        <div class="service-card" id="Prochainement">
+          <div id="picPC">Prochainement</div>
+        </div>
+      </div>
+      <div class="logo">Naco Dev</div>
+    </div>  
+    <div class="parallaxe3">
+      <h2>À propos</h2>
+      <div class="logo">Naco Dev</div>
+    </div>
+    <div class="footer">
+      <div>Naco Dev</div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>    
+    <script src="./js/demo.js"></script>
+  </body>
+</html>
