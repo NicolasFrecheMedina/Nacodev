@@ -1,53 +1,672 @@
-#container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+body {
+  margin: 0;
+  height: 3500px;
+  top: 0px;
+  left: 0px;
 }
-#header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #03030F;
-    color: #ffffff;
+
+
+
+
+/* Reveal first */
+h1 {
+  margin: 140pt;
+  font-family: "Montserrat Subrayada", sans-serif;
+  font-size: 88pt;
 }
-#title {
-    font-family: 'Montserrat Subrayada', sans-serif;
-    font-size: 28pt;
+
+h2 {
+  margin: 20pt;
+  font-family: "Montserrat", sans-serif;
+  font-size: 50pt;
+  color: #5d5d5d;
+  text-align: left;
 }
-#avatar {
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-    background: #ffffff;
-}
+
 #barcode {
-    font-family: 'Libre Barcode 39 Text', sans-serif;
-    font-size: 18pt;
+  margin-top: 20pt;
+  font-family: "Libre Barcode 39 Text", sans-serif;
+  font-size: 32pt;
 }
-.content {
-    margin: 50px 50px 0px 50px;
-    font-family: 'Oswald', sans-serif;
-    text-align: justify;
+
+
+#BtnContact {
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.3rem;
+  border: solid 1px #ffffff;
+  padding: 10pt 15pt;
+  border-radius: 2pt;
+  font-weight: lighter;
+  transition-duration: 1s;
+  text-transform: uppercase;
 }
-.contact {
-    width: 50px; 
-    border: solid 0.8px white;
-    border-radius: 12pt;
-    margin: 40px;
-    padding: 5px 40px 5px 40px;
-    text-transform: uppercase;
-    font-family: 'Oswald', sans-serif;
+
+#BtnContact:hover {
+  color: black;
+  background-color: white;
+  box-shadow: 20px 20px 50px #00d2c6, -30px -30px 60px #00ffff;
 }
-.mask {
-    width: 100%;
-    background-color: #03030F;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:#ffffff
+
+.click {
+  transition: all 0.88s ease-out;
 }
+
+
+.click:active {
+  /* transition: all 0.88s ease-out; */
+  /* transform: scale(1.4); */
+  transform: scale(0.98) translate(0, 4pt);
+}
+.quote {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.1rem;
+  margin: 20pt;
+  text-transform: uppercase;
+}
+/* content */
+ 
+.parallaxe {
+  margin-bottom: 400pt;
+  top: 600pt;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.parallaxe2 {
+  top: 800px;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 400pt;
+}
+
+.parallaxe3 {
+  top: 800px;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150pt;
+}
+
+.service-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60pt;
+  
+}
+
+.service-card {
+  margin: 15pt;
+  width: 300pt !important;
+  height: 300pt !important;
+  border-radius: 15pt ;
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-color: #232323;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1.4s;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* background-color: rgba(255, 255, 255, 1); */
+  background-color: #232323;
+}
+
+#SuperGreenLab {
+  transition: 0.5s ease-in-out;
+}
+
+#SuperGreenLab:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #3BB30D;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#SuperGreenLab:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#SuperGreenLab:hover > #picSGL{
+  /* width: 270pt; */
+  transform: translateY(-50%);
+}
+
+#picSGL {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+}
+
+#NacoDev {
+  transition: 0.5s ease-in-out;
+}
+
+#NacoDev:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url("../assets/space2.jpg");
+  background-size: cover;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#NacoDev:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#NacoDev:hover > #picND{
+  /* width: 270pt; */
+  transform: translateY(-50%);
+}
+
+#picND {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+}
+
+#Prochainement {
+  transition: 0.5s ease-in-out;
+}
+
+#Prochainement:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-size: cover;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#Prochainement:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#Prochainement:hover > #picPC{
+  /* width: 270pt; */
+  transform: translateY(-50%);
+}
+
+#picPC {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24pt;
+  color: #5d5d5d;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo {
+  font-family: "Montserrat Subrayada", sans-serif;
+  text-align: right;
+  color: #424242;
+  margin: 5pt;
+  font-weight: bold;
+}
+
+.footer {
+  height: 20pt;
+  padding-top: 5pt;
+  top: 820px;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat Subrayada", sans-serif;
+  text-align: center;
+  color: #424242;
+  font-weight: bold;
+}
+
+#service-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50pt;
+}
+
+.circle {
+  font-family: "Montserrat", sans-serif;
+  width: 180pt;
+  height: 180pt;
+  border-radius: 100pt;
+  background: white;
+  cursor: pointer;
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);  
+  margin: 20pt;
+  transition-duration: 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.circle:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: rgba(255, 255, 255, 1);
+  
+}
+
+.circle:active {
+  transform: scale(0.98) translate(0, 4pt);
+  /* transform: border(none); */
+  /* border: none; */
+}
+
+#service-creation {
+  border: solid 90pt orange;
+}
+
+#service-creation:hover {
+  border: solid 0pt transparent;
+  color: black;
+}
+#service-creation:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, orange, yellow);
+}
+
+#service-refonte {
+  border: solid 90pt #00C853;
+}
+
+#service-refonte:hover {
+  border: solid 0pt transparent;
+  color: black;
+}
+
+#service-refonte:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+#service-entrepreneur {
+  border: solid 90pt orangered;
+}
+
+#service-entrepreneur:hover {
+  border: solid 0pt transparent;
+  color: black;
+}
+
+#service-entrepreneur:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, red, orange);
+}
+
+#service-freelance {
+  border: solid 90pt purple;
+}
+
+#service-freelance:hover {
+  border: solid 0pt transparent;
+  color: black;
+}
+
+#service-freelance:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, purple, pink);
+}
+
+#services-section {
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 90%;
+  height: 300pt;
+  margin: 40pt;
+  align-items: center;
+  border-radius: 15pt;
+  align-self:center;
+}
+
+/* Modales */
+
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.4);
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  width: 330pt;
+  border-radius: 2pt;
+  z-index: 3000;
+}
+
+.close {
+  color: #5d5d5d;
+  float: right;
+  font-size: 25pt;
+  font-weight: bold;
+  transition: transform 500ms ease;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transform: rotate(360deg);
+  color: #45eaed;
+}
+
+.modal-content> div > h2 {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.3rem;
+  margin-top: 10pt;
+}
+
+/* form */
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto 0px auto;
+  align-items: center;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875em;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  background: transparent;
+  outline: none;
+  color: black;
+  border: solid 1.2px black;
+  border-bottom: none;
+  width: 280pt;
+}
+
+input:hover {
+  background: #45eaed;
+  color: #fff;
+}
+
+textarea {
+  height: 80pt;
+  width: 280pt;
+  padding: 15px;
+  background: transparent;
+  outline: none;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875em;
+  border: solid 1.2px black;
+}
+
+textarea:hover {
+  background: #45eaed;
+  color: white;
+}
+
+#submit {
+  margin: 10pt;
+  width:50%;
+  padding: 0px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875em;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 0.3rem;
+  border: solid 1.2px black;
+}
+
+#submit:hover {
+  color: white;
+  background-color: #45eaed; 
+  border: solid 1.2px white;
+  
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: black;
+  font-size: 0.875em;
+  font-weight: bold; 
+}
+
+input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+  color: #ffffff;
+  font-size: 0.875em;
+}
+
+/* Radio buttons */
+
+#RadioBtn {
+  width: 302pt;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex: 1;
+  border: solid 1.2px black;
+  border-top: none;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875em;
+  color: black;
+}
+
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:not(:disabled) ~ label {
+  cursor: pointer;
+}
+input[type=radio]:disabled ~ label {
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+label {
+  width: 130pt;
+  display: block;
+  background: white;
+  border: 1.2px solid black;
+  margin: 1.2rem 0.5rem;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-size: 0.875em;
+}
+
+input[type=radio]:checked + label {
+  background: #45eaed;
+  color: white;
+  border: 1.2px solid #45eaed;
+}
+input[type=radio]:checked + label::after {
+  color: #45eaed;
+  border: 2px solid #45eaed;
+  content: '\002714';
+  font-size: 12pt;
+  position: absolute;
+  top: -10pt;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 15pt;
+  width: 15pt;
+  line-height: 15pt;
+  text-align: right;
+  border-radius: 50%;
+  background: white;
+}
+
+/* Modal style test */
+#modal-container {
+  z-index: 1500;
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+}
+#modal-container.one {
+  transform: scaleY(0.01) scaleX(0);
+  animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one .modal-background .modal-content {
+  transform: scale(0);
+  animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out {
+  transform: scale(1);
+  animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out .modal-background .modal-content {
+  animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container .modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  vertical-align: middle;
+  z-index: 2000;
+}
+/* #modal-container .modal-background .modal-content {
+  background: white;
+  padding: 50px;
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: 300;
+  position: relative;
+  width: 200pt;
+  height:100pt; 
+} */
+
+
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@keyframes unfoldOut {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
