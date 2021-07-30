@@ -25,6 +25,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
     <link rel="stylesheet" href="./css/particle.css" />
     <link rel="stylesheet" href="./css/effect.css" />
     <link href="http://fonts.cdnfonts.com/css/libre-barcode-39-text" rel="stylesheet">
@@ -55,9 +57,7 @@
         <div id="BtnContact">Contact</div>
       </div>
     </div>
-    <!-- Modal -->
-    <!-- End Modal -->
-    <!-- Modal style test -->
+    <!-- Modal Form -->
     <div id="modal-container">
       <div class="modal-background">
         <!-- Modal content -->
@@ -87,22 +87,91 @@
           <input id="submit" type="submit" value="ENVOYER" class="click">
         </form>
       </div>    
-      <!--End Modal content --> 
       </div>
     </div>
-    <!-- End Modal style test -->
+    <!-- End Modal Form -->
     <div class="parallaxe">
       <h2>Services Web</h2>
       <div id="service-content">
-        <div class="circle" id="service-creation">Conception</div>
-        <div class="circle" id="service-refonte">Refonte</div>
-        <div class="circle" id="service-entrepreneur">Développement</div>
-        <div class="circle" id="service-freelance">Gestion</div>
+        <div class="cardContainer">
+          <div class="circle" id="service-creation">
+            <div>
+              Conception
+            </div> 
+          </div>
+          <div class="list">
+            <h3 id="title-conception">Site web dynamique et adaptable</h3>
+              <div class="effect-conception za">Maquettage</div> 
+              <div class="appear-conception az">Maquettage de site web avec représentation graphique</div>
+              <div class="effect-conception za">Conception Base de données</div>
+              <div class="appear-conception az">Ossature site web</div>
+          </div>
+        </div>
+        <div class="cardContainer">
+          <div class="circle" id="service-entrepreneur">
+            <div>
+              Développement
+            </div> 
+          </div>
+          <div class="list">
+            <h3 id="title-developpement">Front-End & Back-End</h3>
+              <div class="effect-developpement za">Intégration interface utilisateur</div>
+              <div class="appear-developpement az">Site vitrine, e-commerce, portfolio, site promotionnel, tout est possible...</div>
+              <div class="effect-developpement za">Développement coté serveur</div>
+              <div class="appear-developpement az">Intéraction avec base de données</div>
+          </div>
+        </div>
+        <div class="cardContainer">
+          <div class="circle" id="service-refonte">
+            <div>
+              Refonte
+            </div> 
+          </div>
+          <div class="list">
+            <h3 id="title-refonte">Améliorations site internet</h3>
+              <div class="effect-refonte za">Refonte graphique</div>
+              <div class="appear-refonte az">Revisite avec design actuel et personnalisé</div>
+              <div class="effect-refonte za">Nouvelle fonctionnalitées</div>
+              <div class="appear-refonte az">Besoin de Widgets ?</div>
+          </div>
+        </div>
+        <div class="cardContainer">
+          <div class="circle" id="service-freelance">
+            <div>
+              Présence Web
+            </div> 
+          </div>
+          <div class="list">
+            <h3 id="title-freelance">Accompagnement</h3>
+              <div class="effect-freelance za">Référencement</div>
+              <div class="appear-freelance az">Compte google et référencement intelligent</div>
+              <div class="effect-freelance za">Maintenance web</div>
+              <div class="appear-freelance az">Debbuggage</div>
+          </div>
+        </div>
       </div>
       <div class="logo">Naco Dev</div>
     </div>
     <div class="parallaxe2">
       <h2>Réalisations</h2>
+         <!-- Modal Sketch -->
+      <!-- <div id="modal-container">
+        <div class="modal-background">
+          <div class="modal">
+            <h2>I'm a Modal</h2>
+            <p>Hear me roar.</p>
+            <svg class="modal-svg"  width="100%" height="100%" preserveAspectRatio="none">
+                      <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                    </svg>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="buttons">
+          <div id="six" class="button">Sketch</div>
+        </div>
+      </div> -->
+      <!-- Modal Sketch -->
       <div class="service-container">
         <div class="service-card" id="SuperGreenLab">
           <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL">
