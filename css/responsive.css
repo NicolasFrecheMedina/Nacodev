@@ -1,0 +1,9 @@
+/* Responsive eclater css pour chaque formats */
+@media screen and (max-width: 600px) {
+    .service-container {
+      flex-direction: column;
+    }
+    #service-content {
+      flex-direction: column;
+    }
+  }
