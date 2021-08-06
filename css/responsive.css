@@ -1,9 +1,15 @@
 /* Responsive eclater css pour chaque formats */
 @media screen and (max-width: 600px) {
-    .service-container {
-      flex-direction: column;
-    }
-    #service-content {
-      flex-direction: column;
-    }
+  .service-container {
+    flex-direction: column;
   }
+  #service-content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #title-responsive {
+    margin: 200pt;
+  }
+}

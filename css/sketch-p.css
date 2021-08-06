@@ -1,10 +1,10 @@
 /* .btn-sketch:active {
-    transform: translate(0pt, -1pt);
+transform: translate(0pt, -1pt);
 } */
 
 /* test sketch */
 
-#sketch-container {
+#sketch-container-p {
   position: fixed;
   display: table;
   height: 100%;
@@ -14,49 +14,55 @@
   transform: scale(0);
   z-index: 1;
 }
-#sketch-container.six {
+#sketch-container-p.four {
   transform: scale(1);
 }
-#sketch-container.six .sketch-background {
+#sketch-container-p.four .sketch-background-p {
   background: rgba(0, 0, 0, 0);
   animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container.six .sketch-background .sketch {
+#sketch-container-p.four .sketch-background-p .sketch-p {
   background-color: transparent;
   animation: sketchFadeIn 0.5s 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container.six .sketch-background .sketch #sketch-sgh-content {
+#sketch-container-p.four
+  .sketch-background-p
+  .sketch-p
+  #sketch-proxima-content {
   opacity: 0;
   position: relative;
   animation: sketchContentFadeIn 0.5s 1s cubic-bezier(0.165, 0.84, 0.44, 1)
     forwards;
 }
-#sketch-container.six .sketch-background .sketch .sketch-svg rect {
+#sketch-container-p.four .sketch-background-p .sketch-p .sketch-svg rect {
   animation: sketchIn 0.5s 0s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container.six.out {
+#sketch-container-p.four.out {
   animation: quickScaleDown 0s 0.5s linear forwards;
 }
-#sketch-container.six.out .sketch-background {
+#sketch-container-p.four.out .sketch-background-p {
   animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container.six.out .sketch-background .sketch {
+#sketch-container-p.four.out .sketch-background-p .sketch-p {
   animation: sketchFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container.six.out .sketch-background .sketch #sketch-sgh-content {
+#sketch-container-p.four.out
+  .sketch-background-p
+  .sketch-p
+  #sketch-proxima-content {
   animation: sketchContentFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
     forwards;
 }
-#sketch-container.six.out .sketch-background .sketch .sketch-svg rect {
+#sketch-container-p.four.out .sketch-background-p .sketch-p .sketch-svg rect {
   animation: sketchOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container .sketch-background {
+#sketch-container-p .sketch-background-p {
   display: table-cell;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
   vertical-align: middle;
 }
-#sketch-container .sketch-background .sketch {
+#sketch-container-p .sketch-background-p .sketch-p {
   background: white;
   padding: 50px;
   display: inline-block;
@@ -67,7 +73,7 @@
   position: relative;
 }
 
-#sketch-container .sketch-background .sketch .sketch-svg {
+#sketch-container-p .sketch-background-p .sketch-p .sketch-svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -75,7 +81,7 @@
   width: 100%;
   border-radius: 3px;
 }
-#sketch-container .sketch-background .sketch .sketch-svg rect {
+#sketch-container-p .sketch-background-p .sketch-p .sketch-svg rect {
   stroke: #fff;
   stroke-width: 4pt;
   stroke-dasharray: 389;
@@ -163,52 +169,55 @@
 }
 /* Sketch content */
 
-.sketch .close {
+.sketch-p .close {
   z-index: 9999;
   position: absolute;
   right: 30pt;
   top: 30pt;
 }
 
-#sketch-sgh-content {
+#sketch-proxima-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   font-family: "Montserrat", sans-serif;
   height: 100%;
 }
 
-/* #sketch-sgh-content > div > div {
-  margin: 10pt;
-} */
+.sketch-p .close {
+  z-index: 9999;
+  position: absolute;
+  right: 30pt;
+  top: 30pt;
+}
 
-.liens-logo {
-  margin-top: 30pt;
+#sketch-proxima-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+}
+
+.liens-logo-p {
   display: flex;
   justify-content: space-around;
 }
 
-.info-projets > div {
+.info-projets-p > div {
   margin: 10pt;
   font-size: 10pt;
   width: 100%;
 }
 
-.frameworks {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: center;
-}
-
-.lien-projet {
-  margin-bottom: 14pt;
+.lien-projet-p {
+  margin-top: 32pt;
   text-align: center;
   font-size: 10pt;
   letter-spacing: 0.2rem;
 }
 
-.lien-projet a {
+.lien-projet-p a {
   text-decoration: none;
   font-weight: bold;
   color: black;
@@ -218,22 +227,12 @@
   text-decoration: underline;
 }
 
-.lien-projet a:hover {
+.lien-projet-p a:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.Dev-logo {
-  transition: 0.5s ease-in-out;
-  border-radius: 5px;
-  margin: 5pt;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-
-.Dev-logo:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+#title-proxima {
+  text-align: center;
 }
