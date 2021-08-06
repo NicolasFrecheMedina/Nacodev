@@ -134,6 +134,15 @@ $(document).ready(function () {
     $('body').removeClass('sketch-n-active');
   });
 
+  $('.btn-sketch-p').click(function(){
+    var btnSketch = $(this).attr('id');
+    $('#sketch-container-p').removeAttr('class').addClass(btnSketch);
+    $('body').addClass('sketch-p-active');
+  })
+  $('.close').click(function(){
+    $('#sketch-container-p').addClass('out');
+    $('body').removeClass('sketch-p-active');
+  });
 });
 
 
