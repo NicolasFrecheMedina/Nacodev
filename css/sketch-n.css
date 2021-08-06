@@ -1,0 +1,238 @@
+
+
+/* .btn-sketch:active {
+transform: translate(0pt, -1pt);
+} */
+
+/* test sketch */
+
+#sketch-container-n {
+position: fixed;
+display: table;
+height: 100%;
+width: 100%;
+top: 0;
+left: 0;
+transform: scale(0);
+z-index: 1;
+}
+#sketch-container-n.five {
+transform: scale(1);
+}
+#sketch-container-n.five .sketch-background-n {
+background: rgba(0, 0, 0, 0);
+animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five .sketch-background-n .sketch-n {
+background-color: transparent;
+animation: sketchFadeIn 0.5s 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five .sketch-background-n .sketch-n  #sketch-naco-content {
+opacity: 0;
+position: relative;
+animation: sketchContentFadeIn 0.5s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five .sketch-background-n .sketch-n .sketch-svg rect {
+animation: sketchIn 0.5s 0s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five.out {
+animation: quickScaleDown 0s 0.5s linear forwards;
+}
+#sketch-container-n.five.out .sketch-background-n {
+animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five.out .sketch-background-n .sketch-n {
+animation: sketchFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five.out .sketch-background-n .sketch-n #sketch-naco-content {
+animation: sketchContentFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n.five.out .sketch-background-n .sketch-n .sketch-svg rect {
+animation: sketchOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#sketch-container-n .sketch-background-n {
+display: table-cell;
+background: rgba(0, 0, 0, 0.8);
+text-align: center;
+vertical-align: middle;
+}
+#sketch-container-n .sketch-background-n .sketch-n {
+background: white;
+padding: 50px;
+display: inline-block;
+width:50%;
+height: 60%;
+border-radius: 3px;
+font-weight: 300;
+position: relative;
+}
+
+#sketch-container-n .sketch-background-n .sketch-n .sketch-svg {
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+border-radius: 3px;
+}
+#sketch-container-n .sketch-background-n .sketch-n .sketch-svg rect {
+stroke: #fff;
+stroke-width: 4pt;
+stroke-dasharray: 389;
+stroke-dashoffset: 389;
+} 
+
+@keyframes fadeIn {
+0% {
+    background: rgba(0, 0, 0, 0);
+}
+100% {
+    background: rgba(0, 0, 0, 0.7);
+}
+}
+@keyframes fadeOut {
+0% {
+    background: rgba(0, 0, 0, 0.7);
+}
+100% {
+    background: rgba(0, 0, 0, 0);
+}
+}
+@keyframes quickScaleDown {
+0% {
+    transform: scale(1);
+}
+99.9% {
+    transform: scale(1);
+}
+100% {
+    transform: scale(0);
+}
+}
+@keyframes sketchIn {
+0% {
+    stroke-dashoffset: 389;
+}
+100% {
+    stroke-dashoffset: 0;
+}
+}
+@keyframes sketchOut {
+0% {
+    stroke-dashoffset: 0;
+}
+100% {
+    stroke-dashoffset: 389;
+}
+}
+@keyframes sketchFadeIn {
+0% {
+    background-color: transparent;
+}
+100% {
+    background-color: white;
+}
+}
+@keyframes sketchFadeOut {
+0% {
+    background-color: white;
+}
+100% {
+    background-color: transparent;
+}
+}
+@keyframes sketchContentFadeIn {
+0% {
+    opacity: 0;
+    top: -20px;
+}
+100% {
+    opacity: 1;
+    top: 0;
+}
+}
+@keyframes sketchContentFadeOut {
+0% {
+    opacity: 1;
+    top: 0px;
+}
+100% {
+    opacity: 0;
+    top: -20px;
+}
+}
+/* Sketch content */
+
+.sketch-n .close {
+z-index: 9999;
+position: absolute;
+right: 30pt;
+top: 30pt;
+}
+
+#sketch-naco-content {
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+font-family: "Montserrat", sans-serif;
+height: 100%;
+}
+
+
+/* 
+
+#pic-logo-git {
+margin-top: 5pt;
+width: 100pt;
+height: 54pt;
+}
+
+#pic-logo-vue {
+width: 62pt;
+height: 62pt;
+margin-right: 10pt
+}
+
+#pic-logo-nuxt {
+width: 76pt;
+height: 76pt;
+} */
+
+#sketch-naco-logo {
+    width: 200pt;
+    margin-left: -10pt;
+}
+
+.liens-logo-n {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.info-projets-n > div {
+    margin: 10pt;
+    font-size: 10pt;
+    width: 100%;
+}
+
+
+.lien-projet-n {
+margin-top: 32pt;
+text-align: center;
+font-size: 10pt;
+letter-spacing: 0.2rem;
+}
+
+.lien-projet-n a {
+text-decoration: none;
+font-weight: bold;
+color: black;
+transition: 0.5s ease-in-out;
+padding: 5pt;
+border-radius: 5pt;
+}
+
+.lien-projet-n a:hover {
+text-decoration: underline;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

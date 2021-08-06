@@ -1,3 +1,5 @@
+/* Static Content CSS */
+
 body {
   margin: 0;
   height: 3500px;
@@ -19,15 +21,6 @@ h2 {
   color: #5d5d5d;
   text-align: left;
   cursor: default;
-}
-
-#title-freelance {
-  background: linear-gradient(to left, purple, pink);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
 }
 
 #barcode {
@@ -70,174 +63,6 @@ h2 {
   text-transform: uppercase;
   cursor: default;
 }
-/* content */
- 
-.parallaxe {
-  margin-bottom: 400pt;
-  top: 600pt;
-  z-index: 10;
-  position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.parallaxe2 {
-  top: 800px;
-  z-index: 10;
-  position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 400pt;
-}
-
-.parallaxe3 {
-  top: 800px;
-  z-index: 10;
-  position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 150pt;
-}
-
-.service-container {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 60pt;
-}
-
-
-.service-card {
-  margin: 15pt;
-  width: 300pt !important;
-  height: 300pt !important;
-  border-radius: 15pt ;
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  background-color: #232323;
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition-duration: 1.4s;
-  cursor: pointer;
-}
-
-.service-card:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  /* background-color: rgba(255, 255, 255, 1); */
-  background-color: #232323;
-}
-
-#SuperGreenLab {
-  transition: 0.5s ease-in-out;
-}
-
-#SuperGreenLab:before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: #3BB30D;
-  /* clip-path: circle(120pt at 50% 0%); */
-  clip-path: circle(300pt at 60% -25%);
-  transition: 0.5s ease-in-out;
-  position: relative;
-  border-radius: 15pt ;
-}
-
-#SuperGreenLab:hover:before {
-  /* clip-path: circle(300pt at 60% -20%); */
-  clip-path: circle(120pt at 50% 0%);
-}
-
-#SuperGreenLab:hover > #picSGL{
-  /* width: 270pt; */
-  transform: translateY(-50%);
-}
-
-#picSGL {
-  transition: 0.5s ease-in-out;
-  width: 250pt;
-  position: absolute;
-}
-
-#NacoDev {
-  transition: 0.5s ease-in-out;
-}
-
-#NacoDev:before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: url("../assets/space2.jpg");
-  background-size: cover;
-  /* clip-path: circle(120pt at 50% 0%); */
-  clip-path: circle(300pt at 60% -25%);
-  transition: 0.5s ease-in-out;
-  position: relative;
-  border-radius: 15pt ;
-}
-
-#NacoDev:hover:before {
-  /* clip-path: circle(300pt at 60% -20%); */
-  clip-path: circle(120pt at 50% 0%);
-}
-
-#NacoDev:hover > #picND{
-  /* width: 270pt; */
-  transform: translateY(-50%);
-}
-
-#picND {
-  transition: 0.5s ease-in-out;
-  width: 250pt;
-  position: absolute;
-}
-
-#Prochainement {
-  transition: 0.5s ease-in-out;
-}
-
-#Prochainement:before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: white;
-  background-size: cover;
-  /* clip-path: circle(120pt at 50% 0%); */
-  clip-path: circle(300pt at 60% -25%);
-  transition: 0.5s ease-in-out;
-  position: relative;
-  border-radius: 15pt ;
-}
-
-#Prochainement:hover:before {
-  /* clip-path: circle(300pt at 60% -20%); */
-  clip-path: circle(120pt at 50% 0%);
-}
-
-#Prochainement:hover > #picPC{
-  /* width: 270pt; */
-  transform: translateY(-50%);
-}
-
-#picPC {
-  transition: 0.5s ease-in-out;
-  width: 250pt;
-  position: absolute;
-  font-family: "Montserrat", sans-serif;
-  font-size: 24pt;
-  color: #5d5d5d;
-  font-weight: bold;
-  text-align: center;
-}
 
 .logo {
   font-family: "Montserrat Subrayada", sans-serif;
@@ -262,242 +87,10 @@ h2 {
   color: #424242;
   font-weight: bold;
 }
+/* End Static Content CSS */
 
-#service-content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 50pt;
-}
+/* Form */
 
-.cardContainer {
-  width:220pt;
-  border-radius: 15pt;
-  transition-duration: 0.4s;
-  display: flex;
-  flex-direction: column;
-  display: flex;
-  /* align-items: center; */
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-
-.circle {
-  cursor: grab;
-  font-family: "Montserrat", sans-serif;
-  width: 180pt;
-  height: 180pt;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fff, #d2d2d2);
-  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);  
-  margin: 20pt;
-  margin-bottom: 10pt;
-  /* transition-duration: 0.4s; */
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  flex-direction: column;
-  position:relative;
-  box-sizing: border-box;
-  background-clip: padding-box;
-  letter-spacing: 0.3rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: black;
-}
-
-.circle:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-#service-creation:active {
-  transform: translate(0pt, -1pt);
-}
-
-#service-creation:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -10pt;
-  border-radius: inherit;
-  background: linear-gradient(to right, orange, yellow);
-}
-
-#service-refonte:active {
-  transform: translate(0pt, 1pt);
-}
-
-#service-refonte:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -10pt;
-  border-radius: inherit;
-  background: linear-gradient(to right, #00C853, #B2FF59);
-}
-
-#service-entrepreneur:active {
-  transform: translate(0pt, 1pt);
-}
-
-#service-entrepreneur:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -10pt;
-  border-radius: inherit;
-  background: linear-gradient(to right, red, orange);
-}
-
-#service-freelance:active {
-  transform: translate(0pt, 1pt);
-}
-
-.list {
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  margin: 10pt;
-  margin-bottom: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h3 {
-  width: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-size: 12pt;
-  color: black;
-  cursor: default;
-  border-width: 200pt;
-  border-top: 2px solid #5d5d5d;
-  border-bottom: 2px solid #5d5d5d;
-  padding-top: 10pt;
-  padding-bottom: 10pt;
-  text-align: center;
-  font-weight: bolder;
-  margin: 5pt 0;
-}
-
-#service-freelance:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -10pt;
-  border-radius: inherit;
-  background: linear-gradient(to right, purple, pink);
-}
-
-.effect-freelance {
-  background: linear-gradient(to right, purple, pink);
-}
-
-.appear-freelance {
-  opacity: 0;
-}
-
-
-#services-section {
-  display: flex;
-  justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  background-color: rgba(255, 255, 255, 1);
-  width: 90%;
-  height: 300pt;
-  margin: 40pt;
-  align-items: center;
-  border-radius: 15pt;
-  align-self:center;
-}
-
-
-
-#title-conception {
-  background: linear-gradient(to right, orange, rgb(192, 192, 21));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
-}
-
-.effect-conception {
-  background: linear-gradient(to right, orange, yellow);
-}
-
-.appear-conception {
-  opacity: 0;
-}
-
-#title-refonte {
-  background: linear-gradient(to right, #00C853, #75cc11);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
-}
-
-.effect-refonte {
-  background: linear-gradient(to right, #00C853, #8bf117);
-}
-
-.appear-refonte {
-  opacity: 0;
-}
-
-#title-developpement {
-  background: linear-gradient(to left, red, orange);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
-}
-.effect-developpement {
-  background: linear-gradient(to left, red, orange);
-}
-
-.appear-developpement {
-  opacity: 0;
-}
-
-.az {
-  width: 100%;
-  text-align: right;
-  font-size: 10pt;
-  margin-top: 5pt;
-  margin-bottom: 15pt;
-  margin-right:10pt;
-}
-
-.za {
-  width: 100%;
-  margin-top: 5pt;
-  margin-bottom: 5pt;
-  padding: 10pt 0;
-  border-radius: 17pt;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
-
-/* form */
 #form {
   display: flex;
   flex-direction: column;
@@ -573,8 +166,6 @@ input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholde
   font-size: 0.875em;
 }
 
-/* Radio buttons */
-
 #RadioBtn {
   width: 302pt;
   display: flex;
@@ -636,5 +227,486 @@ input[type=radio]:checked + label::after {
   border-radius: 50%;
   background: white;
 }
+/*End Form */
+
+/* Bloc Services CSS */
+
+.parallaxe {
+  margin-bottom: 400pt;
+  top: 600pt;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+#service-content {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+
+.cardContainer {
+  width:220pt;
+  border-radius: 15pt;
+  transition-duration: 0.4s;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  /* align-items: center; */
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+}
+
+.circle {
+  cursor: grab;
+  font-family: "Montserrat", sans-serif;
+  width: 180pt;
+  height: 180pt;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff, #d2d2d2);
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);  
+  margin: 20pt;
+  margin-bottom: 10pt;
+  /* transition-duration: 0.4s; */
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  position:relative;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+}
+
+.circle:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
 
+.list {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin: 10pt;
+  margin-bottom: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12pt;
+  color: black;
+  cursor: default;
+  border-width: 200pt;
+  border-top: 2px solid #5d5d5d;
+  border-bottom: 2px solid #5d5d5d;
+  padding-top: 10pt;
+  padding-bottom: 10pt;
+  text-align: center;
+  font-weight: bolder;
+  margin-top: 5pt;
+  margin-bottom: 15pt;
+}
+
+.az {
+  cursor: default;
+  width: 100%;
+  text-align: right;
+  font-size: 10pt;
+  margin-top: 5pt;
+  margin-bottom: 15pt;
+  margin-right:10pt;
+}
+
+.za {
+  cursor: default;
+  width: 100%;
+  margin-top: 5pt;
+  margin-bottom: 5pt;
+  padding: 10pt 0;
+  border-radius: 20pt;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;  
+  position:relative;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  background: linear-gradient(135deg, #fff, #d2d2d2);
+}
+
+.za:active{
+  transform: translate(0pt, -1pt);
+}
+
+/*Fin Bloc Services CSS */
+
+/*Carte Conception */
+
+#service-creation:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, orange, yellow);
+}
+
+#service-creation:active {
+  transform: translate(0pt, -1pt);
+}
+
+
+#title-conception {
+  background: linear-gradient(to right, orange, rgb(192, 192, 21));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.effect-conception:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, orange, yellow);
+}
+
+.appear-conception {
+  opacity: 0;
+}
+
+/*Fin Carte Conception */
+
+/* Carte Développement */
+
+#service-entrepreneur:active {
+  transform: translate(0pt, 1pt);
+}
+
+#service-entrepreneur:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, red, orange);
+}
+
+#title-developpement {
+  background: linear-gradient(to left, red, orange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.effect-developpement:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, red, orange);
+}
+
+.appear-developpement {
+  opacity: 0;
+}
+
+/*Fin Carte Développement */
+
+/*Carte Refonte */
+
+#service-refonte:active {
+  transform: translate(0pt, 1pt);
+}
+
+#service-refonte:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+#title-refonte {
+  background: linear-gradient(to right, #00C853, #75cc11);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.effect-refonte:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+.appear-refonte {
+  opacity: 0;
+}
+
+/*Fin Carte Refonte */
+
+/* Carte Présence Web */
+
+#service-freelance:active {
+  transform: translate(0pt, 1pt);
+}
+
+#service-freelance:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -10pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, purple, pink);
+}
+
+#title-freelance {
+  background: linear-gradient(to left, purple, pink);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.effect-freelance:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1pt;
+  border-radius: inherit;
+  background: linear-gradient(to right, purple, pink);
+}
+
+.appear-freelance {
+  opacity: 0;
+}
+
+/*Fin Carte Présence Web */
+
+/* Bloc Portfolio CSS */
+
+.parallaxe2 {
+  top: 800px;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 400pt;
+}
+
+.service-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60pt;
+}
+
+
+.service-card {
+  margin: 15pt;
+  width: 300pt !important;
+  height: 300pt !important;
+  border-radius: 15pt ;
+  background-color: #232323;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1.4s;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.service-card:active {
+  transform: translate(0pt, -10pt);
+}
+
+/* Fin Bloc Portfolio CSS */
+
+/* Carte SuperGreenLab */
+
+#SuperGreenLab {
+  transition: 0.5s ease-in-out;
+}
+
+#SuperGreenLab:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #3BB30D;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#SuperGreenLab:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#SuperGreenLab:hover > #picSGL{
+  /* width: 270pt; */
+  transform: translateY(-50%);
+}
+
+#picSGL {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+}
+
+/* Fin Carte SuperGreenLab */
+
+/* Carte Nacodev */
+
+#NacoDev {
+  transition: 0.5s ease-in-out;
+}
+
+#NacoDev:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url("../assets/space2.jpg");
+  background-size: cover;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#NacoDev:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#NacoDev:hover > #picND{
+  /* width: 270pt; */
+  transform: translateY(-25%);
+}
+#picND {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+}
+
+/* Fin Carte Nacodev */
+
+/* Carte Prochainement */
+
+#Prochainement {
+  transition: 0.5s ease-in-out;
+}
+
+#Prochainement:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-size: cover;
+  /* clip-path: circle(120pt at 50% 0%); */
+  clip-path: circle(300pt at 60% -25%);
+  transition: 0.5s ease-in-out;
+  position: relative;
+  border-radius: 15pt ;
+}
+
+#Prochainement:hover:before {
+  /* clip-path: circle(300pt at 60% -20%); */
+  clip-path: circle(120pt at 50% 0%);
+}
+
+#Prochainement:hover > #picPC{
+  /* width: 270pt; */
+  transform: translateY(-50%);
+}
+
+#picPC {
+  transition: 0.5s ease-in-out;
+  width: 250pt;
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24pt;
+  color: #5d5d5d;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Fin Carte Prochainement */
+
+/* Bloc About CSS */
+
+.parallaxe3 {
+  top: 800px;
+  z-index: 9;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150pt;
+}
+
+/* Fin Bloc About CSS */

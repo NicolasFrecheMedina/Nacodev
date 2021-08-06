@@ -19,7 +19,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -29,6 +28,8 @@
     <link rel="stylesheet" href="./css/responsive.css" />
     <link rel="stylesheet" href="./css/particle.css" />
     <link rel="stylesheet" href="./css/effect.css" />
+    <link rel="stylesheet" href="./css/sketch.css" />
+    <link rel="stylesheet" href="./css/sketch-n.css" />
     <link href="http://fonts.cdnfonts.com/css/libre-barcode-39-text" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
@@ -57,7 +58,7 @@
         <div id="BtnContact">Contact</div>
       </div>
     </div>
-    <!-- Modal Form -->
+<!-- Modal Form -->
     <div id="modal-container">
       <div class="modal-background">
         <!-- Modal content -->
@@ -89,22 +90,24 @@
       </div>    
       </div>
     </div>
-    <!-- End Modal Form -->
+<!-- End Modal Form -->
     <div class="parallaxe">
       <h2>Services Web</h2>
       <div id="service-content">
         <div class="cardContainer">
           <div class="circle" id="service-creation">
             <div>
-              Conception
+              Création
             </div> 
           </div>
           <div class="list">
-            <h3 id="title-conception">Site web dynamique et adaptable</h3>
-              <div class="effect-conception za">Maquettage</div> 
-              <div class="appear-conception az">Maquettage de site web avec représentation graphique</div>
-              <div class="effect-conception za">Conception Base de données</div>
-              <div class="appear-conception az">Ossature site web</div>
+            <h3 id="title-conception">Gestion de projets</h3>
+              
+              <div class="effect-conception za">Site web</div> 
+              <div class="appear-conception az">Conception E-commerce, portfolio, site vitrine... Dynamique et entièrement <br/>personnalisable</div>
+              <div class="effect-conception za">Cahier des charges</div>
+              <div class="appear-conception az">Rédaction de votre projet web étape par étape</div>
+              
           </div>
         </div>
         <div class="cardContainer">
@@ -115,10 +118,10 @@
           </div>
           <div class="list">
             <h3 id="title-developpement">Front-End & Back-End</h3>
-              <div class="effect-developpement za">Intégration interface utilisateur</div>
-              <div class="appear-developpement az">Site vitrine, e-commerce, portfolio, site promotionnel, tout est possible...</div>
-              <div class="effect-developpement za">Développement coté serveur</div>
-              <div class="appear-developpement az">Intéraction avec base de données</div>
+              <div class="effect-developpement za">Maquettage</div>
+              <div class="appear-developpement az">Une représentation graphique de votre site web adaptable à différents <br/>supports</div>
+              <div class="effect-developpement za">Intégration</div>
+              <div class="appear-developpement az">Utilisation de différents outils et technologies pour développer<br/>le code de votre site web</div>
           </div>
         </div>
         <div class="cardContainer">
@@ -130,7 +133,7 @@
           <div class="list">
             <h3 id="title-refonte">Améliorations site internet</h3>
               <div class="effect-refonte za">Refonte graphique</div>
-              <div class="appear-refonte az">Revisite avec design actuel et personnalisé</div>
+              <div class="appear-refonte az">Mise à jour de votre site web avec <br/>design actuel et entièrement <br/>personnalisable</div>
               <div class="effect-refonte za">Nouvelle fonctionnalitées</div>
               <div class="appear-refonte az">Besoin de Widgets ?</div>
           </div>
@@ -144,9 +147,9 @@
           <div class="list">
             <h3 id="title-freelance">Accompagnement</h3>
               <div class="effect-freelance za">Référencement</div>
-              <div class="appear-freelance az">Compte google et référencement intelligent</div>
-              <div class="effect-freelance za">Maintenance web</div>
-              <div class="appear-freelance az">Debbuggage</div>
+              <div class="appear-freelance az">Création compte google et site web respectant les critères de <br/>référencement naturel</div> 
+              <div class="effect-freelance za">Maintenance</div>
+              <div class="appear-freelance az">Error alert 404: debuguage web</div>
           </div>
         </div>
       </div>
@@ -154,35 +157,118 @@
     </div>
     <div class="parallaxe2">
       <h2>Réalisations</h2>
-         <!-- Modal Sketch -->
-      <!-- <div id="modal-container">
-        <div class="modal-background">
-          <div class="modal">
-            <h2>I'm a Modal</h2>
-            <p>Hear me roar.</p>
-            <svg class="modal-svg"  width="100%" height="100%" preserveAspectRatio="none">
-                      <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                    </svg>
+        
+      <div class="service-container">
+        <div id="six" class="btn-sketch">
+          <div class="service-card" id="SuperGreenLab">
+            <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL">
           </div>
         </div>
+<!-- Sketch SGL effect -->
+        <div id="sketch-container">
+          <div class="sketch-background">
+            <div class="sketch">
+              <svg class="sketch-svg"  width="100%" height="100%" >
+                <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+              </svg>
+              <span class="close">&times;</span>
+              <div id="sketch-sgh-content">
+                <div id="sketch-sgh-logo">
+                  <img src="./assets/SuperGreenLabsmall.png" alt="">
+                </div>
+                <div>
+                  <h4>Services Réalisés :</h4>
+                  <div class="info-projets">
+                    <div><strong>Refonte page principal :</strong> Réorganisations de la page principal du site www.supergreenlab.com, maquettage et développement de nouveaux composants tel que la mise en place d'un menu.</div>
+                    <div><strong>Création et développement page "Guide" :</strong> Conception d'une page web regroupant des guides pour le site www.supergreenlab.com .</div>
+                    <div><strong>Création et développement page "Shop" :</strong> Conception d'une page E-commerce permettant d'acheter les produits proposés par le site www.supergreenlab.com .</div>
+                  </div>
+                  <div class="liens-logo">
+                    <div>
+                      <h4>Codes développés :</h4>
+                      <div>
+                        <a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo"></a>
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Liens :</h4>
+                      <div class="lien-projet"><a href="https://supergreenlab.com" rel="noopener noreferrer" target="_blank">Projet 1</a></div>
+                      <div class="lien-projet"><a href="https://www.supergreenlab.com/guides" rel="noopener noreferrer" target="_blank">Projet 2</a></div>
+                      <div class="lien-projet"><a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com/tree/feature/shop" rel="noopener noreferrer" target="_blank">Projet 3</a></div>
+                    </div>
+                    <div>
+                      <h4>Technologies : </h4>
+                      <div class="frameworks">
+                        <div><a href="https://vuejs.org/" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Vue-logo.png" alt="" class="Dev-logo"></a></div>
+                        <div><a href="https://fr.nuxtjs.org/" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Nuxt-logo.png" alt="" class="Dev-logo"></a></div>
+                      </div>
+                    </div>  
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- End Sketch SGl effect -->
+
+        <div id="five" class="btn-sketch-n">
+          <div class="service-card" id="NacoDev">
+            <img src="./assets/NacoDevLogoFullW.png" alt="" id="picND">
+          </div>
+        </div>
+<!-- Sketch Naco Dev effect -->
+<div id="sketch-container-n">
+  <div class="sketch-background-n">
+    <div class="sketch-n">
+      <svg class="sketch-svg"  width="100%" height="100%" >
+        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+      </svg>
+      <span class="close">&times;</span>
+      <div id="sketch-naco-content">
+        <div>
+          <img id="sketch-naco-logo" src="./assets/NacoDevLogoFull.png" alt="">
+        </div>
+        <div>
+          <h4>Service Réalisé :</h4>
+          <div class="info-projets-n">
+            <div><strong>Création et développement site complet :</strong> Conception totale d'un site vitrine pour l'entreprise Naco Dev.</div>
+          </div>
+        </div>
+        <div>
+          <div class="liens-logo-n">
+            <div>
+              <h4>Code développé :</h4>
+              <div>
+                <a href="https://github.com/NicolasFrecheMedina/Nacodev" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo"></a>
+              </div>
+            </div>
+            <div>
+              <h4>Lien :</h4>
+              <div class="lien-projet-n"><a href="#" rel="noopener noreferrer" target="_blank">Projet</a></div>
+            </div>
+            <div>
+              <h4>Technologies: </h4>
+              <div class="frameworks">
+                <div><a href="https://jquery.com/" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Jquery-logo.png" alt="" class="Dev-logo"></a></div>
+                <div><a href="https://www.php.net/" rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Php-logo.png" alt="" class="Dev-logo"></a></div>
+              </div>
+            </div>  
+          </div>
+          
+        </div>
+        
       </div>
-      <div class="content">
-        <div class="buttons">
-          <div id="six" class="button">Sketch</div>
-        </div>
-      </div> -->
-      <!-- Modal Sketch -->
-      <div class="service-container">
-        <div class="service-card" id="SuperGreenLab">
-          <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL">
-        </div>
-        <div class="service-card" id="NacoDev">
-          <img src="./assets/NacoDevlogoW.png" alt="" id="picND">
-        </div>
+    </div>
+  </div>
+</div>
+<!--End Sketch Naco Dev effect -->    
         <div class="service-card" id="Prochainement">
           <div id="picPC">Prochainement</div>
         </div>
       </div>
+     
       <div class="logo">Naco Dev</div>
     </div>  
     <div class="parallaxe3">
