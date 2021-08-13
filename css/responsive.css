@@ -6,10 +6,36 @@
   #service-content {
     flex-direction: column;
   }
+  #content-about {
+    flex-direction: column;
+  }
+  #title-responsive {
+    font-size: 44pt;
+  }
+  #barcode {
+    margin-top: 5pt;
+    font-size: 16pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
 }
 
-@media screen and (max-width: 1400px) {
+/* @media screen and (max-width: 1400px) {
   #title-responsive {
     margin: 200pt;
   }
+} */
+@media screen and (min-width: 1600px)
+{
+  #title-responsive {
+    margin: 200pt;
+  } 
+}
+
+@media screen and (min-width: 1600px)
+{
+  .parallaxe {
+    top: 750pt;
+  } 
 }

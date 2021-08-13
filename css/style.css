@@ -2,17 +2,18 @@
 
 body {
   margin: 0;
-  height: 3500px;
+  height: 4000px;
   top: 0px;
   left: 0px;
 }
 
-h1 {
+#title-responsive {
   margin: 140pt;
   font-family: "Montserrat Subrayada", sans-serif;
   font-size: 88pt;
   cursor: default;
 }
+
 
 h2 {
   margin: 20pt;
@@ -72,19 +73,20 @@ h2 {
 }
 
 .footer {
-  height: 20pt;
-  padding-top: 5pt;
-  top: 820px;
+  top: 800pt;
   z-index: 10;
   position: relative;
   width: 100%;
   background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
-  display: flex;
-  flex-direction: column;
   font-family: "Montserrat Subrayada", sans-serif;
   text-align: center;
   color: #424242;
   font-weight: bold;
+  /* letter-spacing: 0.3rem; */
+}
+
+#cgu {
+  padding: 5pt;
 }
 /* End Static Content CSS */
 
@@ -245,7 +247,7 @@ input[type="radio"]:checked + label::after {
 #service-content {
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .cardContainer {
@@ -561,8 +563,8 @@ h3 {
 
 .service-card {
   margin: 15pt;
-  width: 300pt !important;
-  height: 300pt !important;
+  width: 260pt !important;
+  height: 260pt !important;
   border-radius: 15pt;
   background-color: #232323;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
@@ -705,11 +707,427 @@ h3 {
   top: 700pt;
   z-index: 9;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   background: linear-gradient(135deg, #fff, #d2d2d2) border-box;
   display: flex;
   flex-direction: column;
-  margin-bottom: 150pt;
 }
 
+#content-about {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50pt;
+  font-size: 10pt;
+}
+
+#pic-about {
+  width: 200pt;
+  height: 320pt;
+  margin: 0pt 60pt;
+  border: 1px solid black;
+}
+
+#text-about > div {
+  margin-bottom: 5pt;
+}
+#text-about {
+  text-indent: 18%;
+  width: 300pt;
+  margin: 10pt;
+  text-align: justify;
+  font-size: 10pt;
+}
+
+#logos-about {
+  width: 300pt;
+  margin: 10pt
+}
+
+#logos-all {
+  display: flex;
+  flex-direction: column;
+}
+
+.logos-line {
+  display: flex;
+  justify-content: center;
+}
 /* Fin Bloc About CSS */
+
+/* Bloc progressive bar */
+
+
+article input {
+  display: none;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+section article {
+  align-self: center;
+  width: 20em;
+  margin-bottom: 2em;
+}
+
+.container {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*
+*
+*
+START // CHART'S RULES
+ -> "if you're picking code, don't forget the variables :)"
+*/
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1em;
+  perspective: 800pt;
+  perspective-origin: 50% 50%;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+}
+
+.bar {
+  font-size: 1em;
+  height: 8em;
+  transition: all 0.3s ease-in-out;
+  transform: rotateX(60deg) rotateY(0deg);
+  transform-style: preserve-3d;
+}
+.bar .face {
+  /* font-size: 2em;
+  width: 100%; */
+  width: 150pt;
+  height: 20pt;
+  background-color: rgba(254, 254, 254, 0.3);
+}
+.bar .face.side-a {
+  width: 2em;
+}
+.bar .side-a {
+  transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
+}
+.bar .side-0 {
+  transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
+}
+.bar .side-1 {
+  transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+}
+.bar .top {
+  transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+}
+.bar .floor {
+  box-shadow: 0 0.1em 0.6em rgba(0, 0, 0, 0.3), 0.6em -0.5em 3em rgba(0, 0, 0, 0.3), 1em -1em 8em #fefefe;
+}
+
+.growing-bar {
+  
+  height: 2em;
+  transition: ease-in-out 0.5s;
+}
+
+.bar.red .side-a, input[id='red']:checked ~ .chart .side-a{
+  background-color: rgba(240, 93, 8, 0.5);
+}
+.bar.red .growing-bar,
+input[id='red']:checked ~ .chart .growing-bar {
+  background-color: rgba(240, 93, 8, 0.5);
+  width: 100%;
+}
+.bar.red .side-0 .growing-bar, input[id='red']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em rgba(240, 93, 8,0.5);
+  width: 100%;
+}
+.bar.red .floor .growing-bar, input[id='red']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em rgba(240, 93, 8, 0.5);
+  width: 100%;
+}
+
+.bar.cyan .side-a, input[id='cyan']:checked ~ .chart .side-a{
+  background-color: #126bb3a2;
+}
+.bar.cyan .growing-bar,
+input[id='cyan']:checked ~ .chart .growing-bar {
+  background-color: #126bb3a2;
+  width: 100%;
+}
+.bar.cyan .side-0 .growing-bar, input[id='cyan']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #126bb3a2;
+  width: 100%;
+}
+.bar.cyan .floor .growing-bar, input[id='cyan']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #126bb3a2;
+  width: 100%;
+}
+
+.bar.lime .side-a, input[id='lime']:checked ~ .chart .side-a{
+  background-color: #00c96b6e;
+}
+.bar.lime .growing-bar,
+input[id='lime']:checked ~ .chart .growing-bar {
+  background-color: #00c96b6e;
+  width: 70%;
+}
+.bar.lime .side-0 .growing-bar, input[id='lime']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #00c96b6e;
+  width: 70%;
+}
+.bar.lime .floor .growing-bar, input[id='lime']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #00c96b6e;
+  width: 70%;
+}
+
+
+.bar.yellow .side-a, input[id='yellow']:checked ~ .chart .side-a{
+  background-color: #f0cd0899;
+}
+.bar.yellow .growing-bar,
+input[id='yellow']:checked ~ .chart .growing-bar {
+  background-color: #f0cd0899;
+  width: 80%;
+}
+.bar.yellow .side-0 .growing-bar, input[id='yellow']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #f0cd0899;
+  width: 80%;
+}
+.bar.yellow .floor .growing-bar, input[id='yellow']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #f0cd0899;
+  width: 80%;
+}
+
+
+
+.bar.blue .side-a, input[id='blue']:checked ~ .chart .side-a{
+  background-color: #089bf071;
+}
+.bar.blue .growing-bar,
+input[id='blue']:checked ~ .chart .growing-bar {
+  background-color: #089bf071;
+  width: 100%;
+}
+.bar.blue .side-0 .growing-bar, input[id='blue']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #089bf071;
+  width: 100%;
+}
+.bar.blue .floor .growing-bar, input[id='blue']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #089bf071;
+  width: 100%;
+}
+
+
+.bar.purple .side-a, input[id='purple']:checked ~ .chart .side-a{
+  background-color: #5337d399;
+}
+.bar.purple .growing-bar,
+input[id='purple']:checked ~ .chart .growing-bar {
+  background-color: #5337d399;
+  width: 75%;
+}
+.bar.purple .side-0 .growing-bar, input[id='purple']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #5337d399;
+  width: 75%;
+}
+.bar.purple .floor .growing-bar, input[id='purple']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #5337d399;
+  width: 75%;
+}
+
+
+.bar.green .side-a, input[id='green']:checked ~ .chart .side-a{
+  background-color: #25c97799;
+}
+.bar.green .growing-bar,
+input[id='green']:checked ~ .chart .growing-bar {
+  background-color: #25c97799;
+  width: 70%;
+}
+.bar.green .side-0 .growing-bar, input[id='green']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #25c97799;
+  width: 70%;
+}
+.bar.green .floor .growing-bar, input[id='green']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #25c97799;
+  width: 70%;
+}
+
+
+.bar.lightblue .side-a, input[id='lightblue']:checked ~ .chart .side-a{
+  background-color: #1eb9e062;
+}
+.bar.lightblue .growing-bar,
+input[id='lightblue']:checked ~ .chart .growing-bar {
+  background-color: #1eb9e062;
+  width: 50%;
+}
+.bar.lightblue .side-0 .growing-bar, input[id='lightblue']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #1eb9e062;
+  width: 50%;
+}
+.bar.lightblue .floor .growing-bar, input[id='lightblue']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #1eb9e062;
+  width: 50%;
+}
+
+.bar.purpleb .side-a, input[id='purpleb']:checked ~ .chart .side-a{
+  background-color: #721ee062;
+}
+.bar.purpleb .growing-bar,
+input[id='purpleb']:checked ~ .chart .growing-bar {
+  background-color: #721ee062;
+  width: 100%;
+}
+.bar.purpleb .side-0 .growing-bar, input[id='purpleb']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #721ee062;
+  width: 100%;
+}
+.bar.purpleb .floor .growing-bar, input[id='purpleb']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #721ee062;
+  width: 100%;
+}
+
+
+.bar.otherblue .side-a, input[id='otherblue']:checked ~ .chart .side-a{
+  background-color: #1e62e062;
+}
+.bar.otherblue .growing-bar,
+input[id='otherblue']:checked ~ .chart .growing-bar {
+  background-color: #1e62e062;
+  width: 40%;
+}
+.bar.otherblue .side-0 .growing-bar, input[id='otherblue']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #1e62e062;
+  width: 40%;
+}
+.bar.otherblue .floor .growing-bar, input[id='otherblue']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #1e62e062;
+  width: 40%;
+}
+
+.bar.redb .side-a, input[id='redb']:checked ~ .chart .side-a {
+  background-color: #e01e1e62;
+}
+
+
+.bar.redb .growing-bar,
+input[id='redb']:checked ~ .chart .growing-bar {
+  background-color: #e01e1e62;
+  width: 100%;
+}
+.bar.redb .side-0 .growing-bar, input[id='redb']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #e01e1e62;
+  width: 100%;
+}
+.bar.redb .floor .growing-bar, input[id='redb']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #e01e1e62;
+  width: 100%;
+}
+
+.bar.grey .side-a, input[id='grey']:checked ~ .chart .side-a {
+  background-color: #1f1d1d62;
+}
+
+.bar.grey .growing-bar,
+input[id='grey']:checked ~ .chart .growing-bar {
+  background-color: #1f1d1d62;
+  width: 60%;
+}
+.bar.grey .side-0 .growing-bar, input[id='grey']:checked ~ .chart .side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em #1f1d1d62;
+  width: 60%;
+}
+.bar.grey .floor .growing-bar, input[id='grey']:checked ~ .chart .floor .growing-bar {
+  box-shadow: 0em 0em 2em #1f1d1d62;
+  width: 60%;
+}
+
+/*
+END // CHART'S RULES
+*
+*
+*/
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.label {
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin: 5pt;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.label:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#css {
+  background-image: url(../assets/Dev-logo/Css-logo.png);
+}
+
+#html {
+  background-image: url(../assets/Dev-logo/Html-logo.png);
+}
+#nuxt {
+  background-image: url(../assets/Dev-logo/Nuxt-logo.png);
+}
+
+#js {
+  background-image: url(../assets/Dev-logo/Js-logo.png);
+}
+#jquery {
+  background-image: url(../assets/Dev-logo/Jquery-logo.png);
+}
+
+#php {
+  background-image: url(../assets/Dev-logo/Php-logo.png);
+}
+#vue {
+  background-image: url(../assets/Dev-logo/Vue-logo.png);
+}
+
+#sql {
+  background-image: url(../assets/Dev-logo/Sql-logo.png);
+}
+
+#bootstrap {
+  background-image: url(../assets/Dev-logo/Bootstrap-logo.png);
+}
+
+#wp {
+  background-image: url(../assets/Dev-logo/Wordpress-logo.png);
+}
+#figma {
+  background-image: url(../assets/Dev-logo/Figma-logo.png);
+}
+
+#git {
+  background-image: url(../assets/Dev-logo/Github-logo.png);
+}
+
+.otherC {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
