@@ -212,7 +212,7 @@
             <h3 id="title-refonte">Améliorations site internet</h3>
             <div class="effect-refonte za">Refonte graphique</div>
             <div class="appear-refonte az">
-              Mise à jour de votre site web avec <br />design actuel et
+              Mise à jour de votre site web avec design actuel et
               entièrement <br />personnalisable
             </div>
             <div class="effect-refonte za">Nouvelle fonctionnalitées</div>
@@ -398,7 +398,7 @@
                   <div class="info-projets-n">
                     <div>
                       <strong>Création et développement site complet :</strong>
-                      Conception totale d'un site vitrine pour l'entreprise Naco
+                      Conception du site vitrine de l'entreprise Naco
                       Dev.
                     </div>
                   </div>
@@ -430,6 +430,17 @@
                     <div>
                       <h4>Technologies:</h4>
                       <div class="frameworks">
+                        <div>
+                          <a
+                            href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            ><img
+                              src="./assets/Dev-logo/Css-logo.png"
+                              alt=""
+                              class="Dev-logo"
+                          /></a>
+                        </div>
                         <div>
                           <a
                             href="https://jquery.com/"
@@ -487,7 +498,7 @@
               <div>
                 <h2 id="title-proxima">En développement</h2>
               </div>
-              <div>
+              <!-- <div>
                 <h4>Service Réalisé :</h4>
                 <div class="info-projets-p">
                   <div>
@@ -534,7 +545,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -545,23 +556,21 @@
     <div class="parallaxe3">
       <h2>À propos</h2>
       <div id="content-about">
-
-        <div id="pic-about">Photo Effect</div>
-
-        <div id="text-about">
-          <div>Naco Dev est une entreprise spécialisé dans la programmation web, créer en 2021 par Nicolas Freche Medina (moi-même): </div>
+        <div class="ap" id="content-boxes">
+          <div id="pic-about">Photo Effect</div>
+        </div>
+        <div id="text-about" class="ap">
+          <div><strong>Naco Dev</strong> est une entreprise spécialisé dans la programmation web, créer en 2021 par Nicolas Freche Medina (moi-même): </div>
           <div>Je suis un développeur web passionné ayant les compétences nécessaires pour répondre à de nombreux besoins : Site vitrine, e-commerce, CRM, ERP, administration dédiée, solution digitale personnalisée, design personnalisé, automatisation de tâches.. </div>
           <div>Travaillant principalement en freelance, je reste ouvert à toutes opportunités intérressantes. J’aborde chaque projet avec beaucoup d’enthousiasme et de sérieux. Vous pouvez compter sur mes services pour vous fournir une application web maintenable, performante et de qualitée. </div>             
-          <div style="text-align:right; font-style: italic;">Agrandissons notre réseau ensemble -> </div>
-
-        </div>
-
-    
-        
-        <div id="logos-about">
-          <div style="text-align:center">Compétences développeur</div>
+          <!-- <div style="text-align:right; font-style: italic;">Agrandissons notre réseau ensemble -> </div> -->
+        </div> 
+        <div id="logos-about" class="ap">
+          <div id="titlecompetencies">Compétences développeur</div>
             <section>
               <article>
+                <div id="skilltitle">Niveau compétence: ( cliquez sur une technologie pour voir le niveau)</div>
+                <div id="skilllevel"></div>
                 <input type="radio" name="switch-color" id="red">
                 <input type="radio" name="switch-color" id="cyan">
                 <input type="radio" name="switch-color" id="lime">
@@ -574,7 +583,6 @@
                 <input type="radio" name="switch-color" id="otherblue">
                 <input type="radio" name="switch-color" id="redb">
                 <input type="radio" name="switch-color" id="grey">
-              
                 <div class="chart">
                   <div class="bar">
                   <div class="face top">
@@ -594,39 +602,29 @@
                 <nav class="actions">
                   <div id="logos-all">
                     <div class="logos-line">
-                      <label class="label" id="html" for="red"></label>
-                      <label class="label" id="nuxt" for="lime"></label>
-                      <label class="label" id="css" for="cyan"></label>
-                      <label class="label" id="php" for="purple"></label> 
+                      <label class="label" id="html" for="red" onclick="changeText('Langage HTML 5 :')"></label>
+                      <label class="label" id="nuxt" for="lime" onclick="changeText('Framework Nuxt JS :')"></label>
+                      <label class="label" id="css" for="cyan" onclick="changeText('Langage CSS :')"></label>
+                      <label class="label" id="php" for="purple" onclick="changeText('Langage PHP :')"></label> 
                     </div>
                     <div class="logos-line">
-                      <label class="label" id="jquery" for="blue"></label>
-                      <label class="label" id="js" for="yellow"></label>
-                      <label class="label" id="vue" for="green"></label>
-                      <label class="label" id="sql" for="lightblue"></label>
+                      <label class="label" id="jquery" for="blue" onclick="changeText('Librairie jQuery :')"></label>
+                      <label class="label" id="js" for="yellow" onclick="changeText('Langage Javascript :')"></label>
+                      <label class="label" id="vue" for="green" onclick="changeText('Framework Vue JS :')"></label>
+                      <label class="label" id="sql" for="lightblue" onclick="changeText('Langage SQL :')"></label>
                     </div>
                     <div class="logos-line">
-                      <label class="label" id="bootstrap" for="purpleb"></label>
-                      <label class="label" id="wp" for="otherblue"></label>
-                      <label class="label" id="figma" for="redb"></label>
-                      <label class="label" id="git" for="grey"></label>
+                      <label class="label" id="bootstrap" for="purpleb" onclick="changeText('Framework Bootstrap :')"></label>
+                      <label class="label" id="wp" for="otherblue" onclick="changeText('CMS Wordpress :')"></label>
+                      <label class="label" id="figma" for="redb" onclick="changeText('Logiciel Figma :')"></label>
+                      <label class="label" id="git" for="grey" onclick="changeText('Logiciel Github :')"></label>
                     </div>
                   </div>
-                 
                 </nav>
+                <div style="margin-top: 25pt; text-align: justify;">N'hésitez pas à vous connecter à mon profil <a target="_blank" href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/">linked in</a> pour voir plus de compétences (langues, diplômes, autres expériences...)</div>
               </article>
-              <div class="otherC">
-                <div>Autres compétences</div>
-                <div>Anglais, Francais, Espagnol</div>
-                <div>Bachelor MRC, Titre RNCP Développeur Web</div>
-              </div>
-            </section>
-            
-
-         
-        </div>
-        
-     
+            </section>       
+        </div>   
       </div>
      
       <div class="logo">Naco Dev &#169;</div>

@@ -145,5 +145,11 @@ $(document).ready(function () {
   });
 });
 
+function changeText(text) {
+
+  document.getElementById('skilltitle').innerHTML = text;
+
+}
+
 
 

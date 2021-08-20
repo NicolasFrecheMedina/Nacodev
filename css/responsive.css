@@ -1,41 +1,775 @@
 /* Responsive eclater css pour chaque formats */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 350px) {
+  #title-responsive {
+    margin: 120pt 0pt;
+    font-size: 35pt;
+  } 
+  .service-container {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 200pt;
+    height: 200pt;
+  }
+  #picSGL {
+    width: 180pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 180pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 180pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 20pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 150pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 150pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 173pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  #pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+  }
+  .ap {
+    margin: 10pt 0pt;
+  }
+  .parallaxe3 {
+    margin-bottom: 10pt;
+  }
+
+}
+@media screen and (min-width: 350px) and (max-width: 360px) {
+  #title-responsive {
+    margin: 140pt 0pt;
+    font-size: 40pt;
+  } 
+  .parallaxe3 {
+    margin-bottom: 10pt;
+  }
+
   .service-container {
     flex-direction: column;
   }
   #service-content {
     flex-direction: column;
+    align-items: center;
   }
   #content-about {
     flex-direction: column;
   }
-  #title-responsive {
-    font-size: 44pt;
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
   }
   #barcode {
-    margin-top: 5pt;
-    font-size: 16pt;
+    margin-top: 20pt;
+    font-size: 15pt;
   } 
   h2 {
     font-size: 25pt;
   }
-}
-
-/* @media screen and (max-width: 1400px) {
-  #title-responsive {
-    margin: 200pt;
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   }
-} */
-@media screen and (min-width: 1600px)
-{
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 230pt;
+    height: 230pt;
+  }
+  #picSGL {
+    width: 200pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 10pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 200pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 200pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 223pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  #pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 413px) {
   #title-responsive {
-    margin: 200pt;
+    margin: 145pt 0pt;
+    font-size: 45pt;
   } 
+  .parallaxe3 {
+    margin-bottom: 30pt;
+  }
+  .service-container {
+    flex-direction: column;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 230pt;
+    height: 230pt;
+  }
+  #picSGL {
+    width: 200pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 20pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 200pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 200pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 223pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  #pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+  }
+}
+@media screen and (min-height: 800px) and (max-width: 414px) {
+  .parallaxe {
+    top: 786pt;
+  } 
+  #title-responsive {
+    margin: 190pt 0pt;
+    font-size: 50pt;
+  } 
+  .service-container {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 200pt;
+    height: 200pt;
+  }
+  #picSGL {
+    width: 180pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 180pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 180pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 20pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 200pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 200pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 223pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  #pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+}
+.ap {
+  margin: 10pt 0pt;
+}
+
+
+}
+@media screen and (min-width: 414px) and (max-width: 767px) {
+  #title-responsive {
+    margin: 160pt 0pt;
+    font-size: 50pt;
+    
+  } 
+  .service-container {
+    flex-direction: column;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 230pt;
+    height: 230pt;
+  }
+  #picSGL {
+    width: 200pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 20pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 200pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 200pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 223pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  #pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .parallaxe {
+    top: 768pt;
+  } 
+  .parallaxe3 {
+    margin-bottom: 20pt;
+  }
+  #title-responsive {
+    margin: 240pt 0pt;
+    font-size: 80pt;
+  } 
+  .service-container {
+    flex-direction: column;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #barcode {
+    margin-top: 20pt;
+    font-size: 30pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  /* .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 230pt;
+    height: 230pt;
+  }
+  #picSGL {
+    width: 200pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  } */
+  /* .modal-content {
+    margin: 20pt;
+    width: auto;
+    padding: 15px;
+  }
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 200pt;
+  }
+  label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+}
+  textarea {
+    width: 200pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 223pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  } */
+   #text-about {
+    text-indent: 10%;
+    width: 190pt;
+    padding:inherit;
+  }
+  /*#pic-about {
+    width: 180pt;
+    height: 300pt;
+    margin: 0;
+  } */
+}
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+  /* #title-responsive {
+    margin: 300pt 0pt;
+    font-size: 100pt;
+  }
+  .parallaxe {
+    top: 1025pt;
+  }  */
+  .parallaxe3 {
+    margin-bottom: 20pt;
+  } 
+  .cardContainer {
+    width: auto;
+  }
+  .circle {
+    width: 150pt;
+    height: 150pt;
+    font-size: small;
+  }
+  .service-card {
+    width: 220pt;
+    height: 220pt;
+  }
+  #picSGL {
+    width: 200pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  #NacoDev:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(230pt at 60% -25%);
+  }
+  #picND {
+    width: 200pt;
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  #pic-about {
+    margin: unset;
+}
+}
+
+
+@media screen and (min-width: 1201px) and (max-width: 1599px)
+{
+ 
 }
 
 @media screen and (min-width: 1600px)
 {
+  #title-responsive {
+    margin: 200pt 0pt;
+    font-size: 80pt;
+  } 
   .parallaxe {
     top: 750pt;
   } 
+  .parallaxe3{
+    margin-bottom: 50pt;
+  }
+  .service-card {
+    width: 320pt;
+    height: 320pt;
+  }
 }
