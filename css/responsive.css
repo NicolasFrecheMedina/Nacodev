@@ -26,8 +26,84 @@
     font-size: 15pt;
   } 
   h2 {
-    font-size: 25pt;
+    font-size: 18pt;
+    margin: 0pt;
   }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 80%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  #sketch-container-p .sketch-background-p .sketch-p {
+    padding: 30px;
+    width: 70%;
+  }
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
@@ -72,6 +148,15 @@
     width: auto;
     padding: 15px;
   }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
   .close {
     font-size: 20pt; 
     margin-right: 10pt;
@@ -86,7 +171,7 @@
     letter-spacing: 0.1rem;
     font-size: x-small;
     margin: 5pt 2pt;
-}
+  }
   textarea {
     width: 150pt;
     font-size: x-small;
@@ -148,8 +233,91 @@
     font-size: 15pt;
   } 
   h2 {
-    font-size: 25pt;
+    font-size: 18pt;
+    margin: 0pt;
   }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 80%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+  
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+  
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  #sketch-container-p .sketch-background-p .sketch-p {
+    padding: 30px;
+    width: 70%;
+  }
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
@@ -194,6 +362,15 @@
     width: auto;
     padding: 15px;
   }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
   .close {
     font-size: 20pt; 
     margin-right: 10pt;
@@ -262,8 +439,95 @@
     font-size: 15pt;
   } 
   h2 {
-    font-size: 25pt;
+    font-size: 18pt;
+    margin: 0pt;
   }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 80%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+  
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+  
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+  
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  #sketch-container-p .sketch-background-p .sketch-p {
+    padding: 30px;
+    width: 70%;
+  }
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
@@ -308,6 +572,15 @@
     width: auto;
     padding: 15px;
   }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
   .close {
     font-size: 20pt; 
     margin-right: 10pt;
@@ -377,8 +650,91 @@
     font-size: 15pt;
   } 
   h2 {
-    font-size: 25pt;
+    font-size: 18pt;
+    margin: 0pt;
   }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 80%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+  
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+  
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+  
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  #sketch-container-p .sketch-background-p .sketch-p {
+    padding: 30px;
+    width: 70%;
+  }
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
@@ -423,6 +779,15 @@
     width: auto;
     padding: 15px;
   }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
   .close {
     font-size: 20pt; 
     margin-right: 10pt;
@@ -494,8 +859,91 @@
     font-size: 15pt;
   } 
   h2 {
-    font-size: 25pt;
+    font-size: 18pt;
+    margin: 0pt;
   }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 80%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt;
+  }
+  
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  .liens-projet-n {
+    margin: 18pt;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+  
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  #sketch-container-p .sketch-background-p .sketch-p {
+    padding: 30px;
+    width: 70%;
+  }
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
@@ -540,6 +988,15 @@
     width: auto;
     padding: 15px;
   }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
   .close {
     font-size: 20pt; 
     margin-right: 10pt;
@@ -612,98 +1069,28 @@
   } 
   h2 {
     font-size: 25pt;
+    margin: 0pt;
   }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 70%;
+    padding: 35px;
+  }
+
   .cardContainer {
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   }
-  /* .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
-  .service-card {
-    width: 230pt;
-    height: 230pt;
-  }
-  #picSGL {
-    width: 200pt;
-  }
-  #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  .za {
-    width: 80%;
-    font-size: small;
-  }
-  .az {
-    width: 80%;
-    font-size: small;
-  } */
-  /* .modal-content {
-    margin: 20pt;
-    width: auto;
-    padding: 15px;
-  }
-  .close {
-    font-size: 20pt; 
-    margin-right: 10pt;
-  }
-  input {
-    font-size: x-small;
-    height: 40px;
-    width: 200pt;
-  }
-  label {
-    width: 90pt;
-    letter-spacing: 0.1rem;
-    font-size: x-small;
-    margin: 5pt 2pt;
-}
-  textarea {
-    width: 200pt;
-    font-size: x-small;
-    height: 60pt;
-  }
-  #RadioBtn {
-    width: 223pt;
-    font-size: x-small;
-  }
-  #submit {
-    width: 40%;
-    font-size: x-small;
-  } */
+  
    #text-about {
     text-indent: 10%;
     width: 190pt;
     padding:inherit;
   }
-  /*#pic-about {
-    width: 180pt;
-    height: 300pt;
-    margin: 0;
-  } */
 }
 @media screen and (min-width: 1024px) and (max-width: 1200px) {
-  /* #title-responsive {
-    margin: 300pt 0pt;
-    font-size: 100pt;
-  }
-  .parallaxe {
-    top: 1025pt;
-  }  */
+  
   .parallaxe3 {
     margin-bottom: 20pt;
   } 

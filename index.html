@@ -81,12 +81,14 @@
 
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/modal.css" />
-    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/modalM.css" />
+    <link rel="stylesheet" href="./css/modalC.css" />
     <link rel="stylesheet" href="./css/particle.css" />
     <link rel="stylesheet" href="./css/effect.css" />
     <link rel="stylesheet" href="./css/sketch.css" />
     <link rel="stylesheet" href="./css/sketch-n.css" />
     <link rel="stylesheet" href="./css/sketch-p.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
     <link
       href="http://fonts.cdnfonts.com/css/libre-barcode-39-text"
       rel="stylesheet"
@@ -237,7 +239,9 @@
           </div>
         </div>
       </div>
-      <div class="logo">Naco Dev &#169;</div>
+      <div id="two" class="buttonM click">
+        <div class="logo">Naco Dev &#169;</div>
+      </div>
     </div>
     <div class="parallaxe2">
       <h2>Réalisations</h2>
@@ -551,7 +555,9 @@
         </div>
       </div>
       <!-- End Sketch Proxima Dev effect -->
-      <div class="logo">Naco Dev &#169;</div>
+      <div id="two" class="buttonM click">
+        <div class="logo">Naco Dev &#169;</div>
+      </div>
     </div>
     <div class="parallaxe3">
       <h2>À propos</h2>
@@ -570,7 +576,7 @@
             <section>
               <article>
                 <div id="skilltitle">Niveau compétence: ( cliquez sur une technologie pour voir le niveau)</div>
-                <div id="skilllevel"></div>
+                <!-- <div id="skilllevel"></div> -->
                 <input type="radio" name="switch-color" id="red">
                 <input type="radio" name="switch-color" id="cyan">
                 <input type="radio" name="switch-color" id="lime">
@@ -626,12 +632,92 @@
             </section>       
         </div>   
       </div>
-     
-      <div class="logo">Naco Dev &#169;</div>
+      
+      <div id="two" class="buttonM click">
+        <div class="logo">Naco Dev &#169;</div>
+      </div>
+      
     </div>
-    <div class="footer">
-      <div id="cgu">CGU</div>
+    <div id="three" class="buttonC footer">
+      <div id="cgu" class="click">CGV</div>
     </div>
+   
+    <!-- Modal Mentions légales Form -->
+    <div id="modalM-container">
+      <div class="modalM-background">
+    <!-- Modal content -->
+        <div class="modalM-content">
+          <span class="closeM">&times;</span>
+          <div>
+            <h3>Mentions Légales</h3>
+          </div>
+          <div class="modalM-text">   
+            <div><strong>Raison sociale : </strong> Naco Dev est une micro entreprise spécialisé dans la programmation informatique</div>
+            <div><strong>Hébergeur : </strong> OVH – 2 rue Kellermann – BP 80157 59053 ROUBAIX CEDEX 1</div>
+            <div><strong>SIRET : </strong>	89960843400010</div> 
+            <div><strong>Adresse : </strong>5, rue du Tuquéou, 40990 Saint Paul les Dax</div>
+            <div><strong>Téléphone : </strong> 06.80.28.70.11</div>
+            <div><strong>Créateur :</strong> Nicolas Freche Medina <a href="mailto:nicolas.freche@gmail.com">nicolas.freche@gmail.com</a><br/></div> 
+            <div><strong>Directeur publication :</strong> Nicolas Freche Medina <a href="mailto:nicolas.freche@gmail.com">nicolas.freche@gmail.com</a><br/></div>
+            <div style="text-align:justify"><strong>Site libre de droit :</strong> Toute reproduction, représentation, modification, publication, 
+            adaptation du site ou de ses éléments est libre de droit, sauf interdiction écrite de l'entreprise Naco Dev. Toute exploitation interdite du site ou de quelconque éléments qu’il contient sera alors considérée comme constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de Propriété Intellectuelle.</div>  
+            <div><strong>Copyright &#169; : </strong>2021  Naco Dev  <a href="mailto:nicolas@nacodev.com">nicolas@nacodev.com</a><br/></div>    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal Mentions légales Form -->
+    <!-- Modal CGU Form -->
+    <div id="modalC-container">
+      <div class="modalC-background">
+        <!-- Modal content -->
+        <div class="modalC-content">
+          <span class="closeC">&times;</span>
+          <div>
+            <h3>Conditions Générales de Vente</h3>
+          </div>
+          <div class="modalC-text">
+            <strong>ARTICLE 1 – OBJET</strong>
+            <br/>1.1. Ces Conditions Générales de Vente ont pour objet de régir les relations contractuelles entre Naco Dev et ses clients professionnels ou particuliers dans le cadre des prestations de services proposées.
+            <br/>1.2. Cette société est une société de services informatiques qui a pour objet, en France et à l’étranger, la réalisation de prestations comme la création de site internet, le développement de composants web et le référencement naturel.
+            <br/><strong>ARTICLE 2 – RÉALISATION DE LA PRESTATION</strong>
+            <br/>2.1. L’entreprise Naco Dev s’engage à réaliser la prestation commandée selon les normes et le respect des standards du <a href="https://www.w3c.fr/standards/">W3C</a> et conformément au devis établi. Toute prestation non prévue dans le devis ou toute modification de celui-ci à la demande du client feront l’objet d’une modification contractuelle et d’une tarification supplémentaire le cas échéant.
+            <br/>2.2. Les délais d’exécution des prestations sont donnés à titre indicatif et ne constituent aucun engagement de la part de Naco Dev. De ce fait, aucune forme de compensation ne pourra être demandée et aucune pénalité ne pourra être appliquée en cas de retard dans l’exécution des prestations commandées et ce, qu’elle qu’en soit la raison.
+            <br/><strong>ARTICLE 3 – HÉBERGEMENT</strong>
+            <br/>3.1. Les services de créations de site web nécessitent la conclusion d’un contrat d’hébergement. Le client a la possibilité de souscrire ce contrat par ses propres moyens ou alors de l’inclure à la prestation conclue avec Naco Dev.
+            <br/>3.2. Dans le cas où le client ferait appel à son propre hébergeur, il sera tenu de communiquer les codes d’accès permettant à Naco Dev de réaliser la prestation sur cet hébergement. A défaut de communication desdits codes, 1 mois après la signature du devis, Naco Dev sera délié de son obligation contractuelle et l’acompte versé par le client ne lui sera pas restitué.
+            <br/>3.3. Le contrat d’hébergement a une durée déterminée, généralement mensuelle ou annuelle, à compter de la date de sa conclusion, laquelle peut être différente de la date de la conclusion du contrat de prestation de service et/ou de sa livraison et/ou de la mise en ligne du site. Le contrat d’hébergement est renouvelable pour une même durée aux tarifs et conditions définies à chaque échéance par Naco Dev en fonction des tarifs et conditions du prestataire hébergeur.
+            <br/>3.4. Quelle que soit la position du client au sujet du renouvellement, Naco Dev se réserve le droit de refuser de renouveler le contrat d’hébergement notamment en cas de non règlement par le client des sommes échues au titre du contrat de prestation de service ou d’un contrat accessoire (tel que le contrat d’hébergement).
+            <br/><strong>ARTICLE 4 – RÉFÉRENCEMENT</strong>
+            <br/>4.1. Naco Dev s’engage à mener toutes les actions permettant un référencement naturel favorisant la meilleure indexation et/ou positionnement du site web qui lui est confié, cette obligation étant une obligation de moyen et non pas de résultat.
+            <br/>4.2. Toutefois, le référencement naturel étant en partie basé sur le contenu du site web du client, la responsabilité de Naco Dev ne pourra pas être engagée dans le cas où Le client lui aurait fourni des informations erronées ou peu pertinentes.
+            <br/>4.3. Dans le cas où le client souhaiterait confier le référencement naturel de son site web à une entreprise concurrente de Naco Dev, sa responsabilité ne pourra pas être engagée à compter de la modification par un tiers du site web livré pour Le client.
+            <br/>4.4 En tout état de cause, le référencement naturel est purement aléatoire et ne permet aucune certitude quant au positionnement ou à l’indexation du site web du client sur internet. À ce titre, le client admet expressément que le référencement naturel reste aléatoire et peu concurrentiel face au référencement payant.
+            <br/><strong>ARTICLE 5 – MODALITÉS DE PAIEMENT</strong>
+            <br/>5.1. Les parties conviennent que le paiement de la prestation se fera de la manière suivante : un acompte de 70% du prix mentionné au devis sera versé par le client à la signature du devis, puis 30% restant à livraison du site web ou de la prestation réalisé par Naco Dev.
+            <br/>5.2. Par exception, concernant le cas particulier des contrats de maintenance (maintenance technique et interventions ponctuelles), le prix de la prestation sera facturé en totalité au jour de la signature du devis prévoyant ledit contrat avec une date d’échéance mentionnée sur la facture.
+            <br/>5.3. En tout état de cause, toutes les factures des prestations proposées sont payables à 30 jours au maximum. Aucun escompte ne sera consenti en cas de paiement anticipé. Le règlement s’effectuera selon les modalités suivantes : – soit par virement bancaire – soit par chèque bancaire, – soit par tout autre système de paiement en ligne accepté par Naco Dev.
+            <br/><strong>ARTICLE 6 – RETARD DE PAIEMENT</strong>
+            <br/>6.1. Tout retard de paiement ou tout impayé (en cas de retour par la banque des titres de paiement pour impayé) d’une somme due par le client, entraînera la suspension immédiate des prestations, en attendant la régularisation de la situation. Cette suspension ne pourra constituer une cause de responsabilité pour Naco Dev et le client ne pourra en aucun cas demander, à ce titre, le versement d’une quelconque indemnité.
+            <br/>6.2. En cas de retard de paiement, Naco Dev se réserve le droit de mettre le client en demeure de payer la somme facturée et d’appliquer une pénalité de retard égale à trois (3) fois le taux de l’intérêt légal en vigueur, sans préjudice de toute demande de réparation d’un préjudice lié audit retard. Le taux de l’intérêt légal retenu est celui en vigueur au jour de la réalisation de la prestation. Cette pénalité est calculée sur le montant toutes taxes comprises de la somme restant due, et court à compter de la date d’échéance de la facture sans qu’aucune mise en demeure préalable ne soit nécessaire. En cas d’absence de règlement à l’issue d’un délai d’un (1) mois à compter de la réception de la lettre de mise en demeure, Naco Dev se réserve la possibilité d’engager des poursuites judiciaires à l’encontre du client.
+            <br/><strong>ARTICLE 7 – PROPRIÉTÉ INTELLECTUELLE</strong>
+            <br/>7.1. La Société Naco Dev demeure seule titulaire de ses propres éléments d’identification, notamment le nom, le logo, la marque, le site internet, le conditionnement ainsi que son savoir-faire utilisé pour la réalisation de la mission contractuelle. Sauf accord express entre les parties, Le client admet que Naco Dev réutilise les codes développés spécifiquement pour le client pour le compte d’un autre site web.
+            <br/>7.2. En fournissant à Naco Dev du texte, des fichiers audios, des vidéos et/ou des images sur le site web, le client déclare être le détenteur légitime des droits de propriété intellectuelle et industrielle dudit contenu pour la reproduction, la distribution et la communication publique par tout moyen et tout support, pour tous pays pendant la durée légale de protection desdits droits. En ce sens, le CLIENT déclare détenir les droits suffisants pour la publication du contenu sur le site web et il exonère de manière spécifique Naco Dev de toute responsabilité en cas de réclamation qui pourrait lui être formulée à ce titre. Il revient au CLIENT d’obtenir les autorisations, permissions et/ou licences nécessaires pour la réalisation et la publication de tout type de contenu.
+            <br/><strong>ARTICLE 8 – UTILISATION DU SITE CRÉE</strong>
+            <br/>8.1. Il est convenu que Naco Dev pourra utiliser le site créé pour le compte du client à des fins commerciales en vue notamment d’alimenter son annuaire de sites créés.
+            <br/>8.2. Le client s’engage à laisser sur son site web la référence de Naco Dev en qualité de concepteur du site web. En revanche, le client étant libre d’utiliser son site web après la livraison, si une modification devait intervenir, réalisée par le client lui-même ou par un prestataire tiers, Naco Dev devra donner son accord pour que ses coordonnées restent mentionnées sur le site web.
+            <br/><strong>ARTICLE 9 – RÉSILIATION DU / DES CONTRAT(S)</strong>
+            <br/>9.1. Seul un manquement avéré de l’une ou l’autre des parties pourra entraîner une résiliation du contrat conclu et dans les conditions suivantes : – Envoi par la partie lésée à l’autre partie d’un courrier recommandé avec accusé de réception la mettant en demeure de rectifier ledit manquement ; – A défaut de rectification dans un délai d’un mois suivant la date d’envoi du courrier, le contrat sera automatiquement résilié.
+            <br/>9.2. La résiliation du contrat n’entraîne aucun remboursement des sommes déjà versées par le client et entraîne l’exigibilité immédiate du solde de la prestation restant à verser par le client. Toute prestation commencée est due dans son intégralité.
+            <br/><strong>ARTICLE 10 – CONFIDENTIALITÉ</strong>
+            <br/>10.1. Les informations qui peuvent être portées à la connaissance de Naco Dev dans le cadre de la relation contractuelle avec le client sont soumises au respect de la confidentialité, de même que toute information que le client serait amené à connaître concernant les méthodes de travail et le savoir-faire utilisés par Naco Dev.
+            <br/><strong>ARTICLE 11 – ACCEPTATION ET ENTRÉE EN VIGUEUR DES PRÉSENTES CGV</strong>
+            <br/>11.1. Le client reconnaît avoir eu communication, préalablement à la passation de sa commande et à la conclusion du contrat, d’une manière lisible et compréhensible, des présentes Conditions Générales de Vente. Le fait pour le client de contracter avec Naco Dev emporte adhésion et acceptation pleine et entière des présentes Conditions Générales de Vente et obligation au paiement des services commandés, ce qui est expressément reconnu par le client, qui renonce, notamment, à se prévaloir de tout document contradictoire, qui serait inopposable à Naco Dev.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal CGU Form -->
 
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"

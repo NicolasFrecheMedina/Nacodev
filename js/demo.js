@@ -57,6 +57,24 @@ $(document).ready(function () {
     $("#modal-container").addClass("out");
     $("body").removeClass("modal-active");
   });
+  $(".buttonM").click(function () {
+    let buttonIdM = $(this).attr("id");
+    $("#modalM-container").removeAttr("class").addClass(buttonIdM);
+    $("body").addClass("modalM-active");
+  });
+  $('.closeM').click(function () {
+    $("#modalM-container").addClass("out");
+    $("body").removeClass("modalM-active");
+  });
+  $(".buttonC").click(function () {
+    let buttonIdC = $(this).attr("id");
+    $("#modalC-container").removeAttr("class").addClass(buttonIdC);
+    $("body").addClass("modalC-active");
+  });
+  $('.closeC').click(function () {
+    $("#modalC-container").addClass("out");
+    $("body").removeClass("modalC-active");
+  });
 
   $('#service-creation').toggle(function() {
         $('.appear-conception').css({opacity: 1});
