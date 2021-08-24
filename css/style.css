@@ -70,6 +70,7 @@ h2 {
   color: #424242;
   margin: 5pt;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .footer {
@@ -87,7 +88,9 @@ h2 {
 
 #cgu {
   padding: 5pt;
+  cursor: pointer;
 }
+
 /* End Static Content CSS */
 
 /* Form */
