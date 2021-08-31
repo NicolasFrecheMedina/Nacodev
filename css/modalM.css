@@ -11,6 +11,7 @@
   }
   /* Modal Content/Box */
   .modalM-content {
+    cursor: default;
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
