@@ -137,12 +137,12 @@
           <div>
             <h2>Contact</h2>
           </div>
-          <form id="form" class="topBefore" method="POST" data-netlify="true">
+          <form id="form" class="topBefore" method="POST" netlify-honeypot="bot-field" data-netlify="true">
             <input id="name" name="name" type="text" placeholder="NOM" />
             <input name="bot-field" style="display: none;"/></label>
             <input id="email" type="email" name="email" placeholder="E-MAIL" />
             <textarea id="message" name="text" type="text" placeholder="MESSAGE"></textarea>
-            <div id="RadioBtn" name="statut">
+            <div id="RadioBtn">
               <div>
                 <input
                   type="radio"
@@ -151,7 +151,7 @@
                   value="perso"
                   checked
                 />
-                <label for="control_01" class="click">
+                <label for="control_01" class="click" name="statut">
                   <h4>Particulier</h4>
                 </label>
               </div>
