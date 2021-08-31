@@ -29,6 +29,7 @@ h2 {
   font-family: "Libre Barcode 39 Text", sans-serif;
   font-size: 32pt;
   cursor: default;
+  text-transform: uppercase;
 }
 
 #BtnContact {
@@ -707,6 +708,7 @@ h3 {
 /* Bloc About CSS */
 
 .parallaxe3 {
+  cursor: default;
   top: 700pt;
   z-index: 9;
   position: relative;
@@ -1071,7 +1073,7 @@ END // CHART'S RULES
 }
 
 .label {
-  cursor: pointer;
+  cursor: grabbing;
   transition: 0.5s ease-in-out;
   background-position: center;
   background-size: contain;
