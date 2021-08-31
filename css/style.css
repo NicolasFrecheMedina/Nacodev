@@ -26,7 +26,7 @@ h2 {
 
 #barcode {
   margin-top: 20pt;
-  font-family: "Libre Barcode 39 Text", sans-serif;
+  font-family: 'Libre Barcode 39 Text', cursive;
   font-size: 32pt;
   cursor: default;
   text-transform: uppercase;
