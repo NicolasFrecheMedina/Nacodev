@@ -830,7 +830,7 @@
 }
 @media screen and (min-width: 414px) and (max-width: 767px) {
   #title-responsive {
-    margin: 160pt 0pt;
+    margin: 150pt 0pt;
     font-size: 50pt;
     
   } 
@@ -852,10 +852,14 @@
   }
   #barcode {
     margin-top: 20pt;
-    font-size: 15pt;
+    font-size: 20pt;
   } 
   h2 {
     font-size: 25pt;
+  }
+
+  #title-proxima {
+    margin: 0pt;
   }
 
   h4 {
