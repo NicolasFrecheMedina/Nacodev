@@ -72,7 +72,7 @@
         <div>
           <h2>Contact</h2>
         </div>
-        <form id="form" class="topBefore" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+        <form id="form" action="/pages/success.html" class="topBefore" method="POST" netlify-honeypot="bot-field" data-netlify="true">
           <input id="name" name="name" type="text" placeholder="NOM" />
           <input name="bot-field" style="display: none;" /></label>
           <input id="email" type="email" name="email" placeholder="E-MAIL" />
@@ -402,18 +402,24 @@
   <div class="parallaxe3">
     <h2>À propos</h2>
     <div id="content-about">
-      <div class="ap" id="content-boxes" style="display:none">
-        <div id="pic-about">Photo Effect</div>
+      <div class="ap" id="content-boxes">
+        <div id="pic-about">
+          <div id="border">
+            <div id="title-about">Nicolas Freche Medina</div>
+            <div></div>
+            <!-- <div id="link-about">Linkedin</div> -->
+          </div>
+        </div>
       </div>
       <div id="text-about" class="ap">
         <div><strong>Naco Dev</strong> est une entreprise spécialisé dans la programmation web, créer en 2021 par
-          Nicolas Freche Medina (moi-même): </div>
-        <div>Je suis un développeur web passionné ayant les compétences nécessaires pour répondre à de nombreux besoins
+          Nicolas Freche Medina: </div>
+        <div>"Je suis un développeur web passionné ayant les compétences nécessaires pour répondre à de nombreux besoins
           : Site vitrine, e-commerce, CRM, ERP, administration dédiée, solution digitale personnalisée, design
           personnalisé, automatisation de tâches.. </div>
         <div>Travaillant principalement en freelance, je reste ouvert à toutes opportunités intérressantes. J’aborde
           chaque projet avec beaucoup d’enthousiasme et de sérieux. Vous pouvez compter sur mes services pour vous
-          fournir une application web maintenable, performante et de qualitée. </div>
+          fournir une application web maintenable, performante et de qualitée." </div>
         <!-- <div style="text-align:right; font-style: italic;">Agrandissons notre réseau ensemble -> </div> -->
       </div>
       <div id="logos-about" class="ap">
@@ -474,7 +480,7 @@
                 </div>
               </nav>
               <div style="margin-top: 25pt; text-align: justify;">N'hésitez pas à vous connecter à mon profil <a
-                  target="_blank" href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/">linked in</a> pour
+                style="font-weight: bold; color: #5d5d5d; text-decoration: underline;" target="_blank" href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/">linked in</a> pour
                 voir plus de compétences (langues, diplômes, autres expériences...)</div>
           </article>
         </section>
@@ -502,13 +508,13 @@
         <div class="modalM-text">
           <div><strong>Raison sociale : </strong> Naco Dev est une micro entreprise spécialisé dans la programmation
             informatique</div>
-          <div><strong>Hébergeur : </strong> OVH – 2 rue Kellermann – BP 80157 59053 ROUBAIX CEDEX 1</div>
+          <div><strong>Hébergeur : </strong> Netlify  <a style="font-weight: bold; color: #5d5d5d; text-decoration: underline;" href="https://www.netlify.com">www.netlify.com</a></div>
           <!-- <div><strong>SIRET : </strong>	89960843400010</div>  -->
           <div><strong>Adresse : </strong>5, rue du Tuquéou, 40990 Saint Paul les Dax</div>
           <div><strong>Téléphone : </strong> 06.80.28.70.11</div>
-          <div><strong>Créateur :</strong> Nicolas Freche Medina <a
+          <div><strong>Créateur :</strong> Nicolas Freche Medina <a style="font-weight: bold; color: #5d5d5d; text-decoration: underline;"
               href="mailto:nicolas.freche@gmail.com">nicolas.freche@gmail.com</a><br /></div>
-          <div><strong>Directeur publication :</strong> Nicolas Freche Medina <a
+          <div><strong>Directeur publication :</strong> Nicolas Freche Medina <a style="font-weight: bold; color: #5d5d5d; text-decoration: underline;"
               href="mailto:nicolas.freche@gmail.com">nicolas.freche@gmail.com</a><br /></div>
           <div style="text-align:justify"><strong>Site libre de droit :</strong> Toute reproduction, représentation,
             modification, publication,
@@ -517,7 +523,7 @@
             constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants
             du Code de Propriété Intellectuelle.</div>
           <div><strong>Copyright &#169; : </strong>2021 Naco Dev <a
-              href="mailto:nicolas@nacodev.com">nicolas@nacodev.com</a><br /></div>
+              href="mailto:nicolas.freche@gmail.com" style="font-weight: bold; color: #5d5d5d; text-decoration: underline;">nicolas.freche@gmail.com</a><br /></div>
         </div>
       </div>
     </div>
@@ -541,12 +547,12 @@
           web et le référencement naturel.
           <br /><strong>ARTICLE 2 – RÉALISATION DE LA PRESTATION</strong>
           <br />2.1. L’entreprise Naco Dev s’engage à réaliser la prestation commandée selon les normes et le respect
-          des standards du <a href="https://www.w3c.fr/standards/">W3C</a> et conformément au devis établi. Toute
+          des standards du <a style="font-weight: bold; color: #5d5d5d; text-decoration: underline;" href="https://www.w3c.fr/standards/">W3C</a> et conformément au devis établi. Toute
           prestation non prévue dans le devis ou toute modification de celui-ci à la demande du client feront l’objet
           d’une modification contractuelle et d’une tarification supplémentaire le cas échéant.
-          <br />2.2. Les délais d’exécution des prestations constituent un engagement de la part de Naco Dev. De ce
+          <!-- <br />2.2. Les délais d’exécution des prestations constituent un engagement de la part de Naco Dev. De ce
           fait, une forme de compensation pourra être demandée en cas de retard dans l’exécution des prestations
-          commandées.
+          commandées. -->
           <br /><strong>ARTICLE 3 – HÉBERGEMENT DE SITE</strong>
           <br />3.1. Les services de créations de site web nécessitent la conclusion d’un contrat d’hébergement de site.
           Le client a la possibilité de souscrire ce contrat par ses propres moyens ou alors de l’inclure à la
