@@ -37,7 +37,7 @@
   #sketch-container .sketch-background .sketch {
     padding: 20px;
     width: 85%;
-    height: 80%;
+    height: 90%;
   }
 
   .sketch .close {
@@ -47,7 +47,7 @@
 
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
@@ -94,7 +94,6 @@
   }
 
   #sketch-container-p .sketch-background-p .sketch-p {
-    padding: 30px;
     width: 70%;
   }
 
@@ -190,7 +189,7 @@
     padding:inherit;
   }
   #pic-about {
-    width: 180pt;
+    margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
   }
@@ -243,7 +242,7 @@
   #sketch-container .sketch-background .sketch {
     padding: 20px;
     width: 85%;
-    height: 80%;
+    height: 90%;
   }
 
   .sketch .close {
@@ -253,7 +252,7 @@
 
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
@@ -306,7 +305,6 @@
   }
 
   #sketch-container-p .sketch-background-p .sketch-p {
-    padding: 30px;
     width: 70%;
   }
 
@@ -403,7 +401,7 @@
     padding:inherit;
   }
   #pic-about {
-    width: 180pt;
+    margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
   }
@@ -448,7 +446,7 @@
   #sketch-container .sketch-background .sketch {
     padding: 20px;
     width: 85%;
-    height: 80%;
+    height: 90%;
   }
 
   .sketch .close {
@@ -458,7 +456,7 @@
   
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
@@ -516,7 +514,6 @@
   }
 
   #sketch-container-p .sketch-background-p .sketch-p {
-    padding: 30px;
     width: 70%;
   }
 
@@ -612,7 +609,7 @@
     padding:inherit;
   }
   #pic-about {
-    width: 180pt;
+    margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
   }
@@ -658,7 +655,7 @@
   #sketch-container .sketch-background .sketch {
     padding: 20px;
     width: 85%;
-    height: 80%;
+    height: 90%;
   }
 
   .sketch .close {
@@ -668,7 +665,7 @@
 
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
@@ -722,7 +719,6 @@
   }
 
   #sketch-container-p .sketch-background-p .sketch-p {
-    padding: 30px;
     width: 70%;
   }
 
@@ -818,7 +814,7 @@
     padding:inherit;
   }
   #pic-about {
-    width: 180pt;
+    margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
 }
@@ -858,9 +854,9 @@
     font-size: 25pt;
   }
 
-  #title-proxima {
+  /* #title-proxima {
     margin: 0pt;
-  }
+  } */
 
   h4 {
     margin: 5pt 0pt;
@@ -870,7 +866,7 @@
   #sketch-container .sketch-background .sketch {
     padding: 20px;
     width: 85%;
-    height: 80%;
+    height: 90%;
   }
 
   .sketch .close {
@@ -880,7 +876,7 @@
 
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
@@ -934,7 +930,6 @@
   }
 
   #sketch-container-p .sketch-background-p .sketch-p {
-    padding: 30px;
     width: 70%;
   }
 
@@ -1030,7 +1025,7 @@
     padding:inherit;
   }
   #pic-about {
-    width: 180pt;
+    margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
   }
@@ -1043,7 +1038,7 @@
     margin-bottom: 20pt;
   }
   #title-responsive {
-    margin: 240pt 0pt;
+    margin: 140pt 0pt;
     font-size: 80pt;
   } 
   .service-container {
@@ -1072,7 +1067,7 @@
 
   #sketch-container-n .sketch-background-n .sketch-n {
     width: 70%;
-    height: 70%;
+    height: 80%;
     padding: 35px;
   }
 
