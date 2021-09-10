@@ -118,7 +118,7 @@ input {
 }
 
 input:hover {
-  background: #45eaed;
+  background: #267172;
   color: #fff;
 }
 
@@ -135,8 +135,9 @@ textarea {
 }
 
 textarea:hover {
-  background: #45eaed;
+  background: #267172;
   color: white;
+  font-weight: bold;
 }
 
 #submit {
@@ -155,7 +156,7 @@ textarea:hover {
 
 #submit:hover {
   color: white;
-  background-color: #45eaed;
+  background-color: #267172;
   border: solid 1.2px white;
 }
 
@@ -213,13 +214,13 @@ label {
 }
 
 input[type="radio"]:checked + label {
-  background: #45eaed;
+  background: #267172;
   color: white;
-  border: 1.2px solid #45eaed;
+  border: 1.2px solid #267172;
 }
 input[type="radio"]:checked + label::after {
-  color: #45eaed;
-  border: 2px solid #45eaed;
+  color: #267172;
+  border: 2px solid #267172;
   content: "\002714";
   font-size: 12pt;
   position: absolute;
@@ -764,6 +765,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: default;
 }
 
 #border:hover {
@@ -792,12 +794,25 @@ h3 {
   text-align: justify;
   font-size: 10pt;
   padding:0pt 40pt ;
+  cursor: default;
 }
 
+#contentsocial {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#contentsocial a:hover {
+  transform: scale(1.05)
+}
 
 #logos-all {
   display: flex;
   flex-direction: column;
+}
+
+#logos-about {
+  cursor: default
 }
 
 .logos-line {
@@ -814,6 +829,7 @@ article input {
 }
 
 section {
+  cursor: default;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -825,6 +841,7 @@ section article {
 }
 
 .container {
+  cursor: default;
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -958,20 +975,20 @@ input[id='yellow']:checked ~ .chart .growing-bar {
 
 
 .bar.blue .side-a, input[id='blue']:checked ~ .chart .side-a{
-  background-color: #089bf071;
+  background-color: #4ae1ffa1;
 }
 .bar.blue .growing-bar,
 input[id='blue']:checked ~ .chart .growing-bar {
-  background-color: #089bf071;
-  width: 100%;
+  background-color: #4ae1ffa1;
+  width: 70%;
 }
 .bar.blue .side-0 .growing-bar, input[id='blue']:checked ~ .chart .side-0 .growing-bar {
-  box-shadow: -0.5em -1.5em 4em #089bf071;
-  width: 100%;
+  box-shadow: -0.5em -1.5em 4em #4ae1ffa1;
+  width: 70%;
 }
 .bar.blue .floor .growing-bar, input[id='blue']:checked ~ .chart .floor .growing-bar {
-  box-shadow: 0em 0em 2em #089bf071;
-  width: 100%;
+  box-shadow: 0em 0em 2em #4ae1ffa1;
+  width: 70%;
 }
 
 
@@ -1047,20 +1064,20 @@ input[id='purpleb']:checked ~ .chart .growing-bar {
 
 
 .bar.otherblue .side-a, input[id='otherblue']:checked ~ .chart .side-a{
-  background-color: #1e62e062;
+  background-color: #1f1d1d62;
 }
 .bar.otherblue .growing-bar,
 input[id='otherblue']:checked ~ .chart .growing-bar {
-  background-color: #1e62e062;
-  width: 40%;
+  background-color: #1f1d1d62;
+  width: 60%;
 }
 .bar.otherblue .side-0 .growing-bar, input[id='otherblue']:checked ~ .chart .side-0 .growing-bar {
-  box-shadow: -0.5em -1.5em 4em #1e62e062;
-  width: 40%;
+  box-shadow: -0.5em -1.5em 4em #1f1d1d62;
+  width: 60%;
 }
 .bar.otherblue .floor .growing-bar, input[id='otherblue']:checked ~ .chart .floor .growing-bar {
-  box-shadow: 0em 0em 2em #1e62e062;
-  width: 40%;
+  box-shadow: 0em 0em 2em #1f1d1d62;
+  width: 60%;
 }
 
 .bar.redb .side-a, input[id='redb']:checked ~ .chart .side-a {
@@ -1083,21 +1100,21 @@ input[id='redb']:checked ~ .chart .growing-bar {
 }
 
 .bar.grey .side-a, input[id='grey']:checked ~ .chart .side-a {
-  background-color: #1f1d1d62;
+  background-color: #000000ee;
 }
 
 .bar.grey .growing-bar,
 input[id='grey']:checked ~ .chart .growing-bar {
-  background-color: #1f1d1d62;
-  width: 60%;
+  background-color: #000000ee;
+  width: 78%;
 }
 .bar.grey .side-0 .growing-bar, input[id='grey']:checked ~ .chart .side-0 .growing-bar {
-  box-shadow: -0.5em -1.5em 4em #1f1d1d62;
-  width: 60%;
+  box-shadow: -0.5em -1.5em 4em #000000ee;
+  width: 78%;
 }
 .bar.grey .floor .growing-bar, input[id='grey']:checked ~ .chart .floor .growing-bar {
-  box-shadow: 0em 0em 2em #1f1d1d62;
-  width: 60%;
+  box-shadow: 0em 0em 2em #000000ee;
+  width: 78%;
 }
 
 /*
@@ -1111,7 +1128,7 @@ END // CHART'S RULES
 }
 
 .label {
-  cursor: grabbing;
+  cursor: grab;
   transition: 0.5s ease-in-out;
   background-position: center;
   background-size: contain;
@@ -1146,7 +1163,7 @@ END // CHART'S RULES
   background-image: url(../assets/Dev-logo/Js-logo.png);
 }
 #jquery {
-  background-image: url(../assets/Dev-logo/Jquery-logo.png);
+  background-image: url(../assets/Dev-logo/Netlify-logo.png);
 }
 
 #php {
