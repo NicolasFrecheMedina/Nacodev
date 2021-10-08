@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Tout commence avec une idée</title>
+  <title>NacoDev | Création Site Web | Développeur Full-Stack</title>
   <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png" />
   <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png" />
   <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png" />
@@ -23,7 +23,7 @@
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
   <meta name="theme-color" content="#ffffff" />
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/modal.css" />
   <link rel="stylesheet" href="./css/modalM.css" />
@@ -55,7 +55,7 @@
 
   <div class="page-wrapper">
     <div id="reveal">
-      <div id="barcode">creative full-stack developper</div>
+      <div id="barcode">creative full-stack developer</div>
       <h1 id="title-responsive">Naco Dev</h1>
     </div>
     <div class="quote">Tout commence avec une idée</div>
@@ -78,13 +78,13 @@
           <input id="email" type="email" name="email" placeholder="E-MAIL" />
           <textarea id="message" name="text" type="text" placeholder="MESSAGE"></textarea>
           <div id="RadioBtn">
-            <div>
+            <div class="lab-name">
               <input type="radio" id="control_01" name="select" value="perso" checked />
               <label for="control_01" class="click" name="statut">
                 <h4>Particulier</h4>
               </label>
             </div>
-            <div>
+            <div class="lab-name">
               <input type="radio" id="control_02" name="select" value="pro" />
               <label for="control_02" class="click">
                 <h4>Professionnel</h4>
@@ -97,416 +97,717 @@
     </div>
   </div>
   <!-- End Modal Form -->
-  <div class="parallaxe">
-    <h2>Services Web</h2>
-    <div id="service-content">
-      <div class="cardContainer">
-        <div class="circle" id="service-creation">
-          <div>Création</div>
-        </div>
-        <div class="list">
-          <h3 id="title-conception">Gestion de projets</h3>
 
-          <div class="effect-conception za">Site web</div>
-          <div class="appear-conception az">
-            Conception E-commerce, portfolio, site vitrine... Dynamique et
-            entièrement <br />personnalisable
-          </div>
-          <div class="effect-conception za">Cahier des charges</div>
-          <div class="appear-conception az">
-            Rédaction de votre projet web étape par étape
-          </div>
+  <div class="parallaxe">
+   
+    <h2>Savoir-faire</h2>
+<!-- Test accordion -->
+  <div class="accordion-container">
+    <div class="card-accordion-content">
+
+     <div>
+        <div class="enter-accordion D">Développement web
+          <span class="arrow">
+            <span class="left-barD"></span>
+            <span class="right-barD"></span>
+          </span>
         </div>
+        <div class="para-accordion" id="guts2">
+          <div class="content-para" id="content-developpement-interface">
+            <div class="wordCarousel">
+              <span>Développement : </span>
+              <div>
+                  <ul class="flip4">
+                      <li>Maquettage</li>
+                      <li>Bases de données</li>
+                      <li>Back-office</li>
+                      <li>Interface utilisateur</li>                     
+                  </ul>
+              </div>
+            </div>
+                       
+              <div class="wrapper-flip">
+                <div class="card-flip">
+                    <input type="checkbox" id="card1" class="more" aria-hidden="true">
+                    <div class="content-flip">
+                        <div class="front" style="background-image: url('./assets/maquettage.jpg')">
+                            <div class="inner">
+                                <h2>Maquettage</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <label for="card1" class="button-flip" aria-hidden="true">
+                                    Details
+                                </label>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                              
+                                <div class="info">
+                                    <span>Maquettage</span>
+                                </div>
+                                <div class="description-flip">
+                                    <p>Méthode de conception d'interface qui permet d'avoir une représentation visuel de votre projet. </p>
+                                    <p>J’utilise le programme Figma qui est un outils collaboratif permettant d’intéragir ensemble sur votre projet et de l’adapté à vos besoins.</p>
+                                </div>
+                                
+                                <label for="card1" class="button-flip return" aria-hidden="true">
+                                    <i class="fas fa-arrow-left"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              <div class="card-flip">
+                    <input type="checkbox" id="card4" class="more" aria-hidden="true">
+                    <div class="content-flip">
+                        <div class="front" style="background-image: url('./assets/bdd.jpg')">
+                            <div class="inner">
+                                <h2>Base de données</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <label for="card4" class="button-flip" aria-hidden="true">
+                                    Details
+                                </label>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                              <div class="info">
+                                <span>Base de données</span>
+                              </div>
+                                <div class="description-flip">
+                                    <p>Une base de donnée permet de stocker et stucturer vos données. C’est un outils majeur de votre suivi et de votre démarche commerciale.</p>
+                                    <p>Je peux réaliser une base de données simple et éfficace qui preserve l’exactitude de vos données en utilisant les langages informatique approprié comme phpmyadmin</p>
+                                </div> 
+                                <label for="card4" class="button-flip return" aria-hidden="true">
+                                    <i class="fas fa-arrow-left"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-flip">
+                    <input type="checkbox" id="card2" class="more">
+                    <div class="content-flip">
+                        <div class="front" style="background-image: url('./assets/backend.jpg')">
+                            <div class="inner">
+                                <h2>UI / UX</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <label for="card2" class="button-flip" aria-hidden="true">
+                                    Details
+                                </label>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                                <div class="info">
+                                    <span>UI / UX</span>
+                                </div>
+                                <div class="description-flip">
+                                    <p>Une Interface utilisateur entièrement personnalisable avec laquelle l’utilisateur peut intéragir directement lui offrant une expérience unique et ergonoimque.  </p>
+                                    <p>Je suis capable de fournir une inteface utilisateur dynamique et fonctionnelle rapidement. Mon esprit créatif et mon interêt pour les éléments visuels seront mis à votre disposition pour la création et developpement de la partie front end de votre site web.</p>
+                                </div>
+                                <label for="card2" class="button-flip return" aria-hidden="true">
+                                    <i class="fas fa-arrow-left"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-flip">
+                    <input type="checkbox" id="card3" class="more">
+                    <div class="content-flip">
+                        <div class="front" style="background-image: url('./assets/front.jpg')">
+                            <div class="inner">
+                                <h2>Back-office</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <label for="card3" class="button-flip" aria-hidden="true">
+                                    Details
+                                </label>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                                <div class="info">
+                                    <span>Back office</span>
+                                </div>
+                                <div class="description-flip">
+                                    <p>Il s’agit de l’interface sur laquelle un utilisateur pourra interagir avec une base de donnée. Un système permettant aux utilisateurs permettant d’insérer, de modifier et de rechercher efficacement des données spécifiques de votre base de données.</p>
+                                    <p>En utilisant le CMS Wordpress vous aurez automatiquement une interface back-office.</p>
+                                </div>
+                                <label for="card3" class="button-flip return" aria-hidden="true">
+                                    <i class="fas fa-arrow-left"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            
+<!-- end test card-flip -->
+
+              <!-- <ul>
+                <li>Pour voir toutes les technologies possibles consultez mes <strong>compétences développeurs</strong></li>
+              </ul> -->
+           
+          </div> 
+        </div>
+     </div>
+
+     <div>
+      <div class="enter-accordion C">Création site web
+        <span class="arrow">
+          <span class="left-barC"></span>
+          <span class="right-barC"></span>
+        </span>
       </div>
-      <div class="cardContainer">
-        <div class="circle" id="service-entrepreneur">
-          <div>Développement</div>
-        </div>
-        <div class="list">
-          <h3 id="title-developpement">Front-End & Back-End</h3>
-          <div class="effect-developpement za">Maquettage</div>
-          <div class="appear-developpement az">
-            Une représentation graphique de votre application web adaptable à
-            différents supports
+      <div class="para-accordion" id="guts">
+        <div class="content-para" id="content-creation-interface">
+          <div style="text-align: center" class="wordCarousel">
+            <span>Création site web : </span>
+            <div>
+                <!-- Use classes 2,3, or 4 to match the number of words -->
+                <ul class="flip4">
+                    <li>Site vitrine</li>
+                    <li>E-commerce</li>
+                    <li>Site mobile</li>
+                    <li>Application web</li>
+                </ul>
+            </div>
           </div>
-          <div class="effect-developpement za">Intégration</div>
-          <div class="appear-developpement az">
-            Utilisation de différents outils et technologies pour
-            développer<br />le code de votre site web
+          <!-- <div style="display:flex; align-items:center;">
+           
+            <div>
+              <div class="img-content">
+                <img src="./assets/Screensformat.png" alt="">
+              </div>
+            </div>
+            
+          </div> -->
+          <div>
+            <div>
+              <div class="text">
+                <div >
+                  <div style="margin: 0 10pt">
+                    Un site internet <strong>EST</strong> l’image de votre entreprise. Il est important de posséder une « vitrine » en ligne de son activité <strong>accessible à tout le monde</strong>. Posséder un site internet apporte de <strong>nombreux avantages</strong> :
+                    <!-- Un site internet représente l’<strong>image de votre entreprise</strong>. Il est important de la soigner et de posséder une « vitrine » de son activité que le <strong>monde entier</strong> pourra consulter. Posséder un <strong>site internet</strong> apportera par la suite beaucoup d’avantages: -->
+                  </div>
+                  <div style="display: flex; align-items: center;justify-content:center; margin-top:10pt;">
+                    <ul class="arrow-puce">
+                      <li>Accès à <strong>toute les informations</strong> de votre activité en temps réel</li>
+                      <li>Les possibilités de développements d'un site internet sont <strong>infinies</strong>…</li>
+                      <li>Un site internet est un <strong>investissement rentable</strong> sous condition qu'il soit <strong>bien réalisé</strong></li>
+                      <li>La majorité des personnes consultent un site internet avant de prendre rendez-vous chez un prestataire afin de s’informer sur les différents <strong>services</strong> et <strong>tarifs</strong></li>
+                    </ul> 
+                    <div class="img-content"></div>
+                  </div>
+                  
+                </div>
+              </div> 
+              
+              <div class="text">
+                <div class="bloc-question">
+                  <div class="question">Pourquoi faire appel à un développeur web?</div>
+                  <div>Il existe de nombreuse manière de réaliser un site web, de la même manière que faire appel à un architecte pour réaliser une maison, un développeur conçoit, en fonctions de <strong>vos besoins</strong> et de <strong>vos objectifs</strong>
+                    un site web <strong>entièrement personnalisable</strong> qui répondra au mieux à vos attentes.</div>
+                </div>
+                <div class="bloc-question">
+                  <div class="question">Faut-il des compétences particulières pour avoir un site web?</div>
+                  <div>Vous n'avez pas à avoir des connaissances particulières en <strong>langage informatique</strong> pour posséder votre propre site internet, les usages basique d'utilisation du web et un <strong>projet bien élaboré</strong> sont suffisant lorsque vous faite appel à un développeur web. </div>
+                </div>
+                <div class="bloc-question">
+                  <div class="question">Pourquoi Naco Dev?</div>
+                  <div>Je vous propose un service très personalisé et un accompagnement engagé afin de <strong>définir ensemble votre projet numérique</strong>. D’une landing page au site web plus complexe, pour une PME, un indépendant ou un particulier, je vous propose des solutions adaptées à votre <strong>budget</strong> et à vos <strong>besoins</strong>.</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+
+          
+          <!-- test carousel parallaxe -->
+          
+          <!-- end test carousel parallaxe -->
+
+
+
+        </div> 
       </div>
-      <div class="cardContainer">
-        <div class="circle" id="service-refonte">
-          <div>Refonte</div>
-        </div>
-        <div class="list">
-          <h3 id="title-refonte">Améliorations site internet</h3>
-          <div class="effect-refonte za">Refonte graphique</div>
-          <div class="appear-refonte az">
-            Mise à jour de votre site web avec design actuel et
-            entièrement <br />personnalisable
-          </div>
-          <div class="effect-refonte za">Nouvelles fonctionnalités</div>
-          <div class="appear-refonte az">Besoin de Widgets ?</div>
-        </div>
-      </div>
-      <div class="cardContainer">
-        <div class="circle" id="service-freelance">
-          <div>Présence Web</div>
-        </div>
-        <div class="list">
-          <h3 id="title-freelance">Accompagnement</h3>
-          <div class="effect-freelance za">Référencement</div>
-          <div class="appear-freelance az">
-            Création compte google et site web respectant les critères de
-            <br />référencement naturel
-          </div>
-          <div class="effect-freelance za">Maintenance Web</div>
-          <div class="appear-freelance az">
-            Error alert 404: debuguage web
-          </div>
-        </div>
-      </div>
+   </div>
+
+   
+   <div>
+    <div class="enter-accordion P" onclick="clicked()">Communication
+      <span class="arrow">
+        <span class="left-barP"></span>
+        <span class="right-barP"></span>
+      </span>
     </div>
+    <div class="para-accordion" id="guts4">
+      <div class="content-para" id="content-presence-web">
+        <div class="wordCarousel" style="margin-top:30pt">
+          <span>Présence web : </span>
+          <div>
+              <!-- Use classes 2,3, or 4 to match the number of words -->
+              <ul class="flip4">
+                  <li>Réseaux sociaux</li>
+                  <li>Nom de domaine</li>
+                  <li>Référencement</li>
+                  <li>Compte Google</li>
+              </ul>
+          </div>
+        </div>
+        <!-- <div>
+          Content communication
+        </div> -->
+        <div>
+          <div class="visits">Ce site à été visité <strong id="visits" style="margin: 0 5pt">0</strong>fois</div> 
+        </div>
+      </div> 
+    </div>
+ </div>
+
+     <div>
+        <div class="enter-accordion R">Refonte
+          <span class="arrow">
+            <span class="left-barR"></span>
+            <span class="right-barR"></span>
+          </span>
+        </div>
+        <div class="para-accordion" id="guts3">
+          <div class="content-para" id="content-refonte">
+            <div class="wordCarousel">
+              <span>Refonte : </span>
+              <div>
+                  <ul class="flip4">
+                      <li>Version Mobile</li>
+                      <li>Charte Graphique</li>
+                      <li>Experience Utilisateur</li>
+                      <li>Design Interface</li>
+                  </ul>
+              </div>
+            </div>
+            <div style="display:flex; margin-top: 10pt;">
+              <div class="macbook-container">
+                <div class="body-before-after">
+                  <div class='container-before-after'>
+                    <div class='img-before-after background-img'></div>
+                    <div class='img-before-after foreground-img'></div>
+                    <input type="range" min="1" max="100" value="50" class="slider-before-after" name='slider-before-after' id="slider-before-after">
+                    <div class='slider-button-before-after'></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <ul class="arrow-puce2">Je mets à votre service mes compétences pour la réalisation: 
+                  <li>d’un <strong>renforcement</strong> ou <strong>refonte</strong> de design de votre site ;</li>
+                  <li>d’une version <strong>adpatable</strong> à vos différents supports (smartphones, tabletttes, écrans pc) ;</li>
+                  <li>d’une <strong>expérience utilisateur</strong> fluide et attractive</li>
+                </ul> 
+              </div>
+            </div>
+            
+           
+
+          </div> 
+        </div>
+     </div>
+
+
+
+    </div>
+  </div>
+    
+<!-- End Test Accordion -->
+
     <div id="two" class="buttonM click">
       <div class="logo">Naco Dev &#169;</div>
     </div>
   </div>
   <div class="parallaxe2">
-    <h2>Savoir-faire</h2>
-    <div id="content-about">
-      <div class="ap" id="content-boxes">
-        <div id="pic-about">
-          <div id="border">
-            <div id="title-about">Nicolas Freche Medina</div>
-            <div id="contentsocial">
-              <a href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/" rel="noopener noreferrer" target="_blank">
-                <img style="height: 30pt; margin: 0 10pt;" src="./assets/linkedinwhite.png" alt="" >
-              </a>
-              <a href="https://github.com/NicolasFrecheMedina" rel="noopener noreferrer" target="_blank">
-                <img style="height: 30pt; margin: 0 8pt 7pt 0pt;" src="./assets/gitwhite.png" alt="">
-              </a>
+    <h2 style="color: white; margin-top: 0">Savoir-être</h2>
+
+    <!-- Test accordion -->
+  <div class="accordion-container">
+    <div class="card-accordion-content" style="flex-direction:column-reverse">
+
+      <div style="display: flex; flex-direction:column-reverse">
+        <div class="enter-accordion2 D2">Projets réalisés
+          <span class="arrow">
+            <span class="left-barD2"></span>
+            <span class="right-barD2"></span>
+          </span>
+        </div>
+        <div class="para-accordion" id="guts6">
+          <div class="content-para bg2" style="padding-bottom: 0">
+            
+            <div class="body-slider">
+              <div class="container-carousel">
+                  <input class="sliders" type="radio" name="slider" id="item-1" checked>
+                  <input class="sliders" type="radio" name="slider" id="item-2">
+                  <input class="sliders" type="radio" name="slider" id="item-3">
+                <div class="cards-slider">
+                  <label class="card-slide" for="item-1" id="song-1">
+                    <div id="five" class="btn-sketch-n">
+                      <div class="service-card" id="NacoDev">
+                        <img src="./assets/NacoDevLogoFullW.png" alt="" id="picND" />
+                      </div>
+                    </div>
+                  </label>
+                  <label class="card-slide" for="item-2" id="song-2">
+                    <div id="six" class="btn-sketch">
+                      <div class="service-card" id="SuperGreenLab">
+                        <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL" />
+                      </div>
+                    </div>
+                  </label>
+                  <label class="card-slide" for="item-3" id="song-3">
+                    <div id="four" class="btn-sketch-p">
+                      <div class="service-card" id="Prochainement">
+                        <div id="picPC">Prochainement</div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
             </div>
-          </div>
+          
+              <!-- Sketch SGL effect -->
+            <div id="sketch-container">
+              <div class="sketch-background">
+                <div class="sketch">
+                  <svg class="sketch-svg" width="100%" height="100%">
+                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+                  </svg>
+                  <span class="close">&times;</span>
+                  <div id="sketch-sgh-content">
+                    <div id="sketch-sgh-logo">
+                      <img src="./assets/SuperGreenLabsmall.png" alt="" />
+                    </div>
+                    <div style="color: black;">
+                      <h4>Services Réalisés :</h4>
+                      <div class="info-projets">
+                        <div>
+                          <strong>Refonte page principale : réorganisation
+                          de la page principale du site www.supergreenlab.com,
+                          maquettage et développement de nouveaux composants tel que
+                          la mise en place d'un menu déroulant au format mobile.
+                        </strong></div>
+                        <div>
+                          <strong>Création et développement page "Guide" :
+                          conception d'une page web regroupant des guides pour le
+                          site www.supergreenlab.com .
+                        </strong></div>
+                        <div>
+                          <strong>Création et développement page "Shop" :
+                          conception d'une page E-commerce permettant d'acheter les
+                          produits proposés par le site www.supergreenlab.com .
+                        </strong></div>
+                      </div>
+                      <div class="liens-logo">
+                        <div>
+                          <h4>Codes développés :</h4>
+                          <div>
+                            <a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com" rel="noopener noreferrer"
+                              target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo" /></a>
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Liens :</h4>
+                          <div class="lien-projet">
+                            <a href="https://supergreenlab.com" rel="noopener noreferrer" target="_blank">Projet 1</a>
+                          </div>
+                          <div class="lien-projet">
+                            <a href="https://www.supergreenlab.com/guides" rel="noopener noreferrer" target="_blank">Projet
+                              2</a>
+                          </div>
+                          <div class="lien-projet">
+                            <a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com/tree/feature/shop"
+                              title="Bientôt en ligne" rel="noopener noreferrer" target="_blank">Projet 3</a>
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Technologies :</h4>
+                          <div class="frameworks">
+                            <div>
+                              <a href="https://vuejs.org/" rel="noopener noreferrer" target="_blank"><img
+                                  src="./assets/Dev-logo/Vue-logo.png" alt="" class="Dev-logo" /></a>
+                            </div>
+                            <div>
+                              <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" rel="noopener noreferrer"
+                                target="_blank"><img src="./assets/Dev-logo/Js-logo.png" alt="" class="Dev-logo" /></a>
+                            </div>
+                            <div>
+                              <a href="https://fr.nuxtjs.org/" rel="noopener noreferrer" target="_blank"><img
+                                  src="./assets/Dev-logo/Nuxt-logo.png" alt="" class="Dev-logo" /></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- End Sketch SGl effect -->
+          
+              <!-- Sketch Naco Dev effect -->
+            <div id="sketch-container-n">
+              <div class="sketch-background-n">
+                <div class="sketch-n">
+                  <svg class="sketch-svg" width="100%" height="100%">
+                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+                  </svg>
+                  <span class="close">&times;</span>
+                  <div id="sketch-naco-content">
+                    <div>
+                      <img id="sketch-naco-logo" src="./assets/NacoDevLogoFull.png" alt="" />
+                    </div>
+                    <div style="color: black;">
+                      <h4>Service Réalisé :</h4>
+                      <div class="info-projets-n">
+                        <div>
+                          <strong>Création et développement site complet :
+                          Conception du site vitrine de l'entreprise Naco
+                          Dev.
+                        </strong></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="liens-logo-n">
+                        <div>
+                          <h4>Code développé :</h4>
+                          <div>
+                            <a href="https://github.com/NicolasFrecheMedina/Nacodev" rel="noopener noreferrer"
+                              target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo" /></a>
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Lien :</h4>
+                          <div class="lien-projet-n">
+                            <a href="#" rel="noopener noreferrer" target="_blank">Projet</a>
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Technologies:</h4>
+                          <div class="frameworks">
+                            <div>
+                              <a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics"
+                                rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Css-logo.png" alt=""
+                                  class="Dev-logo" /></a>
+                            </div>
+                            <div>
+                              <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" rel="noopener noreferrer"
+                                target="_blank"><img src="./assets/Dev-logo/Js-logo.png" alt="" class="Dev-logo" /></a>
+                            </div>
+                            <div>
+                              <a href="https://www.netlify.com/" rel="noopener noreferrer" target="_blank"><img
+                                  src="./assets/Dev-logo/Netlify-logo.png" alt="" class="Dev-logo" /></a>
+                            </div>
+        
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--End Sketch Naco Dev effect -->
+              <!-- Sketch Proxima Dev effect -->
+            <div id="sketch-container-p">
+              <div class="sketch-background-p">
+                <div class="sketch-p">
+                  <svg class="sketch-svg" width="100%" height="100%">
+                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+                  </svg>
+                  <span class="close">&times;</span>
+                  <div id="sketch-proxima-content">
+                    <div style="color: black;">
+                      <h2 id="title-proxima">Contactez-moi</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--End Sketch Proxima Dev effect -->
         </div>
       </div>
-      <div id="text-about" class="ap">
-        <div><strong>Naco Dev est une entreprise spécialisée dans la programmation web, créé en 2021 par
-          Nicolas Freche Medina : </strong></div>
-        <div><strong>"Je suis un développeur web passionné ayant les compétences nécessaires pour répondre à de nombreux besoins
-          : site vitrine, e-commerce, CRM, ERP, administration dédiée, solution digitale personnalisée, design
-          personnalisé, automatisation de tâches.. </strong></div>
-        <div><strong> principalement en freelance, je reste ouvert à toute opportunité intéressante. J’aborde
-          chaque projet avec beaucoup d’enthousiasme et de sérieux. Vous pouvez compter sur mes services pour vous
-          fournir une application web maintenable, performante et de qualité." </strong></div>
-        <!-- <div style="text-align:right; font-style: italic;">Agrandissons notre réseau ensemble -> </div> -->
-      </div>
-      <div id="logos-about" class="ap">
-        <div id="titlecompetencies">Compétences développeur</div>
-        <section>
-          <article>
-            <div id="skilltitle"><strong>Niveau compétences : (cliquez sur une technologie pour voir le niveau)</strong></div>
-            <!-- <div id="skilllevel"></div> -->
-            <input type="radio" name="switch-color" id="red">
-            <input type="radio" name="switch-color" id="cyan">
-            <input type="radio" name="switch-color" id="lime">
-            <input type="radio" name="switch-color" id="yellow">
-            <input type="radio" name="switch-color" id="blue">
-            <input type="radio" name="switch-color" id="purple">
-            <input type="radio" name="switch-color" id="green">
-            <input type="radio" name="switch-color" id="lightblue">
-            <input type="radio" name="switch-color" id="purpleb">
-            <input type="radio" name="switch-color" id="otherblue">
-            <input type="radio" name="switch-color" id="redb">
-            <input type="radio" name="switch-color" id="grey">
-            <div class="chart">
-              <div class="bar">
-                <div class="face top">
-                  <div class="growing-bar"></div>
-                </div>
-                <div class="face side-0">
-                  <div class="growing-bar"></div>
-                </div>
-                <div class="face floor">
-                  <div class="growing-bar"></div>
-                </div>
-                <div class="face side-a"></div>
-                <div class="face side-1">
-                  <div class="growing-bar"></div>
-                </div>
-              </div>
-              <nav class="actions">
-                <div id="logos-all">
-                  <div class="logos-line">
-                    
-                    <label class="label" id="js" for="yellow" onclick="changeText('Langage Javascript :')"></label>
-                    <label class="label" id="nuxt" for="lime" onclick="changeText('Framework Nuxt JS :')"></label>
-                    <label class="label" id="css" for="cyan" onclick="changeText('Langage CSS 3 :')"></label>
-                    <label class="label" id="vue" for="green" onclick="changeText('Framework Vue JS :')"></label>
-                  </div>
-                  <div class="logos-line">
-                    <label class="label" id="jquery" for="blue" onclick="changeText('Hébergeur Netlify :')"></label>
-                    <label class="label" id="html" for="red" onclick="changeText('Langage HTML 5 :')"></label>
-                    <label class="label" id="php" for="purple" onclick="changeText('Langage PHP 7.3:')"></label>
-                    <label class="label" id="sql" for="lightblue" onclick="changeText('Langage SQL :')"></label>
-                  </div>
-                  <div class="logos-line">
-                    <label class="label" id="bootstrap" for="purpleb"
-                      onclick="changeText('Framework Bootstrap :')"></label>
-                    <label class="label" id="wp" for="otherblue" onclick="changeText('CMS Wordpress :')"></label>
-                    <label class="label" id="figma" for="redb" onclick="changeText('Logiciel Figma :')"></label>
-                    <label class="label" id="git" for="grey" onclick="changeText('Interface Github :')"></label>
-                  </div>
-                </div>
-              </nav>
-              <div style="margin-top: 25pt; text-align: justify;"><strong>N'hésitez pas à vous connecter à mon profil <a
-                style=" color: #5d5d5d; text-decoration: underline;" target="_blank" href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/">linkedin</a> pour
-                voir plus de compétences</strong></div>
-          </article>
-        </section>
-      </div>
-    </div>
+     </div>
 
-    <div id="two" class="buttonM click">
-      <div class="logo">Naco Dev &#169;</div>
-    </div>
-  </div>
-  <div class="parallaxe3">
-   
-  <!-- ici -->
 
-  <h2>Réalisation en ligne</h2>
-  <div class="service-container">
-    <div id="six" class="btn-sketch">
-      <div class="service-card" id="SuperGreenLab">
-        <img src="./assets/SuperGreenLabsmall.png" alt="" id="picSGL" />
-      </div>
-    </div>
-    <!-- Sketch SGL effect -->
-    <div id="sketch-container">
-      <div class="sketch-background">
-        <div class="sketch">
-          <svg class="sketch-svg" width="100%" height="100%">
-            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
-          </svg>
-          <span class="close">&times;</span>
-          <div id="sketch-sgh-content">
-            <div id="sketch-sgh-logo">
-              <img src="./assets/SuperGreenLabsmall.png" alt="" />
-            </div>
-            <div>
-              <h4>Services Réalisés :</h4>
-              <div class="info-projets">
-                <div>
-                  <strong>Refonte page principale : réorganisation
-                  de la page principale du site www.supergreenlab.com,
-                  maquettage et développement de nouveaux composants tel que
-                  la mise en place d'un menu déroulant au format mobile.
-                </strong></div>
-                <div>
-                  <strong>Création et développement page "Guide" :
-                  conception d'une page web regroupant des guides pour le
-                  site www.supergreenlab.com .
-                </strong></div>
-                <div>
-                  <strong>Création et développement page "Shop" :
-                  conception d'une page E-commerce permettant d'acheter les
-                  produits proposés par le site www.supergreenlab.com .
-                </strong></div>
-              </div>
-              <div class="liens-logo">
-                <div>
-                  <h4>Codes développés :</h4>
-                  <div>
-                    <a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com" rel="noopener noreferrer"
-                      target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo" /></a>
-                  </div>
-                </div>
-                <div>
-                  <h4>Liens :</h4>
-                  <div class="lien-projet">
-                    <a href="https://supergreenlab.com" rel="noopener noreferrer" target="_blank">Projet 1</a>
-                  </div>
-                  <div class="lien-projet">
-                    <a href="https://www.supergreenlab.com/guides" rel="noopener noreferrer" target="_blank">Projet
-                      2</a>
-                  </div>
-                  <div class="lien-projet">
-                    <a href="https://github.com/NicolasFrecheMedina/Supergreenlab.com/tree/feature/shop"
-                      title="Bientôt en ligne" rel="noopener noreferrer" target="_blank">Projet 3</a>
-                  </div>
-                </div>
-                <div>
-                  <h4>Technologies :</h4>
-                  <div class="frameworks">
-                    <div>
-                      <a href="https://vuejs.org/" rel="noopener noreferrer" target="_blank"><img
-                          src="./assets/Dev-logo/Vue-logo.png" alt="" class="Dev-logo" /></a>
-                    </div>
-                    <div>
-                      <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" rel="noopener noreferrer"
-                        target="_blank"><img src="./assets/Dev-logo/Js-logo.png" alt="" class="Dev-logo" /></a>
-                    </div>
-                    <div>
-                      <a href="https://fr.nuxtjs.org/" rel="noopener noreferrer" target="_blank"><img
-                          src="./assets/Dev-logo/Nuxt-logo.png" alt="" class="Dev-logo" /></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div style="display: flex; flex-direction:column-reverse">
+        <div class="enter-accordion2 C2" >Compétences
+          <span class="arrow">
+            <span class="left-barC2"></span>
+            <span class="right-barC2"></span>
+          </span>
         </div>
-      </div>
-    </div>
-    <!-- End Sketch SGl effect -->
+        <div class="para-accordion" id="guts5">
+          <div class="content-para bg2">
+            <div class="text-logo">
+              <div id="logos-about" class="ap">
+                <div id="titlecompetencies">Compétences développeur</div>
+                <section>
+                  <article>
+                    <div id="skilltitle"><strong>Niveau compétences : (cliquez sur une technologie pour voir le niveau)</strong></div>
+                    <input type="radio" name="switch-color" id="red">
+                    <input type="radio" name="switch-color" id="cyan">
+                    <input type="radio" name="switch-color" id="lime">
+                    <input type="radio" name="switch-color" id="yellow">
+                    <input type="radio" name="switch-color" id="blue">
+                    <input type="radio" name="switch-color" id="purple">
+                    <input type="radio" name="switch-color" id="green">
+                    <input type="radio" name="switch-color" id="lightblue">
+                    <input type="radio" name="switch-color" id="purpleb">
+                    <input type="radio" name="switch-color" id="otherblue">
+                    <input type="radio" name="switch-color" id="redb">
+                    <input type="radio" name="switch-color" id="grey">
+                    <div class="chart">
+                      <div class="bar">
+                        <div class="face top">
+                          <div class="growing-bar"></div>
+                        </div>
+                        <div class="face side-0">
+                          <div class="growing-bar"></div>
+                        </div>
+                        <div class="face floor">
+                          <div class="growing-bar"></div>
+                        </div>
+                        <div class="face side-a"></div>
+                        <div class="face side-1">
+                          <div class="growing-bar"></div>
+                        </div>
+                      </div>
+                      <nav class="actions">
+                        <div id="logos-all">
+                          <div class="logos-line">     
+                            <label class="label" id="js" for="yellow" onclick="changeText('Langage Javascript :')"></label>
+                            <label class="label" id="nuxt" for="lime" onclick="changeText('Framework Nuxt JS :')"></label>
+                            <label class="label" id="css" for="cyan" onclick="changeText('Langage CSS :')"></label>
+                            <label class="label" id="vue" for="green" onclick="changeText('Framework Vue JS :')"></label>
+                          </div>
+                          <div class="logos-line">
+                            <label class="label" id="jquery" for="blue" onclick="changeText('Hébergeur Netlify :')"></label>
+                            <label class="label" id="html" for="red" onclick="changeText('Langage HTML :')"></label>
+                            <label class="label" id="php" for="purple" onclick="changeText('Langage PHP :')"></label>
+                            <label class="label" id="sql" for="lightblue" onclick="changeText('Langage SQL :')"></label>
+                          </div>
+                          <div class="logos-line">
+                            <label class="label" id="bootstrap" for="purpleb"
+                              onclick="changeText('Framework Bootstrap :')"></label>
+                            <label class="label" id="wp" for="otherblue" onclick="changeText('CMS Wordpress :')"></label>
+                            <label class="label" id="figma" for="redb" onclick="changeText('Logiciel Figma :')"></label>
+                            <label class="label" id="git" for="grey" onclick="changeText('Interface Github :')"></label>
+                          </div>
+                        </div>
+                      </nav>
+                      <div style="margin-top: 25pt; text-align: justify;"><strong>N'hésitez pas à vous connecter à mon profil <a
+                        style=" color: #5d5d5d; text-decoration: underline;" target="_blank" href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/">linkedin</a> pour
+                        agrandir notre réseau</strong></div>
+                  </article>
+                </section>
+              </div>
+                 
 
-    <div id="five" class="btn-sketch-n">
-      <div class="service-card" id="NacoDev">
-        <img src="./assets/NacoDevLogoFullW.png" alt="" id="picND" />
-      </div>
-    </div>
-    <!-- Sketch Naco Dev effect -->
-    <div id="sketch-container-n">
-      <div class="sketch-background-n">
-        <div class="sketch-n">
-          <svg class="sketch-svg" width="100%" height="100%">
-            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
-          </svg>
-          <span class="close">&times;</span>
-          <div id="sketch-naco-content">
-            <div>
-              <img id="sketch-naco-logo" src="./assets/NacoDevLogoFull.png" alt="" />
-            </div>
-            <div>
-              <h4>Service Réalisé :</h4>
-              <div class="info-projets-n">
-                <div>
-                  <strong>Création et développement site complet :
-                  Conception du site vitrine de l'entreprise Naco
-                  Dev.
-                </strong></div>
-              </div>
-            </div>
-            <div>
-              <div class="liens-logo-n">
-                <div>
-                  <h4>Code développé :</h4>
-                  <div>
-                    <a href="https://github.com/NicolasFrecheMedina/Nacodev" rel="noopener noreferrer"
-                      target="_blank"><img src="./assets/Dev-logo/Github-logo.png" alt="" class="Dev-logo" /></a>
-                  </div>
-                </div>
-                <div>
-                  <h4>Lien :</h4>
-                  <div class="lien-projet-n">
-                    <a href="#" rel="noopener noreferrer" target="_blank">Projet</a>
-                  </div>
-                </div>
-                <div>
-                  <h4>Technologies:</h4>
-                  <div class="frameworks">
-                    <div>
-                      <a href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics"
-                        rel="noopener noreferrer" target="_blank"><img src="./assets/Dev-logo/Css-logo.png" alt=""
-                          class="Dev-logo" /></a>
-                    </div>
-                    <div>
-                      <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" rel="noopener noreferrer"
-                        target="_blank"><img src="./assets/Dev-logo/Js-logo.png" alt="" class="Dev-logo" /></a>
-                    </div>
-                    <div>
-                      <a href="https://www.netlify.com/" rel="noopener noreferrer" target="_blank"><img
-                          src="./assets/Dev-logo/Netlify-logo.png" alt="" class="Dev-logo" /></a>
-                    </div>
+              
+            </div>  
 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> 
         </div>
-      </div>
-    </div>
-    <!--End Sketch Naco Dev effect -->
-    <div id="four" class="btn-sketch-p">
-      <div class="service-card" id="Prochainement">
-        <div id="picPC">Prochainement</div>
-      </div>
-    </div>
-  </div>
-  <!-- Sketch Proxima Dev effect -->
-  <div id="sketch-container-p">
-    <div class="sketch-background-p">
-      <div class="sketch-p">
-        <svg class="sketch-svg" width="100%" height="100%">
-          <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
-        </svg>
-        <span class="close">&times;</span>
-        <div id="sketch-proxima-content">
-          <div>
-            <h2 id="title-proxima">En développement</h2>
-          </div>
-          <!-- <div>
-              <h4>Service Réalisé :</h4>
-              <div class="info-projets-p">
-                <div>
-                  <strong>Prochainement :</strong> Conception d'un site
-                  internet avec le CMS Wordpress
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="liens-logo-p">
-                <div>
-                  <h4>Code développé :</h4>
-                  <div>
-                    <a href="#" rel="noopener noreferrer" target="_blank"
-                      ><img
-                        src="./assets/Dev-logo/Github-logo.png"
-                        alt=""
-                        class="Dev-logo"
-                    /></a>
-                  </div>
-                </div>
-                <div>
-                  <h4>Lien :</h4>
-                  <div class="lien-projet-p">
-                    <a href="#" rel="noopener noreferrer" target="_blank"
-                      >Projet</a
-                    >
-                  </div>
-                </div>
-                <div>
-                  <h4>Technologies:</h4>
-                  <div class="frameworks">
-                    <div>
-                      <a
-                        href="https://fr.wordpress.org/"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        ><img
-                          src="./assets/Dev-logo/Wordpress-logo.png"
-                          alt=""
-                          class="Dev-logo"
-                      /></a>
+     </div>
+
+
+     <div style="display: flex; flex-direction:column-reverse">
+        <div class="enter-accordion2 R2">à propos
+          <span class="arrow">
+            <span class="left-barR2"></span>
+            <span class="right-barR2"></span>
+          </span>
+        </div>
+        <div class="para-accordion" id="guts7">
+          <div class="content-para bg2">
+              <div class="text-logo" style="display:flex; align-items:center">
+                
+                <div class="ap" id="content-boxes">
+                  <div id="pic-about">
+                    <div id="border">
+                      <div id="title-about">Nicolas Freche Medina</div>
+                      <div id="contentsocial">
+                        <a href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/" rel="noopener noreferrer" target="_blank">
+                          <img style="height: 30pt; margin: 0 10pt;" src="./assets/linkedinwhite.png" alt="" >
+                        </a>
+                        <a href="https://github.com/NicolasFrecheMedina" rel="noopener noreferrer" target="_blank">
+                          <img style="height: 30pt; margin: 0 8pt 7pt 0pt;" src="./assets/gitwhite.png" alt="">
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div id="text-about">
+                  <p> Développeur web junior depuis plus d’un an, je maîtrise les langages informatiques de base  cela me permet de réaliser rapidement des sites dynamiques avec un design unique. Afin d’accroitre mon savoir faire et mon savoir être, je continue de me former sur différent langages informatiques tel que JavaScript, Vue.js, Node.js...</p>
+                  <p>Mon expérience profesionnelle passée dans le commerce et mes nouvelles connaissances en matière de développement web m’ont conduit à la création de NacoDev.</p>
+                  <p> J’aborde chaque projet avec beaucoup d’enthousiasme et de sérieux. Perfectionniste et soucieux de fournir un travail de qualité, vous pouvez compter sur mes services pour vous fournir une application web maintenable, performante et de qualité.</p>              
+                </div>
               </div>
-            </div> -->
+          </div> 
         </div>
-      </div>
+     </div>
+     <div style="display: flex; flex-direction:column-reverse">
+        <div class="enter-accordion2 P2">CGV / ML
+          <span class="arrow">
+            <span class="left-barP2"></span>
+            <span class="right-barP2"></span>
+          </span>
+        </div>
+        <div class="para-accordion" id="guts8">
+          <div class="content-para bg2">
+            <div class="text-logo" style="display: flex; justify-content: space-around; margin-top:30pt">
+              <div id="three" class="buttonC click">
+                <div style="font-size: 50pt">CGV</div>
+              </div>
+              <div id="two" class="buttonM click">
+                <div style="font-size: 50pt">ML</div>
+              </div>  
+            </div>
+          </div> 
+        </div>
+     </div>
     </div>
   </div>
-  <!-- End Sketch Proxima Dev effect -->
-  <div id="two" class="buttonM click">
-    <div class="logo">Naco Dev &#169;</div>
-  </div>
-  
-  </div>
-  <div id="three" class="buttonC footer">
+    
+<!-- End Test Accordion -->
+
+    <div id="two" class="buttonM click" >
+      <div class="logo" style="color: white; margin-bottom: 20pt">Naco Dev &#169;</div>
+    </div>
+  </div> 
+
+
+
+  <div id="three" class="buttonC footer" style="display:none">
     <div id="cgu" class="click">CGV</div>
   </div>
 
@@ -668,6 +969,8 @@
   </div>
   <!-- End Modal CGU Form -->
 
+
+  <script async src="https://api.countapi.xyz/hit/nacodev.com/visits?callback=cb"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
   <script src="./js/demo.js"></script>
 </body>

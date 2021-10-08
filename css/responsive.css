@@ -616,7 +616,7 @@
 }
 @media screen and (min-height: 800px) and (max-width: 414px) {
   .parallaxe {
-    top: 786pt;
+    top: 600pt;
   } 
   #title-responsive {
     margin: 190pt 0pt;
@@ -1032,7 +1032,7 @@
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .parallaxe {
-    top: 768pt;
+    top: 600pt;
   } 
   .parallaxe3 {
     margin-bottom: 20pt;
@@ -1144,12 +1144,13 @@
   } 
   .parallaxe {
     top: 750pt;
+    margin-bottom: 200pt;
   } 
   .parallaxe3{
     margin-bottom: 50pt;
   }
-  .service-card {
+  /* .service-card {
     width: 320pt;
     height: 320pt;
-  }
+  } */
 }
