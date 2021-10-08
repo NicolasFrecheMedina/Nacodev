@@ -12,7 +12,7 @@ transform: translate(0pt, -1pt);
   top: 0;
   left: 0;
   transform: scale(0);
-  z-index: 1;
+  z-index: 9998;
 }
 #sketch-container-p.four {
   transform: scale(1);
@@ -37,23 +37,23 @@ transform: translate(0pt, -1pt);
 #sketch-container-p.four .sketch-background-p .sketch-p .sketch-svg rect {
   animation: sketchIn 0.5s 0s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container-p.four.out {
+#sketch-container-p.four.out-sketch {
   animation: quickScaleDown 0s 0.5s linear forwards;
 }
-#sketch-container-p.four.out .sketch-background-p {
+#sketch-container-p.four.out-sketch .sketch-background-p {
   animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container-p.four.out .sketch-background-p .sketch-p {
+#sketch-container-p.four.out-sketch .sketch-background-p .sketch-p {
   animation: sketchFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#sketch-container-p.four.out
+#sketch-container-p.four.out-sketch
   .sketch-background-p
   .sketch-p
   #sketch-proxima-content {
   animation: sketchContentFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
     forwards;
 }
-#sketch-container-p.four.out .sketch-background-p .sketch-p .sketch-svg rect {
+#sketch-container-p.four.out-sketch .sketch-background-p .sketch-p .sketch-svg rect {
   animation: sketchOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 #sketch-container-p .sketch-background-p {
