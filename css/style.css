@@ -2126,7 +2126,7 @@ html {
   height: 300pt;
   transition: background 0.4s ease-in;
   background: linear-gradient(135deg, #fff, #d2d2d2);
-  border-radius: 5pt;
+  /* border-radius: 5pt; */
 }
 .body-slider.blue {
   background: rgb(32, 32, 32);
