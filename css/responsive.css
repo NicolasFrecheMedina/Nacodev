@@ -1224,7 +1224,7 @@
   }
 
 }
-@media screen and (min-height: 820px) and (min-width: 410px) {
+@media screen and (min-height: 820px) and (min-width: 410px) and (max-width: 800px) {
   #title-responsive {
     margin: 190pt 0pt;
     font-size: 50pt;
@@ -1980,6 +1980,9 @@
     margin-bottom: 50pt;
   }
   
+  #barcode {
+    font-size: 32pt;
+  }
   /* .service-card {
     width: 320pt;
     height: 320pt;
