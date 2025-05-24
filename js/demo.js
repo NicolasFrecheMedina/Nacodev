@@ -1,3 +1,18 @@
+/* <!--
+b.             8          .8.              ,o888888o.        ,o888888o.               8 888888888o.      8 8888888888   `8.`888b           ,8'
+888o.          8         .888.            8888     `88.   . 8888     `88.             8 8888    `^888.   8 8888          `8.`888b         ,8'
+Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b            8 8888        `88. 8 8888           `8.`888b       ,8'
+.`Y888888o.    8       . `88888.       88 8888           88 8888        `8b           8 8888         `88 8 8888            `8.`888b     ,8'
+8o. `Y888888o. 8      .8. `88888.      88 8888           88 8888         88           8 8888          88 8 888888888888     `8.`888b   ,8'
+8`Y8o. `Y88888o8     .8`8. `88888.     88 8888           88 8888         88           8 8888          88 8 8888              `8.`888b ,8'
+8   `Y8o. `Y8888    .8' `8. `88888.    88 8888           88 8888        ,8P           8 8888         ,88 8 8888               `8.`888b8'
+8      `Y8o. `Y8   .8'   `8. `88888.   `8 8888       .8' `8 8888       ,8P            8 8888        ,88' 8 8888                `8.`888'
+8         `Y8o.`  .888888888. `88888.     8888     ,88'   ` 8888     ,88'             8 8888    ,o88P'   8 8888                 `8.`8'
+8            `Yo .8'       `8. `88888.     `8888888P'        `8888888P'               8 888888888P'      8 888888888888          `8.`
+
+                                                                Powered by 🅽🅰🅲🅾 🅳🅴🆅 ✨
+--> */
+
 
 $(document).ready(function () {
 
@@ -39,269 +54,134 @@ $(document).ready(function () {
     $("#modalC-container").addClass("out-sketch");
     $("body").removeClass("modalC-active");
   });
-   
-    $(".C").click(function(){
 
-      var guts = $('#guts').css('display');
-      var guts2 = $('#guts2').css('display');
-      var guts3 = $('#guts3').css('display');
-      var guts4 = $('#guts4').css('display');
+  $('#service-creation').toggle(function() {
+        $('.appear-conception').css({opacity: 1});
+        $('.effect-conception').css({color: 'white'});
+        $('.effect-conception').css({background: 'linear-gradient(to right, orange, yellow)'});
+        $('#service-creation').css({background: 'linear-gradient(to right, orange, yellow)'});
+        $('#service-creation').css({color: 'white'});
+      }, function(){
+        $('.appear-conception').css({opacity: 0});
+        $('.effect-conception').css({color: 'black'});
+        $('.effect-conception').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+         $('#service-creation').css({color: 'black'});
+        $('#service-creation').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+      });
 
-      $('.left-barD').css({transform: 'rotate(45deg)'});
-      $('.right-barD').css({transform: 'rotate(-45deg)'});
-      $('.left-barR').css({transform: 'rotate(45deg)'});
-      $('.right-barR').css({transform: 'rotate(-45deg)'});
-      $('.left-barP').css({transform: 'rotate(45deg)'});
-      $('.right-barP').css({transform: 'rotate(-45deg)'});
+  $('#service-entrepreneur').toggle(function() {
+      $('.appear-developpement').css({opacity: 1});
+      $('.effect-developpement').css({color: 'white'});
+      $('.effect-developpement').css({background: 'linear-gradient(to right, red, orange)'});
+      $('#service-entrepreneur').css({background: 'linear-gradient(to right, red, orange)'});
+      $('#service-entrepreneur').css({color: 'white'});
+    }, function(){
+      $('.appear-developpement').css({opacity: 0});
+      $('.effect-developpement').css({color: 'black'});
+      $('.effect-developpement').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+      $('#service-entrepreneur').css({color: 'black'});
+      $('#service-entrepreneur').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+    });
 
-      $("#guts").slideToggle("slow");
+    $('#service-refonte').toggle(function() {
+      $('.appear-refonte').css({opacity: 1});
+      $('.effect-refonte').css({color: 'white'});
+      $('.effect-refonte').css({background: 'linear-gradient(to right, #00C853, #B2FF59)'});
+      $('#service-refonte').css({background: 'linear-gradient(to right, #00C853, #B2FF59)'});
+      $('#service-refonte').css({color: 'white'});
+    }, function(){
+      $('.appear-refonte').css({opacity: 0});
+      $('.effect-refonte').css({color: 'black'});
+      $('.effect-refonte').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+      $('#service-refonte').css({color: 'black'});
+      $('#service-refonte').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+    });
+
+    $('#service-freelance').toggle(function() {
+      $('.appear-freelance').css({opacity: 1});
+      $('.effect-freelance').css({color: 'white'});
+      $('.effect-freelance').css({background: 'linear-gradient(to right, purple, pink)'});
+      $('#service-freelance').css({background: 'linear-gradient(to right, purple, pink)'});
+      $('#service-freelance').css({color: 'white'});
+    }, function(){
+      $('.appear-freelance').css({opacity: 0});
+      $('.effect-freelance').css({color: 'black'});
+      $('.effect-freelance').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+      $('#service-freelance').css({color: 'black'});
+      $('#service-freelance').css({background: 'linear-gradient(135deg, #fff, #d2d2d2)'});
+    });
+
+    $('.enter-accordion').click(function() {
+      $(this).next().slideToggle('500').css('');
+    });
+    $('.enter-accordion2').click(function() {
+      $(this).next().slideToggle('500').css('');
+    });
+    $('.C').toggle(function() {
       $('.left-barC').css({transform: 'rotate(-45deg)'});
       $('.right-barC').css({transform: 'rotate(45deg)'});
-      if (guts == 'block') {
-        $('.left-barC').css({transform: 'rotate(45deg)'});
-        $('.right-barC').css({transform: 'rotate(-45deg)'});
-      }
-      if (guts2 == 'block') {
-          $("#guts2").slideToggle("slow");
-      }
-      if (guts3 == 'block') {
-          $("#guts3").slideToggle("slow");
-      }
-      if (guts4 == 'block') {
-          $("#guts4").slideToggle("slow");
-    }
-  });  
-
-    $(".D").click(function(){
-
-      var guts = $('#guts').css('display');
-      var guts2 = $('#guts2').css('display');
-      var guts3 = $('#guts3').css('display');
-      var guts4 = $('#guts4').css('display');
-
+    }, function(){
       $('.left-barC').css({transform: 'rotate(45deg)'});
       $('.right-barC').css({transform: 'rotate(-45deg)'});
-      $('.left-barR').css({transform: 'rotate(45deg)'});
-      $('.right-barR').css({transform: 'rotate(-45deg)'});
-      $('.left-barP').css({transform: 'rotate(45deg)'});
-      $('.right-barP').css({transform: 'rotate(-45deg)'});
+    });
 
-      $("#guts2").slideToggle("slow");
+    $('.D').toggle(function() {
       $('.left-barD').css({transform: 'rotate(-45deg)'});
       $('.right-barD').css({transform: 'rotate(45deg)'});
-      if (guts == 'block') {
-        $("#guts").slideToggle("slow");
-      }
-      if (guts2 == 'block') {
-        $('.left-barD').css({transform: 'rotate(45deg)'});
-        $('.right-barD').css({transform: 'rotate(-45deg)'});
-      }
-      if (guts3 == 'block') {
-          $("#guts3").slideToggle("slow");
-      }
-      if (guts4 == 'block') {
-        $("#guts4").slideToggle("slow");
-    }
-  });  
-    $(".R").click(function(){
-
-      var guts = $('#guts').css('display');
-      var guts2 = $('#guts2').css('display');
-      var guts3 = $('#guts3').css('display');
-      var guts4 = $('#guts4').css('display');
-
-      $('.left-barC').css({transform: 'rotate(45deg)'});
-      $('.right-barC').css({transform: 'rotate(-45deg)'});
+    }, function(){
       $('.left-barD').css({transform: 'rotate(45deg)'});
       $('.right-barD').css({transform: 'rotate(-45deg)'});
-      $('.left-barP').css({transform: 'rotate(45deg)'});
-      $('.right-barP').css({transform: 'rotate(-45deg)'});
+    });
 
-      $("#guts3").slideToggle("slow");
+    $('.R').toggle(function() {
       $('.left-barR').css({transform: 'rotate(-45deg)'});
       $('.right-barR').css({transform: 'rotate(45deg)'});
-      if (guts == 'block') {
-        $("#guts").slideToggle("slow");
-      }
-      if (guts2 == 'block') {
-        $("#guts2").slideToggle("slow");
-      }
-      if (guts3 == 'block') {
-        $('.left-barR').css({transform: 'rotate(45deg)'});
-        $('.right-barR').css({transform: 'rotate(-45deg)'});
-      }
-      if (guts4 == 'block') {
-        $("#guts4").slideToggle("slow");
-    }
-  });  
+    }, function(){
+      $('.left-barR').css({transform: 'rotate(45deg)'});
+      $('.right-barR').css({transform: 'rotate(-45deg)'});
+    });
 
-  $(".P").click(function(){
-
-    var guts = $('#guts').css('display');
-    var guts2 = $('#guts2').css('display');
-    var guts3 = $('#guts3').css('display');
-    var guts4 = $('#guts4').css('display');
-
-    $('.left-barC').css({transform: 'rotate(45deg)'});
-    $('.right-barC').css({transform: 'rotate(-45deg)'});
-    $('.left-barR').css({transform: 'rotate(45deg)'});
-    $('.right-barR').css({transform: 'rotate(-45deg)'});
-    $('.left-barD').css({transform: 'rotate(45deg)'});
-    $('.right-barD').css({transform: 'rotate(-45deg)'});
-
-    $("#guts4").slideToggle("slow");
-    $('.left-barP').css({transform: 'rotate(-45deg)'});
-    $('.right-barP').css({transform: 'rotate(45deg)'});
-    if (guts == 'block') {
-      $("#guts").slideToggle("slow");
-    }
-    if (guts2 == 'block') {
-        $("#guts2").slideToggle("slow");
-    }
-    if (guts3 == 'block') {
-        $("#guts3").slideToggle("slow");
-    }
-    if (guts4 == 'block') {
+    $('.P').toggle(function() {
+      $('.left-barP').css({transform: 'rotate(-45deg)'});
+      $('.right-barP').css({transform: 'rotate(45deg)'});
+    }, function(){
       $('.left-barP').css({transform: 'rotate(45deg)'});
       $('.right-barP').css({transform: 'rotate(-45deg)'});
-  }
-});  
+    });
 
+    $('.C2').toggle(function() {
+      $('.left-barC2').css({transform: 'rotate(45deg)'});
+      $('.right-barC2').css({transform: 'rotate(-45deg)'});
+    }, function(){
+      $('.left-barC2').css({transform: 'rotate(-45deg)'});
+      $('.right-barC2').css({transform: 'rotate(45deg)'});
+    });
 
-$(".C2").click(function(){
-  var guts5 = $('#guts5').css('display');
-  var guts6 = $('#guts6').css('display');
-  var guts7 = $('#guts7').css('display');
-  var guts8 = $('#guts8').css('display');
+    $('.D2').toggle(function() {
+      $('.left-barD2').css({transform: 'rotate(45deg)'});
+      $('.right-barD2').css({transform: 'rotate(-45deg)'});
+    }, function(){
+      $('.left-barD2').css({transform: 'rotate(-45deg)'});
+      $('.right-barD2').css({transform: 'rotate(45deg)'});
+    });
 
-  $('.left-barD2').css({transform: 'rotate(-45deg)'});
-  $('.right-barD2').css({transform: 'rotate(45deg)'});
-  $('.left-barR2').css({transform: 'rotate(-45deg)'});
-  $('.right-barR2').css({transform: 'rotate(45deg)'});
-  $('.left-barP2').css({transform: 'rotate(-45deg)'});
-  $('.right-barP2').css({transform: 'rotate(45deg)'});
+    $('.R2').toggle(function() {
+      $('.left-barR2').css({transform: 'rotate(45deg)'});
+      $('.right-barR2').css({transform: 'rotate(-45deg)'});
+    }, function(){
+      $('.left-barR2').css({transform: 'rotate(-45deg)'});
+      $('.right-barR2').css({transform: 'rotate(45deg)'});
+    });
 
-  $("#guts5").slideToggle("slow");
-  $('.left-barC2').css({transform: 'rotate(45deg)'});
-  $('.right-barC2').css({transform: 'rotate(-45deg)'});
-  if (guts5 == 'block') {
-    $('.left-barC2').css({transform: 'rotate(-45deg)'});
-    $('.right-barC2').css({transform: 'rotate(45deg)'});
-  }
-  if (guts6 == 'block') {
-      $("#guts6").slideToggle("slow");
-  }
-  if (guts7 == 'block') {
-      $("#guts7").slideToggle("slow");
-  }
-  if (guts8 == 'block') {
-      $("#guts8").slideToggle("slow");
-}
-});  
+    $('.P2').toggle(function() {
+      $('.left-barP2').css({transform: 'rotate(45deg)'});
+      $('.right-barP2').css({transform: 'rotate(-45deg)'});
+    }, function(){
+      $('.left-barP2').css({transform: 'rotate(-45deg)'});
+      $('.right-barP2').css({transform: 'rotate(45deg)'});
+    });
 
-$(".D2").click(function(){
-  // console.log('Cb');
-  // $('.close').stopPropagation();
-  
-  var guts5 = $('#guts5').css('display');
-  var guts6 = $('#guts6').css('display');
-  var guts7 = $('#guts7').css('display');
-  var guts8 = $('#guts8').css('display');
-
-  $('.left-barC2').css({transform: 'rotate(-45deg)'});
-  $('.right-barC2').css({transform: 'rotate(45deg)'});
-  $('.left-barR2').css({transform: 'rotate(-45deg)'});
-  $('.right-barR2').css({transform: 'rotate(45deg)'});
-  $('.left-barP2').css({transform: 'rotate(-45deg)'});
-  $('.right-barP2').css({transform: 'rotate(45deg)'});
-
-  $("#guts6").slideToggle("slow");
-  $('.left-barD2').css({transform: 'rotate(45deg)'});
-  $('.right-barD2').css({transform: 'rotate(-45deg)'});
-
-  $("#sketch-container").removeClass("six");
-  $("#sketch-container-n").removeClass("five");
-  $("#sketch-container-p").removeClass("four");
-
-  if (guts5 == 'block') {
-    $("#guts5").slideToggle("slow");
-  }
-  if (guts6 == 'block') {
-    // console.log('ici');
-    $('.left-barD2').css({transform: 'rotate(-45deg)'});
-    $('.right-barD2').css({transform: 'rotate(45deg)'});
-  }
-  if (guts7 == 'block') {
-      $("#guts7").slideToggle("slow");
-  }
-  if (guts8 == 'block') {
-    $("#guts8").slideToggle("slow");
-}
-}); 
-
-$(".R2").click(function(){
-  
-  var guts5 = $('#guts5').css('display');
-  var guts6 = $('#guts6').css('display');
-  var guts7 = $('#guts7').css('display');
-  var guts8 = $('#guts8').css('display');
-
-  $('.left-barC2').css({transform: 'rotate(-45deg)'});
-  $('.right-barC2').css({transform: 'rotate(45deg)'});
-  $('.left-barD2').css({transform: 'rotate(-45deg)'});
-  $('.right-barD2').css({transform: 'rotate(45deg)'});
-  $('.left-barP2').css({transform: 'rotate(-45deg)'});
-  $('.right-barP2').css({transform: 'rotate(45deg)'});
-
-  $("#guts7").slideToggle("slow");
-  $('.left-barR2').css({transform: 'rotate(45deg)'});
-  $('.right-barR2').css({transform: 'rotate(-45deg)'});
-  if (guts5 == 'block') {
-    $("#guts5").slideToggle("slow");
-  }
-  if (guts6 == 'block') {
-    $("#guts6").slideToggle("slow");
-  }
-  if (guts7 == 'block') {
-    $('.left-barR2').css({transform: 'rotate(-45deg)'});
-    $('.right-barR2').css({transform: 'rotate(45deg)'});
-  }
-  if (guts8 == 'block') {
-    $("#guts8").slideToggle("slow");
-}
-});  
-
-$(".P2").click(function(){
-
-  var guts5 = $('#guts5').css('display');
-  var guts6 = $('#guts6').css('display');
-  var guts7 = $('#guts7').css('display');
-  var guts8 = $('#guts8').css('display');
-
-  $('.left-barC2').css({transform: 'rotate(-45deg)'});
-  $('.right-barC2').css({transform: 'rotate(45deg)'});
-  $('.left-barR2').css({transform: 'rotate(-45deg)'});
-  $('.right-barR2').css({transform: 'rotate(45deg)'});
-  $('.left-barD2').css({transform: 'rotate(-45deg)'});
-  $('.right-barD2').css({transform: 'rotate(45deg)'});
-
-  $("#guts8").slideToggle("slow");
-  $('.left-barP2').css({transform: 'rotate(45deg)'});
-  $('.right-barP2').css({transform: 'rotate(-45deg)'});
-  if (guts5 == 'block') {
-    $("#guts5").slideToggle("slow");
-  }
-  if (guts6 == 'block') {
-      $("#guts6").slideToggle("slow");
-  }
-  if (guts7 == 'block') {
-      $("#guts7").slideToggle("slow");
-  }
-  if (guts8 == 'block') {
-    $('.left-barP2').css({transform: 'rotate(-45deg)'});
-    $('.right-barP2').css({transform: 'rotate(45deg)'});
-  }
-});  
+    
 
   $('.btn-sketch').click(function(){
     var btnSketch = $(this).attr('id');
@@ -346,19 +226,150 @@ function changeText(text) {
 }
 
 
-function cb(response) {
-  document.getElementById('visits').innerText = response.value;
+let activeSlide = false;
+
+document.querySelector('.scroller').addEventListener('mousedown',function(){
+  activeSlide = true;
+  document.querySelector('.scroller').classList.add('scrolling');
+});
+document.body.addEventListener('mouseup',function(){
+  activeSlide = false;
+  document.querySelector('.scroller').classList.remove('scrolling');
+});
+document.body.addEventListener('mouseleave',function(){
+  activeSlide = false;
+  document.querySelector('.scroller').classList.remove('scrolling');
+});
+document.body.addEventListener('mousemove',function(e){
+  if (!activeSlide) return;
+  let x = e.pageX;
+  x -= document.querySelector('.wrapper-slider').getBoundingClientRect().left;
+  scrollIt(x);
+});
+function scrollIt(x){
+    let transform = Math.max(0,(Math.min(x,document.querySelector('.wrapper-slider').offsetWidth)));
+    document.querySelector('.after').style.width = transform+"px";
+    document.querySelector('.scroller').style.left = transform-25+"px";
 }
 
 
-function clicked() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://api.countapi.xyz/hit/nacodev.com/awesomeclick");
-  xhr.responseType = "json";
-  // xhr.onload = function() {
-  //   document.getElementById('visits2').innerText = this.response.value;
-  //     alert(`This button has been clicked ${this.response.value} times!`);
-  // }
-  xhr.send();
+// // And finally let's repeat the process for touch events
+// // first our middle scroller...
+// document.querySelector('.scroller').addEventListener('touchstart',function(){
+//   activeSlide = true;
+//   document.querySelector('.scroller').classList.add('scrolling');
+// });
+// document.body.addEventListener('touchend',function(){
+//   activeSlide = false;
+//   document.querySelector('.scroller').classList.remove('scrolling');
+// });
+// document.body.addEventListener('touchcancel',function(){
+//   activeSlide = false;
+//   document.querySelector('.scroller').classList.remove('scrolling');
+// });
+
+
+
+document.querySelector('.scroller').addEventListener('touchstart',function(){
+  activeSlide = true;
+  document.querySelector('.scroller').classList.add('scrolling');
+});
+document.body.addEventListener('touchend',function(){
+  activeSlide = false;
+  document.querySelector('.scroller').classList.remove('scrolling');
+});
+// document.body.addEventListener('touchcancel',function(){
+//   activeSlide = false;
+//   document.querySelector('.scroller').classList.remove('scrolling');
+// });
+document.body.addEventListener('touchmove',function(e){
+  if (!activeSlide) return;
+  let x = e.pageX;
+  x -= document.querySelector('.wrapper-slider').getBoundingClientRect().left;
+  scrollIt(x);
+});
+function scrollIt(x){
+    let transform = Math.max(0,(Math.min(x,document.querySelector('.wrapper-slider').offsetWidth)));
+    document.querySelector('.after').style.width = transform+"px";
+    document.querySelector('.scroller').style.left = transform-25+"px";
 }
 
+scrollIt();
+
+
+
+// // Let's use the 'active' variable to let us know when we're using it
+// let activeResponsive = false;
+
+// // First we'll have to set up our event listeners
+// // We want to watch for clicks on our scroller
+// document.querySelector('.iphone-scroller').addEventListener('mousedown',function(){
+//   activeResponsive = true;
+//   // Add our scrolling class so the scroller has full opacity while activeResponsive
+//   document.querySelector('.iphone-scroller').classList.add('iphone-scrolling');
+// });
+// // We also want to watch the body for changes to the state,
+// // like moving around and releasing the click
+// // so let's set up our event listeners
+// document.body.addEventListener('mouseup',function(){
+//   activeResponsive = false;
+//   document.querySelector('.iphone-scroller').classList.remove('iphone-scrolling');
+// });
+// document.body.addEventListener('mouseleave',function(){
+//   activeResponsive = false;
+//   document.querySelector('.iphone-scroller').classList.remove('iphone-scrolling');
+// });
+
+// // Let's figure out where their mouse is at
+// document.body.addEventListener('mousemove',function(e){
+//   if (!activeResponsive) return;
+//   // Their mouse is here...
+//   let y = e.pageX;
+//   // but we want it relative to our wrapper
+//   y -= document.querySelector('.iphone-wrapper-slider').getBoundingClientRect().left;
+//   // Okay let's change our state
+//   scrollIt(y);
+// });
+
+// // Let's use this function
+// function scrollIt(y){
+//     let transform = Math.max(0,(Math.min(y,document.querySelector('.iphone-wrapper-slider').offsetWidth)));
+//     document.querySelector('.iphone-after').style.width = transform+"px";
+//     document.querySelector('.iphone-scroller').style.left = transform-25+"px";
+// }
+
+// // Let's set our opening state based off the width, 
+// // we want to show a bit of both images so the user can see what's going on
+// // scrollIt();
+
+// // And finally let's repeat the process for touch events
+// // first our middle scroller...
+// document.querySelector('.iphone-scroller').addEventListener('touchstart',function(){
+//   activeResponsive = true;
+//   document.querySelector('.iphone-scroller').classList.add('iphone-scrolling');
+// });
+// document.body.addEventListener('touchend',function(){
+//   activeResponsive = false;
+//   document.querySelector('.iphone-scroller').classList.remove('iphone-scrolling');
+// });
+// document.body.addEventListener('touchcancel',function(){
+//   activeResponsive = false;
+//   document.querySelector('.iphone-scroller').classList.remove('iphone-scrolling');
+// });
+
+
+// function cb(response) {
+//   document.getElementById('visits').innerText = response.value;
+// }
+
+
+// function clicked() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("GET", "https://api.countapi.xyz/hit/nacodev.com/awesomeclick");
+//   xhr.responseType = "json";
+//   xhr.onload = function() {
+//     document.getElementById('visits2').innerText = this.response.value;
+//       // alert(`This button has been clicked ${this.response.value} times!`);
+//   }
+//   xhr.send();
+// }
