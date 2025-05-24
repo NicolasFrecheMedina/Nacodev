@@ -15,13 +15,23 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
 
 
 $(document).ready(function () {
+
+  $("#slider-before-after").on("input change", (e)=>{
+    const sliderPos = e.target.value;
+    // Update the width of the foreground image
+    $('.foreground-img').css('width', `${sliderPos}%`)
+    // Update the position of the slider button
+    $('.slider-button-before-after').css('left', `calc(${sliderPos}% - 18px)`)
+  });
+
   $(".button").click(function () {
     let buttonId = $(this).attr("id");
     $("#modal-container").removeAttr("class").addClass(buttonId);
     $("body").addClass("modal-active");
   });
   $('.close').click(function () {
-    $("#modal-container").addClass("out");
+    console.log('Close'); 
+    $("#modal-container").addClass("out-sketch");
     $("body").removeClass("modal-active");
   });
   $(".buttonM").click(function () {
@@ -30,7 +40,8 @@ $(document).ready(function () {
     $("body").addClass("modalM-active");
   });
   $('.closeM').click(function () {
-    $("#modalM-container").addClass("out");
+    console.log('CloseM');
+    $("#modalM-container").addClass("out-sketch");
     $("body").removeClass("modalM-active");
   });
   $(".buttonC").click(function () {
@@ -39,7 +50,8 @@ $(document).ready(function () {
     $("body").addClass("modalC-active");
   });
   $('.closeC').click(function () {
-    $("#modalC-container").addClass("out");
+    console.log('CloseC');
+    $("#modalC-container").addClass("out-sketch");
     $("body").removeClass("modalC-active");
   });
 
@@ -177,7 +189,7 @@ $(document).ready(function () {
     $('body').addClass('sketch-active');
   })
   $('.close').click(function(){
-    $('#sketch-container').addClass('out');
+    $('#sketch-container').addClass('out-sketch');
     $('body').removeClass('sketch-active');
   });
 
@@ -187,7 +199,7 @@ $(document).ready(function () {
     $('body').addClass('sketch-n-active');
   })
   $('.close').click(function(){
-    $('#sketch-container-n').addClass('out');
+    $('#sketch-container-n').addClass('out-sketch');
     $('body').removeClass('sketch-n-active');
   });
 
@@ -197,9 +209,14 @@ $(document).ready(function () {
     $('body').addClass('sketch-p-active');
   })
   $('.close').click(function(){
-    $('#sketch-container-p').addClass('out');
+    $('#sketch-container-p').addClass('out-sketch');
     $('body').removeClass('sketch-p-active');
   });
+
+  $('.sliders').on('change', function() {
+    $('.body-slider').toggleClass('blue');
+  });
+
 });
 
 function changeText(text) {

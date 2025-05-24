@@ -19,6 +19,71 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin: 120pt 0pt;
     font-size: 35pt;
   } 
+  .parallaxe {
+    margin-bottom: auto;
+  }
+  .accordion-container{
+    font-size: 8pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
+    flex-direction: column;
+  }
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    width: 198px;
+    height: 130px;
+    margin-top:28pt;
+  }
+  .container-before-after .img-before-after {
+    background-size: 198px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 130px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 130px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
+    flex-direction: column;
+    align-items: center;
+  }
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
   .service-container {
     flex-direction: column;
   }
@@ -46,8 +111,13 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
 
   h4 {
     margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
     font-size: smaller;
   }
+
 
   #sketch-container .sketch-background .sketch {
     padding: 20px;
@@ -108,9 +178,9 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     flex-direction: column;
   }
 
-  #sketch-container-p .sketch-background-p .sketch-p {
+  /* #sketch-container-p .sketch-background-p .sketch-p {
     width: 70%;
-  }
+  } */
 
   .sketch-p .close {
     right: 10pt;
@@ -121,32 +191,47 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   }
-  .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
   .service-card {
-    width: 200pt;
-    height: 200pt;
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
   }
   #picSGL {
-    width: 180pt;
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
   }
   #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 180pt;
+    clip-path: circle(120pt at 60% -25%);
   }
   #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
   #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
-  #picND {
-    width: 180pt;
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
   }
   .za {
     width: 80%;
@@ -179,11 +264,12 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     height: 40px;
     width: 150pt;
   }
-  label {
+  .lab-name > label {
     width: 90pt;
     letter-spacing: 0.1rem;
     font-size: x-small;
     margin: 5pt 2pt;
+    padding:3pt 0 ;
   }
   textarea {
     width: 150pt;
@@ -191,7 +277,7 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     height: 60pt;
   }
   #RadioBtn {
-    width: 173pt;
+    width: 172pt;
     font-size: x-small;
   }
   #submit {
@@ -200,8 +286,9 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   }
   #text-about {
     text-indent: 10%;
-    width: 190pt;
+    max-width: 100%;
     padding:inherit;
+    font-size: 8pt;
   }
   #pic-about {
     margin-bottom: 5pt;
@@ -210,433 +297,96 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   }
   .ap {
     margin: 10pt 0pt;
+    font-size: 8pt;
   }
-  .parallaxe3 {
-    margin-bottom: 10pt;
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
   }
 
 }
 @media screen and (min-width: 350px) and (max-width: 360px) {
+  
   #title-responsive {
+    /* margin: 120pt 0pt;
+    font-size: 35pt; */
     margin: 140pt 0pt;
     font-size: 40pt;
   } 
-  .parallaxe3 {
-    margin-bottom: 10pt;
-  }
-
-  .service-container {
-    flex-direction: column;
-  }
-  #service-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  #content-about {
-    flex-direction: column;
-  }
-  .quote {
-    font-size: small;
-  }
-  #BtnContact{
-    font-size: small;
-  }
-  #barcode {
-    margin-top: 20pt;
-    font-size: 18pt;
-  } 
-  h2 {
-    font-size: 25pt;
-  }
-
-  h4 {
-    margin: 5pt 0pt;
-    font-size: smaller;
-  }
-
-  #sketch-container .sketch-background .sketch {
-    padding: 20px;
-    width: 85%;
-    height: 90%;
-  }
-
-  .sketch .close {
-    right: 5pt;
-    top: 5pt;
-  }
-
-  #sketch-container-n .sketch-background-n .sketch-n {
-    width: 70%;
-    height: 80%;
-    padding: 35px;
-  }
-
-  .liens-logo {
-    flex-direction: column;
-    margin-top: 0pt
-  }
-  
-  .liens-logo-n {
-    flex-direction: column;
-  }
-
-  #sketch-sgh-logo {
-    margin-top: 15pt;
-  }
-
-  .info-projets > div {
-    margin: 5pt 0;
-    font-size: 8pt;
-  }
-
-  .lien-projet {
-    font-size: small;
-    margin-bottom: 5pt;
-  }
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
-  }
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
-  }
-
-  .lien-projet-n {
-    margin: 18pt;
-  }
-
-  .sketch-n .close {
-    right: 10pt;
-    top: 10pt;
-  }
-  
-  .liens-logo-p {
-    flex-direction: column;
-  }
-
-  #sketch-container-p .sketch-background-p .sketch-p {
-    width: 70%;
-  }
-
-  .sketch-p .close {
-    right: 10pt;
-    top: 10pt;
-  }
-
-
-  .cardContainer {
-    margin-bottom: 30pt;
-    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
-  }
-  .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
-  .service-card {
-    width: 230pt;
-    height: 230pt;
-  }
-  #picSGL {
-    width: 200pt;
-  }
-  #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  .za {
-    width: 80%;
-    font-size: small;
-  }
-  .az {
-    width: 80%;
-    font-size: small;
-  }
-  .modal-content {
-    margin: 0pt 10pt 90pt 10pt;
-    width: auto;
-    padding: 15px;
-  }
-
-  .modalC-content {
-    width: 80%
-  }
-
-  .modalM-content {
-    width: 80%
-  }
-
-  .close {
-    font-size: 20pt; 
-    margin-right: 10pt;
-  }
-  input {
-    font-size: x-small;
-    height: 40px;
-    width: 200pt;
-  }
-  label {
-    width: 90pt;
-    letter-spacing: 0.1rem;
-    font-size: x-small;
-    margin: 5pt 2pt;
-}
-  textarea {
-    width: 200pt;
-    font-size: x-small;
-    height: 60pt;
-  }
-  #RadioBtn {
-    width: 223pt;
-    font-size: x-small;
-  }
-  #submit {
-    width: 40%;
-    font-size: x-small;
-  }
-  #text-about {
-    text-indent: 10%;
-    width: 190pt;
-    padding:inherit;
-  }
-  #pic-about {
-    margin-bottom: 5pt;
-    height: 300pt;
-    margin: 0;
-  }
-}
-@media screen and (min-width: 361px) and (max-width: 413px) {
-  #title-responsive {
-    margin: 145pt 0pt;
-    font-size: 45pt;
-  } 
-  .parallaxe3 {
-    margin-bottom: 30pt;
-  }
-  .service-container {
-    flex-direction: column;
-  }
-  #service-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  #content-about {
-    flex-direction: column;
-  }
-  .quote {
-    font-size: small;
-  }
-  #BtnContact{
-    font-size: small;
-  }
-  #barcode {
-    margin-top: 20pt;
-    font-size: 18pt;
-  } 
-  h2 {
-    font-size: 25pt;
-  }
-
-  h4 {
-    margin: 5pt 0pt;
-    font-size: smaller;
-  }
-
-  #sketch-container .sketch-background .sketch {
-    padding: 20px;
-    width: 85%;
-    height: 90%;
-  }
-
-  .sketch .close {
-    right: 5pt;
-    top: 5pt;
-  }
-  
-  #sketch-container-n .sketch-background-n .sketch-n {
-    width: 70%;
-    height: 80%;
-    padding: 35px;
-  }
-
-  .liens-logo {
-    flex-direction: column;
-    margin-top: 0pt
-  }
-  
-  .liens-logo-n {
-    flex-direction: column;
-  }
-
-  .lien-projet-n {
-    margin: 18pt;
-  }
-
-  .lien-projet-n {
-    margin: 18pt;
-  }
-
-  #sketch-sgh-logo {
-    margin-top: 15pt;
-  }
-
-  .info-projets > div {
-    margin: 5pt 0;
-    font-size: 8pt;
-  }
-
-  .lien-projet {
-    font-size: small;
-    margin-bottom: 5pt;
-  }
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
-  }
-
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
-  }
-
-  .sketch-n .close {
-    right: 10pt;
-    top: 10pt;
-  }
-  
-  .liens-logo-p {
-    flex-direction: column;
-  }
-
-  #sketch-container-p .sketch-background-p .sketch-p {
-    width: 70%;
-  }
-
-  .sketch-p .close {
-    right: 10pt;
-    top: 10pt;
-  }
-
-  .cardContainer {
-    margin-bottom: 30pt;
-    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
-  }
-  .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
-  .service-card {
-    width: 230pt;
-    height: 230pt;
-  }
-  #picSGL {
-    width: 200pt;
-  }
-  #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
-  }
-  .za {
-    width: 80%;
-    font-size: small;
-  }
-  .az {
-    width: 80%;
-    font-size: small;
-  }
-  .modal-content {
-    margin: 0pt 20pt 90pt 20pt;
-    width: auto;
-    padding: 15px;
-  }
-
-  .modalC-content {
-    width: 80%
-  }
-
-  .modalM-content {
-    width: 80%
-  }
-
-  .close {
-    font-size: 20pt; 
-    margin-right: 10pt;
-  }
-  input {
-    font-size: x-small;
-    height: 40px;
-    width: 200pt;
-  }
-  label {
-    width: 90pt;
-    letter-spacing: 0.1rem;
-    font-size: x-small;
-    margin: 5pt 2pt;
-}
-  textarea {
-    width: 200pt;
-    font-size: x-small;
-    height: 60pt;
-  }
-  #RadioBtn {
-    width: 223pt;
-    font-size: x-small;
-  }
-  #submit {
-    width: 40%;
-    font-size: x-small;
-  }
-  #text-about {
-    text-indent: 10%;
-    width: 190pt;
-    padding:inherit;
-  }
-  #pic-about {
-    margin-bottom: 5pt;
-    height: 300pt;
-    margin: 0;
-  }
-}
-@media screen and (min-height: 800px) and (max-width: 414px) {
   .parallaxe {
-    top: 786pt;
-  } 
-  #title-responsive {
-    margin: 190pt 0pt;
-    font-size: 50pt;
-  } 
+    margin-bottom: auto;
+  }
+  .accordion-container{
+    font-size: 10pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
+    flex-direction: column;
+  }
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    /* width: 198px;
+    height: 130px;
+    margin-top:28pt; */
+    width: 226px;
+    height: 145px;
+    margin-top: 21pt;
+  }
+  .container-before-after .img-before-after {
+    background-size: 226px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 145px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 145px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
+    flex-direction: column;
+    align-items: center;
+  }
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
   .service-container {
     flex-direction: column;
   }
@@ -656,7 +406,7 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
  
   #barcode {
     margin-top: 20pt;
-    font-size: 18pt;
+    font-size: 15pt;
   } 
   h2 {
     font-size: 25pt;
@@ -664,7 +414,323 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
 
   h4 {
     margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
     font-size: smaller;
+  }
+
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 90%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 80%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  /* #sketch-container-p .sketch-background-p .sketch-p {
+    width: 70%;
+  } */
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .service-card {
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
+  }
+  #picSGL {
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #NacoDev:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 0pt 10pt 40pt 10pt;
+    width: auto;
+    padding: 15px;
+  }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 150pt;
+  }
+  .lab-name > label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+    padding:3pt 0 ;
+  }
+  textarea {
+    width: 150pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 172pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    max-width: 100%;
+    padding:inherit;
+    font-size: 8pt;
+  }
+  #pic-about {
+    margin-bottom: 5pt;
+    height: 300pt;
+    margin: 0;
+  }
+  .ap {
+    margin: 10pt 0pt;
+    font-size: 8pt;
+  }
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
+  }
+
+}
+@media screen and (min-width: 361px) and (max-width: 376px) {
+  #title-responsive {
+    /* margin: 120pt 0pt;
+    font-size: 35pt; */
+    margin: 160pt 0pt;
+    font-size: 40pt;
+  } 
+  .parallaxe {
+    margin-bottom: auto;
+  }
+  .accordion-container{
+    font-size: 10pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
+    flex-direction: column;
+  }
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    /* width: 198px;
+    height: 130px;
+    margin-top:28pt; */
+    /* width: 226px;
+    height: 145px;
+    margin-top: 21pt; */
+    /* width: 260px;
+    height: 168px;
+    margin-top: 10pt; */
+    width: 235px;
+    height: 154px;
+    margin-top: 17pt;
+  }
+  .container-before-after .img-before-after {
+    background-size: 235px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 154px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 154px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
+    flex-direction: column;
+    align-items: center;
+  }
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
+  .service-container {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
+    font-size: smaller;
+  }
+
+  .visits{
+    font-size: 16pt;
   }
 
   #sketch-container .sketch-background .sketch {
@@ -688,15 +754,11 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     flex-direction: column;
     margin-top: 0pt
   }
-  
+
   .liens-logo-n {
     flex-direction: column;
   }
 
-  .lien-projet-n {
-    margin: 18pt;
-  }
-  
   #sketch-sgh-logo {
     margin-top: 15pt;
   }
@@ -717,25 +779,22 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin-top: 10pt;
   }
 
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
+  .lien-projet-n {
+    margin: 18pt;
   }
 
   .sketch-n .close {
     right: 10pt;
     top: 10pt;
   }
-  
+
   .liens-logo-p {
     flex-direction: column;
   }
 
-  #sketch-container-p .sketch-background-p .sketch-p {
+  /* #sketch-container-p .sketch-background-p .sketch-p {
     width: 70%;
-  }
+  } */
 
   .sketch-p .close {
     right: 10pt;
@@ -746,32 +805,47 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   }
-  .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
   .service-card {
-    width: 200pt;
-    height: 200pt;
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
   }
   #picSGL {
-    width: 180pt;
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
   }
   #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 180pt;
+    clip-path: circle(120pt at 60% -25%);
   }
   #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
   #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
-  #picND {
-    width: 180pt;
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
   }
   .za {
     width: 80%;
@@ -782,7 +856,7 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     font-size: small;
   }
   .modal-content {
-    margin: 0pt 20pt 140pt 20pt;
+    margin: 0pt 10pt 40pt 10pt;
     width: auto;
     padding: 15px;
   }
@@ -802,21 +876,22 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   input {
     font-size: x-small;
     height: 40px;
-    width: 200pt;
+    width: 150pt;
   }
-  label {
+  .lab-name > label {
     width: 90pt;
     letter-spacing: 0.1rem;
     font-size: x-small;
     margin: 5pt 2pt;
-}
+    padding:3pt 0 ;
+  }
   textarea {
-    width: 200pt;
+    width: 150pt;
     font-size: x-small;
     height: 60pt;
   }
   #RadioBtn {
-    width: 223pt;
+    width: 173pt;
     font-size: x-small;
   }
   #submit {
@@ -825,34 +900,116 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   }
   #text-about {
     text-indent: 10%;
-    width: 190pt;
+    max-width: 100%;
     padding:inherit;
+    font-size: 8pt;
   }
   #pic-about {
     margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
-}
-.ap {
-  margin: 10pt 0pt;
-}
+  }
+  .ap {
+    margin: 10pt 0pt;
+    font-size: 8pt;
+  }
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
+  }
 
 
 }
-@media screen and (min-width: 414px) and (max-width: 767px) {
+
+@media screen and (min-width: 377px) and (max-width: 413px) {
+  
   #title-responsive {
-    margin: 150pt 0pt;
-    font-size: 50pt;
-    
+    /* margin: 120pt 0pt;
+    font-size: 35pt; */
+    margin: 160pt 0pt;
+    font-size: 40pt;
   } 
-  .service-container {
+  .parallaxe {
+    margin-bottom: auto;
+  }
+  .accordion-container{
+    font-size: 10pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
     flex-direction: column;
   }
-  #service-content {
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    /* width: 198px;
+    height: 130px;
+    margin-top:28pt; */
+    /* width: 226px;
+    height: 145px;
+    margin-top: 21pt; */
+    width: 260px;
+    height: 168px;
+    margin-top: 10pt;
+    /* width: 235px;
+    height: 154px;
+    margin-top: 17pt; */
+  }
+  .container-before-after .img-before-after {
+    background-size: 260px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 168px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 168px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
     flex-direction: column;
     align-items: center;
   }
-  #content-about {
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
+  .service-container {
     flex-direction: column;
   }
   .quote {
@@ -861,21 +1018,33 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   #BtnContact{
     font-size: small;
   }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
   #barcode {
     margin-top: 20pt;
-    font-size: 20pt;
+    font-size: 15pt;
   } 
   h2 {
     font-size: 25pt;
   }
 
-  /* #title-proxima {
-    margin: 0pt;
-  } */
-
   h4 {
     margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
     font-size: smaller;
+  }
+
+  .visits{
+    font-size: 16pt;
   }
 
   #sketch-container .sketch-background .sketch {
@@ -897,15 +1066,11 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
 
   .liens-logo {
     flex-direction: column;
-    margin-top: 0pt;
-  }
-  
-  .liens-logo-n {
-    flex-direction: column;
+    margin-top: 0pt
   }
 
-  .liens-projet-n {
-    margin: 18pt;
+  .liens-logo-n {
+    flex-direction: column;
   }
 
   #sketch-sgh-logo {
@@ -928,25 +1093,22 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin-top: 10pt;
   }
 
-
-  #sketch-naco-logo {
-    width: 135pt;
-    margin-left: 0pt;
-    margin-top: 10pt;
+  .lien-projet-n {
+    margin: 18pt;
   }
 
   .sketch-n .close {
     right: 10pt;
     top: 10pt;
   }
-  
+
   .liens-logo-p {
     flex-direction: column;
   }
 
-  #sketch-container-p .sketch-background-p .sketch-p {
+  /* #sketch-container-p .sketch-background-p .sketch-p {
     width: 70%;
-  }
+  } */
 
   .sketch-p .close {
     right: 10pt;
@@ -957,32 +1119,47 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     margin-bottom: 30pt;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   }
-  .circle {
-    width: 150pt;
-    height: 150pt;
-    font-size: small;
-  }
   .service-card {
-    width: 230pt;
-    height: 230pt;
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
   }
   #picSGL {
-    width: 200pt;
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
   }
   #SuperGreenLab:before {
-    clip-path: circle(230pt at 60% -25%);
-  }
-  #picND {
-    width: 200pt;
+    clip-path: circle(120pt at 60% -25%);
   }
   #NacoDev:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
   #Prochainement:before {
-    clip-path: circle(230pt at 60% -25%);
+    clip-path: circle(120pt at 60% -25%);
   }
-  #picND {
-    width: 200pt;
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
   }
   .za {
     width: 80%;
@@ -993,7 +1170,7 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
     font-size: small;
   }
   .modal-content {
-    margin: 0pt 20pt 140pt 20pt;
+    margin: 0pt 10pt 40pt 10pt;
     width: auto;
     padding: 15px;
   }
@@ -1013,21 +1190,22 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   input {
     font-size: x-small;
     height: 40px;
-    width: 200pt;
+    width: 150pt;
   }
-  label {
+  .lab-name > label {
     width: 90pt;
     letter-spacing: 0.1rem;
     font-size: x-small;
     margin: 5pt 2pt;
-}
+    padding:3pt 0 ;
+  }
   textarea {
-    width: 200pt;
+    width: 150pt;
     font-size: x-small;
     height: 60pt;
   }
   #RadioBtn {
-    width: 223pt;
+    width: 173pt;
     font-size: x-small;
   }
   #submit {
@@ -1036,18 +1214,670 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   }
   #text-about {
     text-indent: 10%;
-    width: 190pt;
+    max-width: 100%;
     padding:inherit;
+    font-size: 8pt;
   }
   #pic-about {
     margin-bottom: 5pt;
     height: 300pt;
     margin: 0;
   }
+  .ap {
+    margin: 10pt 0pt;
+    font-size: 8pt;
+  }
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
+  }
+
+}
+@media screen and (min-height: 820px) and (min-width: 410px) and (max-width: 800px) {
+  #title-responsive {
+    margin: 190pt 0pt;
+    font-size: 50pt;
+  } 
+  #barcode {
+    font-size: 20pt;
+}
+/* #RadioBtn {
+  width: 172pt;
+  font-size: x-small;
+} */
+  .parallaxe {
+    top: 640pt;
+  } 
+}
+@media screen and (min-height: 800px) and (max-width: 410px) {
+  .parallaxe {
+    top: 620pt;
+  } 
+  #title-responsive {
+    margin: 190pt 0pt;
+    font-size: 50pt;
+  } 
+  
+  /* .parallaxe {
+    margin-bottom: auto;
+  } */
+  .accordion-container{
+    font-size: 10pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
+    flex-direction: column;
+  }
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    /* width: 198px;
+    height: 130px;
+    margin-top:28pt; */
+    /* width: 226px;
+    height: 145px;
+    margin-top: 21pt; */
+    /* width: 260px;
+    height: 168px;
+    margin-top: 10pt; */
+    width: 235px;
+    height: 154px;
+    margin-top: 17pt;
+  }
+  .container-before-after .img-before-after {
+    background-size: 235px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 154px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 154px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
+    flex-direction: column;
+    align-items: center;
+  }
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
+  .service-container {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
+    font-size: smaller;
+  }
+
+  .visits{
+    font-size: 16pt;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 90%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 80%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  /* #sketch-container-p .sketch-background-p .sketch-p {
+    width: 70%;
+  } */
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .service-card {
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
+  }
+  #picSGL {
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #NacoDev:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 0pt 10pt 40pt 10pt;
+    width: auto;
+    padding: 15px;
+  }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 150pt;
+  }
+  .lab-name > label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+    padding:3pt 0 ;
+  }
+  textarea {
+    width: 150pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 173pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    max-width: 100%;
+    padding:inherit;
+    font-size: 8pt;
+  }
+  #pic-about {
+    margin-bottom: 5pt;
+    height: 300pt;
+    margin: 0;
+  }
+  .ap {
+    margin: 10pt 0pt;
+    font-size: 8pt;
+  }
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
+  }
+
+}
+@media screen and (min-width: 414px) and (max-width: 767px) {
+  #title-responsive {
+    margin: 160pt 0pt;
+    font-size: 50pt;
+    
+  } 
+  .parallaxe {
+    margin-bottom: auto;
+  }
+  .accordion-container{
+    font-size: 10pt;
+  }
+  .wordCarousel {
+    font-size: 15pt;
+  }
+  .text{
+    text-align: left;
+    font-size: 8pt;
+    margin: auto;
+    flex-direction: column;
+  }
+  .arrow-puce {
+    max-width: max-content;
+    text-align: justify; 
+  }
+  .arrow-puce > li {
+    margin: 10pt 20pt 0pt 0pt;
+  }
+
+  .refonter-container{
+    flex-direction: column;
+  }
+  .container-before-after { 
+    /* width: 198px;
+    height: 130px;
+    margin-top:28pt; */
+    /* width: 226px;
+    height: 145px;
+    margin-top: 21pt; */
+    width: 264px;
+    height: 170px;
+    margin-top: 9pt;
+  }
+  .container-before-after .img-before-after {
+    background-size: 264px 100%;
+  }
+  .container-before-after .slider-before-after::-webkit-slider-thumb {
+    height: 170px;
+  }
+  .container-before-after .slider-before-after::-moz-range-thumb { 
+    height: 170px;
+  }
+
+  .arrow-puce2 {
+    font-size: 8pt;
+    padding: 0 20pt;
+  }
+
+  .textandimg {
+    flex-direction: column; 
+    /* margin-top:10pt; */
+  }
+  .bloc-question {
+    margin: 5pt 20pt;
+  }
+  .button-flip {
+    width: auto;
+  }
+  .text-logo{
+    flex-direction: column;
+    align-items: center;
+  }
+  .request-loader{
+    margin: 20pt 0;
+  }
+
+
+  .service-container {
+    flex-direction: column;
+  }
+  .quote {
+    font-size: small;
+  }
+  #BtnContact{
+    font-size: small;
+  }
+  #service-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #content-about {
+    flex-direction: column;
+  }
+ 
+  #barcode {
+    margin-top: 20pt;
+    font-size: 15pt;
+  } 
+  h2 {
+    font-size: 25pt;
+  }
+
+  h4 {
+    margin: 5pt 0pt;
+    font-size: small;
+  }
+  label > h4 {
+    margin: 5pt 0pt;
+    font-size: smaller;
+  }
+
+  .visits{
+    font-size: 16pt;
+  }
+
+  #sketch-container .sketch-background .sketch {
+    padding: 20px;
+    width: 85%;
+    height: 90%;
+  }
+
+  .sketch .close {
+    right: 5pt;
+    top: 5pt;
+  }
+
+  #sketch-container-n .sketch-background-n .sketch-n {
+    width: 70%;
+    height: 80%;
+    padding: 35px;
+  }
+
+  .liens-logo {
+    flex-direction: column;
+    margin-top: 0pt
+  }
+
+  .liens-logo-n {
+    flex-direction: column;
+  }
+
+  #sketch-sgh-logo {
+    margin-top: 15pt;
+  }
+
+  .info-projets > div {
+    margin: 5pt 0;
+    font-size: 8pt;
+  }
+
+  .lien-projet {
+    font-size: small;
+    margin-bottom: 5pt;
+  }
+
+  #sketch-naco-logo {
+    width: 135pt;
+    margin-left: 0pt;
+    margin-top: 10pt;
+  }
+
+  .lien-projet-n {
+    margin: 18pt;
+  }
+
+  .sketch-n .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .liens-logo-p {
+    flex-direction: column;
+  }
+
+  /* #sketch-container-p .sketch-background-p .sketch-p {
+    width: 70%;
+  } */
+
+  .sketch-p .close {
+    right: 10pt;
+    top: 10pt;
+  }
+
+  .cardContainer {
+    margin-bottom: 30pt;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  }
+  .service-card {
+    width: 120pt;
+    height: 120pt;
+  }
+  #item-1:checked ~ .cards-slider #song-3, #item-2:checked ~ .cards-slider #song-1, #item-3:checked ~ .cards-slider #song-2 {
+    transform: translatex(-35%) scale(0.8);
+  }
+  
+  #item-1:checked ~ .cards-slider #song-2, #item-2:checked ~ .cards-slider #song-3, #item-3:checked ~ .cards-slider #song-1 {
+    transform: translatex(35%) scale(0.8);
+  }
+  #picSGL {
+    width: 110pt;
+  }
+  #picND {
+    width: 110pt;
+  }
+  #SuperGreenLab:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #NacoDev:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #Prochainement:before {
+    clip-path: circle(120pt at 60% -25%);
+  }
+  #picPC {
+    width: 110pt;
+    font-size: 11pt;
+  }
+
+  .resp{
+    width:120pt;
+    height:120pt;
+    margin: 0 6pt;
+  }
+  .container-carousel {
+    max-width: 220px;
+  }
+  .cards-slider{
+    height: 300px
+  }
+  .za {
+    width: 80%;
+    font-size: small;
+  }
+  .az {
+    width: 80%;
+    font-size: small;
+  }
+  .modal-content {
+    margin: 0pt 10pt 40pt 10pt;
+    width: auto;
+    padding: 15px;
+  }
+
+  .modalC-content {
+    width: 80%
+  }
+
+  .modalM-content {
+    width: 80%
+  }
+
+  .close {
+    font-size: 20pt; 
+    margin-right: 10pt;
+  }
+  input {
+    font-size: x-small;
+    height: 40px;
+    width: 150pt;
+  }
+  .lab-name > label {
+    width: 90pt;
+    letter-spacing: 0.1rem;
+    font-size: x-small;
+    margin: 5pt 2pt;
+    padding:3pt 0 ;
+  }
+  textarea {
+    width: 150pt;
+    font-size: x-small;
+    height: 60pt;
+  }
+  #RadioBtn {
+    width: 172pt;
+    font-size: x-small;
+  }
+  #submit {
+    width: 40%;
+    font-size: x-small;
+  }
+  #text-about {
+    text-indent: 10%;
+    max-width: 100%;
+    padding:inherit;
+    font-size: 8pt;
+  }
+  #pic-about {
+    margin-bottom: 5pt;
+    height: 300pt;
+    margin: 0;
+  }
+  .ap {
+    margin: 10pt 0pt;
+    font-size: 8pt;
+  }
+  .info-projets > div{
+    font-size: 8pt;
+    margin: 0 10pt;
+  }
+  .info-projets-n > div{
+    font-size: 8pt;
+  }
+  #sketch-sgh-logo > img {
+    width: 200px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .parallaxe {
-    top: 768pt;
+    top: 770pt;
+    margin-bottom: 200pt;
   } 
   .parallaxe3 {
     margin-bottom: 20pt;
@@ -1159,12 +1989,17 @@ Y88888o.       8        :88888.        ,8 8888       `8. ,8 8888       `8b      
   } 
   .parallaxe {
     top: 750pt;
+    margin-bottom: 200pt;
   } 
   .parallaxe3{
     margin-bottom: 50pt;
   }
-  .service-card {
+  
+  #barcode {
+    font-size: 32pt;
+  }
+  /* .service-card {
     width: 320pt;
     height: 320pt;
-  }
+  } */
 }
