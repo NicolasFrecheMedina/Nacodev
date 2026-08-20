@@ -10,6 +10,7 @@ defineProps<{
   hoveredId: MissionId | null
   compact: boolean
   reducedMotion: boolean
+  departing: boolean
   pointer: { x: number; y: number }
 }>()
 
@@ -43,6 +44,7 @@ const accentLightPosition = new Vector3(4, -2, 3)
       :hovered="hoveredId === mission.id"
       :compact="compact"
       :reduced-motion="reducedMotion"
+      :departing="departing"
     />
   </TresCanvas>
 </template>

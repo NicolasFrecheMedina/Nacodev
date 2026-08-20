@@ -53,7 +53,7 @@ onBeforeUnmount(() => timers.forEach((timer) => window.clearTimeout(timer)))
         <span class="signal__orbit signal__orbit--inner" />
         <span class="signal__sweep" />
       </div>
-      <p class="signal__eyebrow">NACO / LINK 02</p>
+      <p class="signal__eyebrow">NACO LINK: 01/05</p>
       <p class="signal__status" :class="{ 'signal__status--found': status === 'found' }">
         {{ status === 'searching' ? t('connection.searching') : t('connection.found') }}
       </p>

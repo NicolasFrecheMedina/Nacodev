@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-type Motion = 'idle' | 'warp' | 'drift' | 'launch'
+type Motion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel'
 interface Star { x: number; y: number; z: number; previousZ: number; size: number }
 
 const props = withDefaults(defineProps<{ motion?: Motion }>(), { motion: 'idle' })
@@ -23,6 +23,7 @@ const speedByMotion: Record<Motion, number> = {
   warp: 24,
   drift: 0.45,
   launch: 34,
+  travel: 11,
 }
 
 function resetStar(star: Star, randomDepth = false) {
@@ -82,7 +83,7 @@ function handleMotionPreference(event: MediaQueryListEvent) {
 }
 
 watch(() => props.motion, (motion) => {
-  if (motion === 'warp' || motion === 'launch') {
+  if (motion === 'warp' || motion === 'launch' || motion === 'travel') {
     stars.forEach((star) => resetStar(star, true))
   }
 })

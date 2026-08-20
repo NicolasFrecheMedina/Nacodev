@@ -7,7 +7,7 @@ import BaseModal from '@/components/ui/BaseModal.vue'
 import { timelineSteps, type TimelineStep, type TimelineStepId } from '@/data/timeline'
 import { useI18n } from '@/i18n'
 
-withDefaults(defineProps<{ emerging?: boolean }>(), { emerging: false })
+const props = withDefaults(defineProps<{ emerging?: boolean; revealing?: boolean }>(), { emerging: false, revealing: false })
 defineEmits<{ restart: [] }>()
 const { locale, setLocale, supportedLocales, t } = useI18n()
 const selectedId = ref<TimelineStepId | null>(null)
@@ -35,7 +35,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 </script>
 
 <template>
-  <section id="about" class="about-scene" :class="{ 'about-scene--emerging': emerging }" :inert="emerging" aria-labelledby="about-title">
+  <section id="about" class="about-scene" :class="{ 'about-scene--emerging': props.emerging, 'about-scene--revealing': props.revealing }" :inert="props.emerging || props.revealing" :aria-busy="props.emerging || props.revealing" aria-labelledby="about-title">
     <header class="about-scene__header">
       <span aria-hidden="true">05 / 05</span>
       <div><p>{{ t('about.kicker') }}</p><h1 id="about-title">{{ t('scenes.about') }}</h1></div>
@@ -55,7 +55,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
     </div>
 
     <div class="about-scene__trajectory">
-      <TrajectoryMap :active-id="activeId" :selected-id="selectedId" @preview="previewStep" @select="selectStep" />
+      <TrajectoryMap :active-id="activeId" :selected-id="selectedId" :emerging="props.emerging" @preview="previewStep" @select="selectStep" />
       <Transition name="trajectory-panel" mode="out-in">
         <TrajectoryPanel :key="activeStep.id" :step="activeStep" :index="activeIndex" :selected="Boolean(selectedId)" @close="selectedId = null" />
       </Transition>
@@ -84,7 +84,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 
 <style scoped>
 .about-scene { z-index: 1; position: relative; display: grid; width: 100%; height: 100svh; min-height: 38rem; overflow: hidden; grid-template-rows: auto auto minmax(17rem, 1fr) auto; padding: clamp(1.5rem, 4vw, 3rem); background: radial-gradient(circle at 56% 48%, rgb(72 130 151 / 7%), transparent 38%); animation: about-arrival 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-.about-scene--emerging { pointer-events: none; }
+.about-scene--emerging { z-index: 3; pointer-events: none; animation: none; }
 .about-scene::before { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
 .about-scene__header { z-index: 6; display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; }
 .about-scene__header > div { text-align: center; }
@@ -112,6 +112,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 .about-scene__restart { position: absolute; z-index: 7; bottom: 1.1rem; left: 50%; padding: 0; border: 0; color: rgb(225 239 244 / 32%); background: none; font: inherit; font-size: 0.42rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transform: translateX(-50%); }
 .about-scene__restart:is(:hover, :focus-visible) { color: rgb(238 247 250 / 76%); }
 .about-scene__restart:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.3rem; }
+.about-scene__header, .about-scene__intro, .about-scene__footer, .about-scene__restart, .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.about-scene--emerging .about-scene__header, .about-scene--emerging .about-scene__intro, .about-scene--emerging .about-scene__footer, .about-scene--emerging .about-scene__restart, .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel) { opacity: 0; transform: translateY(0.65rem); }
 .trajectory-panel-enter-active, .trajectory-panel-leave-active { transition: opacity 220ms ease, transform 320ms ease; }
 .trajectory-panel-enter-from, .trajectory-panel-leave-to { opacity: 0; transform: translateY(0.5rem); }
 .intro-copy-enter-active, .intro-copy-leave-active { transition: opacity 220ms ease, transform 300ms ease; }
@@ -136,5 +138,5 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
   .about-scene__profile { grid-row: 2; }
   .about-scene__restart { position: relative; bottom: auto; left: auto; display: block; margin: -2.1rem auto 1rem; transform: none; }
 }
-@media (prefers-reduced-motion: reduce) { .about-scene { animation-duration: 120ms; transform: none; filter: none; } .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 100ms; } }
+@media (prefers-reduced-motion: reduce) { .about-scene { animation-duration: 120ms; transform: none; filter: none; } .about-scene__header, .about-scene__intro, .about-scene__footer, .about-scene__restart, .about-scene__trajectory :deep(.trajectory-panel), .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 160ms; transform: none; } }
 </style>

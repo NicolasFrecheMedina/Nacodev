@@ -6,7 +6,7 @@ import VisualFilters from './VisualFilters.vue'
 
 withDefaults(defineProps<{
   revealed?: boolean
-  motion?: 'idle' | 'warp' | 'drift' | 'launch'
+  motion?: 'idle' | 'warp' | 'drift' | 'launch' | 'travel'
 }>(), {
   revealed: false,
   motion: 'idle',
