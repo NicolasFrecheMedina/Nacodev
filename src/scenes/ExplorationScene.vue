@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import ExplorationConstellation from '@/components/space/ExplorationConstellation.vue'
 import ExplorationPanel from '@/components/ui/ExplorationPanel.vue'
 import { explorationAxes, type ExplorationAxis, type ExplorationAxisId } from '@/data/exploration'
@@ -10,6 +10,8 @@ const emit = defineEmits<{ continue: [] }>()
 const { t } = useI18n()
 const selectedAxis = ref<ExplorationAxis | null>(null)
 const previewedAxis = ref<ExplorationAxis | null>(null)
+const departing = ref(false)
+let departureTimer: number | undefined
 const visibleAxis = computed(() => selectedAxis.value ?? previewedAxis.value)
 const labels = computed(() => Object.fromEntries(explorationAxes.map((axis) => [axis.id, t(axis.labelKey)])) as Record<ExplorationAxisId, string>)
 
@@ -20,10 +22,21 @@ function selectAxis(axis: ExplorationAxis) {
 function previewAxis(axis: ExplorationAxis | null) {
   if (!selectedAxis.value) previewedAxis.value = axis
 }
+
+function continueToMissions() {
+  if (departing.value) return
+  departing.value = true
+  const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 120 : 680
+  departureTimer = window.setTimeout(() => emit('continue'), duration)
+}
+
+onBeforeUnmount(() => {
+  if (departureTimer !== undefined) window.clearTimeout(departureTimer)
+})
 </script>
 
 <template>
-  <section id="exploration" class="exploration-scene" :class="{ 'exploration-scene--ready': takeoffComplete }" aria-labelledby="exploration-title">
+  <section id="exploration" class="exploration-scene" :class="{ 'exploration-scene--ready': takeoffComplete, 'exploration-scene--departing': departing }" aria-labelledby="exploration-title">
     <header class="exploration-scene__header">
       <span aria-hidden="true">03 / 05</span>
       <div><p>{{ t('exploration.kicker') }}</p><h1 id="exploration-title">{{ t('scenes.exploration') }}</h1></div>
@@ -34,7 +47,7 @@ function previewAxis(axis: ExplorationAxis | null) {
       <ExplorationPanel v-if="visibleAxis" :key="visibleAxis.id" :label="t(visibleAxis.labelKey)" :description="t(visibleAxis.descriptionKey)" :selected="Boolean(selectedAxis)" :close-label="t('exploration.overview')" @close="selectedAxis = null" />
     </Transition>
     <div class="exploration-scene__status" aria-hidden="true"><i />{{ selectedAxis ? t('exploration.status.focus') : t('exploration.status.online') }}</div>
-    <button class="exploration-scene__continue" type="button" @click="emit('continue')">{{ t('exploration.continue') }}<span aria-hidden="true">↗</span></button>
+    <button class="exploration-scene__continue" type="button" :disabled="departing" @click="continueToMissions">{{ t('exploration.continue') }}<span aria-hidden="true">↗</span></button>
   </section>
 </template>
 
@@ -42,6 +55,8 @@ function previewAxis(axis: ExplorationAxis | null) {
 .exploration-scene { position: relative; width: 100%; height: 100svh; min-height: 34rem; overflow: hidden; opacity: 0; transform: scale(0.82); filter: blur(7px); transition: opacity 1.4s ease 180ms, filter 1.3s ease 180ms, transform 1.7s cubic-bezier(0.22, 1, 0.36, 1); }
 .exploration-scene::before { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
 .exploration-scene--ready { opacity: 1; filter: none; transform: scale(1); }
+.exploration-scene--departing :deep(.constellation__group) { opacity: 0; filter: blur(4px); transform: translate3d(0, 0, -18rem) scale(0.68); transition: opacity 600ms ease, filter 600ms ease, transform 680ms cubic-bezier(0.4, 0, 1, 1); }
+.exploration-scene--departing .exploration-scene__header, .exploration-scene--departing .exploration-scene__status, .exploration-scene--departing .exploration-scene__continue { opacity: 0; transition: opacity 380ms ease; }
 .exploration-scene__header { position: absolute; z-index: 3; top: clamp(1.5rem, 4vw, 3rem); right: clamp(1.5rem, 4vw, 3rem); left: clamp(1.5rem, 4vw, 3rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; }
 .exploration-scene__header > div { text-align: center; } .exploration-scene__header > span:last-child { text-align: right; }
 .exploration-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }

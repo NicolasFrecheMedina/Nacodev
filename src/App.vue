@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 import GlobalBackground from '@/components/space/GlobalBackground.vue'
 import ConnectionScene from '@/scenes/ConnectionScene.vue'
 import ExplorationScene from '@/scenes/ExplorationScene.vue'
 import IdeaScene from '@/scenes/IdeaScene.vue'
 
-type Scene = 'connection' | 'idea' | 'exploration'
+const MissionsScene = defineAsyncComponent(() => import('@/scenes/MissionsScene.vue'))
+
+type Scene = 'connection' | 'idea' | 'exploration' | 'missions'
 type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch'
 
 const scene = ref<Scene>('connection')
@@ -33,6 +35,11 @@ function showExploration() {
   spaceMotion.value = 'drift'
   scene.value = 'exploration'
 }
+
+function showMissions() {
+  spaceMotion.value = 'drift'
+  scene.value = 'missions'
+}
 </script>
 
 <template>
@@ -51,7 +58,13 @@ function showExploration() {
         @motion-change="updateIdeaMotion"
         @takeoff-complete="showExploration"
       />
-      <ExplorationScene v-else key="exploration" :takeoff-complete="takeoffComplete" />
+      <ExplorationScene
+        v-else-if="scene === 'exploration'"
+        key="exploration"
+        :takeoff-complete="takeoffComplete"
+        @continue="showMissions"
+      />
+      <MissionsScene v-else key="missions" />
     </Transition>
   </main>
 </template>
