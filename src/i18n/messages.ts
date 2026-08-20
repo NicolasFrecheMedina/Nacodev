@@ -5,6 +5,10 @@ export const messages = {
     'scenes.exploration': 'Exploration',
     'scenes.missions': 'Missions',
     'scenes.about': 'À propos + Contact',
+    'connection.searching': 'Recherche du signal',
+    'connection.found': 'Signal trouvé',
+    'idea.tagline': 'Tout commence avec une idée.',
+    'idea.takeoff': 'Décollage',
     'common.close': 'Fermer',
   },
   en: {
@@ -13,6 +17,10 @@ export const messages = {
     'scenes.exploration': 'Exploration',
     'scenes.missions': 'Missions',
     'scenes.about': 'About + Contact',
+    'connection.searching': 'Searching for signal',
+    'connection.found': 'Signal found',
+    'idea.tagline': 'Everything starts with an idea.',
+    'idea.takeoff': 'Take off',
     'common.close': 'Close',
   },
   es: {
@@ -21,6 +29,10 @@ export const messages = {
     'scenes.exploration': 'Exploración',
     'scenes.missions': 'Misiones',
     'scenes.about': 'Acerca de + Contacto',
+    'connection.searching': 'Buscando señal',
+    'connection.found': 'Señal encontrada',
+    'idea.tagline': 'Todo comienza con una idea.',
+    'idea.takeoff': 'Despegue',
     'common.close': 'Cerrar',
   },
 } as const

@@ -4,13 +4,14 @@
   --color-surface: #121722;
   --color-ink: #f5f7fb;
   --color-muted: #aeb7c7;
+  --color-accent: #9bdef8;
   --font-display: 'Montserrat Subrayada', 'Montserrat', sans-serif;
   --font-body: 'Montserrat', system-ui, sans-serif;
   --space-sm: 0.75rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --radius-sm: 0.25rem;
-  --z-background: -1;
+  --z-background: 0;
   --z-content: 1;
   --z-modal: 100;
 }
