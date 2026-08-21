@@ -11,7 +11,7 @@ const loadAboutScene = () => import('@/scenes/AboutScene.vue')
 const AboutScene = defineAsyncComponent(loadAboutScene)
 
 type Scene = 'connection' | 'idea' | 'exploration' | 'missions' | 'about'
-type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel'
+type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel' | 'orbit'
 type TransitionPhase = 'idle' | 'exploration-exit' | 'missions-gap' | 'missions-enter' | 'missions-ui' | 'missions-exit' | 'about-gap' | 'about-draw' | 'about-reveal'
 
 const scene = ref<Scene>('connection')
@@ -86,6 +86,7 @@ function completeConstellationExit() {
   if (transitionPhase.value !== 'exploration-exit') return
   scene.value = 'missions'
   transitionPhase.value = 'missions-gap'
+  spaceMotion.value = 'orbit'
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   phaseTimer = window.setTimeout(() => {
     transitionPhase.value = 'missions-enter'
@@ -95,8 +96,8 @@ function completeConstellationExit() {
         transitionPhase.value = 'idle'
         spaceMotion.value = 'drift'
       }, reducedMotion ? 120 : 200)
-    }, reducedMotion ? 260 : 850)
-  }, reducedMotion ? 80 : 140)
+    }, reducedMotion ? 260 : 1300)
+  }, reducedMotion ? 80 : 160)
 }
 
 function beginAboutTransition() {

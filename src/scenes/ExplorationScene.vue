@@ -103,8 +103,7 @@ onBeforeUnmount(() => {
 .exploration-scene::before { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
 .exploration-scene--ready { opacity: 1; filter: none; transform: scale(1); }
 .exploration-scene--departing { pointer-events: none; }
-.exploration-scene--departing :deep(.constellation__group) { animation: constellation-departure 900ms cubic-bezier(0.65, 0, 0.35, 1) both; }
-.exploration-scene--departing :deep(.constellation__group::after) { position: absolute; top: 50%; left: 50%; width: 0.24rem; height: 0.24rem; border-radius: 50%; background: #f4fbff; box-shadow: 0 0 1rem 0.35rem rgb(155 222 248 / 72%), 0 0 5rem 1.8rem rgb(155 222 248 / 22%); content: ''; transform: translate(-50%, -50%); animation: attraction-point 620ms ease-out both; }
+.exploration-scene--departing :deep(.constellation__group) { animation: constellation-departure 900ms cubic-bezier(0.42, 0, 1, 1) both; transition: none; }
 .exploration-scene--departing :deep(.constellation__connections line) { animation: connection-departure 900ms ease both; }
 .exploration-scene--departing :deep(.exploration-node) { color: #fff; animation: node-departure 900ms ease both; }
 .exploration-scene--departing :deep(.exploration-node__core) { background: rgb(214 244 255 / 68%); box-shadow: 0 0 1.4rem rgb(155 222 248 / 78%), inset 0 0 0.5rem #fff; }
@@ -115,18 +114,14 @@ onBeforeUnmount(() => {
 .exploration-scene__header h1 { margin: 0; color: rgb(245 249 251 / 88%); font-family: var(--font-body); font-size: clamp(0.72rem, 1.4vw, 0.9rem); font-weight: 400; letter-spacing: 0.34em; }
 .panel-enter-active, .panel-leave-active { transition: opacity 250ms ease; } .panel-enter-from, .panel-leave-to { opacity: 0; }
 @keyframes constellation-departure {
-  0% { opacity: 1; filter: brightness(1); transform: translate3d(var(--focus-x), var(--focus-y), 0) scale(1); }
-  18% { opacity: 1; filter: brightness(1.55); transform: translate3d(0, 0, 1rem) scale(1.02); }
-  42% { opacity: 1; filter: brightness(1.18); transform: translate3d(0, 0, 3rem) scale(0.76); }
-  74% { opacity: 0.86; filter: brightness(1.12) blur(0); transform: translate3d(0, 0, 18rem) scale(1.65); }
-  100% { opacity: 0; filter: brightness(1.5) blur(7px); transform: translate3d(0, 0, 42rem) scale(4.2); }
+  from { transform: translate3d(var(--focus-x), var(--focus-y), 0) scale(var(--focus-scale)); }
+  to { transform: translate3d(var(--focus-x), var(--focus-y), 28rem) scale(7.2); }
 }
-@keyframes attraction-point { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); } 28%, 62% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(8); } }
-@keyframes connection-departure { 0% { stroke: rgb(184 217 230 / 16%); } 18%, 45% { opacity: 1; stroke: rgb(203 237 249 / 72%); stroke-width: 1.4; } 100% { opacity: 0; stroke: rgb(203 237 249 / 0%); } }
-@keyframes node-departure { 0%, 45% { opacity: 1; filter: brightness(1.65); } 100% { opacity: 0; filter: brightness(2) blur(5px); } }
+@keyframes connection-departure { 0% { stroke: rgb(184 217 230 / 16%); } 16%, 54% { opacity: 1; stroke: rgb(203 237 249 / 72%); stroke-width: 1.4; } 84% { opacity: 0.78; } 100% { opacity: 0; stroke: rgb(203 237 249 / 0%); } }
+@keyframes node-departure { 0%, 82% { opacity: 1; filter: brightness(1.65); } 100% { opacity: 0; filter: brightness(1.8) blur(4px); } }
 @keyframes departure-label { 0%, 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(0.6rem); } }
 @media (max-width: 700px) { .exploration-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .exploration-scene { transition-duration: 120ms; transform: none; filter: none; } .panel-enter-active, .panel-leave-active { transition-duration: 120ms; } .exploration-scene--departing :deep(.constellation__group) { animation: reduced-departure 180ms ease both; } .exploration-scene--departing :deep(.exploration-node), .exploration-scene--departing :deep(.constellation__connections line) { animation: reduced-element-departure 180ms ease both; } .exploration-scene--departing :deep(.constellation__group::after) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .exploration-scene { transition-duration: 120ms; transform: none; filter: none; } .panel-enter-active, .panel-leave-active { transition-duration: 120ms; } .exploration-scene--departing :deep(.constellation__group) { animation: reduced-departure 180ms ease both; } .exploration-scene--departing :deep(.exploration-node), .exploration-scene--departing :deep(.constellation__connections line) { animation: reduced-element-departure 180ms ease both; } }
 @keyframes reduced-departure { to { opacity: 0; transform: translate3d(0, 0, 0) scale(0.96); } }
 @keyframes reduced-element-departure { to { opacity: 0; } }
 </style>

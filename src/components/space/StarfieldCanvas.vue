@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-type Motion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel'
+type Motion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel' | 'orbit'
 interface Star { x: number; y: number; z: number; previousZ: number; size: number }
 
 const props = withDefaults(defineProps<{ motion?: Motion }>(), { motion: 'idle' })
@@ -24,6 +24,7 @@ const speedByMotion: Record<Motion, number> = {
   drift: 0.45,
   launch: 34,
   travel: 11,
+  orbit: 2.2,
 }
 
 function resetStar(star: Star, randomDepth = false) {
