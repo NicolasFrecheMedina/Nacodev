@@ -18,9 +18,18 @@ const hud = sceneById.about.hud!
 const selectedId = ref<TimelineStepId | null>(null)
 const previewedId = ref<TimelineStepId | null>(null)
 const contactOpen = ref(false)
+const arrivedThroughTransition = ref(props.emerging)
+const typedStatement = ref('')
+const typingComplete = ref(!props.emerging)
 const activeId = computed(() => selectedId.value ?? previewedId.value ?? 'elsewhere')
 const activeStep = computed<TimelineStep>(() => timelineSteps.find((step) => step.id === activeId.value) ?? timelineSteps[0]!)
 const activeIndex = computed(() => timelineSteps.findIndex((step) => step.id === activeStep.value.id))
+const statement = computed(() => t(activeStep.value.statementKey))
+const displayedStatement = computed(() => props.emerging && !typingComplete.value ? typedStatement.value : statement.value)
+const statementBreakIndex = computed(() => {
+  const breakIndex = statement.value.indexOf(' une ')
+  return breakIndex === -1 ? statement.value.length : breakIndex
+})
 const hudContext = computed(() => selectedId.value || previewedId.value
   ? `${String(activeIndex.value + 1).padStart(2, '0')} / 05 · ${t(activeStep.value.titleKey)}`
   : t('scenes.about'))
@@ -38,12 +47,38 @@ function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && selectedId.value && !contactOpen.value) selectedId.value = null
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeydown))
-onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
+let typingTimer: number | undefined
+let typingStartTimer: number | undefined
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+  if (!props.emerging || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typingComplete.value = true
+    return
+  }
+  typingStartTimer = window.setTimeout(() => {
+    let characterIndex = 0
+    typingTimer = window.setInterval(() => {
+      characterIndex += 1
+      typedStatement.value = statement.value.slice(0, characterIndex)
+      if (characterIndex >= statement.value.length) {
+        window.clearInterval(typingTimer)
+        typingTimer = undefined
+        typingComplete.value = true
+      }
+    }, 30)
+  }, 280)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  if (typingTimer !== undefined) window.clearInterval(typingTimer)
+  if (typingStartTimer !== undefined) window.clearTimeout(typingStartTimer)
+})
 </script>
 
 <template>
-  <section id="about" class="about-scene" :class="{ 'about-scene--emerging': props.emerging, 'about-scene--revealing': props.revealing }" :inert="props.emerging || props.revealing" :aria-busy="props.emerging || props.revealing" aria-labelledby="about-title">
+  <section id="about" class="about-scene" :class="{ 'about-scene--emerging': props.emerging, 'about-scene--revealing': props.revealing, 'about-scene--transitioned': arrivedThroughTransition }" :inert="props.emerging || props.revealing" :aria-busy="props.emerging || props.revealing" aria-labelledby="about-title">
     <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal">
       <template #context><HudContextStatus :primary="hudContext" /></template>
     </GlobalHud>
@@ -55,7 +90,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
       <p class="about-scene__eyebrow">{{ String(activeIndex + 1).padStart(2, '0') }} / 05 · {{ t(activeStep.titleKey) }}</p>
       <Transition name="intro-copy" mode="out-in">
         <div :key="activeStep.id">
-          <p class="about-scene__statement">{{ t(activeStep.statementKey) }}</p>
+          <p class="about-scene__statement"><span>{{ displayedStatement.slice(0, statementBreakIndex) }}</span><template v-if="displayedStatement.length > statementBreakIndex"><br><span>{{ displayedStatement.slice(statementBreakIndex + 1) }}</span></template><span v-if="props.emerging && !typingComplete" class="about-scene__typing-caret" aria-hidden="true" /></p>
           <p class="about-scene__intro-meta">{{ t(activeStep.metaKey) }}</p>
         </div>
       </Transition>
@@ -64,7 +99,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
     <div class="about-scene__trajectory">
       <TrajectoryMap :active-id="activeId" :selected-id="selectedId" :emerging="props.emerging" @preview="previewStep" @select="selectStep" />
       <Transition name="trajectory-panel" mode="out-in">
-        <TrajectoryPanel :key="activeStep.id" :step="activeStep" :index="activeIndex" :selected="Boolean(selectedId)" @close="selectedId = null" />
+        <TrajectoryPanel v-if="selectedId" :key="activeStep.id" :step="activeStep" :index="activeIndex" selected @close="selectedId = null" />
       </Transition>
     </div>
 
@@ -91,7 +126,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 
 <style scoped>
 .about-scene { z-index: 1; position: relative; display: grid; width: 100%; height: 100svh; min-height: 38rem; overflow: hidden; grid-template-rows: auto auto minmax(17rem, 1fr) auto; padding: clamp(1.5rem, 4vw, 3rem); background: radial-gradient(circle at 56% 48%, rgb(72 130 151 / 7%), transparent 38%); animation: about-arrival 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-.about-scene--emerging { z-index: 3; pointer-events: none; animation: none; }
+.about-scene--emerging { z-index: 3; pointer-events: none; }
+.about-scene--transitioned { animation: none; }
 .about-scene::before { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
 .about-scene__header { z-index: 6; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; }
 .about-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }
@@ -112,7 +148,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 .about-scene__conclusion strong { font-size: clamp(0.82rem, 1.3vw, 1.05rem); font-weight: 400; }
 .about-scene__conclusion span { color: rgb(178 221 238 / 58%); font-size: 0.62rem; }
 .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
-.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__intro, .about-scene--emerging .about-scene__footer, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel) { opacity: 0; transform: translateY(0.65rem); }
+.about-scene__header, .about-scene__eyebrow, .about-scene__intro-meta { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__footer, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel), .about-scene--emerging .about-scene__eyebrow, .about-scene--emerging .about-scene__intro-meta { opacity: 0; transform: translateY(0.65rem); }
+.about-scene__typing-caret { display: inline-block; width: 1px; height: 0.9em; margin-left: 0.12em; background: currentcolor; vertical-align: -0.05em; animation: typing-caret 680ms steps(1, end) infinite; }
 .trajectory-panel-enter-active, .trajectory-panel-leave-active { transition: opacity 220ms ease, transform 320ms ease; }
 .trajectory-panel-enter-from, .trajectory-panel-leave-to { opacity: 0; transform: translateY(0.5rem); }
 .intro-copy-enter-active, .intro-copy-leave-active { transition: opacity 220ms ease, transform 300ms ease; }
@@ -123,6 +161,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 .contact-modal a { width: fit-content; color: rgb(218 238 246 / 72%); text-decoration: none; }
 .contact-modal__primary { font-size: clamp(1rem, 3vw, 1.45rem); }
 @keyframes about-arrival { from { opacity: 0; filter: blur(5px); transform: scale(0.96); } to { opacity: 1; filter: none; transform: scale(1); } }
+@keyframes typing-caret { 50% { opacity: 0; } }
 @media (max-width: 700px) {
   .about-scene { display: block; min-height: 100svh; height: 100svh; padding: 1.35rem; overflow-x: hidden; overflow-y: auto; }
   .about-scene > * { min-width: 0; }

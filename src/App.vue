@@ -120,7 +120,7 @@ function completeMissionsExit() {
         transitionPhase.value = 'idle'
         spaceMotion.value = 'drift'
       }, reducedMotion ? 160 : 420)
-    }, reducedMotion ? 320 : 1450)
+    }, reducedMotion ? 420 : 5730)
   }, reducedMotion ? 80 : 140)
 }
 
