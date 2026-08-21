@@ -2,12 +2,15 @@
 import { computed, onBeforeUnmount, ref } from 'vue'
 import ExplorationConstellation from '@/components/space/ExplorationConstellation.vue'
 import ExplorationPanel from '@/components/ui/ExplorationPanel.vue'
+import GlobalHud from '@/components/ui/GlobalHud.vue'
 import { explorationAxes, type ExplorationAxis, type ExplorationAxisId } from '@/data/exploration'
+import { sceneById, sceneStepTotal } from '@/data/scenes'
 import { useI18n } from '@/i18n'
 
 withDefaults(defineProps<{ takeoffComplete?: boolean }>(), { takeoffComplete: false })
 const emit = defineEmits<{ depart: []; 'exit-complete': [] }>()
 const { t } = useI18n()
+const hud = sceneById.exploration.hud!
 const selectedAxis = ref<ExplorationAxis | null>(null)
 const previewedAxis = ref<ExplorationAxis | null>(null)
 const departing = ref(false)
@@ -38,16 +41,18 @@ onBeforeUnmount(() => {
 
 <template>
   <section id="exploration" class="exploration-scene" :class="{ 'exploration-scene--ready': takeoffComplete, 'exploration-scene--departing': departing }" :inert="departing" :aria-busy="departing" aria-labelledby="exploration-title">
+    <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal">
+      <template #context>
+        <span class="global-hud__status" aria-hidden="true"><i class="global-hud__status-dot" />{{ selectedAxis ? t('exploration.status.focus') : t('exploration.status.online') }}</span>
+      </template>
+    </GlobalHud>
     <header class="exploration-scene__header">
-      <span aria-hidden="true">03 / 05</span>
       <div><p>{{ t('exploration.kicker') }}</p><h1 id="exploration-title">{{ t('scenes.exploration') }}</h1></div>
-      <span aria-hidden="true">NCD — XPLR</span>
     </header>
     <ExplorationConstellation :labels="labels" :selected-id="selectedAxis?.id ?? null" @select="selectAxis" @preview="previewAxis" />
     <Transition name="panel">
       <ExplorationPanel v-if="visibleAxis" :key="visibleAxis.id" :label="t(visibleAxis.labelKey)" :description="t(visibleAxis.descriptionKey)" :selected="Boolean(selectedAxis)" :close-label="t('exploration.overview')" @close="selectedAxis = null" />
     </Transition>
-    <div class="exploration-scene__status" aria-hidden="true"><i />{{ selectedAxis ? t('exploration.status.focus') : t('exploration.status.online') }}</div>
     <button class="exploration-scene__continue" type="button" :disabled="departing" @click="continueToMissions">{{ t('exploration.continue') }}<span aria-hidden="true">↗</span></button>
   </section>
 </template>
@@ -63,13 +68,10 @@ onBeforeUnmount(() => {
 .exploration-scene--departing :deep(.exploration-node) { color: #fff; animation: node-departure 900ms ease both; }
 .exploration-scene--departing :deep(.exploration-node__core) { background: rgb(214 244 255 / 68%); box-shadow: 0 0 1.4rem rgb(155 222 248 / 78%), inset 0 0 0.5rem #fff; }
 .exploration-scene--departing :deep(.exploration-node__label) { animation: departure-label 480ms ease both; }
-.exploration-scene--departing .exploration-scene__header, .exploration-scene--departing .exploration-scene__status, .exploration-scene--departing .exploration-scene__continue, .exploration-scene--departing :deep(.exploration-panel) { opacity: 0; transition: opacity 300ms ease; }
-.exploration-scene__header { position: absolute; z-index: 3; top: clamp(1.5rem, 4vw, 3rem); right: clamp(1.5rem, 4vw, 3rem); left: clamp(1.5rem, 4vw, 3rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; }
-.exploration-scene__header > div { text-align: center; } .exploration-scene__header > span:last-child { text-align: right; }
+.exploration-scene--departing .exploration-scene__header, .exploration-scene--departing :deep(.global-hud), .exploration-scene--departing .exploration-scene__continue, .exploration-scene--departing :deep(.exploration-panel) { opacity: 0; transition: opacity 300ms ease; }
+.exploration-scene__header { position: absolute; z-index: 3; top: var(--hud-top); left: 50%; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; transform: translateX(-50%); }
 .exploration-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }
 .exploration-scene__header h1 { margin: 0; color: rgb(245 249 251 / 88%); font-family: var(--font-body); font-size: clamp(0.72rem, 1.4vw, 0.9rem); font-weight: 400; letter-spacing: 0.34em; }
-.exploration-scene__status { position: absolute; right: clamp(1.5rem, 4vw, 3rem); bottom: clamp(1.5rem, 4vw, 3rem); display: flex; align-items: center; gap: 0.55rem; color: rgb(229 240 245 / 40%); font-size: 0.5rem; letter-spacing: 0.17em; text-transform: uppercase; }
-.exploration-scene__status i { width: 0.3rem; height: 0.3rem; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0.7rem rgb(155 222 248 / 60%); }
 .exploration-scene__continue { position: absolute; z-index: 4; bottom: clamp(1.5rem, 4vw, 3rem); left: 50%; display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; border: 1px solid rgb(225 241 247 / 14%); color: rgb(240 247 250 / 58%); font: inherit; font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; background: rgb(10 15 22 / 25%); backdrop-filter: blur(8px); cursor: pointer; transform: translateX(-50%); transition: border-color 300ms ease, color 300ms ease, background 300ms ease; }
 .exploration-scene__continue:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 42%); color: var(--color-ink); background: rgb(155 222 248 / 7%); }
 .exploration-scene__continue:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.3rem; }
@@ -85,7 +87,7 @@ onBeforeUnmount(() => {
 @keyframes connection-departure { 0% { stroke: rgb(184 217 230 / 16%); } 18%, 45% { opacity: 1; stroke: rgb(203 237 249 / 72%); stroke-width: 1.4; } 100% { opacity: 0; stroke: rgb(203 237 249 / 0%); } }
 @keyframes node-departure { 0%, 45% { opacity: 1; filter: brightness(1.65); } 100% { opacity: 0; filter: brightness(2) blur(5px); } }
 @keyframes departure-label { 0%, 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(0.6rem); } }
-@media (max-width: 700px) { .exploration-scene__header { grid-template-columns: 1fr auto; } .exploration-scene__header > span:first-child { display: none; } .exploration-scene__header > div { text-align: left; } .exploration-scene__status { display: none; } .exploration-scene__continue { bottom: 1.35rem; } }
+@media (max-width: 700px) { .exploration-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } .exploration-scene__continue { bottom: 3.8rem; } }
 @media (prefers-reduced-motion: reduce) { .exploration-scene { transition-duration: 120ms; transform: none; filter: none; } .panel-enter-active, .panel-leave-active { transition-duration: 120ms; } .exploration-scene--departing :deep(.constellation__group) { animation: reduced-departure 180ms ease both; } .exploration-scene--departing :deep(.exploration-node), .exploration-scene--departing :deep(.constellation__connections line) { animation: reduced-element-departure 180ms ease both; } .exploration-scene--departing :deep(.constellation__group::after) { display: none; } }
 @keyframes reduced-departure { to { opacity: 0; transform: translate3d(0, 0, 0) scale(0.96); } }
 @keyframes reduced-element-departure { to { opacity: 0; } }

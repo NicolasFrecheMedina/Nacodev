@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue'
+import { parallaxConfig } from '@/data/parallax'
 
 const props = withDefaults(defineProps<{ depth?: number; offsetX?: number; offsetY?: number }>(), {
-  depth: 1,
+  depth: parallaxConfig.layers.depthElements,
   offsetX: 0,
   offsetY: 0,
 })
@@ -22,5 +23,9 @@ const layerStyle = computed(() => ({
 .parallax-layer {
   transform: translate3d(calc(var(--parallax-x) * var(--parallax-depth)), calc(var(--parallax-y) * var(--parallax-depth)), 0);
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer { transform: none; will-change: auto; }
 }
 </style>

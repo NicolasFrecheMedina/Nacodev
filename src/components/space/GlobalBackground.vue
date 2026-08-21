@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { parallaxConfig } from '@/data/parallax'
 import ParallaxLayer from './ParallaxLayer.vue'
 import StarfieldCanvas from './StarfieldCanvas.vue'
 import VisualFilters from './VisualFilters.vue'
@@ -15,27 +16,55 @@ withDefaults(defineProps<{
 const offsetX = ref(0)
 const offsetY = ref(0)
 let mediaQuery: MediaQueryList | undefined
+let pointerQuery: MediaQueryList | undefined
+let compactQuery: MediaQueryList | undefined
+let frameId: number | undefined
 
-function handlePointerMove(event: PointerEvent) {
-  if (mediaQuery?.matches) return
-  offsetX.value = (event.clientX / window.innerWidth - 0.5) * -18
-  offsetY.value = (event.clientY / window.innerHeight - 0.5) * -18
-}
-
-function handlePointerLeave() {
+function resetOffset() {
+  if (frameId !== undefined) window.cancelAnimationFrame(frameId)
+  frameId = undefined
   offsetX.value = 0
   offsetY.value = 0
 }
 
+function syncMediaPreferences() {
+  if (mediaQuery?.matches || !pointerQuery?.matches) resetOffset()
+}
+
+function handlePointerMove(event: PointerEvent) {
+  if (mediaQuery?.matches || !pointerQuery?.matches) return
+  const amplitude = compactQuery?.matches ? parallaxConfig.amplitude.mobile : parallaxConfig.amplitude.desktop
+  const nextX = (event.clientX / window.innerWidth - 0.5) * -amplitude.x
+  const nextY = (event.clientY / window.innerHeight - 0.5) * -amplitude.y
+  if (frameId !== undefined) window.cancelAnimationFrame(frameId)
+  frameId = window.requestAnimationFrame(() => {
+    offsetX.value = nextX
+    offsetY.value = nextY
+    frameId = undefined
+  })
+}
+
+function handlePointerLeave() {
+  resetOffset()
+}
+
 onMounted(() => {
   mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  pointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)')
+  compactQuery = window.matchMedia(`(max-width: ${parallaxConfig.breakpoint}px)`)
+  syncMediaPreferences()
+  mediaQuery.addEventListener('change', syncMediaPreferences)
+  pointerQuery.addEventListener('change', syncMediaPreferences)
   window.addEventListener('pointermove', handlePointerMove, { passive: true })
   document.documentElement.addEventListener('pointerleave', handlePointerLeave)
 })
 
 onBeforeUnmount(() => {
+  mediaQuery?.removeEventListener('change', syncMediaPreferences)
+  pointerQuery?.removeEventListener('change', syncMediaPreferences)
   window.removeEventListener('pointermove', handlePointerMove)
   document.documentElement.removeEventListener('pointerleave', handlePointerLeave)
+  if (frameId !== undefined) window.cancelAnimationFrame(frameId)
 })
 </script>
 
@@ -44,13 +73,13 @@ onBeforeUnmount(() => {
     <div class="space-background__base" />
     <ParallaxLayer
       class="space-background__image"
-      :depth="0.32"
+      :depth="parallaxConfig.layers.background"
       :offset-x="offsetX"
       :offset-y="offsetY"
     />
     <ParallaxLayer
       class="space-background__glow"
-      :depth="0.75"
+      :depth="parallaxConfig.layers.halo"
       :offset-x="offsetX"
       :offset-y="offsetY"
     />

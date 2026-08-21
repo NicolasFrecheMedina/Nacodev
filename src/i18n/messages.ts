@@ -63,6 +63,7 @@ export const messages = {
     'about.contact.open': 'Prendre contact', 'about.contact.title': 'Ouvrir le contact',
     'about.contact.message': "Une idée, un projet ou simplement l'envie d'échanger ? Écrivons la suite.",
     'about.restart': 'Revenir au début',
+    'hud.language': 'Choisir la langue', 'hud.googleBusiness': 'Ouvrir la fiche Google de NacoDev',
     'common.close': 'Fermer',
   },
   en: {
@@ -129,6 +130,7 @@ export const messages = {
     'about.contact.open': 'Get in touch', 'about.contact.title': 'Open contact',
     'about.contact.message': 'An idea, a project, or simply something to discuss? Let us write what comes next.',
     'about.restart': 'Back to the beginning',
+    'hud.language': 'Choose language', 'hud.googleBusiness': 'Open NacoDev on Google',
     'common.close': 'Close',
   },
   es: {
@@ -195,6 +197,7 @@ export const messages = {
     'about.contact.open': 'Contactar', 'about.contact.title': 'Abrir contacto',
     'about.contact.message': '¿Una idea, un proyecto o simplemente ganas de hablar? Escribamos lo que sigue.',
     'about.restart': 'Volver al principio',
+    'hud.language': 'Elegir idioma', 'hud.googleBusiness': 'Abrir la ficha de NacoDev en Google',
     'common.close': 'Cerrar',
   },
 } as const

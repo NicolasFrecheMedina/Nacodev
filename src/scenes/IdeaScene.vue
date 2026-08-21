@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from 'vue'
 import logoUrl from '../../assets/NacoDevlogoW.png'
+import GlobalHud from '@/components/ui/GlobalHud.vue'
+import { sceneById, sceneStepTotal } from '@/data/scenes'
 import { useI18n } from '@/i18n'
 
 const emit = defineEmits<{
@@ -8,6 +10,7 @@ const emit = defineEmits<{
   'takeoff-complete': []
 }>()
 const { t } = useI18n()
+const hud = sceneById.idea.hud!
 const launching = ref(false)
 let takeoffTimer: number | undefined
 
@@ -26,7 +29,7 @@ onBeforeUnmount(() => {
 
 <template>
   <section id="idea" class="idea-scene" :class="{ 'idea-scene--launching': launching }" aria-labelledby="idea-title">
-    <div class="idea-scene__coordinates" aria-hidden="true">48.8566° N<br>02.3522° E</div>
+    <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal" />
     <div class="idea-scene__hero">
       <img class="idea-scene__logo" :src="logoUrl" alt="Naco Dev">
       <h1 id="idea-title">{{ t('idea.tagline') }}</h1>
@@ -34,7 +37,6 @@ onBeforeUnmount(() => {
         <span>{{ t('idea.takeoff') }}</span><span class="takeoff__mark" aria-hidden="true">↗</span>
       </button>
     </div>
-    <div class="idea-scene__index" aria-hidden="true"><span>02</span> / 05</div>
   </section>
 </template>
 
@@ -52,10 +54,6 @@ onBeforeUnmount(() => {
 .takeoff:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 .takeoff:disabled { cursor: default; }
 .takeoff__mark { margin-left: 1.6rem; color: var(--color-accent); font-size: 1rem; }
-.idea-scene__coordinates, .idea-scene__index { position: absolute; bottom: clamp(1.5rem, 4vw, 3rem); color: rgb(235 243 246 / 42%); font-size: 0.55rem; letter-spacing: 0.16em; line-height: 1.7; }
-.idea-scene__coordinates { left: clamp(1.5rem, 4vw, 3rem); }
-.idea-scene__index { right: clamp(1.5rem, 4vw, 3rem); }
-.idea-scene__index span { color: var(--color-accent); }
 @keyframes hero-arrival { from { opacity: 0; filter: blur(7px); transform: scale(0.9); } }
 @media (prefers-reduced-motion: reduce) {
   .idea-scene__hero { animation: none; transition-duration: 150ms; }
