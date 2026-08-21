@@ -19,11 +19,18 @@ const backgroundRevealed = ref(false)
 const spaceMotion = ref<SpaceMotion>('idle')
 const takeoffComplete = ref(false)
 const transitionPhase = ref<TransitionPhase>('idle')
+const returning = ref(false)
 let phaseTimer: number | undefined
+let returnTimer: number | undefined
 
 function clearPhaseTimer() {
   if (phaseTimer !== undefined) window.clearTimeout(phaseTimer)
   phaseTimer = undefined
+}
+
+function clearReturnTimer() {
+  if (returnTimer !== undefined) window.clearTimeout(returnTimer)
+  returnTimer = undefined
 }
 
 function updateConnectionBackground(payload: { revealed: boolean; motion: SpaceMotion }) {
@@ -45,6 +52,26 @@ function showExploration() {
   takeoffComplete.value = true
   spaceMotion.value = 'drift'
   scene.value = 'exploration'
+}
+
+function returnToIdea() {
+  clearPhaseTimer()
+  clearReturnTimer()
+  transitionPhase.value = 'idle'
+  spaceMotion.value = 'drift'
+  scene.value = 'idea'
+}
+
+function returnToJourneyScene(target: 'exploration' | 'missions') {
+  clearPhaseTimer()
+  clearReturnTimer()
+  transitionPhase.value = 'idle'
+  spaceMotion.value = 'drift'
+  takeoffComplete.value = true
+  returning.value = true
+  scene.value = target
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  returnTimer = window.setTimeout(() => { returning.value = false }, reducedMotion ? 140 : 420)
 }
 
 function beginMissionsTransition() {
@@ -98,12 +125,17 @@ function completeMissionsExit() {
 
 function restartJourney() {
   clearPhaseTimer()
+  clearReturnTimer()
+  returning.value = false
   spaceMotion.value = 'drift'
   transitionPhase.value = 'idle'
   scene.value = 'idea'
 }
 
-onBeforeUnmount(clearPhaseTimer)
+onBeforeUnmount(() => {
+  clearPhaseTimer()
+  clearReturnTimer()
+})
 </script>
 
 <template>
@@ -122,10 +154,11 @@ onBeforeUnmount(clearPhaseTimer)
         @motion-change="updateIdeaMotion"
         @takeoff-complete="showExploration"
       />
-      <div v-else key="journey-end" class="journey-end" :data-transition-phase="transitionPhase">
+      <div v-else key="journey-end" class="journey-end" :class="{ 'journey-end--returning': returning }" :data-transition-phase="transitionPhase">
         <ExplorationScene
           v-if="scene === 'exploration'"
           :takeoff-complete="takeoffComplete"
+          @back="returnToIdea"
           @depart="beginMissionsTransition"
           @exit-complete="completeConstellationExit"
         />
@@ -133,6 +166,7 @@ onBeforeUnmount(clearPhaseTimer)
           v-if="scene === 'missions' && transitionPhase !== 'missions-gap'"
           :emerging="transitionPhase === 'missions-enter'"
           :stabilizing="transitionPhase === 'missions-ui'"
+          @back="returnToJourneyScene('exploration')"
           @depart="beginAboutTransition"
           @exit-complete="completeMissionsExit"
         />
@@ -140,6 +174,7 @@ onBeforeUnmount(clearPhaseTimer)
           v-if="scene === 'about' && transitionPhase !== 'about-gap'"
           :emerging="transitionPhase === 'about-draw'"
           :revealing="transitionPhase === 'about-reveal'"
+          @back="returnToJourneyScene('missions')"
           @restart="restartJourney"
         />
       </div>
@@ -160,11 +195,14 @@ onBeforeUnmount(clearPhaseTimer)
 
 .journey-end { position: relative; width: 100%; height: 100svh; overflow: hidden; }
 .journey-end > * { position: absolute; inset: 0; }
+.journey-end--returning > * { animation: journey-return 400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes journey-return { from { opacity: 0; filter: blur(3px); transform: scale(0.985); } to { opacity: 1; filter: none; transform: scale(1); } }
 
 @media (prefers-reduced-motion: reduce) {
   .scene-change-enter-active,
   .scene-change-leave-active {
     transition-duration: 120ms;
   }
+  .journey-end--returning > * { animation-duration: 120ms; }
 }
 </style>

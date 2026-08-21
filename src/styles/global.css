@@ -29,3 +29,36 @@ body.has-open-modal { overflow: hidden; }
   text-align: center;
   text-wrap: balance;
 }
+
+.hud-control {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.78rem;
+  padding: 0.68rem 0.95rem;
+  border: 1px solid rgb(225 241 247 / 14%);
+  color: rgb(240 247 250 / 56%);
+  background: rgb(10 15 22 / 25%);
+  font: inherit;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: border-color 240ms ease, box-shadow 240ms ease, color 240ms ease, background 240ms ease, transform 240ms ease;
+}
+.hud-control--secondary { border-color: rgb(225 241 247 / 8%); color: rgb(225 239 244 / 40%); background: rgb(10 15 22 / 15%); }
+.hud-control:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 44%); color: var(--color-ink); background: rgb(155 222 248 / 7%); box-shadow: 0 0 1.25rem rgb(95 194 234 / 9%), inset 0 1px 0 rgb(255 255 255 / 6%); transform: translateY(-1px); }
+.hud-control:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.3rem; }
+.hud-control:disabled { cursor: default; opacity: 0.45; transform: none; }
+.hud-control__arrow { color: var(--color-accent); font-size: 0.82rem; transition: transform 240ms ease; }
+.hud-control:is(:hover, :focus-visible) .hud-control__arrow--back { transform: translateX(-0.18rem); }
+.hud-control:is(:hover, :focus-visible) .hud-control__arrow--next { transform: translate(0.13rem, -0.13rem); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-control, .hud-control__arrow { transition-duration: 0ms; }
+  .hud-control:is(:hover, :focus-visible),
+  .hud-control:is(:hover, :focus-visible) .hud-control__arrow { transform: none; }
+}

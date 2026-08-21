@@ -5,12 +5,14 @@ import TrajectoryPanel from '@/components/about/TrajectoryPanel.vue'
 import ContactPanel from '@/components/contact/ContactPanel.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
+import HudContextStatus from '@/components/ui/HudContextStatus.vue'
+import SceneNavigation from '@/components/ui/SceneNavigation.vue'
 import { sceneById, sceneStepTotal } from '@/data/scenes'
 import { timelineSteps, type TimelineStep, type TimelineStepId } from '@/data/timeline'
 import { useI18n } from '@/i18n'
 
 const props = withDefaults(defineProps<{ emerging?: boolean; revealing?: boolean }>(), { emerging: false, revealing: false })
-defineEmits<{ restart: [] }>()
+defineEmits<{ back: []; restart: [] }>()
 const { t } = useI18n()
 const hud = sceneById.about.hud!
 const selectedId = ref<TimelineStepId | null>(null)
@@ -19,6 +21,9 @@ const contactOpen = ref(false)
 const activeId = computed(() => selectedId.value ?? previewedId.value ?? 'elsewhere')
 const activeStep = computed<TimelineStep>(() => timelineSteps.find((step) => step.id === activeId.value) ?? timelineSteps[0]!)
 const activeIndex = computed(() => timelineSteps.findIndex((step) => step.id === activeStep.value.id))
+const hudContext = computed(() => selectedId.value || previewedId.value
+  ? `${String(activeIndex.value + 1).padStart(2, '0')} / 05 · ${t(activeStep.value.titleKey)}`
+  : t('scenes.about'))
 
 function selectStep(step: TimelineStep) {
   selectedId.value = selectedId.value === step.id ? null : step.id
@@ -39,7 +44,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 
 <template>
   <section id="about" class="about-scene" :class="{ 'about-scene--emerging': props.emerging, 'about-scene--revealing': props.revealing }" :inert="props.emerging || props.revealing" :aria-busy="props.emerging || props.revealing" aria-labelledby="about-title">
-    <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal" />
+    <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal">
+      <template #context><HudContextStatus :primary="hudContext" /></template>
+    </GlobalHud>
     <header class="about-scene__header">
       <div><p>{{ t('about.kicker') }}</p><h1 id="about-title">{{ t('scenes.about') }}</h1></div>
     </header>
@@ -70,7 +77,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
       <ContactPanel @open="contactOpen = true" />
     </footer>
 
-    <button class="about-scene__restart" type="button" @click="$emit('restart')">← {{ t('about.restart') }}</button>
+    <SceneNavigation :navigation-label="t('common.sceneNavigation')" :back-label="t('common.back')" :next-label="t('about.restart')" next-mark="↺" @back="$emit('back')" @next="$emit('restart')" />
 
     <BaseModal id="contact-modal" :open="contactOpen" :title="t('about.contact.title')" :close-label="t('common.close')" @close="contactOpen = false">
       <div class="contact-modal">
@@ -104,11 +111,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
 .about-scene__conclusion { display: grid; gap: 0.2rem; text-align: center; }
 .about-scene__conclusion strong { font-size: clamp(0.82rem, 1.3vw, 1.05rem); font-weight: 400; }
 .about-scene__conclusion span { color: rgb(178 221 238 / 58%); font-size: 0.62rem; }
-.about-scene__restart { position: absolute; z-index: 7; bottom: 1.1rem; left: 50%; padding: 0; border: 0; color: rgb(225 239 244 / 32%); background: none; font: inherit; font-size: 0.42rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transform: translateX(-50%); }
-.about-scene__restart:is(:hover, :focus-visible) { color: rgb(238 247 250 / 76%); }
-.about-scene__restart:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.3rem; }
-.about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene__restart, .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
-.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__intro, .about-scene--emerging .about-scene__footer, .about-scene--emerging .about-scene__restart, .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel) { opacity: 0; transform: translateY(0.65rem); }
+.about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__intro, .about-scene--emerging .about-scene__footer, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel) { opacity: 0; transform: translateY(0.65rem); }
 .trajectory-panel-enter-active, .trajectory-panel-leave-active { transition: opacity 220ms ease, transform 320ms ease; }
 .trajectory-panel-enter-from, .trajectory-panel-leave-to { opacity: 0; transform: translateY(0.5rem); }
 .intro-copy-enter-active, .intro-copy-leave-active { transition: opacity 220ms ease, transform 300ms ease; }
@@ -129,7 +133,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
   .about-scene__footer { display: grid; width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin-bottom: 0; padding-bottom: 4.5rem; }
   .about-scene__conclusion { grid-row: 1; text-align: left; }
   .about-scene__profile { grid-row: 2; }
-  .about-scene__restart { position: relative; bottom: auto; left: auto; display: block; margin: -2.1rem auto 1rem; transform: none; }
 }
-@media (prefers-reduced-motion: reduce) { .about-scene { animation-duration: 120ms; transform: none; filter: none; } .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene__restart, .about-scene__trajectory :deep(.trajectory-panel), .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 160ms; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .about-scene { animation-duration: 120ms; transform: none; filter: none; } .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel), .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 160ms; transform: none; } }
 </style>

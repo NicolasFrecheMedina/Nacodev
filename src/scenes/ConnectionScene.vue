@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import HudStepIndicator from '@/components/ui/HudStepIndicator.vue'
+import { sceneStepTotal } from '@/data/scenes'
 import { useI18n } from '@/i18n'
 
 type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch'
@@ -53,7 +55,9 @@ onBeforeUnmount(() => timers.forEach((timer) => window.clearTimeout(timer)))
         <span class="signal__orbit signal__orbit--inner" />
         <span class="signal__sweep" />
       </div>
-      <p class="signal__eyebrow">NACO LINK: 01/05</p>
+      <div class="signal__scene" aria-hidden="true">
+        <HudStepIndicator code="NCD — CNX" :step="1" :total="sceneStepTotal" />
+      </div>
       <p class="signal__status" :class="{ 'signal__status--found': status === 'found' }">
         {{ status === 'searching' ? t('connection.searching') : t('connection.found') }}
       </p>
@@ -77,8 +81,8 @@ onBeforeUnmount(() => timers.forEach((timer) => window.clearTimeout(timer)))
 .signal__orbit--outer { inset: 17%; }
 .signal__orbit--inner { inset: 35%; }
 .signal__sweep { position: absolute; inset: 4%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 72%, rgb(112 211 255 / 34%) 98%, transparent); animation: scan 1.45s linear infinite; }
-.signal__eyebrow, .signal__status { margin: 0; letter-spacing: 0.24em; text-transform: uppercase; }
-.signal__eyebrow { margin-bottom: 0.7rem; font-size: 0.58rem; opacity: 0.55; }
+.signal__status { margin: 0; letter-spacing: 0.24em; text-transform: uppercase; }
+.signal__scene { margin-bottom: 0.7rem; font-size: var(--hud-label-size); letter-spacing: 0.16em; line-height: 1.7; text-transform: uppercase; opacity: 0.7; }
 .signal__status { font-size: clamp(0.72rem, 2vw, 0.86rem); transition: color 300ms ease; }
 .signal__status--found { color: var(--color-accent); }
 .signal__progress { width: 100%; height: 1px; margin-top: 1.2rem; overflow: hidden; background: currentColor; opacity: 0.32; }

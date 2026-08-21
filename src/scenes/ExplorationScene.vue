@@ -1,29 +1,57 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ExplorationConstellation from '@/components/space/ExplorationConstellation.vue'
 import ExplorationPanel from '@/components/ui/ExplorationPanel.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
+import HudContextStatus from '@/components/ui/HudContextStatus.vue'
+import SceneNavigation from '@/components/ui/SceneNavigation.vue'
 import { explorationAxes, type ExplorationAxis, type ExplorationAxisId } from '@/data/exploration'
 import { sceneById, sceneStepTotal } from '@/data/scenes'
 import { useI18n } from '@/i18n'
 
 withDefaults(defineProps<{ takeoffComplete?: boolean }>(), { takeoffComplete: false })
-const emit = defineEmits<{ depart: []; 'exit-complete': [] }>()
+const emit = defineEmits<{ back: []; depart: []; 'exit-complete': [] }>()
 const { t } = useI18n()
 const hud = sceneById.exploration.hud!
 const selectedAxis = ref<ExplorationAxis | null>(null)
 const previewedAxis = ref<ExplorationAxis | null>(null)
+const panel = ref<{ focusNext: () => void } | null>(null)
+const suppressPreview = ref(false)
 const departing = ref(false)
 let departureTimer: number | undefined
-const visibleAxis = computed(() => selectedAxis.value ?? previewedAxis.value)
 const labels = computed(() => Object.fromEntries(explorationAxes.map((axis) => [axis.id, t(axis.labelKey)])) as Record<ExplorationAxisId, string>)
+const contextAxis = computed(() => selectedAxis.value ?? previewedAxis.value)
+const hudPrimary = computed(() => contextAxis.value ? `${t('exploration.status.star')} ${t(contextAxis.value.labelKey)}` : t('exploration.status.constellation'))
+const hudSecondary = computed(() => selectedAxis.value ? t('exploration.status.locked') : previewedAxis.value ? t('exploration.status.detected') : t('exploration.status.online'))
 
 function selectAxis(axis: ExplorationAxis) {
-  selectedAxis.value = selectedAxis.value?.id === axis.id ? null : axis
+  selectedAxis.value = axis
   previewedAxis.value = null
 }
 function previewAxis(axis: ExplorationAxis | null) {
-  if (!selectedAxis.value) previewedAxis.value = axis
+  if (!selectedAxis.value && !suppressPreview.value) previewedAxis.value = axis
+}
+
+async function closeAxis() {
+  const previousId = selectedAxis.value?.id
+  selectedAxis.value = null
+  previewedAxis.value = null
+  suppressPreview.value = true
+  await nextTick()
+  if (previousId) document.querySelector<HTMLElement>(`[data-axis-id="${previousId}"]`)?.focus()
+  window.requestAnimationFrame(() => { suppressPreview.value = false })
+}
+
+async function selectNextAxis() {
+  const currentIndex = explorationAxes.findIndex((axis) => axis.id === selectedAxis.value?.id)
+  selectedAxis.value = explorationAxes[(currentIndex + 1) % explorationAxes.length] ?? explorationAxes[0]!
+  previewedAxis.value = null
+  await nextTick()
+  panel.value?.focusNext()
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape' && selectedAxis.value) void closeAxis()
 }
 
 function continueToMissions() {
@@ -34,7 +62,9 @@ function continueToMissions() {
   departureTimer = window.setTimeout(() => emit('exit-complete'), duration)
 }
 
+onMounted(() => window.addEventListener('keydown', handleKeydown))
 onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
   if (departureTimer !== undefined) window.clearTimeout(departureTimer)
 })
 </script>
@@ -43,7 +73,7 @@ onBeforeUnmount(() => {
   <section id="exploration" class="exploration-scene" :class="{ 'exploration-scene--ready': takeoffComplete, 'exploration-scene--departing': departing }" :inert="departing" :aria-busy="departing" aria-labelledby="exploration-title">
     <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal">
       <template #context>
-        <span class="global-hud__status" aria-hidden="true"><i class="global-hud__status-dot" />{{ selectedAxis ? t('exploration.status.focus') : t('exploration.status.online') }}</span>
+        <HudContextStatus :primary="hudPrimary" :secondary="hudSecondary" />
       </template>
     </GlobalHud>
     <header class="exploration-scene__header">
@@ -51,9 +81,20 @@ onBeforeUnmount(() => {
     </header>
     <ExplorationConstellation :labels="labels" :selected-id="selectedAxis?.id ?? null" @select="selectAxis" @preview="previewAxis" />
     <Transition name="panel">
-      <ExplorationPanel v-if="visibleAxis" :key="visibleAxis.id" :label="t(visibleAxis.labelKey)" :description="t(visibleAxis.descriptionKey)" :selected="Boolean(selectedAxis)" :close-label="t('exploration.overview')" @close="selectedAxis = null" />
+      <ExplorationPanel
+        v-if="selectedAxis"
+        ref="panel"
+        :key="selectedAxis.id"
+        :label="t(selectedAxis.labelKey)"
+        :description="t(selectedAxis.descriptionKey)"
+        :selected="true"
+        :close-label="t('exploration.overview')"
+        :next-label="t('exploration.next')"
+        @close="closeAxis"
+        @next="selectNextAxis"
+      />
     </Transition>
-    <button class="exploration-scene__continue" type="button" :disabled="departing" @click="continueToMissions">{{ t('exploration.continue') }}<span aria-hidden="true">↗</span></button>
+    <SceneNavigation :navigation-label="t('common.sceneNavigation')" :back-label="t('common.back')" :next-label="t('exploration.continue')" :back-disabled="departing" :next-disabled="departing" @back="emit('back')" @next="continueToMissions" />
   </section>
 </template>
 
@@ -68,13 +109,10 @@ onBeforeUnmount(() => {
 .exploration-scene--departing :deep(.exploration-node) { color: #fff; animation: node-departure 900ms ease both; }
 .exploration-scene--departing :deep(.exploration-node__core) { background: rgb(214 244 255 / 68%); box-shadow: 0 0 1.4rem rgb(155 222 248 / 78%), inset 0 0 0.5rem #fff; }
 .exploration-scene--departing :deep(.exploration-node__label) { animation: departure-label 480ms ease both; }
-.exploration-scene--departing .exploration-scene__header, .exploration-scene--departing :deep(.global-hud), .exploration-scene--departing .exploration-scene__continue, .exploration-scene--departing :deep(.exploration-panel) { opacity: 0; transition: opacity 300ms ease; }
+.exploration-scene--departing .exploration-scene__header, .exploration-scene--departing :deep(.global-hud), .exploration-scene--departing :deep(.scene-navigation), .exploration-scene--departing :deep(.exploration-panel) { opacity: 0; transition: opacity 300ms ease; }
 .exploration-scene__header { position: absolute; z-index: 3; top: var(--hud-top); left: 50%; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; transform: translateX(-50%); }
 .exploration-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }
 .exploration-scene__header h1 { margin: 0; color: rgb(245 249 251 / 88%); font-family: var(--font-body); font-size: clamp(0.72rem, 1.4vw, 0.9rem); font-weight: 400; letter-spacing: 0.34em; }
-.exploration-scene__continue { position: absolute; z-index: 4; bottom: clamp(1.5rem, 4vw, 3rem); left: 50%; display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; border: 1px solid rgb(225 241 247 / 14%); color: rgb(240 247 250 / 58%); font: inherit; font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; background: rgb(10 15 22 / 25%); backdrop-filter: blur(8px); cursor: pointer; transform: translateX(-50%); transition: border-color 300ms ease, color 300ms ease, background 300ms ease; }
-.exploration-scene__continue:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 42%); color: var(--color-ink); background: rgb(155 222 248 / 7%); }
-.exploration-scene__continue:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.3rem; }
 .panel-enter-active, .panel-leave-active { transition: opacity 250ms ease; } .panel-enter-from, .panel-leave-to { opacity: 0; }
 @keyframes constellation-departure {
   0% { opacity: 1; filter: brightness(1); transform: translate3d(var(--focus-x), var(--focus-y), 0) scale(1); }
@@ -87,7 +125,7 @@ onBeforeUnmount(() => {
 @keyframes connection-departure { 0% { stroke: rgb(184 217 230 / 16%); } 18%, 45% { opacity: 1; stroke: rgb(203 237 249 / 72%); stroke-width: 1.4; } 100% { opacity: 0; stroke: rgb(203 237 249 / 0%); } }
 @keyframes node-departure { 0%, 45% { opacity: 1; filter: brightness(1.65); } 100% { opacity: 0; filter: brightness(2) blur(5px); } }
 @keyframes departure-label { 0%, 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(0.6rem); } }
-@media (max-width: 700px) { .exploration-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } .exploration-scene__continue { bottom: 3.8rem; } }
+@media (max-width: 700px) { .exploration-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .exploration-scene { transition-duration: 120ms; transform: none; filter: none; } .panel-enter-active, .panel-leave-active { transition-duration: 120ms; } .exploration-scene--departing :deep(.constellation__group) { animation: reduced-departure 180ms ease both; } .exploration-scene--departing :deep(.exploration-node), .exploration-scene--departing :deep(.constellation__connections line) { animation: reduced-element-departure 180ms ease both; } .exploration-scene--departing :deep(.constellation__group::after) { display: none; } }
 @keyframes reduced-departure { to { opacity: 0; transform: translate3d(0, 0, 0) scale(0.96); } }
 @keyframes reduced-element-departure { to { opacity: 0; } }
