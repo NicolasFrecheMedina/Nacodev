@@ -96,13 +96,6 @@ onBeforeUnmount(() => {
       @error="webglAvailable = false"
     />
 
-    <svg v-if="emerging" class="mission-system__arrival-orbits" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M 120 42 C 86 18 55 18 27 36" />
-      <path d="M 122 46 C 96 22 82 23 70 34" />
-      <path d="M 124 50 C 86 82 55 86 32 70" />
-      <path d="M 126 54 C 102 76 85 78 73 69" />
-    </svg>
-
     <p v-if="!webglAvailable" class="mission-system__fallback-note" role="status">
       {{ t('missions.webglFallback') }}
     </p>
@@ -137,17 +130,12 @@ onBeforeUnmount(() => {
 <style scoped>
 .mission-system { position: absolute; inset: 6rem 2rem 5.5rem; opacity: 0; animation: system-arrival 1.5s cubic-bezier(0.22, 1, 0.36, 1) 180ms forwards; }
 .mission-system--transitioned { opacity: 1; animation: none; }
-.mission-system--emerging { opacity: 1; pointer-events: none; animation: none; }
+.mission-system--emerging { pointer-events: none; animation: system-return-depth 820ms cubic-bezier(0, 0, 0.6, 1) both, system-return-visual 760ms cubic-bezier(0.75, 0, 0.75, 0.9) both; }
 .mission-system--emerging :deep(.missions-canvas) { opacity: 1; }
 .mission-system--emerging::after { opacity: 0; }
 .mission-system__targets { transition: opacity 360ms ease; }
 .mission-system--emerging .mission-system__targets { opacity: 0; }
 .mission-system::after { position: absolute; inset: 8% 13%; border: 1px solid rgb(198 226 236 / 5%); border-radius: 50%; content: ''; pointer-events: none; transform: rotate(-7deg); }
-.mission-system__arrival-orbits { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.mission-system__arrival-orbits path { fill: none; stroke: rgb(174 222 238 / 22%); stroke-width: 0.55; vector-effect: non-scaling-stroke; stroke-dasharray: 3 4; opacity: 0; animation: arrival-orbit 900ms ease-out both; }
-.mission-system__arrival-orbits path:nth-child(2) { animation-delay: 120ms; }
-.mission-system__arrival-orbits path:nth-child(3) { animation-delay: 240ms; }
-.mission-system__arrival-orbits path:nth-child(4) { animation-delay: 360ms; }
 .mission-system__targets { position: absolute; inset: 0; }
 .mission-target { position: absolute; z-index: 2; top: var(--target-y); left: var(--target-x); width: clamp(7rem, 11vw, 10rem); height: clamp(7rem, 11vw, 10rem); padding: 0; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
 .mission-target__reticle { position: absolute; inset: -0.35rem; border: 1px solid transparent; border-radius: 50%; transition: border-color 350ms ease, transform 500ms ease; }
@@ -166,7 +154,8 @@ onBeforeUnmount(() => {
 .mission-system--fallback .mission-target__fallback-planet { opacity: 1; }
 .mission-system__fallback-note { position: absolute; right: 1rem; bottom: 0; margin: 0; color: rgb(225 239 244 / 45%); font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; }
 @keyframes system-arrival { from { opacity: 0; filter: blur(5px); transform: scale(0.78); } to { opacity: 1; filter: none; transform: scale(1); } }
-@keyframes arrival-orbit { 0% { opacity: 0; stroke-dashoffset: 8; } 18% { opacity: 0.78; } 72% { opacity: 0.38; } 100% { opacity: 0; stroke-dashoffset: 0; } }
+@keyframes system-return-depth { from { transform: translate3d(0, 0, -30rem) scale(0.5); } to { transform: translate3d(0, 0, 0) scale(1); } }
+@keyframes system-return-visual { from { opacity: 0; filter: blur(6px) brightness(0.28); } to { opacity: 1; filter: none; } }
 @media (max-width: 700px) {
   .mission-system { inset: 6.8rem 0.5rem 5.5rem; }
   .mission-system::after { display: none; }
@@ -177,5 +166,5 @@ onBeforeUnmount(() => {
   .mission-target:is(:hover, :focus-visible) .mission-target__readout { transform: translate(-50%, 0); }
   .mission-system__fallback-note { right: 50%; bottom: -0.6rem; width: max-content; transform: translateX(50%); }
 }
-@media (prefers-reduced-motion: reduce) { .mission-system { opacity: 1; animation: none; } .mission-system__arrival-orbits { display: none; } .mission-target__reticle, .mission-target__readout { transition-duration: 100ms; } }
+@media (prefers-reduced-motion: reduce) { .mission-system { opacity: 1; animation: none; } .mission-target__reticle, .mission-target__readout { transition-duration: 100ms; } }
 </style>

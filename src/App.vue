@@ -96,7 +96,7 @@ function completeConstellationExit() {
         transitionPhase.value = 'idle'
         spaceMotion.value = 'drift'
       }, reducedMotion ? 120 : 200)
-    }, reducedMotion ? 260 : 1300)
+    }, reducedMotion ? 260 : 900)
   }, reducedMotion ? 80 : 160)
 }
 
