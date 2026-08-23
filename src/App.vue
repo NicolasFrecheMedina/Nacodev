@@ -12,7 +12,7 @@ const AboutScene = defineAsyncComponent(loadAboutScene)
 
 type Scene = 'connection' | 'idea' | 'exploration' | 'missions' | 'about'
 type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel' | 'orbit'
-type TransitionPhase = 'idle' | 'exploration-exit' | 'missions-gap' | 'missions-enter' | 'missions-ui' | 'missions-exit' | 'about-gap' | 'about-draw' | 'about-reveal'
+type TransitionPhase = 'idle' | 'exploration-exit' | 'missions-gap' | 'missions-enter' | 'missions-ui' | 'missions-exit' | 'about-draw' | 'about-reveal'
 
 const scene = ref<Scene>('connection')
 const backgroundRevealed = ref(false)
@@ -110,18 +110,15 @@ function beginAboutTransition() {
 function completeMissionsExit() {
   if (transitionPhase.value !== 'missions-exit') return
   scene.value = 'about'
-  transitionPhase.value = 'about-gap'
+  transitionPhase.value = 'about-draw'
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   phaseTimer = window.setTimeout(() => {
-    transitionPhase.value = 'about-draw'
+    transitionPhase.value = 'about-reveal'
     phaseTimer = window.setTimeout(() => {
-      transitionPhase.value = 'about-reveal'
-      phaseTimer = window.setTimeout(() => {
-        transitionPhase.value = 'idle'
-        spaceMotion.value = 'drift'
-      }, reducedMotion ? 160 : 420)
-    }, reducedMotion ? 420 : 5730)
-  }, reducedMotion ? 80 : 140)
+      transitionPhase.value = 'idle'
+      spaceMotion.value = 'drift'
+    }, reducedMotion ? 160 : 420)
+  }, reducedMotion ? 420 : 5730)
 }
 
 function restartJourney() {
@@ -172,7 +169,7 @@ onBeforeUnmount(() => {
           @exit-complete="completeMissionsExit"
         />
         <AboutScene
-          v-if="scene === 'about' && transitionPhase !== 'about-gap'"
+          v-if="scene === 'about'"
           :emerging="transitionPhase === 'about-draw'"
           :revealing="transitionPhase === 'about-reveal'"
           @back="returnToJourneyScene('missions')"

@@ -123,9 +123,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.missions-scene { position: relative; width: 100%; height: 100svh; min-height: 34rem; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgb(35 59 70 / 8%), transparent 38%); transition: background 800ms ease; }
-.missions-scene::before { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
-.missions-scene--focused { background: rgb(1 3 7 / 28%); }
+.missions-scene { position: relative; width: 100%; height: 100svh; min-height: 34rem; overflow: hidden; }
+.missions-scene::before { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgb(35 59 70 / 8%), transparent 38%); content: ''; pointer-events: none; transition: opacity 760ms ease; }
+.missions-scene::after { position: absolute; inset: clamp(0.8rem, 2vw, 1.5rem); border: 1px solid rgb(238 246 248 / 8%); content: ''; pointer-events: none; }
+.missions-scene--focused::before { background: rgb(1 3 7 / 28%); }
 .missions-scene--emerging { pointer-events: none; }
 .missions-scene__header { position: absolute; z-index: 6; top: var(--hud-top); left: 50%; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; transform: translateX(-50%); }
 .missions-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }
@@ -134,6 +135,7 @@ onBeforeUnmount(() => {
 .missions-scene--emerging .missions-scene__header, .missions-scene--emerging :deep(.global-hud), .missions-scene--emerging :deep(.scene-navigation) { opacity: 0; }
 .missions-scene--stabilizing .missions-scene__header, .missions-scene--stabilizing :deep(.global-hud), .missions-scene--stabilizing :deep(.scene-navigation) { transition-duration: 200ms; }
 .missions-scene--departing { pointer-events: none; }
+.missions-scene--departing::before { opacity: 0; }
 .missions-scene--departing :deep(.mission-system) { opacity: 0; filter: blur(6px) brightness(0.28); transform: translate3d(0, 0, -30rem) scale(0.5); transition: opacity 760ms ease, filter 760ms ease, transform 820ms cubic-bezier(0.4, 0, 1, 1); }
 .missions-scene--departing :deep(.mission-system::after) { opacity: 0; }
 .missions-scene--departing :deep(.mission-system__targets) { opacity: 0; transition-duration: 260ms; }

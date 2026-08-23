@@ -12,6 +12,14 @@
     <title>NacoDev</title>
   </head>
   <body>
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="name" />
+      <input type="email" name="email" />
+      <input name="subject" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

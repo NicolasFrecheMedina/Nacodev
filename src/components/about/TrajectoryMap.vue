@@ -3,8 +3,8 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import TrajectoryNode from './TrajectoryNode.vue'
 import { timelineSteps, trajectoryPath, type TimelineStep, type TimelineStepId } from '@/data/timeline'
 
-const props = defineProps<{ activeId: TimelineStepId; selectedId: TimelineStepId | null; emerging?: boolean }>()
-const emit = defineEmits<{ preview: [step: TimelineStep | null]; select: [step: TimelineStep] }>()
+const props = defineProps<{ activeId: TimelineStepId; selectedId: TimelineStepId | null; emerging?: boolean; concluding?: boolean }>()
+const emit = defineEmits<{ preview: [step: TimelineStep | null]; select: [step: TimelineStep]; 'conclusion-complete': [] }>()
 const progressStep = computed(() => timelineSteps.find((step) => step.id === props.selectedId) ?? timelineSteps[0]!)
 const progressIndex = computed(() => timelineSteps.findIndex((step) => step.id === progressStep.value.id))
 const progressPath = ref<SVGPathElement | null>(null)
@@ -18,14 +18,14 @@ let secondFrame = 0
 let progressFrame = 0
 let progressStartTimer: number | undefined
 let progressInitialized = false
-const displayedMobileProgress = computed(() => props.emerging && !drawReady.value ? 0 : (progressIndex.value / (timelineSteps.length - 1)) * 100)
+const displayedMobileProgress = computed(() => props.concluding ? 100 : props.emerging && !drawReady.value ? 0 : (progressIndex.value / (timelineSteps.length - 1)) * 100)
 const progressStyle = computed(() => ({
   '--trajectory-mobile-progress': `${displayedMobileProgress.value}%`,
   '--trajectory-clip': `${drawReady.value ? 1280 : 0}px`,
   '--trajectory-reveal': drawReady.value ? '100%' : '0%',
 }))
 
-function animateProgress(target: number, duration = 620) {
+function animateProgress(target: number, duration = 620, onComplete?: () => void) {
   window.cancelAnimationFrame(progressFrame)
   const start = renderedLength.value
   const startedAt = performance.now()
@@ -34,13 +34,16 @@ function animateProgress(target: number, duration = 620) {
     const easedProgress = 1 - (1 - progress) ** 4
     renderedLength.value = start + (target - start) * easedProgress
     if (progress < 1) progressFrame = window.requestAnimationFrame(tick)
-    else renderedLength.value = target
+    else {
+      renderedLength.value = target
+      onComplete?.()
+    }
   }
   progressFrame = window.requestAnimationFrame(tick)
 }
 
 watch(activeLength, (target) => {
-  if (target <= 0) return
+  if (target <= 0 || props.concluding) return
   if (!progressInitialized) {
     progressInitialized = true
     if (props.emerging) {
@@ -51,6 +54,23 @@ watch(activeLength, (target) => {
     return
   }
   animateProgress(target)
+})
+
+watch(() => props.concluding, (concluding) => {
+  if (!concluding) {
+    window.cancelAnimationFrame(progressFrame)
+    if (activeLength.value > 0) renderedLength.value = activeLength.value
+    return
+  }
+
+  const finalLength = progressPath.value?.getTotalLength()
+  if (finalLength === undefined) return
+  if (progressStartTimer !== undefined) {
+    window.clearTimeout(progressStartTimer)
+    progressStartTimer = undefined
+  }
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  animateProgress(finalLength, reducedMotion ? 120 : 900, () => emit('conclusion-complete'))
 })
 
 function squaredDistance(path: SVGPathElement, length: number, x: number, y: number) {
@@ -115,7 +135,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="trajectory-map" :class="{ 'trajectory-map--emerging': emerging }" :style="progressStyle" aria-label="Trajectoire de Nicolas">
+  <div class="trajectory-map" :class="{ 'trajectory-map--emerging': emerging, 'trajectory-map--concluding': concluding }" :style="progressStyle" aria-label="Trajectoire de Nicolas">
     <svg class="trajectory-map__line" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="trajectory-glow" x1="0" x2="1"><stop stop-color="#9bdef8" stop-opacity="0"/><stop offset=".48" stop-color="#d9f4ff" stop-opacity=".72"/><stop offset="1" stop-color="#9bdef8" stop-opacity=".08"/></linearGradient>
@@ -127,7 +147,7 @@ onBeforeUnmount(() => {
     </svg>
     <div class="trajectory-map__mobile-line" aria-hidden="true"><span /></div>
     <div class="trajectory-map__nodes">
-      <TrajectoryNode v-for="(step, index) in timelineSteps" :key="step.id" :step="step" :index="index" :active="activeId === step.id" :selected="selectedId === step.id" @preview="emit('preview', $event)" @select="emit('select', $event)" />
+      <TrajectoryNode v-for="(step, index) in timelineSteps" :key="step.id" :step="step" :index="index" :active="activeId === step.id" :selected="selectedId === step.id" :concluding="concluding" @preview="emit('preview', $event)" @select="emit('select', $event)" />
     </div>
   </div>
 </template>
@@ -139,7 +159,9 @@ onBeforeUnmount(() => {
 .trajectory-map__shadow, .trajectory-map__path { stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .trajectory-map__shadow { stroke: rgb(80 154 183 / 10%); stroke-width: 12; filter: blur(9px); }
 .trajectory-map__path { stroke: url(#trajectory-glow); stroke-width: 1.25; stroke-dasharray: 3 5; animation: trajectory-drift 18s linear infinite; }
-.trajectory-map__progress { stroke: rgb(204 240 253 / 88%); stroke-width: 2; stroke-linecap: butt; filter: drop-shadow(0 0 5px rgb(155 222 248 / 68%)); }
+.trajectory-map__progress { stroke: rgb(204 240 253 / 88%); stroke-width: 2; stroke-linecap: butt; filter: drop-shadow(0 0 5px rgb(155 222 248 / 68%)); transition: stroke 240ms ease, filter 240ms ease; }
+.trajectory-map--concluding { pointer-events: none; }
+.trajectory-map--concluding .trajectory-map__progress { stroke: #fff4d5; filter: drop-shadow(0 0 8px rgb(255 244 211 / 88%)) drop-shadow(0 0 18px rgb(255 226 151 / 42%)); }
 .trajectory-map__clip { width: var(--trajectory-clip); transition: width 2300ms linear 2050ms; }
 .trajectory-map--emerging .trajectory-map__shadow, .trajectory-map--emerging .trajectory-map__path { clip-path: url('#trajectory-reveal-clip'); }
 .trajectory-map--emerging .trajectory-node { opacity: 0; }
@@ -158,6 +180,7 @@ onBeforeUnmount(() => {
   .trajectory-map__mobile-line { position: absolute; top: 50%; right: 1.65rem; left: 1.65rem; display: block; height: 1px; overflow: hidden; background: rgb(155 222 248 / 16%); }
   .trajectory-map--emerging .trajectory-map__mobile-line { overflow: visible; background: transparent; }
   .trajectory-map__mobile-line span { display: block; width: var(--trajectory-mobile-progress); height: 100%; background: linear-gradient(90deg, rgb(155 222 248 / 18%), rgb(210 242 253 / 88%)); box-shadow: 0 0 0.7rem rgb(155 222 248 / 48%); transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .trajectory-map--concluding .trajectory-map__mobile-line span { background: linear-gradient(90deg, rgb(255 232 168 / 35%), #fff4d5); box-shadow: 0 0 1rem rgb(255 226 151 / 58%); transition-duration: 900ms; }
   .trajectory-map--emerging .trajectory-map__mobile-line span { width: var(--trajectory-reveal); background: repeating-linear-gradient(90deg, rgb(155 222 248 / 32%) 0 3px, transparent 3px 8px); box-shadow: none; transition-duration: 2300ms; transition-delay: 2050ms; transition-timing-function: linear; }
   .trajectory-map--emerging .trajectory-map__mobile-line::after { position: absolute; inset: 0 auto 0 0; width: var(--trajectory-mobile-progress); background: linear-gradient(90deg, rgb(155 222 248 / 18%), rgb(210 242 253 / 88%)); box-shadow: 0 0 0.7rem rgb(155 222 248 / 48%); content: ''; animation: mobile-first-progress 1200ms cubic-bezier(0.22, 1, 0.36, 1) 4450ms both; }
   .trajectory-map__nodes { display: flex; width: 100%; min-width: 0; align-items: center; justify-content: space-between; gap: 0.1rem; }
