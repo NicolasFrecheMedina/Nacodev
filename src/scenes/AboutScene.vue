@@ -13,7 +13,7 @@ import { useI18n } from '@/i18n'
 
 const props = withDefaults(defineProps<{ emerging?: boolean; revealing?: boolean }>(), { emerging: false, revealing: false })
 defineEmits<{ back: []; restart: [] }>()
-const { t } = useI18n()
+const { locale, t } = useI18n()
 const hud = sceneById.about.hud!
 const selectedId = ref<TimelineStepId | null>(null)
 const previewedId = ref<TimelineStepId | null>(null)
@@ -25,18 +25,20 @@ const activeId = computed(() => selectedId.value ?? previewedId.value ?? 'elsewh
 const activeStep = computed<TimelineStep>(() => timelineSteps.find((step) => step.id === activeId.value) ?? timelineSteps[0]!)
 const activeIndex = computed(() => timelineSteps.findIndex((step) => step.id === activeStep.value.id))
 const statement = computed(() => t(activeStep.value.statementKey))
-const displayedStatement = computed(() => props.emerging && !typingComplete.value ? typedStatement.value : statement.value)
-const statementBreakIndex = computed(() => {
-  const breakIndex = statement.value.indexOf(' une ')
-  return breakIndex === -1 ? statement.value.length : breakIndex
-})
+const displayedStatement = computed(() => typingComplete.value ? statement.value : typedStatement.value)
+const statementBreakIndex = computed(() => statement.value.split(' ').slice(0, activeStep.value.statementBreakAfter[locale.value]).join(' ').length)
+const displayedStatementLineOne = computed(() => displayedStatement.value.slice(0, Math.min(displayedStatement.value.length, statementBreakIndex.value)))
+const displayedStatementLineTwo = computed(() => displayedStatement.value.length > statementBreakIndex.value ? displayedStatement.value.slice(statementBreakIndex.value + 1) : '')
+const caretOnFirstLine = computed(() => displayedStatement.value.length <= statementBreakIndex.value)
 const hudContext = computed(() => selectedId.value || previewedId.value
   ? `${String(activeIndex.value + 1).padStart(2, '0')} / 05 · ${t(activeStep.value.titleKey)}`
   : t('scenes.about'))
 
 function selectStep(step: TimelineStep) {
-  selectedId.value = selectedId.value === step.id ? null : step.id
+  if (selectedId.value === step.id) return
+  selectedId.value = step.id
   previewedId.value = null
+  startStatementTyping(t(step.statementKey), 120)
 }
 
 function previewStep(step: TimelineStep | null) {
@@ -44,36 +46,58 @@ function previewStep(step: TimelineStep | null) {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape' && selectedId.value && !contactOpen.value) selectedId.value = null
+  if (event.key === 'Escape' && selectedId.value && !contactOpen.value) {
+    selectedId.value = null
+    stopStatementTyping()
+    typingComplete.value = true
+  }
 }
 
 let typingTimer: number | undefined
 let typingStartTimer: number | undefined
 
-onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
-  if (!props.emerging || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+function stopStatementTyping() {
+  if (typingTimer !== undefined) window.clearInterval(typingTimer)
+  if (typingStartTimer !== undefined) window.clearTimeout(typingStartTimer)
+  typingTimer = undefined
+  typingStartTimer = undefined
+}
+
+function startStatementTyping(value: string, delay: number) {
+  stopStatementTyping()
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typedStatement.value = value
     typingComplete.value = true
     return
   }
+  typedStatement.value = ''
+  typingComplete.value = false
   typingStartTimer = window.setTimeout(() => {
+    typingStartTimer = undefined
     let characterIndex = 0
     typingTimer = window.setInterval(() => {
       characterIndex += 1
-      typedStatement.value = statement.value.slice(0, characterIndex)
-      if (characterIndex >= statement.value.length) {
-        window.clearInterval(typingTimer)
-        typingTimer = undefined
+      typedStatement.value = value.slice(0, characterIndex)
+      if (characterIndex >= value.length) {
+        stopStatementTyping()
         typingComplete.value = true
       }
-    }, 30)
-  }, 280)
+    }, 28)
+  }, delay)
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+  if (!props.emerging) {
+    typingComplete.value = true
+    return
+  }
+  startStatementTyping(statement.value, 280)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
-  if (typingTimer !== undefined) window.clearInterval(typingTimer)
-  if (typingStartTimer !== undefined) window.clearTimeout(typingStartTimer)
+  stopStatementTyping()
 })
 </script>
 
@@ -87,10 +111,13 @@ onBeforeUnmount(() => {
     </header>
 
     <div class="about-scene__intro">
-      <p class="about-scene__eyebrow">{{ String(activeIndex + 1).padStart(2, '0') }} / 05 · {{ t(activeStep.titleKey) }}</p>
       <Transition name="intro-copy" mode="out-in">
         <div :key="activeStep.id">
-          <p class="about-scene__statement"><span>{{ displayedStatement.slice(0, statementBreakIndex) }}</span><template v-if="displayedStatement.length > statementBreakIndex"><br><span>{{ displayedStatement.slice(statementBreakIndex + 1) }}</span></template><span v-if="props.emerging && !typingComplete" class="about-scene__typing-caret" aria-hidden="true" /></p>
+          <p class="about-scene__statement">
+            <span>{{ displayedStatementLineOne }}<i v-if="!typingComplete && caretOnFirstLine" class="about-scene__typing-caret" aria-hidden="true" /></span>
+            <br>
+            <span>{{ displayedStatementLineTwo }}<i v-if="!typingComplete && !caretOnFirstLine" class="about-scene__typing-caret" aria-hidden="true" /></span>
+          </p>
           <p class="about-scene__intro-meta">{{ t(activeStep.metaKey) }}</p>
         </div>
       </Transition>
@@ -132,9 +159,9 @@ onBeforeUnmount(() => {
 .about-scene__header { z-index: 6; color: rgb(235 243 246 / 34%); font-size: 0.52rem; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; }
 .about-scene__header p { margin: 0 0 0.35rem; color: rgb(235 243 246 / 45%); }
 .about-scene__header h1 { margin: 0; color: rgb(245 249 251 / 88%); font-family: var(--font-body); font-size: clamp(0.72rem, 1.4vw, 0.9rem); font-weight: 400; letter-spacing: 0.34em; }
-.about-scene__intro { z-index: 3; width: min(40rem, 64vw); min-height: clamp(6.5rem, 16vh, 9rem); padding-top: clamp(1.1rem, 3vh, 2.4rem); }
-.about-scene__eyebrow { margin: 0 0 0.65rem; color: rgb(155 222 248 / 56%); font-size: 0.5rem; letter-spacing: 0.26em; }
-.about-scene__statement { margin: 0; color: rgb(246 249 250 / 88%); font-size: clamp(1.1rem, 2.2vw, 1.8rem); font-weight: 300; line-height: 1.35; text-wrap: balance; }
+.about-scene__intro { z-index: 3; width: min(52rem, 76vw); height: clamp(7.25rem, 16vh, 9rem); padding-top: clamp(1.1rem, 3vh, 2.4rem); }
+.about-scene__statement { min-height: 2.56em; margin: 0; color: rgb(246 249 250 / 88%); font-size: clamp(1.05rem, 2vw, 1.7rem); font-weight: 300; line-height: 1.28; text-wrap: balance; }
+.about-scene__statement > span { white-space: nowrap; }
 .about-scene__intro-meta { margin: 0.55rem 0 0; color: rgb(190 222 234 / 42%); font-size: 0.48rem; letter-spacing: 0.13em; text-transform: uppercase; }
 .about-scene__trajectory { position: relative; min-height: 0; margin: -1rem -1rem 0; }
 .about-scene__footer { z-index: 5; display: grid; grid-template-columns: minmax(12rem, 1fr) auto minmax(15rem, 1fr); align-items: end; gap: 1.5rem; margin-bottom: 2.4rem; }
@@ -148,8 +175,8 @@ onBeforeUnmount(() => {
 .about-scene__conclusion strong { font-size: clamp(0.82rem, 1.3vw, 1.05rem); font-weight: 400; }
 .about-scene__conclusion span { color: rgb(178 221 238 / 58%); font-size: 0.62rem; }
 .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__footer, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
-.about-scene__header, .about-scene__eyebrow, .about-scene__intro-meta { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
-.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__footer, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel), .about-scene--emerging .about-scene__eyebrow, .about-scene--emerging .about-scene__intro-meta { opacity: 0; transform: translateY(0.65rem); }
+.about-scene__header, .about-scene__intro-meta { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__footer, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel), .about-scene--emerging .about-scene__intro-meta { opacity: 0; transform: translateY(0.65rem); }
 .about-scene__typing-caret { display: inline-block; width: 1px; height: 0.9em; margin-left: 0.12em; background: currentcolor; vertical-align: -0.05em; animation: typing-caret 680ms steps(1, end) infinite; }
 .trajectory-panel-enter-active, .trajectory-panel-leave-active { transition: opacity 220ms ease, transform 320ms ease; }
 .trajectory-panel-enter-from, .trajectory-panel-leave-to { opacity: 0; transform: translateY(0.5rem); }
@@ -166,8 +193,9 @@ onBeforeUnmount(() => {
   .about-scene { display: block; min-height: 100svh; height: 100svh; padding: 1.35rem; overflow-x: hidden; overflow-y: auto; }
   .about-scene > * { min-width: 0; }
   .about-scene__header { padding-top: 2.4rem; text-align: left; }
-  .about-scene__intro { width: 100%; padding-top: 1.8rem; }
+  .about-scene__intro { width: 100%; height: auto; min-height: 7rem; padding-top: 1.8rem; }
   .about-scene__statement { max-width: 22rem; font-size: 1.12rem; }
+  .about-scene__statement > span { white-space: normal; }
   .about-scene__trajectory { display: grid; width: 100%; min-width: 0; min-height: 13.5rem; margin: 1.35rem 0 1.15rem; gap: 0.8rem; }
   .about-scene__footer { display: grid; width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin-bottom: 0; padding-bottom: 4.5rem; }
   .about-scene__conclusion { grid-row: 1; text-align: left; }
