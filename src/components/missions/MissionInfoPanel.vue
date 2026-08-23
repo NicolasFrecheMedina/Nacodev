@@ -3,8 +3,8 @@ import { ref } from 'vue'
 import type { Mission } from '@/data/missions'
 import { useI18n } from '@/i18n'
 
-defineProps<{ mission: Mission; index: number }>()
-const emit = defineEmits<{ close: [] }>()
+defineProps<{ mission: Mission; index: number; closeLabel: string; nextLabel: string }>()
+const emit = defineEmits<{ close: []; next: []; explore: [] }>()
 const { t } = useI18n()
 const panel = ref<HTMLElement | null>(null)
 
@@ -22,8 +22,20 @@ defineExpose({ focus: () => panel.value?.focus() })
       <div><dt>{{ t('missions.statusLabel') }}</dt><dd>{{ t(mission.statusKey) }}</dd></div>
       <div v-if="mission.year"><dt>{{ t('missions.yearLabel') }}</dt><dd>{{ mission.year }}</dd></div>
     </dl>
-    <span class="mission-panel__explore" aria-disabled="true">{{ t('missions.explore') }} <i aria-hidden="true">↗</i></span>
-    <button class="mission-panel__back" type="button" @click="emit('close')">← {{ t('missions.back') }}</button>
+    <button class="mission-panel__explore" type="button" @click="emit('explore')">
+      <span>{{ t('missions.explore') }}</span>
+      <i aria-hidden="true">↗</i>
+    </button>
+    <div class="mission-panel__controls">
+      <button class="hud-control hud-control--secondary" type="button" @click="emit('close')">
+        <span class="hud-control__arrow hud-control__arrow--back" aria-hidden="true">←</span>
+        <span>{{ closeLabel }}</span>
+      </button>
+      <button class="hud-control" type="button" @click="emit('next')">
+        <span>{{ nextLabel }}</span>
+        <span class="hud-control__arrow hud-control__arrow--next" aria-hidden="true">→</span>
+      </button>
+    </div>
   </aside>
 </template>
 
@@ -41,11 +53,11 @@ defineExpose({ focus: () => panel.value?.focus() })
 .mission-panel dt, .mission-panel dd { margin: 0; font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .mission-panel dt { color: rgb(220 235 241 / 36%); }
 .mission-panel dd { color: rgb(242 247 249 / 72%); text-align: right; }
-.mission-panel__explore, .mission-panel__back { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 0.85rem 0; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; }
-.mission-panel__explore { border-top: 1px solid rgb(155 222 248 / 16%); border-bottom: 1px solid rgb(155 222 248 / 16%); color: rgb(225 241 247 / 38%); }
+.mission-panel__explore { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 0.85rem 0; border: 0; border-top: 1px solid rgb(155 222 248 / 16%); border-bottom: 1px solid rgb(155 222 248 / 16%); color: rgb(225 241 247 / 68%); font: inherit; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; background: transparent; cursor: pointer; transition: color 240ms ease, border-color 240ms ease; }
 .mission-panel__explore i { font-style: normal; }
-.mission-panel__back { margin-top: 0.75rem; border: 0; color: rgb(230 241 245 / 62%); background: transparent; cursor: pointer; }
-.mission-panel__back:is(:hover, :focus-visible) { color: var(--color-accent); }
-.mission-panel__back:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.25rem; }
-@media (max-width: 700px) { .mission-panel { top: auto; right: 1rem; bottom: 1rem; left: 1rem; width: auto; max-height: calc(100svh - 8rem); overflow: auto; padding: 1.2rem; transform: none; } .mission-panel__signal { margin-bottom: 1rem; } .mission-panel__description { margin: 0.8rem 0 1rem; line-height: 1.55; } .mission-panel dl { margin-bottom: 0.7rem; } }
+.mission-panel__explore:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 38%); color: var(--color-accent); }
+.mission-panel__explore:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.25rem; }
+.mission-panel__controls { display: flex; justify-content: flex-end; gap: 0.55rem; margin-top: 0.95rem; }
+.mission-panel__controls .hud-control { min-height: 2.2rem; padding: 0.52rem 0.68rem; font-size: 0.46rem; }
+@media (max-width: 700px) { .mission-panel { top: auto; right: 1rem; bottom: 1rem; left: 1rem; width: auto; max-height: calc(100svh - 8rem); overflow: auto; padding: 1.2rem; transform: none; } .mission-panel__signal { margin-bottom: 1rem; } .mission-panel__description { margin: 0.8rem 0 1rem; line-height: 1.55; } .mission-panel dl { margin-bottom: 0.7rem; } .mission-panel__controls { display: grid; grid-template-columns: 1fr 1fr; } .mission-panel__controls .hud-control { min-height: 2.75rem; padding-inline: 0.5rem; letter-spacing: 0.1em; } }
 </style>

@@ -28,12 +28,15 @@ useLoop().onBeforeRender(({ delta }) => {
   elapsed += delta
   const base = basePosition.value
   const drift = props.reducedMotion || props.selected ? 0 : Math.sin(elapsed * 0.45 + base[0]) * 0.06
+  const orbitAngle = elapsed * 0.08 + props.mission.screenPosition.x * 0.035
+  const orbitX = props.reducedMotion || props.selected ? 0 : Math.cos(orbitAngle) * 0.065
+  const orbitY = props.reducedMotion || props.selected ? 0 : Math.sin(orbitAngle) * 0.04
 
   if (props.departing && props.reducedMotion) targetPosition.set(base[0], base[1], base[2])
   else if (props.departing) targetPosition.set(base[0] * 1.16, base[1] * 1.12 + drift, base[2] - 7)
   else if (props.selected) targetPosition.set(0, 0, 2.25)
-  else if (props.muted) targetPosition.set(base[0] * 1.12, base[1] + drift, base[2] - 1.8)
-  else targetPosition.set(base[0], base[1] + drift, base[2])
+  else if (props.muted) targetPosition.set(base[0] * 1.12 + orbitX, base[1] + orbitY, base[2] - 1.8)
+  else targetPosition.set(base[0] + orbitX, base[1] + orbitY, base[2])
 
   group.value.position.lerp(targetPosition, props.reducedMotion ? 0.28 : 0.06)
   const targetScale = props.departing ? (props.reducedMotion ? 0.96 : 0.7) : props.selected ? 1.32 : props.muted ? 0.76 : props.hovered ? 1.055 : 1
@@ -72,6 +75,16 @@ useLoop().onBeforeRender(({ delta }) => {
     <TresMesh v-if="mission.visual.detail === 'fragmented'" :scale="uniformScale(mission.size * 1.025)" :rotation="[0.5, 0.2, 0.3]">
       <TresIcosahedronGeometry :args="[1, 2]" />
       <TresMeshBasicMaterial :color="mission.visual.atmosphere" wireframe transparent :opacity="0.14" />
+    </TresMesh>
+
+    <TresMesh v-if="mission.visual.detail === 'networked'" :scale="uniformScale(mission.size * 1.012)" :rotation="[0.08, 0.22, 0]">
+      <TresSphereGeometry :args="[1, 24, 12]" />
+      <TresMeshBasicMaterial :color="mission.visual.atmosphere" wireframe transparent :opacity="0.11" />
+    </TresMesh>
+
+    <TresMesh v-if="mission.visual.detail === 'networked'" :scale="uniformScale(mission.size * 1.2)" :rotation="[1.18, 0.18, 0.32]">
+      <TresTorusGeometry :args="[0.82, 0.008, 6, 72]" />
+      <TresMeshBasicMaterial :color="mission.visual.atmosphere" transparent :opacity="0.2" :blending="AdditiveBlending" />
     </TresMesh>
 
     <TresMesh v-if="mission.visual.detail === 'ethereal'" :rotation="[1.2, 0.25, 0.2]" :scale="uniformScale(mission.size * 1.42)">

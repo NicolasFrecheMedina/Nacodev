@@ -2,8 +2,8 @@
 import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
 const props = withDefaults(
-  defineProps<{ open: boolean; title: string; closeLabel?: string }>(),
-  { closeLabel: 'Fermer' },
+  defineProps<{ open: boolean; title: string; closeLabel?: string; variant?: 'default' | 'transmission' }>(),
+  { closeLabel: 'Fermer', variant: 'default' },
 )
 
 const emit = defineEmits<{ close: []; closed: [] }>()
@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
 <template>
   <Teleport to="body">
     <Transition name="modal" @after-leave="emit('closed')">
-      <div v-if="open" class="modal" role="presentation" @mousedown.self="requestClose">
+      <div v-if="open" class="modal" :class="`modal--${variant}`" role="presentation" @mousedown.self="requestClose">
         <section
           ref="dialog"
           class="modal__panel"
@@ -117,6 +117,14 @@ onBeforeUnmount(() => {
 }
 
 .modal__close:hover { transform: rotate(90deg); }
+
+.modal--transmission { background: radial-gradient(circle at 50% 45%, rgb(18 43 55 / 38%), rgb(1 3 7 / 92%) 68%); }
+.modal--transmission .modal__panel { position: relative; width: min(100%, 48rem); border-color: rgb(155 222 248 / 24%); border-radius: 0; background: linear-gradient(145deg, rgb(11 20 28 / 97%), rgb(3 7 12 / 98%)); box-shadow: inset 0 0 4rem rgb(97 188 221 / 5%), 0 0 0 1px rgb(155 222 248 / 4%), 0 2rem 7rem rgb(0 0 0 / 72%); }
+.modal--transmission .modal__panel::before { position: absolute; z-index: 2; inset: 0; background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgb(190 230 244 / 2.5%) 4px); content: ''; pointer-events: none; }
+.modal--transmission .modal__panel::after { position: absolute; top: -1px; left: 8%; width: 28%; height: 1px; background: var(--color-accent); box-shadow: 0 0 1rem rgb(155 222 248 / 65%); content: ''; }
+.modal--transmission .modal__header { padding-block: 1rem; border-color: rgb(155 222 248 / 12%); }
+.modal--transmission .modal__header h2 { font-size: clamp(0.78rem, 1.5vw, 1rem); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; }
+.modal--transmission .modal__body { padding: clamp(1.4rem, 4vw, 3rem); }
 .modal-enter-active, .modal-leave-active { transition: opacity 240ms ease; }
 .modal-enter-active .modal__panel, .modal-leave-active .modal__panel {
   transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 240ms ease;

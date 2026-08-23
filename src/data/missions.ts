@@ -1,6 +1,6 @@
 import type { MessageKey } from '@/i18n/messages'
 
-export type MissionId = 'nacodev' | 't-moment' | 'au-dela' | 'web-experiments'
+export type MissionId = 'nacodev' | 't-moment' | 'au-dela' | 'web-experiments' | 'private-systems'
 
 export interface MissionVisual {
   color: string
@@ -8,7 +8,7 @@ export interface MissionVisual {
   atmosphere: string
   roughness: number
   metalness: number
-  detail: 'mineral' | 'atmospheric' | 'ethereal' | 'fragmented'
+  detail: 'mineral' | 'atmospheric' | 'ethereal' | 'fragmented' | 'networked'
 }
 
 export interface Mission {
@@ -33,8 +33,8 @@ export const missions: readonly Mission[] = [
     id: 'nacodev', name: 'NacoDev', nameKey: 'missions.items.nacodev.name',
     descriptionKey: 'missions.items.nacodev.description', statusKey: 'missions.status.active',
     categoryKey: 'missions.items.nacodev.category', year: '2024',
-    position: [-3.15, 1.3, -0.35], mobilePosition: [-1.15, 2.25, -0.3],
-    screenPosition: { x: 27, y: 36 }, mobileScreenPosition: { x: 31, y: 24 },
+    position: [0, 2.35, -0.35], mobilePosition: [0, 2.85, -0.3],
+    screenPosition: { x: 50, y: 22 }, mobileScreenPosition: { x: 50, y: 15 },
     size: 0.88, rotationSpeed: 0.075,
     visual: { color: '#343b43', emissive: '#7797a4', atmosphere: '#a6dff3', roughness: 0.82, metalness: 0.28, detail: 'mineral' },
   },
@@ -42,8 +42,8 @@ export const missions: readonly Mission[] = [
     id: 't-moment', name: 'T-Moment', nameKey: 'missions.items.tmoment.name',
     descriptionKey: 'missions.items.tmoment.description', statusKey: 'missions.status.development',
     categoryKey: 'missions.items.tmoment.category', year: '2026',
-    position: [2.85, 1.35, -0.8], mobilePosition: [1.2, 0.82, -0.6],
-    screenPosition: { x: 70, y: 34 }, mobileScreenPosition: { x: 68, y: 43 },
+    position: [4.2, 1.15, -0.8], mobilePosition: [1.58, 1.55, -0.6],
+    screenPosition: { x: 78, y: 36 }, mobileScreenPosition: { x: 78, y: 32 },
     size: 0.92, rotationSpeed: 0.062,
     visual: { color: '#71848a', emissive: '#9cc4c9', atmosphere: '#c7edf0', roughness: 0.58, metalness: 0.08, detail: 'atmospheric' },
   },
@@ -51,8 +51,8 @@ export const missions: readonly Mission[] = [
     id: 'au-dela', name: 'Au-delà', nameKey: 'missions.items.audela.name',
     descriptionKey: 'missions.items.audela.description', statusKey: 'missions.status.research',
     categoryKey: 'missions.items.audela.category',
-    position: [-2.45, -1.75, 0.25], mobilePosition: [-1.18, -0.78, 0.1],
-    screenPosition: { x: 32, y: 70 }, mobileScreenPosition: { x: 31, y: 63 },
+    position: [2.15, -2.05, 0.25], mobilePosition: [1.35, -1.45, 0.1],
+    screenPosition: { x: 66, y: 72 }, mobileScreenPosition: { x: 72, y: 72 },
     size: 0.86, rotationSpeed: 0.048,
     visual: { color: '#24283e', emissive: '#5a6296', atmosphere: '#8d9ee9', roughness: 0.7, metalness: 0.16, detail: 'ethereal' },
   },
@@ -60,9 +60,18 @@ export const missions: readonly Mission[] = [
     id: 'web-experiments', name: 'Expériences web', nameKey: 'missions.items.web.name',
     descriptionKey: 'missions.items.web.description', statusKey: 'missions.status.ongoing',
     categoryKey: 'missions.items.web.category',
-    position: [3.25, -1.7, -1.15], mobilePosition: [1.18, -2.28, -0.8],
-    screenPosition: { x: 73, y: 69 }, mobileScreenPosition: { x: 68, y: 82 },
+    position: [-2.4, -2.15, -1.15], mobilePosition: [-1.25, -1.65, -0.8],
+    screenPosition: { x: 34, y: 75 }, mobileScreenPosition: { x: 29, y: 74 },
     size: 0.9, rotationSpeed: 0.09,
     visual: { color: '#4a515e', emissive: '#6fa6bd', atmosphere: '#a4dff5', roughness: 0.46, metalness: 0.35, detail: 'fragmented' },
+  },
+  {
+    id: 'private-systems', name: 'Systèmes privés', nameKey: 'missions.items.privateSystems.name',
+    descriptionKey: 'missions.items.privateSystems.description', statusKey: 'missions.status.active',
+    categoryKey: 'missions.items.privateSystems.category',
+    position: [-3.8, 0.8, -0.2], mobilePosition: [-1.45, 0.95, -0.45],
+    screenPosition: { x: 24, y: 40 }, mobileScreenPosition: { x: 24, y: 39 },
+    size: 0.8, rotationSpeed: 0.056,
+    visual: { color: '#451b24', emissive: '#91352f', atmosphere: '#c85d4d', roughness: 0.62, metalness: 0.3, detail: 'networked' },
   },
 ] as const
