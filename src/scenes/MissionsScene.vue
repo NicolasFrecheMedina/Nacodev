@@ -52,6 +52,8 @@ function handleKeydown(event: KeyboardEvent) {
 
 function continueToAbout() {
   if (departing.value) return
+  selectedMission.value = null
+  previewedMission.value = null
   departing.value = true
   emit('depart')
   const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 180 : 900
@@ -80,7 +82,7 @@ onBeforeUnmount(() => {
 
     <div v-if="departing" class="missions-scene__departure-orbits" aria-hidden="true"><i /><i /><i /></div>
 
-    <Transition name="mission-panel">
+    <Transition name="mission-panel" :css="!departing">
       <MissionInfoPanel
         v-if="selectedMission"
         ref="panel"
