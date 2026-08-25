@@ -23,23 +23,26 @@ const concluding = ref(false)
 const contactStatus = ref<'idle' | 'submitting' | 'success' | 'error'>('idle')
 const contactFields = reactive({ name: '', email: '', subject: '', message: '' })
 const arrivedThroughTransition = ref(props.emerging)
+const initialTitleReveal = ref(props.emerging)
 const typedStatement = ref('')
-const typingComplete = ref(!props.emerging)
+const typingComplete = ref(true)
 const selectedStep = computed<TimelineStep>(() => timelineSteps.find((step) => step.id === selectedId.value) ?? timelineSteps[0]!)
 const selectedIndex = computed(() => timelineSteps.findIndex((step) => step.id === selectedStep.value.id))
 const hudStep = computed(() => timelineSteps.find((step) => step.id === (hoveredId.value ?? selectedId.value)))
 const statement = computed(() => t(selectedStep.value.statementKey))
 const displayedStatement = computed(() => typingComplete.value ? statement.value : typedStatement.value)
 const statementBreakIndex = computed(() => statement.value.split(' ').slice(0, selectedStep.value.statementBreakAfter[locale.value]).join(' ').length)
+const statementLineOne = computed(() => statement.value.slice(0, statementBreakIndex.value))
+const statementLineTwo = computed(() => statement.value.slice(statementBreakIndex.value + 1))
 const displayedStatementLineOne = computed(() => displayedStatement.value.slice(0, Math.min(displayedStatement.value.length, statementBreakIndex.value)))
 const displayedStatementLineTwo = computed(() => displayedStatement.value.length > statementBreakIndex.value ? displayedStatement.value.slice(statementBreakIndex.value + 1) : '')
-const caretOnFirstLine = computed(() => displayedStatement.value.length <= statementBreakIndex.value)
 const hudContext = computed(() => hudStep.value
   ? `${String(timelineSteps.findIndex((step) => step.id === hudStep.value?.id) + 1).padStart(2, '0')} / 05 · ${t(hudStep.value.titleKey)}`
   : t('scenes.about'))
 
 function selectStep(step: TimelineStep) {
   if (selectedId.value === step.id) return
+  initialTitleReveal.value = false
   selectedId.value = step.id
   hoveredId.value = null
   startStatementTyping(t(step.statementKey), 120)
@@ -153,7 +156,6 @@ onMounted(() => {
     typingComplete.value = true
     return
   }
-  startStatementTyping(statement.value, 280)
 })
 
 onBeforeUnmount(() => {
@@ -179,11 +181,16 @@ onBeforeUnmount(() => {
       <p class="about-scene__signature">NICOLAS FRECHE</p>
       <Transition name="intro-copy" mode="out-in">
         <div :key="selectedStep.id">
-          <p class="about-scene__statement">
-            <span>{{ displayedStatementLineOne }}<i v-if="!typingComplete && caretOnFirstLine" class="about-scene__typing-caret" aria-hidden="true" /></span>
-            <br>
-            <span>{{ displayedStatementLineTwo }}<i v-if="!typingComplete && !caretOnFirstLine" class="about-scene__typing-caret" aria-hidden="true" /></span>
-          </p>
+          <div class="about-scene__statement-frame">
+            <p class="about-scene__statement about-scene__statement--reserved" aria-hidden="true">
+              <span>{{ statementLineOne }}</span><br><span>{{ statementLineTwo }}</span>
+            </p>
+            <p class="about-scene__statement about-scene__statement--typed" :class="{ 'about-scene__statement--initial-reveal': initialTitleReveal }">
+              <span>{{ displayedStatementLineOne }}</span>
+              <br>
+              <span>{{ displayedStatementLineTwo }}</span>
+            </p>
+          </div>
           <p class="about-scene__intro-meta">{{ t(selectedStep.metaKey) }}</p>
         </div>
       </Transition>
@@ -287,14 +294,19 @@ onBeforeUnmount(() => {
 .about-scene__intro-contact :deep(button span) { position: relative; margin-left: 1.4rem; color: var(--color-accent); font-size: 0.78rem; transition: transform 220ms ease; }
 .about-scene__intro-contact :deep(button:is(:hover, :focus-visible) span) { transform: translate(0.14rem, -0.14rem); }
 .about-scene__signature { margin: 0 0 0.65rem; color: rgb(155 222 248 / 52%); font-size: 0.5rem; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; }
+.about-scene__statement-frame { position: relative; width: 100%; }
 .about-scene__statement { min-height: 2.56em; margin: 0; color: rgb(246 249 250 / 88%); font-size: clamp(1.05rem, 2vw, 1.7rem); font-weight: 300; line-height: 1.28; text-wrap: balance; }
+.about-scene__statement--reserved { visibility: hidden; }
+.about-scene__statement--typed { position: absolute; inset: 0; width: 100%; }
+.about-scene__statement--initial-reveal > span { display: inline-block; clip-path: inset(0 100% 0 0); }
+.about-scene__statement--initial-reveal > span:first-child { animation: initial-title-reveal 780ms steps(28, end) 180ms forwards; }
+.about-scene__statement--initial-reveal > span:last-child { animation: initial-title-reveal 780ms steps(27, end) 960ms forwards; }
 .about-scene__statement > span { white-space: nowrap; }
 .about-scene__intro-meta { margin: 0.55rem 0 0; color: rgb(190 222 234 / 42%); font-size: 0.48rem; letter-spacing: 0.13em; text-transform: uppercase; }
 .about-scene__trajectory { position: relative; min-height: 0; margin: -1rem -1rem 0; }
 .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene__intro-contact, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel) { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
 .about-scene__header, .about-scene__signature, .about-scene__intro-meta { transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
 .about-scene--emerging .about-scene__header, .about-scene--emerging :deep(.global-hud), .about-scene--emerging .about-scene__intro-contact, .about-scene--emerging :deep(.scene-navigation), .about-scene--emerging .about-scene__trajectory :deep(.trajectory-panel), .about-scene--emerging .about-scene__signature, .about-scene--emerging .about-scene__intro-meta { opacity: 0; transform: translateY(0.65rem); }
-.about-scene__typing-caret { display: inline-block; width: 1px; height: 0.9em; margin-left: 0.12em; background: currentcolor; vertical-align: -0.05em; animation: typing-caret 680ms steps(1, end) infinite; }
 .trajectory-panel-enter-active, .trajectory-panel-leave-active { transition: opacity 220ms ease, transform 320ms ease; }
 .trajectory-panel-enter-from, .trajectory-panel-leave-to { opacity: 0; transform: translateY(0.5rem); }
 .intro-copy-enter-active, .intro-copy-leave-active { transition: opacity 220ms ease, transform 300ms ease; }
@@ -331,7 +343,7 @@ onBeforeUnmount(() => {
 .contact-modal__legal i { color: rgb(190 222 234 / 22%); font-style: normal; }
 @keyframes about-arrival { from { opacity: 0; filter: blur(5px); transform: scale(0.96); } to { opacity: 1; filter: none; transform: scale(1); } }
 @keyframes about-surface-arrival { from { opacity: 0; } to { opacity: 1; } }
-@keyframes typing-caret { 50% { opacity: 0; } }
+@keyframes initial-title-reveal { to { clip-path: inset(0 0 0 0); } }
 @media (max-width: 700px) {
   .about-scene { display: block; min-height: 100svh; height: 100svh; padding: 1.35rem; overflow-x: hidden; overflow-y: auto; }
   .about-scene > * { min-width: 0; }
@@ -344,5 +356,5 @@ onBeforeUnmount(() => {
   .contact-form { grid-template-columns: minmax(0, 1fr); }
   .contact-form > * { grid-column: 1; }
 }
-@media (prefers-reduced-motion: reduce) { .about-scene, .about-scene--transitioned::before { animation-duration: 120ms; transform: none; filter: none; } .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel), .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 160ms; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .about-scene, .about-scene--transitioned::before { animation-duration: 120ms; transform: none; filter: none; } .about-scene__statement--initial-reveal > span { clip-path: none; animation: none; } .about-scene__header, .about-scene :deep(.global-hud), .about-scene__intro, .about-scene :deep(.scene-navigation), .about-scene__trajectory :deep(.trajectory-panel), .trajectory-panel-enter-active, .trajectory-panel-leave-active, .intro-copy-enter-active, .intro-copy-leave-active { transition-duration: 160ms; transform: none; } }
 </style>

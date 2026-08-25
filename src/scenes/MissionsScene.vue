@@ -136,7 +136,7 @@ onBeforeUnmount(() => {
 .missions-scene--stabilizing .missions-scene__header, .missions-scene--stabilizing :deep(.global-hud), .missions-scene--stabilizing :deep(.scene-navigation) { transition-duration: 200ms; }
 .missions-scene--departing { pointer-events: none; }
 .missions-scene--departing::before { opacity: 0; }
-.missions-scene--departing :deep(.mission-system) { opacity: 0; filter: blur(6px) brightness(0.28); transform: translate3d(0, 0, -30rem) scale(0.5); transition: opacity 760ms ease, filter 760ms ease, transform 820ms cubic-bezier(0.4, 0, 1, 1); }
+.missions-scene--departing :deep(.mission-system) { opacity: 0; filter: blur(6px) brightness(0.28); transform: translate3d(0, 0, -30rem) scale(0.5); transition: opacity 900ms ease, filter 760ms ease, transform 820ms cubic-bezier(0.4, 0, 1, 1); }
 .missions-scene--departing :deep(.mission-system::after) { opacity: 0; }
 .missions-scene--departing :deep(.mission-system__targets) { opacity: 0; transition-duration: 260ms; }
 .missions-scene--departing .missions-scene__header, .missions-scene--departing :deep(.global-hud), .missions-scene--departing :deep(.scene-navigation) { opacity: 0; transition: opacity 320ms ease; }

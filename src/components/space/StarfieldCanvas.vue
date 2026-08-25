@@ -84,7 +84,7 @@ function handleMotionPreference(event: MediaQueryListEvent) {
 }
 
 watch(() => props.motion, (motion) => {
-  if (motion === 'warp' || motion === 'launch' || motion === 'travel') {
+  if (motion === 'warp' || motion === 'launch') {
     stars.forEach((star) => resetStar(star, true))
   }
 })

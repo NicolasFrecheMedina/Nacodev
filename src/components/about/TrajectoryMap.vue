@@ -73,49 +73,14 @@ watch(() => props.concluding, (concluding) => {
   animateProgress(finalLength, reducedMotion ? 120 : 900, () => emit('conclusion-complete'))
 })
 
-function squaredDistance(path: SVGPathElement, length: number, x: number, y: number) {
-  const point = path.getPointAtLength(length)
-  return (point.x - x) ** 2 + (point.y - y) ** 2
-}
-
-function lengthAtPoint(path: SVGPathElement, x: number, y: number) {
-  const totalLength = path.getTotalLength()
-  const sampleCount = 720
-  const sampleLength = totalLength / sampleCount
-  let closestLength = 0
-  let closestDistance = Number.POSITIVE_INFINITY
-
-  for (let index = 0; index <= sampleCount; index += 1) {
-    const length = index * sampleLength
-    const distance = squaredDistance(path, length, x, y)
-    if (distance < closestDistance) {
-      closestDistance = distance
-      closestLength = length
-    }
-  }
-
-  let start = Math.max(0, closestLength - sampleLength)
-  let end = Math.min(totalLength, closestLength + sampleLength)
-  for (let iteration = 0; iteration < 36; iteration += 1) {
-    const first = start + (end - start) / 3
-    const second = end - (end - start) / 3
-    if (squaredDistance(path, first, x, y) <= squaredDistance(path, second, x, y)) end = second
-    else start = first
-  }
-
-  return (start + end) / 2
-}
-
 function measureProgress() {
   const path = progressPath.value
   if (!path) return
   const totalLength = path.getTotalLength()
   totalPathLength.value = totalLength
-  measuredLengths.value = Object.fromEntries(timelineSteps.map((step) => {
-    const x = step.position.x * 12
-    const y = step.position.y * 5
-    return [step.id, lengthAtPoint(path, x, y)]
-  }))
+  measuredLengths.value = Object.fromEntries(
+    timelineSteps.map((step) => [step.id, totalLength * step.progress / 100]),
+  )
 }
 
 onMounted(() => {

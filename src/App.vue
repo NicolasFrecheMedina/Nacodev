@@ -4,11 +4,10 @@ import GlobalBackground from '@/components/space/GlobalBackground.vue'
 import ConnectionScene from '@/scenes/ConnectionScene.vue'
 import ExplorationScene from '@/scenes/ExplorationScene.vue'
 import IdeaScene from '@/scenes/IdeaScene.vue'
+import AboutScene from '@/scenes/AboutScene.vue'
 
 const loadMissionsScene = () => import('@/scenes/MissionsScene.vue')
 const MissionsScene = defineAsyncComponent(loadMissionsScene)
-const loadAboutScene = () => import('@/scenes/AboutScene.vue')
-const AboutScene = defineAsyncComponent(loadAboutScene)
 
 type Scene = 'connection' | 'idea' | 'exploration' | 'missions' | 'about'
 type SpaceMotion = 'idle' | 'warp' | 'drift' | 'launch' | 'travel' | 'orbit'
@@ -79,7 +78,6 @@ function beginMissionsTransition() {
   spaceMotion.value = 'travel'
   transitionPhase.value = 'exploration-exit'
   void loadMissionsScene()
-  void loadAboutScene()
 }
 
 function completeConstellationExit() {
@@ -104,7 +102,6 @@ function beginAboutTransition() {
   if (transitionPhase.value !== 'idle') return
   spaceMotion.value = 'travel'
   transitionPhase.value = 'missions-exit'
-  void loadAboutScene()
 }
 
 function completeMissionsExit() {

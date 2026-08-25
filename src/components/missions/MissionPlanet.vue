@@ -27,13 +27,12 @@ useLoop().onBeforeRender(({ delta }) => {
   if (!group.value) return
   elapsed += delta
   const base = basePosition.value
-  const drift = props.reducedMotion || props.selected ? 0 : Math.sin(elapsed * 0.45 + base[0]) * 0.06
   const orbitAngle = elapsed * 0.08 + props.mission.screenPosition.x * 0.035
   const orbitX = props.reducedMotion || props.selected ? 0 : Math.cos(orbitAngle) * 0.065
   const orbitY = props.reducedMotion || props.selected ? 0 : Math.sin(orbitAngle) * 0.04
 
   if (props.departing && props.reducedMotion) targetPosition.set(base[0], base[1], base[2])
-  else if (props.departing) targetPosition.set(base[0] * 1.16, base[1] * 1.12 + drift, base[2] - 7)
+  else if (props.departing) targetPosition.set(base[0] * 1.16 + orbitX, base[1] * 1.12 + orbitY, base[2] - 7)
   else if (props.selected) targetPosition.set(0, 0, 2.25)
   else if (props.muted) targetPosition.set(base[0] * 1.12 + orbitX, base[1] + orbitY, base[2] - 1.8)
   else targetPosition.set(base[0] + orbitX, base[1] + orbitY, base[2])
@@ -42,7 +41,7 @@ useLoop().onBeforeRender(({ delta }) => {
   const targetScale = props.departing ? (props.reducedMotion ? 0.96 : 0.7) : props.selected ? 1.32 : props.muted ? 0.76 : props.hovered ? 1.055 : 1
   const scale = MathUtils.lerp(group.value.scale.x, targetScale, props.reducedMotion ? 0.28 : 0.07)
   group.value.scale.setScalar(scale)
-  group.value.rotation.y += props.reducedMotion ? 0 : delta * props.mission.rotationSpeed * (props.departing ? 0.16 : props.hovered ? 1.5 : props.selected ? 0.55 : 1)
+  group.value.rotation.y += props.reducedMotion ? 0 : delta * props.mission.rotationSpeed * (props.hovered ? 1.5 : props.selected ? 0.55 : 1)
   group.value.rotation.z = Math.sin(elapsed * 0.2) * (props.reducedMotion ? 0 : 0.025)
 
   if (surface.value) {
