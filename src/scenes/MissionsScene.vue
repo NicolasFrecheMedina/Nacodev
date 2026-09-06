@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import MissionInfoPanel from '@/components/missions/MissionInfoPanel.vue'
+import NacodevTransmission from '@/components/missions/NacodevTransmission.vue'
 import MissionSystem from '@/components/missions/MissionSystem.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
 import HudContextStatus from '@/components/ui/HudContextStatus.vue'
@@ -44,6 +45,13 @@ async function selectNextMission() {
   previewedMission.value = null
   await nextTick()
   panel.value?.focus()
+}
+
+async function selectNextMissionFromTransmission() {
+  missionOverlayOpen.value = false
+  await nextTick()
+  await selectNextMission()
+  missionOverlayOpen.value = true
 }
 
 function handleKeydown(event: KeyboardEvent) {
@@ -108,7 +116,8 @@ onBeforeUnmount(() => {
       variant="transmission"
       @close="missionOverlayOpen = false"
     >
-      <article class="mission-transmission">
+      <NacodevTransmission v-if="selectedMission.id === 'nacodev'" :mission="selectedMission" />
+      <article v-else class="mission-transmission">
         <div class="mission-transmission__signal" aria-hidden="true"><i /> {{ t('missions.signalActive') }} / NCD-SYS-04</div>
         <p class="mission-transmission__index">{{ t('missions.mission') }} {{ String(selectedMissionIndex + 1).padStart(2, '0') }}</p>
         <h3>{{ t(selectedMission.nameKey) }}</h3>
@@ -120,6 +129,13 @@ onBeforeUnmount(() => {
         </dl>
         <p class="mission-transmission__standby">{{ t('missions.transmissionStandby') }}</p>
       </article>
+      <button
+        class="mission-transmission__next"
+        type="button"
+        @click="selectNextMissionFromTransmission"
+      >
+        {{ t('missions.items.nacodev.transmission.nextMission') }} <span aria-hidden="true">→</span>
+      </button>
     </BaseModal>
   </section>
 </template>
@@ -160,6 +176,11 @@ onBeforeUnmount(() => {
 .mission-transmission dt { margin-bottom: 0.4rem; color: rgb(220 235 241 / 36%); }
 .mission-transmission dd { color: rgb(242 247 249 / 76%); }
 .mission-transmission__standby { margin: 1.5rem 0 0; color: rgb(225 239 244 / 32%); font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.mission-transmission__next { display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem 0 0 auto; padding: 0.75rem 1rem; border: 1px solid rgb(155 222 248 / 28%); color: var(--color-accent); background: linear-gradient(135deg, rgb(155 222 248 / 8%), rgb(155 222 248 / 2%)); font: inherit; font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: color 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+.mission-transmission__next span { font-size: 0.72rem; transition: transform 220ms ease; }
+.mission-transmission__next:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 60%); color: rgb(220 244 252); background: rgb(155 222 248 / 10%); box-shadow: 0 0 1.2rem rgb(155 222 248 / 10%); transform: translateY(-1px); }
+.mission-transmission__next:is(:hover, :focus-visible) span { transform: translateX(0.2rem); }
+.mission-transmission__next:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.2rem; }
 @keyframes transmission-pulse { 50% { opacity: 0.35; box-shadow: 0 0 0.25rem var(--color-accent); } }
 @keyframes orbit-release { 0% { opacity: 0; transform: scale(0.82); } 24% { opacity: 0.72; } 78% { opacity: 0.35; } 100% { opacity: 0; transform: scale(1.16); } }
 @media (max-width: 700px) { .missions-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } .mission-panel-enter-from, .mission-panel-leave-to { transform: translateY(1.5rem); } .mission-transmission dl { grid-template-columns: 1fr; } .mission-transmission dl div { border-right: 0; border-bottom: 1px solid rgb(155 222 248 / 9%); } .mission-transmission dl div:last-child { border-bottom: 0; } }

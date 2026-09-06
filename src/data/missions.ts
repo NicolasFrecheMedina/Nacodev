@@ -19,6 +19,7 @@ export interface Mission {
   statusKey: MessageKey
   categoryKey: MessageKey
   year?: string
+  v1Url?: string
   position: [number, number, number]
   mobilePosition: [number, number, number]
   screenPosition: { x: number; y: number }
@@ -33,6 +34,8 @@ export const missions: readonly Mission[] = [
     id: 'nacodev', name: 'NacoDev', nameKey: 'missions.items.nacodev.name',
     descriptionKey: 'missions.items.nacodev.description', statusKey: 'missions.status.active',
     categoryKey: 'missions.items.nacodev.category', year: '2021',
+    // Add the archived NacoDev V1 URL here when it is available.
+    v1Url: '',
     position: [0, 2.35, -0.35], mobilePosition: [0, 2.85, -0.3],
     screenPosition: { x: 50, y: 22 }, mobileScreenPosition: { x: 50, y: 15 },
     size: 0.88, rotationSpeed: 0.075,
