@@ -30,6 +30,19 @@ export interface Mission {
   visual: MissionVisual
 }
 
+export interface WebExperienceProject {
+  id: string
+  name: string
+  url: string
+}
+
+export const webExperienceProjects: readonly WebExperienceProject[] = [
+  { id: 'granjon-energie', name: 'Granjon Énergie', url: 'https://granjonenergie.fr' },
+  { id: 'sud-renov', name: 'Sud Renov', url: 'https://sud-renov.fr' },
+  { id: 'tep-aquitaine', name: 'TEP Aquitaine', url: 'https://tep-aquitaine.fr' },
+  { id: 'diva-drag-queen-france', name: 'Diva Drag Queen France', url: 'https://divadragqueen-france.fr' },
+] as const
+
 export const missions: readonly Mission[] = [
   {
     id: 'nacodev', name: 'NacoDev', nameKey: 'missions.items.nacodev.name',

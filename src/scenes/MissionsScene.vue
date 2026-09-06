@@ -4,6 +4,7 @@ import AudelaTransmission from '@/components/missions/AudelaTransmission.vue'
 import MissionInfoPanel from '@/components/missions/MissionInfoPanel.vue'
 import NacodevTransmission from '@/components/missions/NacodevTransmission.vue'
 import TmomentTransmission from '@/components/missions/TmomentTransmission.vue'
+import WebExperimentsTransmission from '@/components/missions/WebExperimentsTransmission.vue'
 import MissionSystem from '@/components/missions/MissionSystem.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
 import HudContextStatus from '@/components/ui/HudContextStatus.vue'
@@ -121,6 +122,7 @@ onBeforeUnmount(() => {
       <NacodevTransmission v-if="selectedMission.id === 'nacodev'" :mission="selectedMission" />
       <TmomentTransmission v-else-if="selectedMission.id === 't-moment'" :mission="selectedMission" />
       <AudelaTransmission v-else-if="selectedMission.id === 'au-dela'" :mission="selectedMission" />
+      <WebExperimentsTransmission v-else-if="selectedMission.id === 'web-experiments'" />
       <article v-else class="mission-transmission">
         <div class="mission-transmission__signal" aria-hidden="true"><i /> {{ t('missions.signalActive') }} / NCD-SYS-04</div>
         <p class="mission-transmission__index">{{ t('missions.mission') }} {{ String(selectedMissionIndex + 1).padStart(2, '0') }}</p>
