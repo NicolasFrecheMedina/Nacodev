@@ -57,6 +57,8 @@ export const missions: readonly Mission[] = [
     id: 'au-dela', name: 'Au-delà', nameKey: 'missions.items.audela.name',
     descriptionKey: 'missions.items.audela.description', statusKey: 'missions.status.research',
     categoryKey: 'missions.items.audela.category',
+    // Add the future Au-delà project URL here when it is available.
+    projectUrl: '',
     position: [2.15, -2.05, 0.25], mobilePosition: [1.35, -1.45, 0.1],
     screenPosition: { x: 66, y: 72 }, mobileScreenPosition: { x: 72, y: 72 },
     size: 0.86, rotationSpeed: 0.048,
