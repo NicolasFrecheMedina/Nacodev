@@ -18,7 +18,7 @@ const { t } = useI18n()
     <header class="audela-transmission__intro transmission-zone">
       <div>
         <p>{{ t('missions.mission') }} 03</p>
-        <span>PROSPECTIVE / HORIZON</span>
+        <span>{{ t('missions.items.audela.transmission.headerLabel') }}</span>
       </div>
       <h3>{{ t('missions.items.audela.name') }}</h3>
       <strong>{{ t('missions.items.audela.transmission.subtitle') }}</strong>

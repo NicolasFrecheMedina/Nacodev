@@ -18,7 +18,7 @@ const { t } = useI18n()
     <header class="nacodev-transmission__intro transmission-zone">
       <div>
         <p>{{ t('missions.mission') }} 01</p>
-        <span>LAB / BUILD</span>
+        <span>{{ t('missions.items.nacodev.transmission.headerLabel') }}</span>
       </div>
       <h3>{{ t('missions.items.nacodev.name') }}</h3>
       <strong>{{ t('missions.items.nacodev.transmission.subtitle') }}</strong>

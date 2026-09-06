@@ -18,7 +18,7 @@ const { t } = useI18n()
     <header class="private-systems-transmission__intro transmission-zone">
       <div>
         <p>{{ t('missions.mission') }} 05</p>
-        <span>INFRA / SECURE</span>
+        <span>{{ t('missions.items.privateSystems.transmission.headerLabel') }}</span>
       </div>
       <h3>{{ t('missions.items.privateSystems.name') }}</h3>
       <strong>{{ t('missions.items.privateSystems.transmission.subtitle') }}</strong>

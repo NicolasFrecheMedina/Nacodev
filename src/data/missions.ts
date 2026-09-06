@@ -19,6 +19,7 @@ export interface Mission {
   statusKey: MessageKey
   categoryKey: MessageKey
   year?: string
+  yearKey?: MessageKey
   v1Url?: string
   projectUrl?: string
   position: [number, number, number]
@@ -80,7 +81,7 @@ export const missions: readonly Mission[] = [
   {
     id: 'web-experiments', name: 'Expériences web', nameKey: 'missions.items.web.name',
     descriptionKey: 'missions.items.web.description', statusKey: 'missions.status.ongoing',
-    categoryKey: 'missions.items.web.category', year: '2021 → AUJOURD’HUI',
+    categoryKey: 'missions.items.web.category', yearKey: 'missions.items.web.period',
     position: [-2.4, -2.15, -1.15], mobilePosition: [-1.25, -1.65, -0.8],
     screenPosition: { x: 34, y: 75 }, mobileScreenPosition: { x: 29, y: 74 },
     size: 0.9, rotationSpeed: 0.09,

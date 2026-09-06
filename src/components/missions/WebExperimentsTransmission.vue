@@ -18,7 +18,7 @@ const { t } = useI18n()
     <header class="web-transmission__intro transmission-zone">
       <div>
         <p>{{ t('missions.mission') }} 04</p>
-        <span>PROJETS / EN LIGNE</span>
+        <span>{{ t('missions.items.web.transmission.headerLabel') }}</span>
       </div>
       <h3>{{ t('missions.items.web.name') }}</h3>
       <strong>{{ t('missions.items.web.transmission.subtitle') }}</strong>

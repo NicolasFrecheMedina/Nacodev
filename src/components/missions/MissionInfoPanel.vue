@@ -20,7 +20,7 @@ defineExpose({ focus: () => panel.value?.focus() })
     <dl>
       <div><dt>{{ t('missions.axisLabel') }}</dt><dd>{{ t(mission.categoryKey) }}</dd></div>
       <div><dt>{{ t('missions.statusLabel') }}</dt><dd>{{ t(mission.statusKey) }}</dd></div>
-      <div v-if="mission.year"><dt>{{ t('missions.yearLabel') }}</dt><dd>{{ mission.year }}</dd></div>
+      <div v-if="mission.year || mission.yearKey"><dt>{{ t('missions.yearLabel') }}</dt><dd>{{ mission.yearKey ? t(mission.yearKey) : mission.year }}</dd></div>
     </dl>
     <button class="mission-panel__explore" type="button" @click="emit('explore')">
       <span>{{ t('missions.explore') }}</span>

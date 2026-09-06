@@ -18,7 +18,7 @@ const { t } = useI18n()
     <header class="tmoment-transmission__intro transmission-zone">
       <div>
         <p>{{ t('missions.mission') }} 02</p>
-        <span>UNDO / AUDIO BUFFER</span>
+        <span>{{ t('missions.items.tmoment.transmission.headerLabel') }}</span>
       </div>
       <h3>{{ t('missions.items.tmoment.name') }}</h3>
       <strong>{{ t('missions.items.tmoment.transmission.subtitle') }}</strong>
