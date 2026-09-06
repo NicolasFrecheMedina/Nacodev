@@ -28,7 +28,7 @@ defineExpose({ focusNext: () => nextControl.value?.focus() })
 .exploration-panel { position: absolute; z-index: 4; bottom: clamp(5.5rem, 8vh, 7rem); left: clamp(1.25rem, 4vw, 3rem); width: min(30rem, calc(100vw - 2.5rem)); min-height: 5.8rem; padding: 1rem 1.15rem; border: 1px solid rgb(220 239 246 / 11%); background: linear-gradient(125deg, rgb(15 22 31 / 52%), rgb(8 12 18 / 24%)); box-shadow: 0 1.2rem 4rem rgb(0 0 0 / 18%); backdrop-filter: blur(12px); pointer-events: none; }
 .exploration-panel--selected { pointer-events: auto; }
 .exploration-panel__eyebrow { color: var(--color-accent); font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; }
-.exploration-panel p { margin: 0.65rem 0 0; color: rgb(239 245 248 / 72%); font-size: clamp(0.72rem, 1.2vw, 0.82rem); font-weight: 300; line-height: 1.65; }
+.exploration-panel p { margin: 0.65rem 0 0; color: rgb(239 245 248 / 72%); font-size: clamp(0.72rem, 1.2vw, 0.82rem); font-weight: 300; line-height: 1.65; white-space: pre-line; }
 .exploration-panel__controls { display: flex; justify-content: flex-end; gap: 0.55rem; margin-top: 0.95rem; }
 .exploration-panel__controls .hud-control { min-height: 2.2rem; padding: 0.52rem 0.68rem; font-size: 0.46rem; }
 @media (max-width: 700px) {
