@@ -32,7 +32,7 @@ export const missions: readonly Mission[] = [
   {
     id: 'nacodev', name: 'NacoDev', nameKey: 'missions.items.nacodev.name',
     descriptionKey: 'missions.items.nacodev.description', statusKey: 'missions.status.active',
-    categoryKey: 'missions.items.nacodev.category', year: '2024',
+    categoryKey: 'missions.items.nacodev.category', year: '2021',
     position: [0, 2.35, -0.35], mobilePosition: [0, 2.85, -0.3],
     screenPosition: { x: 50, y: 22 }, mobileScreenPosition: { x: 50, y: 15 },
     size: 0.88, rotationSpeed: 0.075,
@@ -59,7 +59,7 @@ export const missions: readonly Mission[] = [
   {
     id: 'web-experiments', name: 'Expériences web', nameKey: 'missions.items.web.name',
     descriptionKey: 'missions.items.web.description', statusKey: 'missions.status.ongoing',
-    categoryKey: 'missions.items.web.category',
+    categoryKey: 'missions.items.web.category', year: '2021 → AUJOURD’HUI',
     position: [-2.4, -2.15, -1.15], mobilePosition: [-1.25, -1.65, -0.8],
     screenPosition: { x: 34, y: 75 }, mobileScreenPosition: { x: 29, y: 74 },
     size: 0.9, rotationSpeed: 0.09,
@@ -67,8 +67,8 @@ export const missions: readonly Mission[] = [
   },
   {
     id: 'private-systems', name: 'Systèmes privés', nameKey: 'missions.items.privateSystems.name',
-    descriptionKey: 'missions.items.privateSystems.description', statusKey: 'missions.status.active',
-    categoryKey: 'missions.items.privateSystems.category',
+    descriptionKey: 'missions.items.privateSystems.description', statusKey: 'missions.status.serviceActive',
+    categoryKey: 'missions.items.privateSystems.category', year: '2026',
     position: [-3.8, 0.8, -0.2], mobilePosition: [-1.45, 0.95, -0.45],
     screenPosition: { x: 24, y: 40 }, mobileScreenPosition: { x: 24, y: 39 },
     size: 0.8, rotationSpeed: 0.056,

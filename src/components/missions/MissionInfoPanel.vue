@@ -53,9 +53,13 @@ defineExpose({ focus: () => panel.value?.focus() })
 .mission-panel dt, .mission-panel dd { margin: 0; font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .mission-panel dt { color: rgb(220 235 241 / 36%); }
 .mission-panel dd { color: rgb(242 247 249 / 72%); text-align: right; }
-.mission-panel__explore { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 0.85rem 0; border: 0; border-top: 1px solid rgb(155 222 248 / 16%); border-bottom: 1px solid rgb(155 222 248 / 16%); color: rgb(225 241 247 / 68%); font: inherit; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; background: transparent; cursor: pointer; transition: color 240ms ease, border-color 240ms ease; }
-.mission-panel__explore i { font-style: normal; }
-.mission-panel__explore:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 38%); color: var(--color-accent); }
+.mission-panel__explore { position: relative; display: flex; width: 100%; overflow: hidden; align-items: center; justify-content: space-between; padding: 0.85rem 0.9rem; border: 1px solid rgb(155 222 248 / 28%); border-radius: var(--radius-sm); color: rgb(231 244 249 / 82%); background: linear-gradient(135deg, rgb(255 255 255 / 8%), rgb(155 222 248 / 4%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%); font: inherit; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; backdrop-filter: blur(10px); cursor: pointer; transition: color 240ms ease, border-color 240ms ease, background 240ms ease, box-shadow 240ms ease, transform 240ms ease; }
+.mission-panel__explore::before { position: absolute; inset: 0; background: radial-gradient(circle at 78% 50%, rgb(155 222 248 / 13%), transparent 64%); content: ''; opacity: 0; pointer-events: none; transition: opacity 240ms ease; }
+.mission-panel__explore span, .mission-panel__explore i { position: relative; }
+.mission-panel__explore i { color: var(--color-accent); font-style: normal; transition: transform 240ms ease; }
+.mission-panel__explore:is(:hover, :focus-visible) { border-color: rgb(137 218 250 / 58%); color: var(--color-accent); background: linear-gradient(135deg, rgb(255 255 255 / 11%), rgb(155 222 248 / 7%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%), 0 0 1.35rem rgb(95 194 234 / 14%); transform: translateY(-1px); }
+.mission-panel__explore:is(:hover, :focus-visible)::before { opacity: 1; }
+.mission-panel__explore:is(:hover, :focus-visible) i { transform: translate(0.12rem, -0.12rem); }
 .mission-panel__explore:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.25rem; }
 .mission-panel__controls { display: flex; justify-content: flex-end; gap: 0.55rem; margin-top: 0.95rem; }
 .mission-panel__controls .hud-control { min-height: 2.2rem; padding: 0.52rem 0.68rem; font-size: 0.46rem; }
