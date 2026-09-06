@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
+const openModalInstances = new Set<symbol>()
+
 const props = withDefaults(
-  defineProps<{ open: boolean; title: string; closeLabel?: string; variant?: 'default' | 'transmission' }>(),
+  defineProps<{ open: boolean; title: string; closeLabel?: string; variant?: 'default' | 'transmission' | 'legal' }>(),
   { closeLabel: 'Fermer', variant: 'default' },
 )
 
 const emit = defineEmits<{ close: []; closed: [] }>()
 const dialog = ref<HTMLElement | null>(null)
+const modalInstance = Symbol('modal')
 let previouslyFocused: HTMLElement | null = null
+
+function updateBodyLock(isOpen: boolean) {
+  if (isOpen) openModalInstances.add(modalInstance)
+  else openModalInstances.delete(modalInstance)
+  document.body.classList.toggle('has-open-modal', openModalInstances.size > 0)
+}
 
 function requestClose() {
   emit('close')
@@ -21,7 +30,7 @@ function onKeydown(event: KeyboardEvent) {
 watch(
   () => props.open,
   async (isOpen) => {
-    document.body.classList.toggle('has-open-modal', isOpen)
+    updateBodyLock(isOpen)
     if (isOpen) {
       previouslyFocused = document.activeElement as HTMLElement | null
       window.addEventListener('keydown', onKeydown)
@@ -36,7 +45,7 @@ watch(
 )
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('has-open-modal')
+  updateBodyLock(false)
   window.removeEventListener('keydown', onKeydown)
 })
 </script>
@@ -118,13 +127,15 @@ onBeforeUnmount(() => {
 
 .modal__close:hover { transform: rotate(90deg); }
 
-.modal--transmission { background: radial-gradient(circle at 50% 45%, rgb(18 43 55 / 38%), rgb(1 3 7 / 92%) 68%); }
-.modal--transmission .modal__panel { position: relative; width: min(100%, 48rem); border-color: rgb(155 222 248 / 24%); border-radius: 0; background: linear-gradient(145deg, rgb(11 20 28 / 97%), rgb(3 7 12 / 98%)); box-shadow: inset 0 0 4rem rgb(97 188 221 / 5%), 0 0 0 1px rgb(155 222 248 / 4%), 0 2rem 7rem rgb(0 0 0 / 72%); }
-.modal--transmission .modal__panel::before { position: absolute; z-index: 2; inset: 0; background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgb(190 230 244 / 2.5%) 4px); content: ''; pointer-events: none; }
-.modal--transmission .modal__panel::after { position: absolute; top: -1px; left: 8%; width: 28%; height: 1px; background: var(--color-accent); box-shadow: 0 0 1rem rgb(155 222 248 / 65%); content: ''; }
-.modal--transmission .modal__header { padding-block: 1rem; border-color: rgb(155 222 248 / 12%); }
-.modal--transmission .modal__header h2 { font-size: clamp(0.78rem, 1.5vw, 1rem); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; }
-.modal--transmission .modal__body { padding: clamp(1.4rem, 4vw, 3rem); }
+:is(.modal--transmission, .modal--legal) { background: radial-gradient(circle at 50% 45%, rgb(18 43 55 / 38%), rgb(1 3 7 / 92%) 68%); }
+:is(.modal--transmission, .modal--legal) .modal__panel { position: relative; width: min(100%, 48rem); border-color: rgb(155 222 248 / 24%); border-radius: 0; background: linear-gradient(145deg, rgb(11 20 28 / 97%), rgb(3 7 12 / 98%)); box-shadow: inset 0 0 4rem rgb(97 188 221 / 5%), 0 0 0 1px rgb(155 222 248 / 4%), 0 2rem 7rem rgb(0 0 0 / 72%); scrollbar-color: rgb(137 218 250 / 62%) rgb(1 4 8 / 55%); scrollbar-width: thin; }
+:is(.modal--transmission, .modal--legal) .modal__panel::before { position: absolute; z-index: 2; inset: 0; background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgb(190 230 244 / 2.5%) 4px); content: ''; pointer-events: none; }
+:is(.modal--transmission, .modal--legal) .modal__panel::after { position: absolute; top: -1px; left: 8%; width: 28%; height: 1px; background: var(--color-accent); box-shadow: 0 0 1rem rgb(155 222 248 / 65%); content: ''; }
+:is(.modal--transmission, .modal--legal) .modal__header { padding-block: 1rem; border-color: rgb(155 222 248 / 12%); }
+:is(.modal--transmission, .modal--legal) .modal__header h2 { font-size: clamp(0.78rem, 1.5vw, 1rem); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; }
+:is(.modal--transmission, .modal--legal) .modal__body { padding: clamp(1.4rem, 4vw, 3rem); }
+.modal--legal .modal__panel { width: min(100%, 68rem); }
+.modal--legal .modal__body { padding: 0; }
 .modal-enter-active, .modal-leave-active { transition: opacity 240ms ease; }
 .modal-enter-active .modal__panel, .modal-leave-active .modal__panel {
   transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 240ms ease;

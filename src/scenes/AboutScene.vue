@@ -3,12 +3,14 @@ import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import TrajectoryMap from '@/components/about/TrajectoryMap.vue'
 import TrajectoryPanel from '@/components/about/TrajectoryPanel.vue'
 import ContactPanel from '@/components/contact/ContactPanel.vue'
+import LegalModal from '@/components/legal/LegalModal.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
 import HudContextStatus from '@/components/ui/HudContextStatus.vue'
 import SceneNavigation from '@/components/ui/SceneNavigation.vue'
 import { sceneById, sceneStepTotal } from '@/data/scenes'
 import { siteConfig } from '@/data/site'
+import type { LegalTab } from '@/data/legal'
 import { timelineSteps, type TimelineStep, type TimelineStepId } from '@/data/timeline'
 import { useI18n } from '@/i18n'
 
@@ -19,6 +21,9 @@ const hud = sceneById.about.hud!
 const selectedId = ref<TimelineStepId | null>(null)
 const hoveredId = ref<TimelineStepId | null>(null)
 const contactOpen = ref(false)
+const legalOpen = ref(false)
+const legalInitialTab = ref<LegalTab>('legalNotice')
+const pendingLegalTab = ref<LegalTab | null>(null)
 const concluding = ref(false)
 const contactStatus = ref<'idle' | 'submitting' | 'success' | 'error'>('idle')
 const contactFields = reactive({ name: '', email: '', subject: '', message: '' })
@@ -81,6 +86,24 @@ function resetAboutState() {
 function resetContactState() {
   contactStatus.value = 'idle'
   resetAboutState()
+}
+
+function handleContactClosed() {
+  resetContactState()
+  if (!pendingLegalTab.value) return
+  legalInitialTab.value = pendingLegalTab.value
+  pendingLegalTab.value = null
+  legalOpen.value = true
+}
+
+function openLegal(tab: LegalTab) {
+  legalInitialTab.value = tab
+  if (contactOpen.value) {
+    pendingLegalTab.value = tab
+    contactOpen.value = false
+    return
+  }
+  legalOpen.value = true
 }
 
 function closeContact() {
@@ -243,7 +266,7 @@ onBeforeUnmount(() => {
 
     <SceneNavigation :navigation-label="t('common.sceneNavigation')" :back-label="t('common.back')" :next-label="t('about.restart')" next-mark="↺" @back="$emit('back')" @next="$emit('restart')" />
 
-    <BaseModal id="contact-modal" :open="contactOpen" :title="t('about.contact.title')" :close-label="t('common.close')" variant="transmission" @close="closeContact" @closed="resetContactState">
+    <BaseModal id="contact-modal" :open="contactOpen" :title="t('about.contact.title')" :close-label="t('common.close')" variant="transmission" @close="closeContact" @closed="handleContactClosed">
       <div class="contact-modal">
         <p class="contact-modal__lead">{{ t('about.contact.message') }}</p>
 
@@ -268,31 +291,38 @@ onBeforeUnmount(() => {
         <form v-else name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form" @submit.prevent="submitContact">
           <input type="hidden" name="form-name" value="contact">
           <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
-          <label><span>{{ t('about.contact.name') }}</span><input v-model="contactFields.name" name="name" type="text" autocomplete="name" required></label>
-          <label><span>{{ t('about.contact.email') }}</span><input v-model="contactFields.email" name="email" type="email" autocomplete="email" required></label>
-          <label class="contact-form__wide"><span>{{ t('about.contact.subject') }}</span><input v-model="contactFields.subject" name="subject" type="text" required></label>
-          <label class="contact-form__wide"><span>{{ t('about.contact.body') }}</span><textarea v-model="contactFields.message" name="message" rows="5" required></textarea></label>
+          <label><span>{{ t('about.contact.name') }} *</span><input v-model="contactFields.name" name="name" type="text" autocomplete="name" required></label>
+          <label><span>{{ t('about.contact.email') }} *</span><input v-model="contactFields.email" name="email" type="email" autocomplete="email" required></label>
+          <label class="contact-form__wide"><span>{{ t('about.contact.subject') }} *</span><input v-model="contactFields.subject" name="subject" type="text" required></label>
+          <label class="contact-form__wide"><span>{{ t('about.contact.body') }} *</span><textarea v-model="contactFields.message" name="message" rows="5" required></textarea></label>
+          <p class="contact-form__required">{{ t('about.contact.required') }}</p>
+          <p class="contact-form__privacy">
+            {{ t('about.contact.privacyIntro') }}
+            <button type="button" @click="openLegal('privacy')">{{ t('about.contact.privacyLink') }}</button>
+          </p>
           <p v-if="contactStatus === 'submitting'" class="contact-form__status" role="status">{{ t('about.contact.sending') }}</p>
           <button class="contact-form__submit" type="submit" :disabled="contactStatus === 'submitting'">
             {{ contactStatus === 'submitting' ? t('about.contact.sending') : t('about.contact.submit') }} <span aria-hidden="true">↗</span>
           </button>
         </form>
 
-        <nav class="contact-modal__external" aria-label="Liens de contact secondaires">
-          <a :href="siteConfig.linkedinUrl" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
-          <a v-if="siteConfig.githubUrl" :href="siteConfig.githubUrl" target="_blank" rel="noreferrer">GITHUB ↗</a><span v-else aria-disabled="true">GITHUB ↗</span>
-          <a v-if="siteConfig.googleBusinessUrl" :href="siteConfig.googleBusinessUrl" target="_blank" rel="noreferrer">GOOGLE ↗</a><span v-else aria-disabled="true">GOOGLE ↗</span>
+        <nav class="contact-modal__external" :aria-label="t('about.contact.externalNavigation')">
+          <a :href="siteConfig.linkedinCompanyUrl" target="_blank" rel="noopener noreferrer">LINKEDIN NACODEV ↗</a>
+          <a :href="siteConfig.linkedinPersonalUrl" target="_blank" rel="noopener noreferrer">LINKEDIN NICOLAS ↗</a>
+          <a :href="siteConfig.githubUrl" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+          <a :href="siteConfig.googleBusinessUrl" target="_blank" rel="noopener noreferrer">GOOGLE ↗</a>
         </nav>
 
-        <nav class="contact-modal__legal" aria-label="Liens légaux">
-          <a v-if="siteConfig.legalUrls.legalNotice" :href="siteConfig.legalUrls.legalNotice">{{ t('about.contact.legalNotice') }}</a><span v-else aria-disabled="true">{{ t('about.contact.legalNotice') }}</span>
+        <nav class="contact-modal__legal" :aria-label="t('about.contact.legalNavigation')">
+          <button type="button" @click="openLegal('legalNotice')">{{ t('about.contact.legalNotice') }}</button>
           <i aria-hidden="true">·</i>
-          <a v-if="siteConfig.legalUrls.privacy" :href="siteConfig.legalUrls.privacy">{{ t('about.contact.privacy') }}</a><span v-else aria-disabled="true">{{ t('about.contact.privacy') }}</span>
+          <button type="button" @click="openLegal('privacy')">{{ t('about.contact.privacy') }}</button>
           <i aria-hidden="true">·</i>
-          <a v-if="siteConfig.legalUrls.terms" :href="siteConfig.legalUrls.terms">{{ t('about.contact.terms') }}</a><span v-else aria-disabled="true">{{ t('about.contact.terms') }}</span>
+          <button type="button" @click="openLegal('terms')">{{ t('about.contact.terms') }}</button>
         </nav>
       </div>
     </BaseModal>
+    <LegalModal :open="legalOpen" :initial-tab="legalInitialTab" @close="legalOpen = false" />
   </section>
 </template>
 
@@ -340,12 +370,16 @@ onBeforeUnmount(() => {
 .contact-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 .contact-form label { display: grid; gap: 0.4rem; }
 .contact-form label > span { color: rgb(190 222 234 / 55%); font-size: 0.46rem; letter-spacing: 0.17em; text-transform: uppercase; }
-.contact-form__wide, .contact-form__status, .contact-form__submit { grid-column: 1 / -1; }
+.contact-form__wide, .contact-form__required, .contact-form__privacy, .contact-form__status, .contact-form__submit { grid-column: 1 / -1; }
 .contact-form :is(input, textarea) { width: 100%; border: 1px solid rgb(155 222 248 / 16%); border-radius: 2px; outline: 0; color: rgb(241 248 250 / 90%); background: linear-gradient(135deg, rgb(155 222 248 / 5%), rgb(1 4 8 / 42%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 3%); font: inherit; font-size: 0.72rem; }
 .contact-form input { min-height: 2.65rem; padding: 0.7rem 0.8rem; }
 .contact-form textarea { min-height: 7rem; padding: 0.8rem; line-height: 1.55; resize: vertical; }
 .contact-form :is(input, textarea):focus { border-color: rgb(137 218 250 / 58%); background: rgb(155 222 248 / 7%); box-shadow: 0 0 0 1px rgb(137 218 250 / 8%), 0 0 1.15rem rgb(95 194 234 / 9%); }
 .contact-form__status { min-height: 1em; margin: 0; color: rgb(190 222 234 / 68%); font-size: 0.56rem; letter-spacing: 0.08em; }
+.contact-form__required { margin: -0.25rem 0 0; color: rgb(190 222 234 / 54%); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.5rem; letter-spacing: 0.06em; }
+.contact-form__privacy { margin: 0; color: rgb(190 222 234 / 47%); font-size: 0.58rem; line-height: 1.65; }
+.contact-form__privacy button, .contact-modal__legal button { padding: 0; border: 0; color: rgb(190 222 234 / 62%); background: transparent; font: inherit; text-decoration: underline; text-decoration-color: rgb(137 218 250 / 28%); text-underline-offset: 0.18rem; cursor: pointer; }
+.contact-form__privacy button:is(:hover, :focus-visible), .contact-modal__legal button:is(:hover, :focus-visible) { color: var(--color-accent); }
 .contact-form__submit { position: relative; display: inline-flex; width: fit-content; min-width: 14rem; align-items: center; justify-content: space-between; justify-self: center; gap: 1.5rem; padding: 0.82rem 1rem; border: 1px solid rgb(155 222 248 / 34%); border-radius: 2px; color: rgb(241 248 250 / 86%); background: linear-gradient(135deg, rgb(255 255 255 / 8%), rgb(155 222 248 / 4%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%); font: inherit; font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, transform 220ms ease; }
 .contact-form__submit:is(:hover, :focus-visible) { border-color: rgb(137 218 250 / 68%); color: var(--color-accent); box-shadow: 0 0 1.4rem rgb(95 194 234 / 14%); transform: translateY(-1px); }
 .contact-form__submit:disabled { opacity: 0.58; cursor: wait; transform: none; }
@@ -359,8 +393,8 @@ onBeforeUnmount(() => {
 .contact-modal__feedback-actions button { padding: 0.65rem 0.8rem; border: 1px solid rgb(155 222 248 / 24%); border-radius: 2px; color: rgb(231 243 247 / 72%); background: rgb(155 222 248 / 4%); font: inherit; font-size: 0.46rem; letter-spacing: 0.13em; text-transform: uppercase; cursor: pointer; transition: border-color 200ms ease, color 200ms ease, background 200ms ease; }
 .contact-modal__feedback-actions button:is(:hover, :focus-visible) { border-color: rgb(137 218 250 / 58%); color: var(--color-accent); background: rgb(155 222 248 / 8%); }
 .contact-modal__external { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem 1.2rem; padding: 0.8rem 1rem; border: 1px solid rgb(155 222 248 / 10%); border-radius: 2px; background: linear-gradient(135deg, rgb(155 222 248 / 4%), rgb(255 255 255 / 1.5%)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 3%); backdrop-filter: blur(8px); }
-.contact-modal__external :is(a, span), .contact-modal__legal :is(a, span) { color: rgb(190 222 234 / 48%); font-size: 0.46rem; letter-spacing: 0.13em; text-decoration: none; }
-.contact-modal__external a:is(:hover, :focus-visible), .contact-modal__legal a:is(:hover, :focus-visible) { color: var(--color-accent); }
+.contact-modal__external :is(a, span), .contact-modal__legal :is(a, span, button) { color: rgb(190 222 234 / 48%); font-size: 0.46rem; letter-spacing: 0.13em; text-decoration: none; }
+.contact-modal__external a:is(:hover, :focus-visible), .contact-modal__legal button:is(:hover, :focus-visible) { color: var(--color-accent); }
 .contact-modal__external [aria-disabled='true'], .contact-modal__legal [aria-disabled='true'] { opacity: 0.42; }
 .contact-modal__legal { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.45rem; padding-top: 0.9rem; border-top: 1px solid rgb(155 222 248 / 9%); }
 .contact-modal__legal i { color: rgb(190 222 234 / 22%); font-style: normal; }

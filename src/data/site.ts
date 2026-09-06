@@ -3,14 +3,10 @@ interface SiteConfig {
     latitude: string
     longitude: string
   }
-  linkedinUrl: string
+  linkedinCompanyUrl: string
+  linkedinPersonalUrl: string
   githubUrl: string
   googleBusinessUrl: string
-  legalUrls: {
-    legalNotice: string
-    privacy: string
-    terms: string
-  }
 }
 
 export const siteConfig: SiteConfig = {
@@ -18,14 +14,8 @@ export const siteConfig: SiteConfig = {
     latitude: '43.7382° N',
     longitude: '1.0476° W',
   },
-  linkedinUrl: 'https://www.linkedin.com/in/nicolas-freche-medina-55998442/',
-  // TODO: renseigner l'URL du profil GitHub NacoDev.
-  githubUrl: '',
+  linkedinCompanyUrl: 'https://fr.linkedin.com/company/nacodev',
+  linkedinPersonalUrl: 'https://www.linkedin.com/in/nicolas-freche-medina-55998442/',
+  githubUrl: 'https://github.com/NicolasFrecheMedina',
   googleBusinessUrl: 'https://share.google/uKtSugzWM1rFpQjSa',
-  legalUrls: {
-    // TODO: renseigner les routes légales lorsque leurs pages seront disponibles.
-    legalNotice: '',
-    privacy: '',
-    terms: '',
-  },
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from '@/i18n'
+import { siteConfig } from '@/data/site'
 
 defineEmits<{ open: [] }>()
 const { t } = useI18n()
@@ -9,7 +10,7 @@ const { t } = useI18n()
   <div class="contact-panel">
     <div class="contact-panel__links">
       <a href="mailto:contact@nacodev.com">contact@nacodev.com</a>
-      <a href="https://www.linkedin.com/in/nicolas-freche-medina-55998442/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a :href="siteConfig.linkedinPersonalUrl" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
     </div>
     <button type="button" @click="$emit('open')">{{ t('about.contact.open') }} <span aria-hidden="true">↗</span></button>
   </div>
