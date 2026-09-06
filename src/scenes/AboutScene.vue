@@ -60,6 +60,7 @@ function selectPreviousStep() {
 
 function beginContactSequence() {
   if (concluding.value || contactOpen.value) return
+  resetAboutState()
   concluding.value = true
 }
 
@@ -68,8 +69,23 @@ function completeContactSequence() {
   contactOpen.value = true
 }
 
-function resetContactStatus() {
+function resetAboutState() {
+  selectedId.value = null
+  hoveredId.value = null
+  concluding.value = false
+  stopStatementTyping()
+  initialTitleReveal.value = false
+  typingComplete.value = true
+}
+
+function resetContactState() {
   contactStatus.value = 'idle'
+  resetAboutState()
+}
+
+function closeContact() {
+  contactOpen.value = false
+  resetAboutState()
 }
 
 function retryContact() {
@@ -227,7 +243,7 @@ onBeforeUnmount(() => {
 
     <SceneNavigation :navigation-label="t('common.sceneNavigation')" :back-label="t('common.back')" :next-label="t('about.restart')" next-mark="↺" @back="$emit('back')" @next="$emit('restart')" />
 
-    <BaseModal id="contact-modal" :open="contactOpen" :title="t('about.contact.title')" :close-label="t('common.close')" variant="transmission" @close="contactOpen = false" @closed="resetContactStatus">
+    <BaseModal id="contact-modal" :open="contactOpen" :title="t('about.contact.title')" :close-label="t('common.close')" variant="transmission" @close="closeContact" @closed="resetContactState">
       <div class="contact-modal">
         <p class="contact-modal__lead">{{ t('about.contact.message') }}</p>
 
@@ -237,7 +253,7 @@ onBeforeUnmount(() => {
           <p>{{ t('about.contact.success') }}</p>
           <div class="contact-modal__feedback-actions">
             <button type="button" @click="restartFromContact">{{ t('about.restart') }}</button>
-            <button type="button" @click="contactOpen = false">{{ t('common.close') }}</button>
+            <button type="button" @click="closeContact">{{ t('common.close') }}</button>
           </div>
         </div>
         <div v-else-if="contactStatus === 'error'" class="contact-modal__feedback contact-modal__feedback--error" role="alert">
@@ -246,7 +262,7 @@ onBeforeUnmount(() => {
           <p>{{ t('about.contact.error') }}</p>
           <div class="contact-modal__feedback-actions">
             <button type="button" @click="retryContact">{{ t('about.contact.retry') }}</button>
-            <button type="button" @click="contactOpen = false">{{ t('common.close') }}</button>
+            <button type="button" @click="closeContact">{{ t('common.close') }}</button>
           </div>
         </div>
         <form v-else name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form" @submit.prevent="submitContact">

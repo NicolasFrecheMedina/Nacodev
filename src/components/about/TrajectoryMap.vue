@@ -104,7 +104,7 @@ onBeforeUnmount(() => {
     <svg class="trajectory-map__line" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="trajectory-glow" x1="0" x2="1"><stop stop-color="#9bdef8" stop-opacity="0"/><stop offset=".48" stop-color="#d9f4ff" stop-opacity=".72"/><stop offset="1" stop-color="#9bdef8" stop-opacity=".08"/></linearGradient>
-        <clipPath id="trajectory-reveal-clip"><rect class="trajectory-map__clip" x="-40" y="-20" height="560" /></clipPath>
+        <clipPath id="trajectory-reveal-clip"><rect class="trajectory-map__clip" x="-40" y="-180" height="720" /></clipPath>
       </defs>
       <path class="trajectory-map__shadow" :d="trajectoryPath" />
       <path class="trajectory-map__path" :d="trajectoryPath" />
@@ -136,7 +136,8 @@ onBeforeUnmount(() => {
 .trajectory-map--emerging .trajectory-node:nth-child(4) { animation: node-arrival 350ms ease 3700ms forwards; }
 .trajectory-map--emerging .trajectory-node:nth-child(5) { animation: node-arrival 350ms ease 4070ms forwards; }
 .trajectory-map__mobile-line { display: none; }
-.trajectory-map__nodes { position: absolute; inset: 0; transform-style: preserve-3d; }
+.trajectory-map__nodes { position: absolute; z-index: 5; inset: 0; pointer-events: none; transform-style: preserve-3d; }
+.trajectory-map__nodes :deep(.trajectory-node) { pointer-events: auto; }
 @keyframes trajectory-drift { to { stroke-dashoffset: -80; } }
 @keyframes node-arrival { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 700px) {
