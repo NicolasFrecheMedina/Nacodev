@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import AudelaTransmission from '@/components/missions/AudelaTransmission.vue'
 import MissionInfoPanel from '@/components/missions/MissionInfoPanel.vue'
 import NacodevTransmission from '@/components/missions/NacodevTransmission.vue'
+import PrivateSystemsTransmission from '@/components/missions/PrivateSystemsTransmission.vue'
 import TmomentTransmission from '@/components/missions/TmomentTransmission.vue'
 import WebExperimentsTransmission from '@/components/missions/WebExperimentsTransmission.vue'
 import MissionSystem from '@/components/missions/MissionSystem.vue'
@@ -27,6 +28,11 @@ let departureTimer: number | undefined
 const selectedMissionIndex = computed(() => missions.findIndex((mission) => mission.id === selectedMission.value?.id))
 
 async function selectMission(mission: Mission) {
+  if (selectedMission.value?.id === mission.id) {
+    missionOverlayOpen.value = true
+    return
+  }
+
   selectedMission.value = mission
   previewedMission.value = null
   missionOverlayOpen.value = false
@@ -42,18 +48,22 @@ async function closeMission() {
   if (previousId) document.querySelector<HTMLElement>(`[data-mission-id="${previousId}"]`)?.focus()
 }
 
-async function selectNextMission() {
-  const nextIndex = (selectedMissionIndex.value + 1) % missions.length
+async function selectMissionByOffset(offset: number) {
+  const nextIndex = (selectedMissionIndex.value + offset + missions.length) % missions.length
   selectedMission.value = missions[nextIndex] ?? missions[0]!
   previewedMission.value = null
   await nextTick()
   panel.value?.focus()
 }
 
-async function selectNextMissionFromTransmission() {
+async function selectNextMission() {
+  await selectMissionByOffset(1)
+}
+
+async function selectMissionFromTransmission(offset: number) {
   missionOverlayOpen.value = false
   await nextTick()
-  await selectNextMission()
+  await selectMissionByOffset(offset)
   missionOverlayOpen.value = true
 }
 
@@ -122,7 +132,8 @@ onBeforeUnmount(() => {
       <NacodevTransmission v-if="selectedMission.id === 'nacodev'" :mission="selectedMission" />
       <TmomentTransmission v-else-if="selectedMission.id === 't-moment'" :mission="selectedMission" />
       <AudelaTransmission v-else-if="selectedMission.id === 'au-dela'" :mission="selectedMission" />
-      <WebExperimentsTransmission v-else-if="selectedMission.id === 'web-experiments'" />
+      <WebExperimentsTransmission v-else-if="selectedMission.id === 'web-experiments'" :mission="selectedMission" />
+      <PrivateSystemsTransmission v-else-if="selectedMission.id === 'private-systems'" :mission="selectedMission" />
       <article v-else class="mission-transmission">
         <div class="mission-transmission__signal" aria-hidden="true"><i /> {{ t('missions.signalActive') }} / NCD-SYS-04</div>
         <p class="mission-transmission__index">{{ t('missions.mission') }} {{ String(selectedMissionIndex + 1).padStart(2, '0') }}</p>
@@ -135,13 +146,14 @@ onBeforeUnmount(() => {
         </dl>
         <p class="mission-transmission__standby">{{ t('missions.transmissionStandby') }}</p>
       </article>
-      <button
-        class="mission-transmission__next"
-        type="button"
-        @click="selectNextMissionFromTransmission"
-      >
-        {{ t('missions.items.nacodev.transmission.nextMission') }} <span aria-hidden="true">→</span>
-      </button>
+      <nav class="mission-transmission__navigation" :style="`--mission-accent: ${selectedMission.visual.atmosphere}`" :aria-label="t('common.sceneNavigation')">
+        <button class="mission-transmission__previous" type="button" @click="selectMissionFromTransmission(-1)">
+          <span aria-hidden="true">←</span> {{ t('missions.items.nacodev.transmission.previousMission') }}
+        </button>
+        <button class="mission-transmission__next" type="button" @click="selectMissionFromTransmission(1)">
+          {{ t('missions.items.nacodev.transmission.nextMission') }} <span aria-hidden="true">→</span>
+        </button>
+      </nav>
     </BaseModal>
   </section>
 </template>
@@ -182,13 +194,15 @@ onBeforeUnmount(() => {
 .mission-transmission dt { margin-bottom: 0.4rem; color: rgb(220 235 241 / 36%); }
 .mission-transmission dd { color: rgb(242 247 249 / 76%); }
 .mission-transmission__standby { margin: 1.5rem 0 0; color: rgb(225 239 244 / 32%); font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; }
-.mission-transmission__next { display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem 0 0 auto; padding: 0.75rem 1rem; border: 1px solid rgb(155 222 248 / 28%); color: var(--color-accent); background: linear-gradient(135deg, rgb(155 222 248 / 8%), rgb(155 222 248 / 2%)); font: inherit; font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: color 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
-.mission-transmission__next span { font-size: 0.72rem; transition: transform 220ms ease; }
-.mission-transmission__next:is(:hover, :focus-visible) { border-color: rgb(155 222 248 / 60%); color: rgb(220 244 252); background: rgb(155 222 248 / 10%); box-shadow: 0 0 1.2rem rgb(155 222 248 / 10%); transform: translateY(-1px); }
+.mission-transmission__navigation { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+.mission-transmission__navigation button { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border: 1px solid color-mix(in srgb, var(--mission-accent) 28%, transparent); color: var(--mission-accent); background: linear-gradient(135deg, color-mix(in srgb, var(--mission-accent) 8%, transparent), color-mix(in srgb, var(--mission-accent) 2%, transparent)); font: inherit; font-size: 0.48rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: color 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+.mission-transmission__navigation button span { font-size: 0.72rem; transition: transform 220ms ease; }
+.mission-transmission__navigation button:is(:hover, :focus-visible) { border-color: color-mix(in srgb, var(--mission-accent) 60%, transparent); color: rgb(242 247 249); background: color-mix(in srgb, var(--mission-accent) 10%, transparent); box-shadow: 0 0 1.2rem color-mix(in srgb, var(--mission-accent) 10%, transparent); transform: translateY(-1px); }
 .mission-transmission__next:is(:hover, :focus-visible) span { transform: translateX(0.2rem); }
-.mission-transmission__next:focus-visible { outline: 1px solid var(--color-accent); outline-offset: 0.2rem; }
+.mission-transmission__previous:is(:hover, :focus-visible) span { transform: translateX(-0.2rem); }
+.mission-transmission__navigation button:focus-visible { outline: 1px solid var(--mission-accent); outline-offset: 0.2rem; }
 @keyframes transmission-pulse { 50% { opacity: 0.35; box-shadow: 0 0 0.25rem var(--color-accent); } }
 @keyframes orbit-release { 0% { opacity: 0; transform: scale(0.82); } 24% { opacity: 0.72; } 78% { opacity: 0.35; } 100% { opacity: 0; transform: scale(1.16); } }
-@media (max-width: 700px) { .missions-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } .mission-panel-enter-from, .mission-panel-leave-to { transform: translateY(1.5rem); } .mission-transmission dl { grid-template-columns: 1fr; } .mission-transmission dl div { border-right: 0; border-bottom: 1px solid rgb(155 222 248 / 9%); } .mission-transmission dl div:last-child { border-bottom: 0; } }
+@media (max-width: 700px) { .missions-scene__header { top: calc(var(--hud-top) + 2.5rem); left: var(--hud-left); text-align: left; transform: none; } .mission-panel-enter-from, .mission-panel-leave-to { transform: translateY(1.5rem); } .mission-transmission dl { grid-template-columns: 1fr; } .mission-transmission dl div { border-right: 0; border-bottom: 1px solid rgb(155 222 248 / 9%); } .mission-transmission dl div:last-child { border-bottom: 0; } .mission-transmission__navigation { align-items: stretch; } .mission-transmission__navigation button { flex: 1; justify-content: center; padding-inline: 0.65rem; letter-spacing: 0.1em; } }
 @media (prefers-reduced-motion: reduce) { .missions-scene { transition-duration: 120ms; } .missions-scene--stabilizing .missions-scene__header, .missions-scene--stabilizing :deep(.global-hud), .missions-scene--stabilizing :deep(.scene-navigation), .mission-panel-enter-active, .mission-panel-leave-active { transition-duration: 120ms; } .missions-scene--departing :deep(.mission-system) { transition-duration: 170ms; transform: none; } .missions-scene__departure-orbits { display: none; } .mission-transmission__signal i { animation: none; } }
 </style>

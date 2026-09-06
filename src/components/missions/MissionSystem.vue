@@ -106,11 +106,15 @@ onBeforeUnmount(() => {
       {{ t('missions.webglFallback') }}
     </p>
 
-    <div v-if="!selectedId" class="mission-system__targets">
+    <div class="mission-system__targets">
       <button
         v-for="(mission, index) in missions"
         :key="mission.id"
         class="mission-target"
+        :class="{
+          'mission-target--selected': selectedId === mission.id,
+          'mission-target--muted': selectedId && selectedId !== mission.id,
+        }"
         :data-mission-id="mission.id"
         :style="targetStyle(mission)"
         type="button"
@@ -153,6 +157,8 @@ onBeforeUnmount(() => {
 .mission-system__gravity::before { position: absolute; top: 50%; left: 50%; width: 9rem; height: 9rem; border-radius: 50%; background: radial-gradient(circle, rgb(112 195 225 / 5%), transparent 68%); content: ''; transform: translate(-50%, -50%); }
 .mission-system__targets { position: absolute; inset: 0; }
 .mission-target { --target-visual-size: clamp(7rem, 11vw, 10rem); position: absolute; z-index: 2; top: var(--target-y); left: var(--target-x); width: clamp(9.5rem, 15vw, 13rem); height: clamp(9.5rem, 15vw, 13rem); padding: 0; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
+.mission-target--selected { z-index: 3; top: 50%; left: 50%; }
+.mission-target--muted { z-index: 1; }
 .mission-target__reticle { position: absolute; top: 50%; left: 50%; width: calc(var(--target-visual-size) + 0.7rem); height: calc(var(--target-visual-size) + 0.7rem); border: 1px solid transparent; border-radius: 50%; transform: translate(-50%, -50%); transition: border-color 350ms ease, transform 500ms ease; }
 .mission-target__reticle::before, .mission-target__reticle::after { position: absolute; background: rgb(174 222 238 / 0%); content: ''; transition: background 350ms ease; }
 .mission-target__reticle::before { top: 50%; right: -0.7rem; left: -0.7rem; height: 1px; }
@@ -178,6 +184,7 @@ onBeforeUnmount(() => {
   .mission-system__orbit--inner { inset: 14% 15%; }
   .mission-system__orbit--outer { inset: 18% 5% 10%; }
   .mission-target { --target-visual-size: 5.8rem; top: var(--target-mobile-y); left: var(--target-mobile-x); width: 8rem; height: 8rem; }
+  .mission-target--selected { top: 50%; left: 50%; }
   .mission-target__readout { top: calc(50% + (var(--target-visual-size) / 2) + 0.3rem); left: 50%; gap: 0.2rem; opacity: 0.78; transform: translate(-50%, 0); text-align: center; }
   .mission-target:nth-child(even) .mission-target__readout { right: auto; left: 50%; text-align: center; }
   .mission-target__readout span, .mission-target__readout small { display: none; }
