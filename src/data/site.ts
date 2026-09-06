@@ -15,14 +15,13 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   coordinates: {
-    latitude: '48.8566° N',
-    longitude: '02.3522° E',
+    latitude: '43.7382° N',
+    longitude: '1.0476° W',
   },
   linkedinUrl: 'https://www.linkedin.com/in/nicolas-freche-medina-55998442/',
   // TODO: renseigner l'URL du profil GitHub NacoDev.
   githubUrl: '',
-  // TODO: renseigner l'URL de la fiche Google Business NacoDev.
-  googleBusinessUrl: '',
+  googleBusinessUrl: 'https://share.google/uKtSugzWM1rFpQjSa',
   legalUrls: {
     // TODO: renseigner les routes légales lorsque leurs pages seront disponibles.
     legalNotice: '',
