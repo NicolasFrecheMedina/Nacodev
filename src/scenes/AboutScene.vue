@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import TrajectoryMap from '@/components/about/TrajectoryMap.vue'
 import TrajectoryPanel from '@/components/about/TrajectoryPanel.vue'
 import ContactPanel from '@/components/contact/ContactPanel.vue'
@@ -149,6 +149,13 @@ function startStatementTyping(value: string, delay: number) {
     }, 28)
   }, delay)
 }
+
+watch(locale, () => {
+  stopStatementTyping()
+  initialTitleReveal.value = false
+  typedStatement.value = statement.value
+  typingComplete.value = true
+})
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
