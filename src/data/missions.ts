@@ -20,6 +20,7 @@ export interface Mission {
   categoryKey: MessageKey
   year?: string
   v1Url?: string
+  projectUrl?: string
   position: [number, number, number]
   mobilePosition: [number, number, number]
   screenPosition: { x: number; y: number }
@@ -45,6 +46,8 @@ export const missions: readonly Mission[] = [
     id: 't-moment', name: 'T-Moment', nameKey: 'missions.items.tmoment.name',
     descriptionKey: 'missions.items.tmoment.description', statusKey: 'missions.status.development',
     categoryKey: 'missions.items.tmoment.category', year: '2026',
+    // Add the future T-Moment product URL here when it is available.
+    projectUrl: '',
     position: [4.2, 1.15, -0.8], mobilePosition: [1.58, 1.55, -0.6],
     screenPosition: { x: 78, y: 36 }, mobileScreenPosition: { x: 78, y: 32 },
     size: 0.92, rotationSpeed: 0.062,

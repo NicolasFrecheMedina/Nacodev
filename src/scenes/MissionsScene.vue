@@ -2,6 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import MissionInfoPanel from '@/components/missions/MissionInfoPanel.vue'
 import NacodevTransmission from '@/components/missions/NacodevTransmission.vue'
+import TmomentTransmission from '@/components/missions/TmomentTransmission.vue'
 import MissionSystem from '@/components/missions/MissionSystem.vue'
 import GlobalHud from '@/components/ui/GlobalHud.vue'
 import HudContextStatus from '@/components/ui/HudContextStatus.vue'
@@ -117,6 +118,7 @@ onBeforeUnmount(() => {
       @close="missionOverlayOpen = false"
     >
       <NacodevTransmission v-if="selectedMission.id === 'nacodev'" :mission="selectedMission" />
+      <TmomentTransmission v-else-if="selectedMission.id === 't-moment'" :mission="selectedMission" />
       <article v-else class="mission-transmission">
         <div class="mission-transmission__signal" aria-hidden="true"><i /> {{ t('missions.signalActive') }} / NCD-SYS-04</div>
         <p class="mission-transmission__index">{{ t('missions.mission') }} {{ String(selectedMissionIndex + 1).padStart(2, '0') }}</p>
