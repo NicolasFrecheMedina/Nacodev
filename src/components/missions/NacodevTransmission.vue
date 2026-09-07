@@ -39,7 +39,7 @@ const { t } = useI18n()
         {{ t('missions.items.nacodev.transmission.viewV1') }} <span aria-hidden="true">↗</span>
       </span>
       <i aria-hidden="true"><em /></i>
-      <span><b>2026</b> — V2 <small>/ {{ t('missions.items.nacodev.transmission.currentSignal') }}</small></span>
+      <span><b>2026</b> - V2 <small>/ {{ t('missions.items.nacodev.transmission.currentSignal') }}</small></span>
     </section>
 
     <section class="nacodev-transmission__data transmission-zone">

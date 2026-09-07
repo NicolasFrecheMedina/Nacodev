@@ -12,10 +12,10 @@ export interface SceneDefinition {
 
 export const scenes: readonly SceneDefinition[] = [
   { id: 'connection', titleKey: 'scenes.connection' },
-  { id: 'idea', titleKey: 'scenes.idea', hud: { code: 'NCD — IDA', step: 2 } },
-  { id: 'exploration', titleKey: 'scenes.exploration', hud: { code: 'NCD — XPLR', step: 3 } },
-  { id: 'missions', titleKey: 'scenes.missions', hud: { code: 'NCD — MSN-SYS', step: 4 } },
-  { id: 'about', titleKey: 'scenes.about', hud: { code: 'NCD — TRJ', step: 5 } },
+  { id: 'idea', titleKey: 'scenes.idea', hud: { code: 'NCD - IDA', step: 2 } },
+  { id: 'exploration', titleKey: 'scenes.exploration', hud: { code: 'NCD - XPLR', step: 3 } },
+  { id: 'missions', titleKey: 'scenes.missions', hud: { code: 'NCD - MSN-SYS', step: 4 } },
+  { id: 'about', titleKey: 'scenes.about', hud: { code: 'NCD - TRJ', step: 5 } },
 ]
 
 export const sceneById = Object.fromEntries(scenes.map((scene) => [scene.id, scene])) as Record<SceneId, SceneDefinition>

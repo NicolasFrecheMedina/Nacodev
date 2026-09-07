@@ -40,7 +40,7 @@ const { t } = useI18n()
         {{ t('missions.items.tmoment.transmission.viewProject') }} <span aria-hidden="true">↗</span>
       </span>
       <i aria-hidden="true"><em><b>↶</b></em></i>
-      <span class="tmoment-transmission__target"><b>2027</b> — {{ t('missions.items.tmoment.transmission.launchLabel') }}</span>
+      <span class="tmoment-transmission__target"><b>2027</b> - {{ t('missions.items.tmoment.transmission.launchLabel') }}</span>
     </section>
 
     <section class="tmoment-transmission__data transmission-zone">

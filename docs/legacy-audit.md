@@ -31,7 +31,7 @@ Priorité haute :
 
 Le fond historique comprend deux éléments fixes plein écran : `.page-bg` et `.animation-wrapper` dans `css/particle.css`. `.page-bg` affiche `space2.jpg` en `cover`. `background-blend-mode: screen` est déclaré, mais a peu d'effet avec une seule image. Le seul filtre actif est `filter: grayscale(100%)`.
 
-La profondeur vient de quatre nappes `.particle-1` à `.particle-4`. Chaque nappe est un élément de 1 à 3 px dont des centaines d'étoiles sont générées par un très long `box-shadow`. Un pseudo-élément identique est placé 2560 px plus bas pour boucler. Toutes les nappes exécutent `animParticle`, une translation verticale de 0 à -2560 px, avec des durées différentes — notamment 2000 s, 120 s et 200 s. Les tailles et vitesses différentes produisent l'impression de parallaxe.
+La profondeur vient de quatre nappes `.particle-1` à `.particle-4`. Chaque nappe est un élément de 1 à 3 px dont des centaines d'étoiles sont générées par un très long `box-shadow`. Un pseudo-élément identique est placé 2560 px plus bas pour boucler. Toutes les nappes exécutent `animParticle`, une translation verticale de 0 à -2560 px, avec des durées différentes - notamment 2000 s, 120 s et 200 s. Les tailles et vitesses différentes produisent l'impression de parallaxe.
 
 Il n'existe pas de parallaxe pilotée par scroll, pointeur ou JavaScript. `.parallaxe`, `.parallaxe2` et `.parallaxe3` sont des sections positionnées avec des décalages `top` de 600 à 700 pt, des marges massives et un `body` forcé à 6000 px. Ce mécanisme ne doit pas être reproduit.
 

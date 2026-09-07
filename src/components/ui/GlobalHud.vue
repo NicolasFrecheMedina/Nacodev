@@ -43,7 +43,7 @@ const coordinates = `${siteConfig.coordinates.latitude}, ${siteConfig.coordinate
         :href="siteConfig.googleBusinessUrl"
         target="_blank"
         rel="noopener noreferrer"
-        :aria-label="`${t('hud.googleBusiness')} — ${coordinates}`"
+        :aria-label="`${t('hud.googleBusiness')} - ${coordinates}`"
       >
         {{ siteConfig.coordinates.latitude }}<br>{{ siteConfig.coordinates.longitude }}
       </a>

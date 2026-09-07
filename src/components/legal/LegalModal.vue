@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
-import { incompleteLegalFields, legalConfig, legalContent, type LegalTab } from '@/data/legal'
+import { legalConfig, legalContent, type LegalTab } from '@/data/legal'
 import { useI18n } from '@/i18n'
 
 const props = defineProps<{ open: boolean; initialTab: LegalTab }>()
@@ -9,7 +9,6 @@ const emit = defineEmits<{ close: [] }>()
 const { locale, t } = useI18n()
 const activeTab = ref<LegalTab>(props.initialTab)
 const content = computed(() => legalContent[locale.value])
-const isDevelopment = import.meta.env.DEV
 const currentYear = new Date().getFullYear()
 
 watch(
@@ -80,8 +79,9 @@ function navigateTabs(event: KeyboardEvent) {
               <div><dt>{{ content.legalNotice.labels.host }}</dt><dd><a :href="legalConfig.hostUrl" target="_blank" rel="noopener noreferrer">{{ legalConfig.host }} ↗</a></dd></div>
               <div v-if="legalConfig.siren"><dt>{{ content.legalNotice.labels.siren }}</dt><dd>{{ legalConfig.siren }}</dd></div>
               <div v-if="legalConfig.siret"><dt>{{ content.legalNotice.labels.siret }}</dt><dd>{{ legalConfig.siret }}</dd></div>
+              <div><dt>{{ content.legalNotice.labels.nafCode }}</dt><dd>{{ legalConfig.nafCode }}</dd></div>
               <div v-if="legalConfig.registrationNumber"><dt>{{ content.legalNotice.labels.registrationNumber }}</dt><dd>{{ legalConfig.registrationNumber }}</dd></div>
-              <div v-if="legalConfig.vatNumber"><dt>{{ content.legalNotice.labels.vatNumber }}</dt><dd>{{ legalConfig.vatNumber }}</dd></div>
+              <div><dt>{{ content.legalNotice.labels.vatRegime }}</dt><dd>{{ legalConfig.vatRegime[locale] }}</dd></div>
             </dl>
           </section>
           <section class="legal-section">
@@ -96,7 +96,6 @@ function navigateTabs(event: KeyboardEvent) {
             <p class="legal-section__code">{{ String(index + 1).padStart(2, '0') }} / ARCHIVE</p>
             <h3>{{ section.title }}</h3>
             <p v-for="paragraph in section.paragraphs" :key="paragraph">{{ paragraph }}</p>
-            <p v-if="activeTab === 'privacy' && index === 4 && legalConfig.contactRetentionPeriod" class="legal-section__configured">{{ legalConfig.contactRetentionPeriod }}</p>
             <p v-if="activeTab === 'privacy' && index === 5" class="legal-section__configured"><a :href="`mailto:${legalConfig.email}`">{{ legalConfig.email }}</a></p>
             <div v-if="activeTab === 'terms' && index === 14 && legalConfig.consumerMediatorName" class="legal-details legal-details--compact">
               <div><dt>Nom</dt><dd>{{ legalConfig.consumerMediatorName }}</dd></div>
@@ -106,16 +105,7 @@ function navigateTabs(event: KeyboardEvent) {
           </section>
         </template>
 
-        <aside v-if="isDevelopment" class="legal-archive__todo">
-          <strong>{{ content.developmentTodoTitle }}</strong>
-          <p v-if="activeTab === 'privacy' && !legalConfig.contactRetentionPeriod">{{ content.retentionTodo }}</p>
-          <p v-if="activeTab === 'terms' && !legalConfig.consumerMediatorName">{{ content.mediatorTodo }}</p>
-          <ul v-if="activeTab === 'legalNotice'">
-            <li v-for="field in incompleteLegalFields.slice(0, 4)" :key="field">TODO: {{ field }}</li>
-          </ul>
-        </aside>
-
-        <footer class="legal-archive__footer">© 2021–{{ currentYear }} {{ legalConfig.businessName }} — {{ content.rightsReserved }}</footer>
+        <footer class="legal-archive__footer">© 2021–{{ currentYear }} {{ legalConfig.businessName }} - {{ content.rightsReserved }}</footer>
       </main>
     </div>
   </BaseModal>

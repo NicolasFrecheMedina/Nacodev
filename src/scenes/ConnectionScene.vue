@@ -56,7 +56,7 @@ onBeforeUnmount(() => timers.forEach((timer) => window.clearTimeout(timer)))
         <span class="signal__sweep" />
       </div>
       <div class="signal__scene" aria-hidden="true">
-        <HudStepIndicator code="NCD — CNX" :step="1" :total="sceneStepTotal" />
+        <HudStepIndicator code="NCD - CNX" :step="1" :total="sceneStepTotal" />
       </div>
       <p class="signal__status" :class="{ 'signal__status--found': status === 'found' }">
         {{ status === 'searching' ? t('connection.searching') : t('connection.found') }}
