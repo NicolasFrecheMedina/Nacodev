@@ -50,7 +50,7 @@ export const missions: readonly Mission[] = [
     descriptionKey: 'missions.items.nacodev.description', statusKey: 'missions.status.active',
     categoryKey: 'missions.items.nacodev.category', year: '2021',
     // Add the archived NacoDev V1 URL here when it is available.
-    v1Url: '',
+    v1Url: 'https://legacy.nacodev.com',
     position: [0, 2.35, -0.35], mobilePosition: [0, 2.85, -0.3],
     screenPosition: { x: 50, y: 22 }, mobileScreenPosition: { x: 50, y: 15 },
     size: 0.88, rotationSpeed: 0.075,
