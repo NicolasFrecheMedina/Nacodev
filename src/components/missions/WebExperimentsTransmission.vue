@@ -44,7 +44,7 @@ const { t } = useI18n()
           <h4>{{ project.name }}</h4>
           <p>{{ t('missions.items.web.transmission.siteType') }} <i /> {{ t('missions.items.web.transmission.online') }}</p>
         </div>
-        <a :href="project.url" target="_blank" rel="noreferrer">
+        <a :href="project.url" target="_blank" rel="noopener noreferrer">
           {{ t('missions.items.web.transmission.visit') }} <span aria-hidden="true">↗</span>
         </a>
       </article>
