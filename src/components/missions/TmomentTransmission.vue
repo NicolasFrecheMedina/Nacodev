@@ -33,7 +33,7 @@ const { t } = useI18n()
     </div>
 
     <section class="tmoment-transmission__timeline transmission-zone" :aria-label="t('missions.items.tmoment.transmission.timelineLabel')">
-      <a v-if="mission.projectUrl" :href="mission.projectUrl" target="_blank" rel="noreferrer">
+      <a v-if="mission.projectUrl" :href="mission.projectUrl" target="_blank" rel="noopener noreferrer">
         {{ t('missions.items.tmoment.transmission.viewProject') }} <span aria-hidden="true">↗</span>
       </a>
       <span v-else class="tmoment-transmission__disabled" aria-disabled="true">

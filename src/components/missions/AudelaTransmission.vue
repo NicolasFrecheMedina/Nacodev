@@ -36,7 +36,7 @@ const { t } = useI18n()
     </div>
 
     <section class="audela-transmission__timeline transmission-zone" :aria-label="t('missions.items.audela.transmission.timelineLabel')">
-      <a v-if="mission.projectUrl" :href="mission.projectUrl" target="_blank" rel="noreferrer">
+      <a v-if="mission.projectUrl" :href="mission.projectUrl" target="_blank" rel="noopener noreferrer">
         {{ t('missions.items.audela.transmission.viewProject') }} <span aria-hidden="true">↗</span>
       </a>
       <span v-else class="audela-transmission__disabled" aria-disabled="true">

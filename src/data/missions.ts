@@ -61,7 +61,7 @@ export const missions: readonly Mission[] = [
     descriptionKey: 'missions.items.tmoment.description', statusKey: 'missions.status.development',
     categoryKey: 'missions.items.tmoment.category', year: '2026',
     // Add the future T-Moment product URL here when it is available.
-    projectUrl: '',
+    projectUrl: 'https://t-moment.nacodev.com',
     position: [4.2, 1.15, -0.8], mobilePosition: [1.58, 1.55, -0.6],
     screenPosition: { x: 78, y: 36 }, mobileScreenPosition: { x: 78, y: 32 },
     size: 0.92, rotationSpeed: 0.062,
@@ -72,7 +72,7 @@ export const missions: readonly Mission[] = [
     descriptionKey: 'missions.items.audela.description', statusKey: 'missions.status.research',
     categoryKey: 'missions.items.audela.category',
     // Add the future Au-delà project URL here when it is available.
-    projectUrl: '',
+    projectUrl: 'https://audela.io',
     position: [2.15, -2.05, 0.25], mobilePosition: [1.35, -1.45, 0.1],
     screenPosition: { x: 66, y: 72 }, mobileScreenPosition: { x: 72, y: 72 },
     size: 0.86, rotationSpeed: 0.048,
