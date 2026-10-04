@@ -26,6 +26,13 @@ const departing = ref(false)
 const missionOverlayOpen = ref(false)
 let departureTimer: number | undefined
 const selectedMissionIndex = computed(() => missions.findIndex((mission) => mission.id === selectedMission.value?.id))
+const hudStatus = computed(() => {
+  if (missionOverlayOpen.value) return t('missions.hud.transmissionActive')
+  if (!selectedMission.value) return t('missions.hud.systemNominal')
+
+  const missionNumber = String(selectedMissionIndex.value + 1).padStart(2, '0')
+  return `${t('missions.mission').toLocaleUpperCase()} / ${missionNumber} — ${t(selectedMission.value.nameKey).toLocaleUpperCase()}`
+})
 
 async function selectMission(mission: Mission) {
   if (selectedMission.value?.id === mission.id) {
@@ -92,7 +99,7 @@ onBeforeUnmount(() => {
   <section id="missions" class="missions-scene" :class="{ 'missions-scene--focused': selectedMission, 'missions-scene--emerging': emerging, 'missions-scene--stabilizing': stabilizing, 'missions-scene--departing': departing }" :inert="emerging || stabilizing || departing" :aria-busy="emerging || stabilizing || departing" aria-labelledby="missions-title">
     <GlobalHud :scene-code="hud.code" :step="hud.step" :step-total="sceneStepTotal">
       <template #context>
-        <HudContextStatus :primary="previewedMission ? t(previewedMission.statusKey) : 'SYSTEM / NOMINAL'" />
+        <HudContextStatus :primary="hudStatus" />
       </template>
     </GlobalHud>
     <header class="missions-scene__header">

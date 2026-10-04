@@ -156,8 +156,8 @@ onBeforeUnmount(() => {
 .mission-system__gravity { position: absolute; top: 50%; left: 50%; width: 2px; height: 2px; border-radius: 50%; background: rgb(184 230 246 / 42%); box-shadow: 0 0 0.7rem rgb(128 205 234 / 38%), 0 0 3rem 1rem rgb(93 174 204 / 8%); transform: translate(-50%, -50%); }
 .mission-system__gravity::before { position: absolute; top: 50%; left: 50%; width: 9rem; height: 9rem; border-radius: 50%; background: radial-gradient(circle, rgb(112 195 225 / 5%), transparent 68%); content: ''; transform: translate(-50%, -50%); }
 .mission-system__targets { position: absolute; inset: 0; }
-.mission-target { --target-visual-size: clamp(7rem, 11vw, 10rem); position: absolute; z-index: 2; top: var(--target-y); left: var(--target-x); width: clamp(9.5rem, 15vw, 13rem); height: clamp(9.5rem, 15vw, 13rem); padding: 0; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
-.mission-target--selected { z-index: 3; top: 50%; left: 50%; }
+.mission-target { --target-visual-size: clamp(7rem, 11vw, 10rem); position: absolute; z-index: 2; top: var(--target-y); left: var(--target-x); width: calc(var(--target-visual-size) + 3rem); height: calc(var(--target-visual-size) + 3rem); padding: 0; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
+.mission-target--selected { z-index: 3; top: 50%; left: 50%; width: calc(var(--target-visual-size) + 5rem); height: calc(var(--target-visual-size) + 5rem); }
 .mission-target--muted { z-index: 1; }
 .mission-target__reticle { position: absolute; top: 50%; left: 50%; width: calc(var(--target-visual-size) + 0.7rem); height: calc(var(--target-visual-size) + 0.7rem); border: 1px solid transparent; border-radius: 50%; transform: translate(-50%, -50%); transition: border-color 350ms ease, transform 500ms ease; }
 .mission-target__reticle::before, .mission-target__reticle::after { position: absolute; background: rgb(174 222 238 / 0%); content: ''; transition: background 350ms ease; }
@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
   .mission-system__orbit--inner { inset: 14% 15%; }
   .mission-system__orbit--outer { inset: 18% 5% 10%; }
   .mission-target { --target-visual-size: 5.8rem; top: var(--target-mobile-y); left: var(--target-mobile-x); width: 8rem; height: 8rem; }
-  .mission-target--selected { top: 50%; left: 50%; }
+  .mission-target--selected { top: 50%; left: 50%; width: 9rem; height: 9rem; }
   .mission-target__readout { top: calc(50% + (var(--target-visual-size) / 2) + 0.3rem); left: 50%; gap: 0.2rem; opacity: 0.78; transform: translate(-50%, 0); text-align: center; }
   .mission-target:nth-child(even) .mission-target__readout { right: auto; left: 50%; text-align: center; }
   .mission-target__readout span, .mission-target__readout small { display: none; }
